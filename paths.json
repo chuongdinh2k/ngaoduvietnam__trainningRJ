@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+        "@components": ["src/components"],
+        "@enums": ["src/enums"],
+        "@containers": ["src/Container"],
+        "@types": ["src/types"],
+        "@configs":["src/Configs"],
+        "@layouts":["src/Layouts"],
+        "@styles":["src/styles"]
+      }
+    }
+  }
