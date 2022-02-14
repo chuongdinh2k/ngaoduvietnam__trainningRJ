@@ -1,6 +1,7 @@
 export * from "./Icon";
 
 export * from "./Header";
+export * from "./Footer";
 
 export * from "./AppSelect";
 export * from "./DatePicker";

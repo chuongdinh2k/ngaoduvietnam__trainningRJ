@@ -2,6 +2,9 @@
 export const HEADER_HEIGHT = "13.2rem";
 // WHAT: define background
 export const BACKGROUND_WRAPHEADER = "../../assets/banner.png";
+
+// WHAT: define logo
+export const WHITE_LOGO = "../../assets/logo.png";
 // WHAT: custome breakpoints
 export const BREAK_SMALL = "321px";
 export const BREAK_MOBILE = "375px";

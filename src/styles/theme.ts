@@ -32,15 +32,15 @@ const defaultFontFamily = "DM Sans, Roboto, Arial, sans-serif";
 
 const DEFAULT_THEME_CONFIG: ThemeOptions = {
     colors,
-    breakpoints: {
-        values: {
-            xs: 0,
-            sm: 992,
-            md: 1200,
-            lg: 1440,
-            xl: 1600,
-        },
-    },
+    // breakpoints: {
+    //     values: {
+    //         xs: 0,
+    //         sm: 992,
+    //         md: 1200,
+    //         lg: 1440,
+    //         xl: 1600,
+    //     },
+    // },
     palette: {
         primary: {
             main: colors.orange,

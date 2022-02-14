@@ -1,6 +1,5 @@
-import { StyledContainer } from "@components";
+import { Header, Footer, StyledContainer } from "@components";
 import { ILayout } from "@types";
-import { Header } from "@components";
 
 export const LayoutApp = (props: ILayout) => {
     return (
@@ -9,6 +8,7 @@ export const LayoutApp = (props: ILayout) => {
             <div className="workspace">
                 <div>{props.children}</div>
             </div>
+            <Footer />
         </StyledContainer>
     );
 };

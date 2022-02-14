@@ -4,9 +4,11 @@ import { makeStyles } from "@material-ui/core";
 
 import { InputWrapper, LabelWrapper } from "./style";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: any) => ({
     input: {
-        fontSize: "14px !important",
+        "&::placeholder": {
+            color: theme.colors.gray1,
+        },
         paddingLeft: "1.8rem",
     },
 }));
@@ -42,7 +44,10 @@ export const AppInput = (props: IAppInput) => {
                 defaultValue="Default value"
                 InputProps={{
                     disableUnderline: true,
-                    style: { fontSize: "14px" },
+                    style: {
+                        fontSize: "14px",
+                    },
+                    classes: {},
                 }}
             />
         </InputWrapper>

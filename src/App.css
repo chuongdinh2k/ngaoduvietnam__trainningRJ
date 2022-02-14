@@ -1,7 +1,14 @@
 .App {
-  text-align: center;
+  font-family: DM Sans, sans-serif;
+  box-sizing: border-box;
+  /* text-align: center; */
 }
-
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -12,6 +19,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+/* config font family */
 
 .App-header {
   background-color: #282c34;

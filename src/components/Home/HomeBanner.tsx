@@ -32,14 +32,14 @@ export const HomeBanner = () => {
                         </Grid>
                         <Grid item xs={4}>
                             <div className="featured__wrapper">
-                                <span className="featured__number">200+</span>
-                                tours
+                                <span className="featured__number">100+</span>
+                                destination
                             </div>
                         </Grid>
                         <Grid item xs={4}>
                             <div className="featured__wrapper">
-                                <span className="featured__number">200+</span>
-                                tours
+                                <span className="featured__number">8+</span>
+                                type of tour
                             </div>
                         </Grid>
                     </Grid>

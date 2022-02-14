@@ -8,7 +8,8 @@
         "@types": ["src/types"],
         "@configs":["src/Configs"],
         "@layouts":["src/Layouts"],
-        "@styles":["src/styles"]
+        "@styles":["src/styles"],
+        "@assets":["src/assets"],
       }
     }
   }

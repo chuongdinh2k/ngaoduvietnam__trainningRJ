@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { makeStyles, Button } from "@material-ui/core";
 
 import { AppSelect, GroupPeople, Flag } from "@components";
-import { IconSearch, AppInput, AppDatePicker, Location } from "@components";
+import { IconSearch, AppInput, IconCalendar, Location } from "@components";
 import { BREAK_ONLY_MOBILE } from "@configs";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,28 +19,13 @@ const useStyles = makeStyles((theme) => ({
 export const HomeToursTab = () => {
     const classes = useStyles();
     // component state
-    const [valueDate, setValueDate] = useState<any>();
-
-    const onChangeDate = (value: string) => {
-        setValueDate((prev: any) => ({ ...prev, departureDate: value }));
-    };
 
     return (
         <StyledHomeToursTab>
             <p className="title">Discover beautiful Vietnam</p>
             <form className="tour__form">
                 <AppInput icon={<Location />} placeholder="Enter Location" />
-                <AppDatePicker
-                    label="Departure time:"
-                    placeholder="Departure time"
-                    value={valueDate}
-                    handleChange={(date: any) => {
-                        onChangeDate(date);
-                    }}
-                    // handleBlur={(date: any) => onChangeDate(date)}
-                    minDate={new Date()}
-                    labelStyle={{ fontSize: "14px" }}
-                />
+                <AppInput icon={<IconCalendar />} placeholder="Departure time" />
                 <AppSelect
                     icon={<Flag width="16" height="18" />}
                     value=""
