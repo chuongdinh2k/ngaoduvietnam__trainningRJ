@@ -1,15 +1,16 @@
 import React from "react";
 import { Box, Tab, Tabs, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { theme } from "@styles";
 import { withStyles } from "@material-ui/styles";
 
-import { HomeToursTab } from "./HomeToursTab";
+import { theme } from "@styles";
+import { HomeToursTab } from ".";
+import { NUMBER_ONE, NUMBER_ZERO } from "@configs";
 
 interface TabPanelProps {
     children?: React.ReactNode;
-    index: any;
-    value: any;
+    index: number;
+    value: number;
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 // WHAT: create id for tab
-function a11yProps(index: any) {
+function a11yProps(index: number) {
     return {
         id: `simple-tab-${index}`,
         "aria-controls": `simple-tabpanel-${index}`,
@@ -70,7 +71,7 @@ const CustomTab = withStyles({
         color: theme.colors.pureWhite,
     },
 })(Tab);
-export const HomeTabsButton = () => {
+export const HomeTabsButtonComponent = () => {
     // material ui hooks
     const classes = useStyles();
 
@@ -88,15 +89,15 @@ export const HomeTabsButton = () => {
                 onChange={handleChange}
                 aria-label="simple tabs example"
             >
-                <CustomTab label="Tours" {...a11yProps(0)} />
-                <CustomTab label="Hotels" {...a11yProps(1)} />
+                <CustomTab label="Tours" {...a11yProps(NUMBER_ZERO)} />
+                <CustomTab label="Hotels" {...a11yProps(NUMBER_ONE)} />
             </Tabs>
-            <TabPanel value={value} index={0}>
+            <TabPanel value={value} index={NUMBER_ZERO}>
                 <div className={classes.tabContent}>
                     <HomeToursTab />
                 </div>
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel value={value} index={NUMBER_ONE}>
                 <div className={classes.tabContent}></div>
             </TabPanel>
         </div>

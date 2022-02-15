@@ -22,9 +22,9 @@ interface IAppSelect {
     request?: boolean;
     note?: string;
     error?: string;
-    value?: string | Array<string>;
+    value?: string | Array<string> | number;
     defaultValue?: string;
-    // handleChange: (value: any) => void;
+    handleChange: (value: any) => void;
     // handleBlur: (value: any) => void;
     name?: string;
     options?: any;
@@ -48,7 +48,7 @@ export const AppSelect = (props: IAppSelect) => {
                 displayEmpty
                 disableUnderline
                 multiple={props.multiple}
-                // onChange={props.handleChange}
+                onChange={props.handleChange}
                 renderValue={
                     props.value !== ""
                         ? undefined

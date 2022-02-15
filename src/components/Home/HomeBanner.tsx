@@ -1,17 +1,15 @@
 import React from "react";
-
-import { BACKGROUND_WRAPHEADER, BREAK_ONLY_MOBILE } from "@configs";
-import { StyledWrapBanner, StyledBanner } from "@components";
 import styled from "styled-components";
-import { Dot } from "@components";
 import { Grid } from "@material-ui/core";
 
-import { HomeTabsButton } from "./HomeTabsButton";
+import { BACKGROUND_WRAPHEADER, BREAK_ONLY_MOBILE } from "@configs";
+import { StyledWrapBanner, StyledBanner, IconDot } from "..";
+import { HomeTabsButtonComponent } from ".";
 
 export const HomeBanner = () => {
     return (
-        <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} height="76.6rem">
-            <StyledBanner width="50%" paddingTop="24.4rem">
+        <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent="home">
+            <StyledBanner typeComponent="home">
                 <p className="subTitle">Welcome to NgaoduVietNam</p>
                 <h3 className="title">
                     Perfect place <br /> for your stories
@@ -19,7 +17,7 @@ export const HomeBanner = () => {
             </StyledBanner>
             <div className="featured">
                 <div>
-                    <Dot />
+                    <IconDot />
                     <span className="featured__title">Featured</span>
                 </div>
                 <StyledFeaturedContent>
@@ -46,7 +44,7 @@ export const HomeBanner = () => {
                 </StyledFeaturedContent>
             </div>
             <div className="filter">
-                <HomeTabsButton></HomeTabsButton>
+                <HomeTabsButtonComponent />
             </div>
         </StyledWrapBanner>
     );

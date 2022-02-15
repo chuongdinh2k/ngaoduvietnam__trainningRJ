@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
 export const HomeToursTab = () => {
     const classes = useStyles();
     // component state
-
+    const [selectedTour, setSelectedTour] = useState<string>();
+    const [selectedQuantityPeople, setSelectedQuantityPeople] = useState<number>();
     return (
         <StyledHomeToursTab>
             <p className="title">Discover beautiful Vietnam</p>
@@ -28,20 +29,22 @@ export const HomeToursTab = () => {
                 <AppInput icon={<IconCalendar />} placeholder="Departure time" />
                 <AppSelect
                     icon={<Flag width="16" height="18" />}
-                    value=""
+                    value={selectedTour}
                     placeholder="Type of Tour"
                     options={[
                         { label: "Beach", value: "Beach" },
                         { label: "Moutain", value: "Moutain" },
                     ]}
+                    handleChange={(e) => setSelectedTour(e.target.value)}
                 />
                 <AppSelect
                     icon={<GroupPeople width="16" height="18" />}
-                    value=""
+                    value={selectedQuantityPeople}
+                    handleChange={(e) => setSelectedQuantityPeople(e.target.value)}
                     placeholder="Number of Guest"
                     options={[
-                        { label: "Beach", value: "Beach" },
-                        { label: "Moutain", value: "Moutain" },
+                        { label: "1", value: 1 },
+                        { label: "2", value: 2 },
                     ]}
                 />
                 <Button

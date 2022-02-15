@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import styled from "styled-components";
 
 import { StyledFooter } from "./styles";
-import logo from "../../../assets/logo.png";
+import logo from "@assets/logo.png";
 import { IconFacebook, IconTwitter, IconInstagram, Location, Letter } from "@components";
 
 export const Footer = () => {
