@@ -1,3 +1,4 @@
+import { PAGE_ABOUT, PAGE_HOME, PAGE_LISTTOUR } from "@configs";
 import styled from "styled-components";
 
 interface IStyledBanner {
@@ -5,25 +6,25 @@ interface IStyledBanner {
 }
 export const StyledBanner = styled.div<IStyledBanner>`
     padding-top: ${(p) => {
-        if (p.typeComponent === "home") {
+        if (p.typeComponent === PAGE_HOME) {
             return "24rem";
-        } else if (p.typeComponent === "about") {
+        } else if (p.typeComponent === PAGE_ABOUT) {
             return "20rem";
-        } else if (p.typeComponent === "listTour") {
+        } else if (p.typeComponent === PAGE_LISTTOUR) {
             return "20rem";
         }
     }};
     width: ${(p) => {
-        if (p.typeComponent === "home" || p.typeComponent === "listTour") {
+        if (p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_LISTTOUR) {
             return "40%";
-        } else if (p.typeComponent === "about") {
+        } else if (p.typeComponent === PAGE_ABOUT) {
             return "100%";
         }
     }};
     text-align: ${(p) => {
-        if (p.typeComponent === "home") {
+        if (p.typeComponent === PAGE_HOME) {
             return "left";
-        } else if (p.typeComponent === "about") {
+        } else if (p.typeComponent === PAGE_ABOUT) {
             return "center";
         }
     }};

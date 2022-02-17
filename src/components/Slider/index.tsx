@@ -12,7 +12,7 @@ interface ISlider {
     typeCardIcon?: boolean;
 }
 export const SliderCustom = (props: ISlider) => {
-    const { typeCardIcon } = props;
+    const { typeCardIcon, data } = props;
 
     const settings = {
         dots: true,
@@ -51,18 +51,13 @@ export const SliderCustom = (props: ISlider) => {
         <StyledSlider>
             <Slider {...settings}>
                 {/* WHAT: Check data's undefined or not then map data */}
-                {props.data
-                    ? props?.data.map((item: ICard, index: number) => (
+                {data
+                    ? data.map((item: ICard, index: number) => (
                           <Card
                               key={index}
                               //  WHAT: check render normal card, not card with icon
                               typeCardIcon={typeCardIcon}
-                              title={item.title}
-                              subTitle={item.subTitle}
-                              image={item.image}
-                              money={item.money}
-                              time={item.time}
-                              rating={item.rating}
+                              data={item}
                           />
                       ))
                     : ""}

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import background from "@assets/banner.png";
-import { BREAK_ONLY_MOBILE } from "@configs";
+import { PAGE_HOME, BREAK_ONLY_MOBILE, PAGE_ABOUT } from "@configs";
 
 interface IWrapHeader {
     background_banner?: string;
@@ -10,15 +10,12 @@ interface IWrapHeader {
 }
 export const StyledWrapBanner = styled.div<IWrapHeader>`
     position: relative;
-    height: ${(p) => {
-        if (p.typeComponent === "home") {
-            return "76.6rem";
-        } else if (p.typeComponent === "about") {
-            return "40rem";
-        } else if (p.typeComponent === "listTour") {
-            return "66.6rem";
-        }
-    }};
+    height: ${(p) =>
+        p.typeComponent === PAGE_HOME
+            ? "76.6rem"
+            : p.typeComponent === PAGE_ABOUT
+            ? "40rem"
+            : "66.6rem"};
     padding: 0 16.5rem;
     width: 100%;
     background-image: url(${background});
@@ -53,13 +50,12 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         backdrop-filter: blur(42px);
     }
     @media (max-width: 992px) {
-        height: ${(p) => {
-            if (p.typeComponent === "home") {
-                return "60rem";
-            } else if (p.typeComponent === "about") {
-                return "20rem";
-            }
-        }};
+        height: ${(p) =>
+            p.typeComponent === PAGE_HOME
+                ? "60rem"
+                : p.typeComponent === PAGE_ABOUT
+                ? "20rem"
+                : "60rem"};
         padding: 0 8rem;
         .featured {
             width: 60rem;
@@ -72,13 +68,12 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     }
     @media (max-width: ${BREAK_ONLY_MOBILE}) {
         padding: 0 2rem;
-        height: ${(p) => {
-            if (p.typeComponent === "home") {
-                return "87.6rem";
-            } else if (p.typeComponent === "about") {
-                return "20rem";
-            }
-        }};
+        height: ${(p) =>
+            p.typeComponent === PAGE_HOME
+                ? "87.6rem"
+                : p.typeComponent === PAGE_ABOUT
+                ? "20rem"
+                : "60rem"};
         .featured {
             top: 30%;
             left: 2rem;
