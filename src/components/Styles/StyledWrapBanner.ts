@@ -1,16 +1,24 @@
 import styled from "styled-components";
 
-import background from "../../assets/banner.png";
+import background from "@assets/banner.png";
 import { BREAK_ONLY_MOBILE } from "@configs";
 
 interface IWrapHeader {
     background_banner?: string;
-    height: string;
     hidden?: boolean;
+    typeComponent?: string;
 }
 export const StyledWrapBanner = styled.div<IWrapHeader>`
     position: relative;
-    height: ${(p) => p.height};
+    height: ${(p) => {
+        if (p.typeComponent === "home") {
+            return "76.6rem";
+        } else if (p.typeComponent === "about") {
+            return "40rem";
+        } else if (p.typeComponent === "listTour") {
+            return "66.6rem";
+        }
+    }};
     padding: 0 16.5rem;
     width: 100%;
     background-image: url(${background});
@@ -45,11 +53,32 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         backdrop-filter: blur(42px);
     }
     @media (max-width: 992px) {
-        height: 100rem;
+        height: ${(p) => {
+            if (p.typeComponent === "home") {
+                return "60rem";
+            } else if (p.typeComponent === "about") {
+                return "20rem";
+            }
+        }};
+        padding: 0 8rem;
+        .featured {
+            width: 60rem;
+            padding: 2.6rem 8rem 0 8rem;
+        }
+        .filter {
+            width: 45%;
+            right: 8rem;
+        }
     }
     @media (max-width: ${BREAK_ONLY_MOBILE}) {
         padding: 0 2rem;
-        height: 87.6rem;
+        height: ${(p) => {
+            if (p.typeComponent === "home") {
+                return "87.6rem";
+            } else if (p.typeComponent === "about") {
+                return "20rem";
+            }
+        }};
         .featured {
             top: 30%;
             left: 2rem;
@@ -60,7 +89,6 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         }
 
         .filter {
-            /* top: 60%; */
             left: 2rem;
             right: 2rem;
             width: 90%;

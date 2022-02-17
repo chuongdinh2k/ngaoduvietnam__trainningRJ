@@ -5,6 +5,7 @@ export const StyledContainer = styled.div`
     height: 100%;
     min-height: 100vh;
     background-color: ${(p) => p.theme.colors.pureWhite};
+
     &.boxed {
         overflow: hidden;
         margin-right: auto;

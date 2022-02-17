@@ -1,5 +1,5 @@
 export * from "./Location";
-export * from "./Dot";
+export * from "./IconDot";
 export * from "./GroupPeople";
 export * from "./Flag";
 export * from "./IconCalendar";
@@ -7,4 +7,9 @@ export * from "./IconSearch";
 export * from "./IconTwitter";
 export * from "./IconFacebook";
 export * from "./IconInstagram";
-export * from "./Letter";
+export * from "./IconLetter";
+export * from "./IconArrowNext";
+export * from "./IconStar";
+export * from "./IconFlagMark";
+export * from "./IconLetter";
+export * from "./IconDoubleQuotationMarks";
