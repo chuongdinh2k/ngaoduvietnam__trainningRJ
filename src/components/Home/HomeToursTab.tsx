@@ -21,6 +21,16 @@ export const HomeToursTab = () => {
     // component state
     const [selectedTour, setSelectedTour] = useState<string>();
     const [selectedQuantityPeople, setSelectedQuantityPeople] = useState<number>();
+
+    const handleChangeSelect = (
+        event: React.ChangeEvent<{
+            name?: string | undefined;
+            value: unknown;
+        }>
+    ) => {
+        const value = event.target.value as number;
+        setSelectedQuantityPeople(value);
+    };
     return (
         <StyledHomeToursTab>
             <p className="title">Discover beautiful Vietnam</p>
@@ -35,12 +45,12 @@ export const HomeToursTab = () => {
                         { label: "Beach", value: "Beach" },
                         { label: "Moutain", value: "Moutain" },
                     ]}
-                    handleChange={(e) => setSelectedTour(e.target.value)}
+                    handleChange={handleChangeSelect}
                 />
                 <AppSelect
                     icon={<GroupPeople width="16" height="18" />}
                     value={selectedQuantityPeople}
-                    handleChange={(e) => setSelectedQuantityPeople(e.target.value)}
+                    handleChange={handleChangeSelect}
                     placeholder="Number of Guest"
                     options={[
                         { label: "1", value: 1 },
@@ -62,6 +72,7 @@ export const HomeToursTab = () => {
 const StyledHomeToursTab = styled.div`
     .title {
         font-size: 2.4rem;
+        padding-bottom: 1.9rem;
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-start: 0;
         @media (max-width: ${BREAK_ONLY_MOBILE}) {

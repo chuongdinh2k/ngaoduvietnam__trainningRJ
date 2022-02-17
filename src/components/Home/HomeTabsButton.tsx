@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Tab, Tabs, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { withStyles } from "@material-ui/styles";
+import styled from "styled-components";
 
 import { theme } from "@styles";
 import { HomeToursTab } from ".";
@@ -12,7 +13,9 @@ interface TabPanelProps {
     index: number;
     value: number;
 }
-
+interface IProps {
+    show?: boolean;
+}
 function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
 
@@ -71,7 +74,7 @@ const CustomTab = withStyles({
         color: theme.colors.pureWhite,
     },
 })(Tab);
-export const HomeTabsButtonComponent = () => {
+export const HomeTabsButtonComponent = (props: IProps) => {
     // material ui hooks
     const classes = useStyles();
 
@@ -82,16 +85,18 @@ export const HomeTabsButtonComponent = () => {
         setValue(newValue);
     };
     return (
-        <div>
-            <Tabs
-                TabIndicatorProps={{ style: { background: theme.colors.orange } }}
-                value={value}
-                onChange={handleChange}
-                aria-label="simple tabs example"
-            >
-                <CustomTab label="Tours" {...a11yProps(NUMBER_ZERO)} />
-                <CustomTab label="Hotels" {...a11yProps(NUMBER_ONE)} />
-            </Tabs>
+        <StyledHomeTabsButtonComponent show={props.show}>
+            <div className="tab">
+                <Tabs
+                    TabIndicatorProps={{ style: { background: theme.colors.orange } }}
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="simple tabs example"
+                >
+                    <CustomTab label="Tours" {...a11yProps(NUMBER_ZERO)} />
+                    <CustomTab label="Hotels" {...a11yProps(NUMBER_ONE)} />
+                </Tabs>
+            </div>
             <TabPanel value={value} index={NUMBER_ZERO}>
                 <div className={classes.tabContent}>
                     <HomeToursTab />
@@ -100,6 +105,17 @@ export const HomeTabsButtonComponent = () => {
             <TabPanel value={value} index={NUMBER_ONE}>
                 <div className={classes.tabContent}></div>
             </TabPanel>
-        </div>
+        </StyledHomeTabsButtonComponent>
     );
 };
+const StyledHomeTabsButtonComponent = styled.div<IProps>`
+    .tab {
+        display: ${(p) => {
+            if (p.show) {
+                return "block";
+            } else {
+                return "none";
+            }
+        }};
+    }
+`;

@@ -6,14 +6,20 @@ import { BACKGROUND_WRAPHEADER, BREAK_ONLY_MOBILE } from "@configs";
 import { StyledWrapBanner, StyledBanner, IconDot } from "..";
 import { HomeTabsButtonComponent } from ".";
 
-export const HomeBanner = () => {
+interface IProps {
+    title?: string;
+    subTitle?: string;
+}
+
+export const HomeBanner = (props: IProps) => {
+    const { title, subTitle } = props;
     return (
         <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent="home">
             <StyledBanner typeComponent="home">
-                <p className="subTitle">Welcome to NgaoduVietNam</p>
-                <h3 className="title">
-                    Perfect place <br /> for your stories
-                </h3>
+                <div className="content">
+                    <p className="content__subTitle">{title}</p>
+                    <h3 className="content__title">{subTitle}</h3>
+                </div>
             </StyledBanner>
             <div className="featured">
                 <div>
@@ -21,7 +27,7 @@ export const HomeBanner = () => {
                     <span className="featured__title">Featured</span>
                 </div>
                 <StyledFeaturedContent>
-                    <Grid container spacing={4}>
+                    <Grid container spacing={2}>
                         <Grid item xs={4}>
                             <div className="featured__wrapper">
                                 <span className="featured__number">200+</span>
@@ -44,7 +50,7 @@ export const HomeBanner = () => {
                 </StyledFeaturedContent>
             </div>
             <div className="filter">
-                <HomeTabsButtonComponent />
+                <HomeTabsButtonComponent show={true} />
             </div>
         </StyledWrapBanner>
     );

@@ -1,4 +1,3 @@
-import { BREAK_ONLY_MOBILE } from "@configs";
 import styled from "styled-components";
 
 export const StyledFooter = styled.div`
@@ -9,6 +8,12 @@ export const StyledFooter = styled.div`
     padding-top: 5rem;
     color: ${(p) => p.theme.colors.pureWhite};
     background-color: ${(p) => p.theme.colors.darkBlack};
+    .logo {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
     .socialMedia {
         padding-top: 5.3rem;
     }
@@ -25,13 +30,24 @@ export const StyledFooter = styled.div`
     .text__nav {
         padding: 0;
         margin: 0;
-        @media (max-width: ${BREAK_ONLY_MOBILE}) {
-            flex-direction: row;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {
+            display: flex;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            display: flex;
+            flex-direction: column;
         }
     }
     .text__nav-item {
         list-style: none;
         padding-bottom: 2.9rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {
+            padding-right: 4rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            display: flex;
+            padding-right: 2rem;
+        }
     }
     .text__nav-item a {
         font-size: ${(p) => p.theme.typography.fontSize}px;
@@ -52,7 +68,10 @@ export const StyledFooter = styled.div`
         margin-block-start: 0;
         font-size: ${(p) => p.theme.typography.fontSize}px;
     }
-    @media (max-width: ${BREAK_ONLY_MOBILE}) {
+    @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+        padding: 0 8rem;
+    }
+    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 0 2rem;
     }
 `;

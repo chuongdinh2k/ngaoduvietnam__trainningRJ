@@ -4,7 +4,17 @@ import styled from "styled-components";
 
 import { StyledFooter } from "./styles";
 import logo from "@assets/logo.png";
-import { IconFacebook, IconTwitter, IconInstagram, Location, Letter } from "@components";
+import { IconFacebook, IconTwitter, IconInstagram, Location, IconLetter } from "@components";
+
+interface IData {
+    nav?: Array<string>;
+    policy?: Array<string>;
+}
+
+const fakeDataNav: IData = {
+    nav: ["Home", "About", "Tours", "Hotels", "Contact"],
+    policy: ["Partner with us", "Term & Conditions", "Privacy Policy", "Guest Policy"],
+};
 
 export const Footer = () => {
     return (
@@ -32,37 +42,26 @@ export const Footer = () => {
                             <Grid container>
                                 <Grid md={3} xs={12}>
                                     <ul className="text__nav">
-                                        <li className="text__nav-item">
-                                            <a>Home</a>
-                                        </li>
-                                        <li className="text__nav-item">
-                                            <a>Abouts</a>
-                                        </li>
-                                        <li className="text__nav-item">
-                                            <a>Tours</a>
-                                        </li>
-                                        <li className="text__nav-item">
-                                            <a>Hotels</a>
-                                        </li>
-                                        <li className="text__nav-item">
-                                            <a>Contact</a>
-                                        </li>
+                                        {fakeDataNav.nav
+                                            ? fakeDataNav.nav.map((item: string, index: number) => (
+                                                  <li key={index} className="text__nav-item">
+                                                      <a>{item}</a>
+                                                  </li>
+                                              ))
+                                            : ""}
                                     </ul>
                                 </Grid>
                                 <Grid md={4} xs={12}>
                                     <ul className="text__nav">
-                                        <li className="text__nav-item">
-                                            <a>Partner with us</a>
-                                        </li>
-                                        <li className="text__nav-item">
-                                            <a>Term &amp; Conditions </a>
-                                        </li>
-                                        <li className="text__nav-item">
-                                            <a>Privacy Policy</a>
-                                        </li>
-                                        <li className="text__nav-item">
-                                            <a>Guest Policy</a>
-                                        </li>
+                                        {fakeDataNav.policy
+                                            ? fakeDataNav.policy.map(
+                                                  (item: string, index: number) => (
+                                                      <li key={index} className="text__nav-item">
+                                                          <a>{item}</a>
+                                                      </li>
+                                                  )
+                                              )
+                                            : ""}
                                     </ul>
                                 </Grid>
                                 <Grid md={5} xs={12}>
@@ -77,7 +76,7 @@ export const Footer = () => {
                                     </div>
                                     <div className="text_address">
                                         <span className="text_address-icon">
-                                            <Letter />
+                                            <IconLetter />
                                         </span>
                                         <p className="text_address-sub">hello@adamotravel.com</p>
                                     </div>
