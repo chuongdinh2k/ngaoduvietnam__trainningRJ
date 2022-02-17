@@ -2,23 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
-import { BACKGROUND_WRAPHEADER, BREAK_ONLY_MOBILE } from "@configs";
+import { BACKGROUND_WRAPHEADER, BREAK_ONLY_MOBILE, PAGE_HOME } from "@configs";
 import { StyledWrapBanner, StyledBanner, IconDot } from "..";
 import { HomeTabsButtonComponent } from ".";
 
-interface IProps {
+interface fakeData {
     title?: string;
     subTitle?: string;
 }
 
+interface IProps {
+    fakeData: fakeData;
+}
+
 export const HomeBanner = (props: IProps) => {
-    const { title, subTitle } = props;
+    const { fakeData } = props;
     return (
-        <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent="home">
-            <StyledBanner typeComponent="home">
+        <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent={PAGE_HOME}>
+            <StyledBanner typeComponent={PAGE_HOME}>
                 <div className="content">
-                    <p className="content__subTitle">{title}</p>
-                    <h3 className="content__title">{subTitle}</h3>
+                    <p className="content__subTitle">{fakeData?.title}</p>
+                    <h3 className="content__title">{fakeData?.subTitle}</h3>
                 </div>
             </StyledBanner>
             <div className="featured">
@@ -50,7 +54,7 @@ export const HomeBanner = (props: IProps) => {
                 </StyledFeaturedContent>
             </div>
             <div className="filter">
-                <HomeTabsButtonComponent show={true} />
+                <HomeTabsButtonComponent show />
             </div>
         </StyledWrapBanner>
     );

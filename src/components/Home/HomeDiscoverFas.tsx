@@ -1,36 +1,13 @@
 import styled from "styled-components";
 
 import { SliderCustom } from "@components";
+import { ICard } from "@types";
 
-const fakeData = [
-    {
-        title: "Sapa, Laocai",
-        subTitle: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897804/discovery1_khlkxt.png",
-    },
-    {
-        title: "Hoian, Quangnam",
-        subTitle: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897848/discovery2_ck46a0.png",
-    },
-    {
-        title: "Ba Na Hill, Danang",
-        subTitle: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897847/discovery3_uikjvg.png",
-    },
-    {
-        title: "Muine, Binhthuan",
-        subTitle: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897848/discovery4_ajazk0.png",
-    },
-    {
-        title: "Hoian, Quangnam",
-        subTitle: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
-    },
-];
-
-export const HomeDiscoverFas = () => {
+interface IProps {
+    HomeDiscoverFasListsData?: Array<ICard>;
+}
+export const HomeDiscoverFas = (props: IProps) => {
+    const { HomeDiscoverFasListsData } = props;
     return (
         <StyledHomeDiscoverFas>
             <div className="top">
@@ -40,7 +17,7 @@ export const HomeDiscoverFas = () => {
                 <div className="btn">View All</div>
             </div>
             <div className="slide">
-                <SliderCustom data={fakeData} numberSlides={4} />
+                <SliderCustom data={HomeDiscoverFasListsData} numberSlides={4} />
             </div>
         </StyledHomeDiscoverFas>
     );

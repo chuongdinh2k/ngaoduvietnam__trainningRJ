@@ -110,12 +110,6 @@ export const HomeTabsButtonComponent = (props: IProps) => {
 };
 const StyledHomeTabsButtonComponent = styled.div<IProps>`
     .tab {
-        display: ${(p) => {
-            if (p.show) {
-                return "block";
-            } else {
-                return "none";
-            }
-        }};
+        display: ${(p) => (p.show ? "block" : "none")};
     }
 `;

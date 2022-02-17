@@ -1,42 +1,13 @@
 import styled from "styled-components";
 
 import { SliderCustom } from "@components";
+import { ICard } from "@types";
 
-export const HomeAttractiveTourComponent = () => {
-    const fakeData = [
-        {
-            subTitle: "Sapa, Laocai",
-            title: "Discover interesting things in the romantic coastal city of Vungtau",
-            image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.3_wxkgsh.png",
-            time: "3 days - 2 night",
-            money: "$146.00",
-            rating: 4.5,
-        },
-        {
-            subTitle: "Sapa, Laocai",
-            title: "Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina",
-            image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.1_z2op9b.png",
-            time: "3 days - 2 night",
-            money: "$200.00",
-            rating: 5,
-        },
-        {
-            subTitle: "Muine, Binhthuan",
-            title: "Experience sea tourism on Phuquoc golden pearl",
-            image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897848/discovery4_ajazk0.png",
-            time: "3 days - 2 night",
-            money: "$120.00",
-            rating: 3,
-        },
-        {
-            subTitle: "Muine, Binhthuan",
-            title: "Experience sea tourism on Phuquoc golden pearl",
-            image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.1_z2op9b.png",
-            time: "3 days - 2 night",
-            money: "$120.00",
-            rating: 3,
-        },
-    ];
+interface IProps {
+    AttractiveTourLists?: Array<ICard>;
+}
+export const HomeAttractiveTourComponent = (props: IProps) => {
+    const { AttractiveTourLists } = props;
     return (
         <StyledHomeAttractiveTourComponent>
             <div className="top">
@@ -47,7 +18,7 @@ export const HomeAttractiveTourComponent = () => {
                 <div className="btn">View All</div>
             </div>
             <div className="slide">
-                <SliderCustom data={fakeData} numberSlides={3} typeCardIcon={true} />
+                <SliderCustom data={AttractiveTourLists} numberSlides={3} typeCardIcon={true} />
             </div>
         </StyledHomeAttractiveTourComponent>
     );

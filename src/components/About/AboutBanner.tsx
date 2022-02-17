@@ -1,18 +1,22 @@
 import { StyledWrapBanner, StyledBanner } from "@components";
-import { BACKGROUND_WRAPHEADER } from "@configs";
+import { BACKGROUND_WRAPHEADER, PAGE_ABOUT } from "@configs";
 
-interface IProps {
+interface fakeData {
     title?: string;
     subTitle?: string;
 }
 
+interface IProps {
+    fakeData?: fakeData;
+}
+
 export const AboutBanner = (props: IProps) => {
-    const { title } = props;
+    const { fakeData } = props;
     return (
-        <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent="about">
-            <StyledBanner typeComponent="about">
+        <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent={PAGE_ABOUT}>
+            <StyledBanner typeComponent={PAGE_ABOUT}>
                 <div className="content">
-                    <h3 className="content__title">{title}</h3>
+                    <h3 className="content__title">{fakeData?.title}</h3>
                 </div>
             </StyledBanner>
         </StyledWrapBanner>

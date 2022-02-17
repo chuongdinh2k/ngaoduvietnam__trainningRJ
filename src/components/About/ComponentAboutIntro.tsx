@@ -1,6 +1,17 @@
 import { Grid } from "@material-ui/core";
 import styled from "styled-components";
 
+const array1 = [
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
+    viverra nuQlla eget sed odio. Vulputate risus faucibus sem non,
+    feugiat nec consequat, montes. Elementum scelerisque phasellus
+    donec lectus ullamcorper faucibus. Malesuada et adipiscing
+    molestie egestas leo ut`,
+    `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
+    viverra nuQlla eget sed odio. Vulputate risus faucibus sem non,
+    feugiat nec consequat, montes.`,
+];
+
 export const ComponentAboutIntro = () => {
     return (
         <StyledComponentAboutIntroduce>
@@ -13,18 +24,11 @@ export const ComponentAboutIntro = () => {
                                 immerses you in majestic space and unique cultural features
                             </h4>
                             <div className="content__text-wrapper">
-                                <p className="content__text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
-                                    viverra nuQlla eget sed odio. Vulputate risus faucibus sem non,
-                                    feugiat nec consequat, montes. Elementum scelerisque phasellus
-                                    donec lectus ullamcorper faucibus. Malesuada et adipiscing
-                                    molestie egestas leo ut.
-                                </p>
-                                <p className="content__text">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
-                                    viverra nuQlla eget sed odio. Vulputate risus faucibus sem non,
-                                    feugiat nec consequat, montes.
-                                </p>
+                                {array1.map((text: string, index: number) => (
+                                    <p className="content__text" key={index}>
+                                        {text}
+                                    </p>
+                                ))}
                             </div>
                         </div>
                     </Grid>
@@ -48,23 +52,11 @@ export const ComponentAboutIntro = () => {
                 </h3>
                 <div className="experience__text-top">
                     <Grid container>
-                        <Grid item xs={12} md={6}>
-                            <p className="experience__text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
-                                viverra nuQlla eget sed odio. Vulputate risus faucibus sem non,
-                                feugiat nec consequat, montes. Elementum scelerisque phasellus donec
-                                lectus ullamcorper faucibus. Malesuada et adipiscing molestie
-                                egestas leo ut.
-                            </p>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                            <p className="experience__text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
-                                viverra nuQlla eget sed odio. Vulputate risus faucibus sem non,
-                                feugiat nec consequat, montes. Elementum scelerisque phasellus donec
-                                lectus ullamcorper faucibus.
-                            </p>
-                        </Grid>
+                        {array1.map((text: string, index: number) => (
+                            <Grid item xs={12} md={6} key={index}>
+                                <p className="experience__text">{text}</p>
+                            </Grid>
+                        ))}
                     </Grid>
                 </div>
                 <div className="experience__text-bottom">
@@ -115,6 +107,7 @@ const StyledComponentAboutIntroduce = styled.div`
     }
     .content__title {
         line-height: 1;
+        padding-bottom: 4.8rem;
     }
     .content__title-active {
         color: ${(p) => p.theme.colors.orange};

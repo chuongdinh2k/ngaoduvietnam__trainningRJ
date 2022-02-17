@@ -8,30 +8,40 @@ import { theme } from "@styles";
 export const ComponentHomeContact = () => {
     return (
         <StyledComponentHomeContact>
-            <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
-                    <h3>
-                        Leave us an email,
-                        <br /> to get <span className="title__active">the lastest deals</span>
-                    </h3>
+            <div className="contactWrapper">
+                <Grid container spacing={4}>
+                    <Grid item xs={12} md={6}>
+                        <h3>
+                            Leave us an email,
+                            <br /> to get <span className="title__active">the lastest deals</span>
+                        </h3>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <form className="form">
+                            <AppInput
+                                hasBorder={true}
+                                icon={<IconLetter color={`${theme.colors.orange}`} />}
+                                placeholder="example@gmail.com"
+                            />
+                            <input type="submit" className="form__button" value="Send" />
+                        </form>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={6}>
-                    <form className="form">
-                        <AppInput
-                            hasBorder={true}
-                            icon={<IconLetter color={`${theme.colors.orange}`} />}
-                            placeholder="example@gmail.com"
-                        />
-                        <input type="submit" className="form__button" value="Send" />
-                    </form>
-                </Grid>
-            </Grid>
+            </div>
         </StyledComponentHomeContact>
     );
 };
 const StyledComponentHomeContact = styled.div`
-    padding: 15rem 0;
-    display: flex;
+    .contactWrapper {
+        padding: 15rem 0;
+        display: flex;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding: 4rem 0;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding: 4rem 0;
+        }
+    }
     h3 {
         width: 43.4rem;
         font-size: 4rem;
@@ -67,8 +77,5 @@ const StyledComponentHomeContact = styled.div`
         color: ${(p) => p.theme.colors.pureWhite};
         margin-left: 2.1rem;
         margin-bottom: 2rem;
-    }
-    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-        padding: 4rem 0;
     }
 `;
