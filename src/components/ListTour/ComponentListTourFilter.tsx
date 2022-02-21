@@ -1,95 +1,100 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Divider } from "@material-ui/core";
 import styled from "styled-components";
+import { Formik } from "formik";
 
-import { AppRangeSlider, AppCheckboxGroup } from "..";
+import { AppRangeSlider, AppCheckBox } from "..";
 
 interface IRangeSlider {
     name?: string;
     max: number;
     min: number;
 }
-interface ICheckBox {
+interface ICheckBoxInput {
+    lable?: string;
+    value?: string | number;
+}
+interface ICheckBoxGroup {
     name?: string;
-    data: Array<string>;
+    data: Array<ICheckBoxInput>;
 }
 interface IProps {
-    duration?: ICheckBox;
-    typeOfTour?: ICheckBox;
+    duration?: ICheckBoxGroup;
+    typeOfTour?: ICheckBoxGroup;
     moneyRange?: IRangeSlider;
 }
 
 export const ComponentListTourFilter = (props: IProps) => {
     const { duration, typeOfTour, moneyRange } = props;
     // component state
-    const [checkedValues, setCheckedValues] = React.useState<Array<string | number>>([]);
-    const [checkedTypes, setCheckedTypes] = React.useState<Array<string>>([]);
     const [valueRange, setValueRange] = React.useState<number[]>([150, 1000]);
-
+    // component variable
+    const initialValuesPackage = {
+        typeOfTour: [],
+        duration: [],
+        range: valueRange,
+    };
     // WHAT: handle range value
-    const handleChangeRange = (event: Event, newValue: number | number[]) => {
+    const handleChangeRange = (event: ChangeEvent<any>, newValue: number | number[]) => {
         setValueRange(newValue as number[]);
     };
-    // WHAT: handle select check box
-    function handleSelect(checkedName: string) {
-        const newNames = checkedValues?.includes(checkedName)
-            ? checkedValues?.filter((name: string | number) => name !== checkedName)
-            : [...(checkedValues ?? []), checkedName];
-        setCheckedValues(newNames);
-        return newNames;
-    }
-    // WHAT: handle select check box
-    function handleSelectType(checkedName: string) {
-        const newNames = checkedTypes?.includes(checkedName)
-            ? checkedTypes?.filter((name: string | number) => name !== checkedName)
-            : [...(checkedTypes ?? []), checkedName];
-        setCheckedTypes(newNames);
-        return newNames;
-    }
-    // WHAT: Clear all value
-    function handleClear() {
-        setCheckedValues([]);
-        setCheckedTypes([]);
-    }
     return (
         <StyleComponentFilter>
-            <form className="wrapper">
+            <div className="wrapper">
                 <div className="top">
                     <p className="top__title">Filter By</p>
-                    <span className="top__btn" onClick={() => handleClear()}>
-                        CLEAR
-                    </span>
+                    <span className="top__btn">CLEAR</span>
                 </div>
-                <div className="slide">
-                    <AppRangeSlider
-                        value={valueRange}
-                        handleChange={handleChangeRange}
-                        title={moneyRange && moneyRange.name}
-                        min={moneyRange && moneyRange.min}
-                        max={moneyRange && moneyRange.max}
-                    />
-                    <Divider />
-                </div>
-                <div className="select">
-                    <AppCheckboxGroup
-                        title="Duration"
-                        handleSelect={handleSelect}
-                        checkedValues={checkedValues}
-                        data={duration && duration.data}
-                    />
-                    <Divider />
-                </div>
-                <div className="select">
-                    <AppCheckboxGroup
-                        title={typeOfTour && typeOfTour.name}
-                        handleSelect={handleSelectType}
-                        checkedValues={checkedTypes}
-                        data={typeOfTour && typeOfTour.data}
-                    />
-                    <Divider />
-                </div>
-                <button className="btn">Apply Filter</button>
-            </form>
+                <Formik
+                    initialValues={initialValuesPackage}
+                    onSubmit={(values) => console.log(values)}
+                >
+                    {({ handleSubmit, values, handleChange }) => {
+                        return (
+                            <div>
+                                <div className="slide">
+                                    <AppRangeSlider
+                                        value={valueRange}
+                                        name="range"
+                                        handleChange={handleChangeRange}
+                                        title={moneyRange && moneyRange.name}
+                                        min={moneyRange && moneyRange.min}
+                                        max={moneyRange && moneyRange.max}
+                                    />
+                                    <Divider />
+                                </div>
+                                <div className="select">
+                                    <AppCheckBox
+                                        handleChange={handleChange("duration")}
+                                        title="Duration"
+                                        name="duration"
+                                        values={values.duration}
+                                        options={duration && duration.data}
+                                    />
+                                    <Divider />
+                                </div>
+                                <div className="select">
+                                    <AppCheckBox
+                                        handleChange={handleChange("typeOfTour")}
+                                        title={typeOfTour && typeOfTour.name}
+                                        name={typeOfTour && typeOfTour.name}
+                                        values={values.typeOfTour}
+                                        options={typeOfTour && typeOfTour.data}
+                                    />
+                                    <Divider />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="btn"
+                                    onClick={() => handleSubmit()}
+                                >
+                                    Apply Filter
+                                </button>
+                            </div>
+                        );
+                    }}
+                </Formik>
+            </div>
         </StyleComponentFilter>
     );
 };
