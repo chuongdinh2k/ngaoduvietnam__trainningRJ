@@ -9,23 +9,27 @@ interface IProps {
 export const HomeAttractiveTourComponent = (props: IProps) => {
     const { AttractiveTourLists } = props;
     return (
-        <StyledHomeAttractiveTourComponent>
-            <div className="top">
-                <h3>
-                    Attractive tour and
-                    <br /> interesting experiences
-                </h3>
-                <div className="btn">View All</div>
+        <StyledWrapperTitleComponent>
+            <div className="wrapper">
+                <div className="top">
+                    <h3>
+                        Attractive tour and
+                        <br /> interesting experiences
+                    </h3>
+                    <div className="btn">View All</div>
+                </div>
+                <div className="slide">
+                    <SliderCustom data={AttractiveTourLists} numberSlides={3} typeCardIcon={true} />
+                </div>
             </div>
-            <div className="slide">
-                <SliderCustom data={AttractiveTourLists} numberSlides={3} typeCardIcon={true} />
-            </div>
-        </StyledHomeAttractiveTourComponent>
+        </StyledWrapperTitleComponent>
     );
 };
-export const StyledHomeAttractiveTourComponent = styled.div`
-    width: 100%;
-    padding-bottom: 2rem;
+export const StyledWrapperTitleComponent = styled.div`
+    .wrapper {
+        width: 100%;
+        padding-bottom: 2rem;
+    }
     .top {
         display: flex;
         justify-content: space-between;
@@ -68,6 +72,8 @@ export const StyledHomeAttractiveTourComponent = styled.div`
         }
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-        padding-top: 2rem;
+        .wrapper {
+            padding-top: 2rem;
+        }
     }
 `;

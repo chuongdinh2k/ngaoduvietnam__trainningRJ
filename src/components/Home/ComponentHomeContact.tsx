@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
+import { Formik } from "formik";
 
 import { AppInput, IconLetter } from "@components";
 import { theme } from "@styles";
+import { formSchemaEmail } from "@utils";
 
 export const ComponentHomeContact = () => {
+    // component variable
+
     return (
         <StyledComponentHomeContact>
             <div className="contactWrapper">
@@ -17,14 +21,38 @@ export const ComponentHomeContact = () => {
                         </h3>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <form className="form">
-                            <AppInput
-                                hasBorder={true}
-                                icon={<IconLetter color={`${theme.colors.orange}`} />}
-                                placeholder="example@gmail.com"
-                            />
-                            <input type="submit" className="form__button" value="Send" />
-                        </form>
+                        <Formik
+                            initialValues={{
+                                email: "",
+                            }}
+                            onSubmit={(values) => console.log(values)}
+                            validationSchema={formSchemaEmail}
+                        >
+                            {({ handleSubmit, values, errors, handleChange, handleBlur }) => {
+                                return (
+                                    <div className="form">
+                                        <AppInput
+                                            // errors={errors}
+                                            name="email"
+                                            hasBorder
+                                            handleChange={handleChange("email")}
+                                            // setFieldValue={setFieldValue}
+                                            handleBlur={handleBlur("email")}
+                                            value={values.email}
+                                            icon={<IconLetter color={`${theme.colors.orange}`} />}
+                                            placeholder="example@gmail.com"
+                                            error={errors.email}
+                                        />
+                                        <div
+                                            className="form__button"
+                                            onClick={() => handleSubmit()}
+                                        >
+                                            Send
+                                        </div>
+                                    </div>
+                                );
+                            }}
+                        </Formik>
                     </Grid>
                 </Grid>
             </div>
@@ -72,6 +100,7 @@ const StyledComponentHomeContact = styled.div`
     }
     .form__button {
         font-size: ${(p) => p.theme.typography.fontSize}px;
+        height: 5rem;
         padding: 1rem 3.3rem;
         background-color: ${(p) => p.theme.colors.darkBlack};
         color: ${(p) => p.theme.colors.pureWhite};

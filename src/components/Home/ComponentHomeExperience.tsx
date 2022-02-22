@@ -1,5 +1,5 @@
 import { SliderCustom } from "@components";
-import { StyledHomeAttractiveTourComponent } from ".";
+import { StyledWrapperTitleComponent } from ".";
 import { ICard } from "@types";
 
 interface IProps {
@@ -8,7 +8,7 @@ interface IProps {
 export const ComponentHomeExperience = (props: IProps) => {
     const { HomeExperienceListsData } = props;
     return (
-        <StyledHomeAttractiveTourComponent>
+        <StyledWrapperTitleComponent>
             <div className="top">
                 <h3>
                     Experience the traditional <br /> cultural beauties of Vietnam
@@ -18,6 +18,6 @@ export const ComponentHomeExperience = (props: IProps) => {
             <div className="slide">
                 <SliderCustom data={HomeExperienceListsData} numberSlides={3} typeCardIcon={true} />
             </div>
-        </StyledHomeAttractiveTourComponent>
+        </StyledWrapperTitleComponent>
     );
 };
