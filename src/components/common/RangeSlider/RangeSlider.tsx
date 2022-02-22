@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
@@ -45,10 +45,11 @@ function valuetext(value: number) {
 }
 interface IProps {
     title?: string;
-    handleChange(event: Event, value: number | number[]): void;
+    handleChange: (event: ChangeEvent<any>, value: number | number[]) => void;
     value?: number | number[];
     max?: number;
     min?: number;
+    name?: string;
 }
 export const AppRangeSlider = (props: IProps) => {
     const { handleChange, value, title, max, min } = props;

@@ -1,7 +1,7 @@
 import { theme } from "@styles";
 import { IIcon } from "@types";
 
-export const Location = (props: IIcon) => {
+export const IconLocation = (props: IIcon) => {
     return (
         <>
             <svg

@@ -1,7 +1,8 @@
+import { theme } from "@styles";
 import { IIcon } from "@types";
 
-export const IconDot = (props: IIcon) => {
-    const { width = 8, height = 8 } = props;
+export const ILeftArrow = (props: IIcon) => {
+    const { width = 8, height = 14, color = `${theme.colors.darkBlack}` } = props;
     return (
         <>
             <svg
@@ -11,7 +12,7 @@ export const IconDot = (props: IIcon) => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                <circle cx="4" cy="4" r="4" fill={props.color ? props.color : "#FF7B42"} />
+                <circle cx="4" cy="4" r="4" fill={color} />
             </svg>
         </>
     );

@@ -13,3 +13,6 @@ export * from "./IconStar";
 export * from "./IconFlagMark";
 export * from "./IconLetter";
 export * from "./IconDoubleQuotationMarks";
+export * from "./IconChecked";
+export * from "./IconDownArrow";
+export * from "./IconUpArrow";
