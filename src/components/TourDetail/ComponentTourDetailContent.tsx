@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
 import { BookingForm } from "..";
-import { ComponentDetailInfor, ComponentCustomViewImage } from ".";
+import { ComponentDetailInfor, ComponentCustomViewImage, ComponentDetailTab } from ".";
+import { listImagesTour } from "@demos";
 
 export const ComponentTourDetailContent = () => {
     return (
@@ -15,7 +16,10 @@ export const ComponentTourDetailContent = () => {
             </Grid>
             <Grid container spacing={8}>
                 <Grid item xs={12} md={8}>
-                    <ComponentCustomViewImage />
+                    <div className="wrapper__left">
+                        <ComponentCustomViewImage listImages={listImagesTour} />
+                        <ComponentDetailTab />
+                    </div>
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <BookingForm />
@@ -24,4 +28,11 @@ export const ComponentTourDetailContent = () => {
         </StyledComponentTourDetailContent>
     );
 };
-const StyledComponentTourDetailContent = styled.div``;
+const StyledComponentTourDetailContent = styled.div`
+    .wrapper__left {
+        width: 63.5rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            width: 100%;
+        }
+    }
+`;

@@ -4,42 +4,34 @@ import Slider from "react-slick";
 import { IconFlagMark } from "..";
 import { sliceArray } from "@utils";
 
-const listImages = [
-    {
-        id: 1,
-        link: "https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract01.jpg",
-    },
-    {
-        id: 2,
-        link: "https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract02.jpg",
-    },
-    {
-        id: 3,
-        link: "https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract03.jpg",
-    },
-    {
-        id: 4,
-        link: "https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract04.jpg",
-    },
-    {
-        id: 5,
-        link: "https://s3.amazonaws.com/static.neostack.com/img/react-slick/abstract04.jpg",
-    },
-];
+// const listImages = [
+//     {
+//         id:1,
+//         url:[
+//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
+//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
+//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional2_ykxdqc.png",
+//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
+//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional1_culpgb.png",
+
+//         ]
+//     }
+// ];
 
 interface IStyledCustomViewImage {
     number?: number;
 }
 interface IProps {
-    listImages: Array<string>;
+    listImages?: Array<string>;
 }
 export const ComponentCustomViewImage = (props: IProps) => {
+    const { listImages } = props;
     const settings = {
         customPaging: function (i: number) {
             return (
                 <div className="wrapDot">
                     <a>
-                        <img className="image__dot" src={`${listImages[i]?.link}`} />
+                        <img className="image__dot" src={`${listImages && listImages[i]}`} />
                     </a>
                 </div>
             );
@@ -52,15 +44,15 @@ export const ComponentCustomViewImage = (props: IProps) => {
         slidesToScroll: 1,
     };
     return (
-        <StyledCustomViewImage number={listImages.length - 4}>
+        <StyledCustomViewImage number={listImages && listImages.length - 4}>
             <div className="wrapper">
                 <Slider {...settings}>
-                    {sliceArray(listImages, 0, 4).map((img, index) => (
+                    {sliceArray(listImages, 0, 4)?.map((img, index) => (
                         <div key={index} className="wrapper__image">
                             <span className="icon">
                                 <IconFlagMark width="46" height="29" />
                             </span>
-                            <img className="image" src={img.link} />
+                            <img className="image" src={img} />
                         </div>
                     ))}
                 </Slider>
@@ -70,7 +62,7 @@ export const ComponentCustomViewImage = (props: IProps) => {
 };
 const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     .wrapper {
-        width: 63.5rem;
+        width: 100%;
         position: relative;
         &__image {
             width: 100%;
@@ -118,7 +110,7 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background-color: white;
+                    background-color: ${(p) => p.theme.colors.darkBlack};
                     opacity: 0.5;
                 }
             }
@@ -138,7 +130,7 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background-color: white;
+                    background-color: ${(p) => p.theme.colors.darkBlack};
                     opacity: 0 !important;
                 }
             }
