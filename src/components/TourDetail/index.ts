@@ -4,4 +4,6 @@ export * from "./ComponentCustomViewImage";
 export * from "./ComponentDetailTab";
 export * from "./ComponentTabDetailDescription";
 export * from "./ComponentTabDetailAdditionalInfo";
-export * from "./ComponentDetailCollapse";
+export * from "./Reviews";
+export * from "./ComponentRelated";
+export * from "./ExpendCollapse";

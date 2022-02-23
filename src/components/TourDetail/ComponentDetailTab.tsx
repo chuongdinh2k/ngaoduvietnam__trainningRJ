@@ -2,8 +2,13 @@ import React from "react";
 import { makeStyles, Theme, AppBar, Tabs, Tab, Typography, Box } from "@material-ui/core";
 import clsx from "clsx";
 
-import { ComponentTabDetailDescription, ComponentTabDetailAdditionalInfo } from ".";
+import {
+    ComponentTabDetailDescription,
+    ComponentTabDetailAdditionalInfo,
+    ComponentTabReview,
+} from ".";
 import { dataTourDetail } from "@demos";
+import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO } from "@configs";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -93,29 +98,29 @@ export const ComponentDetailTab = () => {
                 >
                     <Tab
                         label="Descriptions"
-                        className={clsx(value === 0 ? classes.activeTab : "")}
-                        {...a11yProps(0)}
+                        className={clsx(value === NUMBER_ZERO ? classes.activeTab : "")}
+                        {...a11yProps(NUMBER_ZERO)}
                     />
                     <Tab
                         label="Additional Info"
-                        className={clsx(value === 1 ? classes.activeTab : "")}
-                        {...a11yProps(1)}
+                        className={clsx(value === NUMBER_ONE ? classes.activeTab : "")}
+                        {...a11yProps(NUMBER_ONE)}
                     />
                     <Tab
                         label="Reviews(54)"
-                        className={clsx(value === 2 ? classes.activeTab : "")}
-                        {...a11yProps(2)}
+                        className={clsx(value === NUMBER_TWO ? classes.activeTab : "")}
+                        {...a11yProps(NUMBER_TWO)}
                     />
                 </Tabs>
             </AppBar>
-            <TabPanel value={value} index={0}>
+            <TabPanel value={value} index={NUMBER_ZERO}>
                 <ComponentTabDetailDescription discription={dataTourDetail.discription} />
             </TabPanel>
-            <TabPanel value={value} index={1}>
+            <TabPanel value={value} index={NUMBER_ONE}>
                 <ComponentTabDetailAdditionalInfo additionalInfo={dataTourDetail.additionalInfo} />
             </TabPanel>
-            <TabPanel value={value} index={2}>
-                Item Three
+            <TabPanel value={value} index={NUMBER_TWO}>
+                <ComponentTabReview reviews={dataTourDetail.reviews} />
             </TabPanel>
         </div>
     );

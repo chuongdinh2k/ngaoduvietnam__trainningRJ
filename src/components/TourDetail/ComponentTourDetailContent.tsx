@@ -2,8 +2,13 @@ import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
 import { BookingForm } from "..";
-import { ComponentDetailInfor, ComponentCustomViewImage, ComponentDetailTab } from ".";
-import { listImagesTour } from "@demos";
+import {
+    ComponentDetailInfor,
+    ComponentCustomViewImage,
+    ComponentDetailTab,
+    ComponentRelated,
+} from ".";
+import { dataTourDetail, listImagesTour } from "@demos";
 
 export const ComponentTourDetailContent = () => {
     return (
@@ -25,6 +30,7 @@ export const ComponentTourDetailContent = () => {
                     <BookingForm />
                 </Grid>
             </Grid>
+            <ComponentRelated related={dataTourDetail.related} />
         </StyledComponentTourDetailContent>
     );
 };

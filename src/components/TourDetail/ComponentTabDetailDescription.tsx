@@ -1,41 +1,9 @@
 import styled from "styled-components";
 
-import { IconDot, IconChecked } from "..";
-import { ComponentDetailCollapse } from ".";
+import { IconDot, IconChecked, ComponentCollapse } from "..";
+import { ComponentExpendTourItinerary } from ".";
+import { IDiscription } from "@types";
 
-interface ITourItinerary {
-    stopTime?: number;
-    title?: string;
-    text?: string;
-    duration?: string;
-    admission?: string;
-}
-interface IDiscription {
-    overview: {
-        name?: string;
-        title?: string;
-        list?: Array<string>;
-    };
-    included: {
-        name?: string;
-        list?: Array<string>;
-    };
-    departure: {
-        name?: string;
-        departure_point: {
-            title?: string;
-            list?: Array<string>;
-        };
-        departure_time: {
-            title?: string;
-            list?: Array<string>;
-        };
-    };
-    tourItinerary: {
-        name?: string;
-        list: Array<ITourItinerary>;
-    };
-}
 interface IProps {
     discription: IDiscription;
 }
@@ -107,7 +75,9 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                     {tourItinerary &&
                         tourItinerary.list.map((item) => (
                             <div key={item.title}>
-                                <ComponentDetailCollapse tourItinerary={item} />
+                                <ComponentCollapse title={item?.title}>
+                                    <ComponentExpendTourItinerary tourItinerary={item} />
+                                </ComponentCollapse>
                             </div>
                         ))}
                 </div>

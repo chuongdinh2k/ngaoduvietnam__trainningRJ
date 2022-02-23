@@ -1,12 +1,9 @@
-import { StyledComponentTab } from ".";
-import { IconDot } from "..";
+import { IAdditionalInfo } from "@types";
+import { ComponentExpendFaqs, StyledComponentTab } from ".";
+import { ComponentCollapse, IconDot } from "..";
 
-interface additionalInfo {
-    name?: string;
-    list?: Array<string>;
-}
 interface IProps {
-    additionalInfo?: additionalInfo;
+    additionalInfo?: IAdditionalInfo;
 }
 export const ComponentTabDetailAdditionalInfo = (props: IProps) => {
     const { additionalInfo } = props;
@@ -28,7 +25,14 @@ export const ComponentTabDetailAdditionalInfo = (props: IProps) => {
                             ))}
                     </ul>
                 </div>
-                <div className="collapse"></div>
+                <div className="collapse">
+                    <h3 className="content__title">{additionalInfo?.faqs?.name}</h3>
+                    {additionalInfo?.faqs?.list?.map((item) => (
+                        <ComponentCollapse title={item?.question}>
+                            <ComponentExpendFaqs faq={item} />
+                        </ComponentCollapse>
+                    ))}
+                </div>
             </div>
         </StyledComponentTab>
     );
