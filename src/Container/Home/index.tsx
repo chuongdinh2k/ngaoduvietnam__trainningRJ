@@ -8,6 +8,7 @@ import {
     ComponentHomeExperience,
     ComponentHomeContact,
     ComponentIntroduce,
+    Header,
 } from "@components";
 import { AttractiveTourLists, HomeDiscoverFasListsData, HomeExperienceListsData } from "@demos";
 
@@ -20,6 +21,7 @@ const fakeData = {
 export const Home = () => {
     return (
         <>
+            <Header hasColor={false} />
             <HomeBanner fakeData={fakeData} />
             <StyledWrapContent>
                 <ComponentIntroduce />

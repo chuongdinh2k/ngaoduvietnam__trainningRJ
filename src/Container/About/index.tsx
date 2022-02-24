@@ -10,11 +10,13 @@ import {
     ComponentIntroduce,
     StyledWrapContent,
     ComponentAboutIntro,
+    Header,
 } from "@components";
 
 export const About = () => {
     return (
         <div>
+            <Header hasColor={false} />
             <AboutBanner fakeData={fakeData} />
             <StyledWrapContent>
                 <ComponentIntroduce />

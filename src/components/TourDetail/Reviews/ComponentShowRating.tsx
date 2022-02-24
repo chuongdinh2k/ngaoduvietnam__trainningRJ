@@ -30,7 +30,7 @@ export const ComponentShowRating = (props: IProps) => {
                                 <IconStar color="#C4C4C4" />
                             </span>
                             <span className="progress__list-progress">
-                                <LinearProgress variant="determinate" value={42} />
+                                <LinearProgress variant="determinate" value={item.reviewsTime} />
                             </span>
                             <span className="progress__list-reviews">
                                 {item.reviewsTime} reviews

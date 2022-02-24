@@ -9,6 +9,7 @@ export const ComponentAppRoute = (props: IRoute) => {
     // page variable
     const Component = props.component;
     const Layout = props.layout || LayoutApp;
+
     return (
         <Route
             path={path}

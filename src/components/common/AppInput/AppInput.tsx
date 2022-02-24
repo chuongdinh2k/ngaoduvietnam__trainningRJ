@@ -3,6 +3,7 @@ import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
 import { InputWrapper, LabelWrapper, CustomInputWrapper, Error } from ".";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme: any) => ({
     input: {
@@ -25,6 +26,7 @@ interface IAppInput {
     label?: string;
     hasBorder?: boolean;
     error?: string;
+    className?: string;
 }
 
 export const AppInput = (props: IAppInput) => {
@@ -54,9 +56,10 @@ export const AppInput = (props: IAppInput) => {
             <InputWrapper hasBorder={props.hasBorder}>
                 <LabelWrapper>{props.icon}</LabelWrapper>
                 <TextField
-                    className={classes.input}
+                    className={clsx(classes.input, props.className)}
                     placeholder={props.placeholder}
                     fullWidth
+                    multiline={props.multiple ? true : false}
                     value={props.multiple ? inputValue : props.value?.toString() || ""}
                     onChange={handleOnChange}
                     defaultValue="Default value"

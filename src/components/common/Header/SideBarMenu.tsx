@@ -1,6 +1,7 @@
-import { appRoutesEnum, authRoutesEnum } from "@enums";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+
+import { appRoutesEnum, authRoutesEnum } from "@enums";
 
 interface ISideBarRoute {
     path?: string;
@@ -47,27 +48,21 @@ const routes: ISideBarRoute[] = [
 ];
 
 interface IMenu {
-    color?: string;
+    hasColor?: boolean;
 }
 
-interface IProps {
-    sidebarIcons?: boolean;
-    collapsed?: boolean;
-}
+export const ComponentSidebar = (props: IMenu) => {
+    // const { color } = props;
 
-export const ComponentSidebar = ({ sidebarIcons, collapsed }: IProps) => {
-    const menu = (
-        <>
-            <StyledMenu>
-                {routes.map((route, index) => (
-                    <li key={index}>
-                        <NavLink to={`${route.path}`}>{route.name}</NavLink>
-                    </li>
-                ))}
-            </StyledMenu>
-        </>
+    return (
+        <StyledMenu hasColor={props.hasColor}>
+            {routes.map((route, index) => (
+                <li key={index}>
+                    <NavLink to={`${route.path}`}>{route.name}</NavLink>
+                </li>
+            ))}
+        </StyledMenu>
     );
-    return <>{menu}</>;
 };
 const StyledMenu = styled.ul<IMenu>`
     display: flex;
@@ -88,7 +83,10 @@ const StyledMenu = styled.ul<IMenu>`
             font-weight: normal;
             cursor: pointer;
             font-family: ${(p) => p.theme.typography.fontFamily};
-            color: ${(p) => (p.color ? p.color : p.theme.colors.pureWhite)};
+            color: ${(p) => (p.hasColor ? `#1C1C1E` : p.theme.colors.pureWhite)};
+            @media (max-width: 992px) {
+                margin-right: 1.5rem;
+            }
         }
         a:hover {
             color: ${(p) => p.theme.colors.orange};

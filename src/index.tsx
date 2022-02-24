@@ -3,19 +3,24 @@ import ReactDOM from "react-dom";
 import { ThemeProvider as ThemeProviders } from "styled-components";
 import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline } from "@material-ui/core";
+import { Provider } from "react-redux";
 
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { theme } from "./styles/theme";
 
+import { store } from "@redux";
+
 ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <ThemeProviders theme={theme}>
-            <CssBaseline />
-            <App />
-        </ThemeProviders>
-    </ThemeProvider>,
+    <Provider store={store}>
+        <ThemeProvider theme={theme}>
+            <ThemeProviders theme={theme}>
+                <CssBaseline />
+                <App />
+            </ThemeProviders>
+        </ThemeProvider>
+    </Provider>,
     document.getElementById("root")
 );
 

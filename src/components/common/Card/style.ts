@@ -18,6 +18,10 @@ export const StyledCard = styled.div`
         font-size: 2rem;
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-end: 0;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     .subTitle {
         font-size: ${(p) => p.theme.typography.fontSize}px;
@@ -26,6 +30,19 @@ export const StyledCard = styled.div`
     }
 `;
 export const StyledCardWithIcon = styled.div`
+    .cardWrapper {
+        /* padding: 1.5rem; */
+        width: 100%;
+        margin-right: 3rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding: 0;
+            margin-right: 0;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding: 0;
+            margin-right: 0;
+        }
+    }
     .imageWrapper {
         width: 100%;
         height: 24.9rem;
@@ -75,6 +92,10 @@ export const StyledCardWithIcon = styled.div`
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         margin-block-start: 0.9rem;
         margin-block-end: 1rem;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     .bottom {
         justify-content: space-between;

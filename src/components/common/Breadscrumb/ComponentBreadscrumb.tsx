@@ -4,22 +4,23 @@ import { useHistory } from "react-router-dom";
 
 import { IconDot } from "..";
 import { theme } from "@styles";
-import { concatUrl } from "@utils";
+import { concatUrl, splitUrl } from "@utils";
 
 export const ComponentBreadscrumb = () => {
     const history = useHistory();
     //WHAT: get url then put params to array;
-    const array = concatUrl(window.location.pathname);
+    const url = window.location.pathname;
+    const array = concatUrl(url);
     function handleClick(value: string) {
-        history.push(`/${value}`);
+        history.push(`${splitUrl(url, value)?.join("/")}`);
     }
-
     return (
         <StyledCustomBreadscrumb>
             <Breadcrumbs
                 separator={<IconDot width="4px" height="4px" color={theme.colors.gray3} />}
                 aria-label="breadcrumb"
             >
+                {/* /details/:id  */}
                 {array.map((item, index: number) => {
                     return (
                         <Link key={index} onClick={() => handleClick(item)}>
@@ -33,6 +34,10 @@ export const ComponentBreadscrumb = () => {
 };
 const StyledCustomBreadscrumb = styled.div`
     padding-top: 2.2rem;
+    margin-bottom: 4rem;
+    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+        margin-bottom: 2rem;
+    }
     .MuiBreadcrumbs-separator {
         margin: 0 2.4rem;
     }

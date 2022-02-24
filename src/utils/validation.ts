@@ -12,3 +12,7 @@ export const formSchemaEmail = Yup.object().shape({
         .email("Email is not value")
         .max(255, "This field is cannot be longer than 255 characters!"),
 });
+
+export const formSchemaComment = Yup.object().shape({
+    comment: Yup.string().trim().required("This field is required!"),
+});

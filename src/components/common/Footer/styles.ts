@@ -6,6 +6,7 @@ export const StyledFooter = styled.div`
     /* padding: 0 16.5rem; */
     padding: 5rem 16.5rem 6rem 16.5rem;
     padding-top: 5rem;
+    margin-top: 15rem;
     color: ${(p) => p.theme.colors.pureWhite};
     background-color: ${(p) => p.theme.colors.darkBlack};
     .logo {
@@ -73,5 +74,6 @@ export const StyledFooter = styled.div`
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 0 2rem;
+        margin-top: 2rem;
     }
 `;

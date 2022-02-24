@@ -24,7 +24,15 @@ interface IAppSelect {
     error?: string;
     value?: string | Array<string> | number;
     defaultValue?: string;
-    handleChange: (value: any) => void;
+    handleChange:
+        | ((
+              event: React.ChangeEvent<{
+                  name?: string | undefined;
+                  value: unknown;
+              }>,
+              child: React.ReactNode
+          ) => void)
+        | undefined;
     // handleBlur: (value: any) => void;
     name?: string;
     options?: any;

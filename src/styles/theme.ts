@@ -16,9 +16,17 @@ const colors = {
     darkBlack: "#1C1C1E",
     yellow: "#FFB612",
     lightPink: "#FFF2CF",
+    darkBlue: "#03387D",
     gray: "#3D3E3F",
     gray1: "#636567",
     gray2: "#C5C7C9",
+    gray3: "#C4C4C4",
+    gray4: "#E8E9EA",
+    backgroundGray: "#F4F4F4",
+    textGray: "#8E8E93",
+    darkOrange: "#F76E11",
+    red: "#FF1700",
+    darkBlue2: "#04316A",
 };
 
 const defaultFontFamily = "DM Sans, Roboto, Arial, sans-serif";
@@ -32,15 +40,15 @@ const defaultFontFamily = "DM Sans, Roboto, Arial, sans-serif";
 
 const DEFAULT_THEME_CONFIG: ThemeOptions = {
     colors,
-    // breakpoints: {
-    //     values: {
-    //         xs: 0,
-    //         sm: 992,
-    //         md: 1200,
-    //         lg: 1440,
-    //         xl: 1600,
-    //     },
-    // },
+    breakpoints: {
+        values: {
+            xs: 600,
+            sm: 992,
+            md: 1200,
+            lg: 1440,
+            xl: 1600,
+        },
+    },
     palette: {
         primary: {
             main: colors.orange,

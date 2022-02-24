@@ -1,52 +1,59 @@
 import { ICard } from "@types";
 import { theme } from "@styles";
-import { IconStar, IconFlagMark, Location, IconCalendar } from "..";
+import { IconStar, IconFlagMark, IconLocation, IconCalendar } from "..";
 import { StyledCard, StyledCardWithIcon } from ".";
 
-export const Card = (props: ICard) => {
-    const { typeCardIcon, title, rating, subTitle, money, time, image } = props;
+interface IProps {
+    data?: ICard;
+    typeCardIcon?: boolean;
+    onClick?: (id: number | undefined) => void;
+}
+export const Card = (props: IProps) => {
+    const { data, typeCardIcon, onClick } = props;
     return (
         <>
             {/* WHAT: render card with specific type */}
             {typeCardIcon === true ? (
                 <StyledCardWithIcon>
-                    <div className="imageWrapper">
-                        <img className="image" src={image} />
-                        <span className="iconFlag">
-                            <IconFlagMark color={theme.colors.orange} />
-                        </span>
-                        <div className="starWrapper">
-                            <IconStar color={theme.colors.pureWhite} />
-                            <span className="starWrapper__title">{rating}</span>
-                        </div>
-                    </div>
-                    <div className="location">
-                        <span>
-                            <Location />
-                        </span>
-                        <p className="location__text">{subTitle}</p>
-                    </div>
-                    <h4>{title}</h4>
-                    <div className="bottom">
-                        <div className="time">
-                            <span>
-                                <IconCalendar />
+                    <div className="cardWrapper">
+                        <div className="imageWrapper">
+                            <img className="image" src={data?.image} />
+                            <span className="iconFlag">
+                                <IconFlagMark color={theme.colors.orange} />
                             </span>
-                            <p className="time__text">{time}</p>
+                            <div className="starWrapper">
+                                <IconStar color={theme.colors.pureWhite} />
+                                <span className="starWrapper__title">{data?.rating}</span>
+                            </div>
                         </div>
-                        <div className="money">
-                            from
-                            <span className="money__value">{money}</span>
+                        <div className="location">
+                            <span>
+                                <IconLocation />
+                            </span>
+                            <p className="location__text">{data?.subTitle}</p>
+                        </div>
+                        <h4 onClick={() => onClick && onClick(data?.id)}>{data?.title}</h4>
+                        <div className="bottom">
+                            <div className="time">
+                                <span>
+                                    <IconCalendar />
+                                </span>
+                                <p className="time__text">{data?.duration}</p>
+                            </div>
+                            <div className="money">
+                                from
+                                <span className="money__value">{data?.money}</span>
+                            </div>
                         </div>
                     </div>
                 </StyledCardWithIcon>
             ) : (
                 <StyledCard>
                     <div className="imageWrapper">
-                        <img className="image" src={image} />
+                        <img className="image" src={data?.image} />
                     </div>
-                    <h4>{title}</h4>
-                    <div className="subTitle">{subTitle}</div>
+                    <h4 onClick={() => onClick && onClick(data?.id)}>{data?.title}</h4>
+                    <div className="subTitle">{data?.subTitle}</div>
                 </StyledCard>
             )}
         </>

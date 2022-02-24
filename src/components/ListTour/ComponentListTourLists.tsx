@@ -13,13 +13,13 @@ export const ComponentListTourLists = (props: IProps) => {
     const { data } = props;
     // component variable
     const history = useHistory();
-    const handleViewDetail = (id: number) => {
+    const handleViewDetail = (id: number | undefined) => {
         history.push(`/tours/${id}`);
     };
     return (
         <StyledComponentListTourLists>
             <div className="wrapper">
-                <Grid container>
+                <Grid container spacing={4}>
                     {data &&
                         data.map((item, index) => (
                             <Grid item key={index} xs={12} md={4}>

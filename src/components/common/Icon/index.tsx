@@ -16,3 +16,4 @@ export * from "./IconDoubleQuotationMarks";
 export * from "./IconChecked";
 export * from "./IconDownArrow";
 export * from "./IconUpArrow";
+export * from "./IconProfile";
