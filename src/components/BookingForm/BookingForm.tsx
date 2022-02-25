@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import styled from "styled-components";
+import { useHistory, useParams } from "react-router-dom";
 
 import { ICard } from "@types";
 import { GroupPeople, IconCalendar, AppInput } from "..";
@@ -7,7 +8,12 @@ import { GroupPeople, IconCalendar, AppInput } from "..";
 interface IProps {
     data?: ICard;
 }
+
 export const BookingForm = (props: IProps) => {
+    // hook
+    const { id } = useParams<{ id: string }>();
+    const history = useHistory();
+
     return (
         <StyledBookingForm>
             <div className="wrapper">
@@ -31,44 +37,51 @@ export const BookingForm = (props: IProps) => {
                         date: "",
                         group: "",
                     }}
-                    onSubmit={(values) => console.log(values)}
+                    onSubmit={(values) => {
+                        console.log(values);
+                        history.push(`/tours/${id}/checkout`);
+                    }}
                 >
                     {({ handleSubmit, values, errors, handleChange, handleBlur }) => {
                         return (
-                            <div className="form__group">
-                                <div className="form__group-input">
-                                    <AppInput
-                                        name="date"
-                                        handleChange={handleChange("date")}
-                                        handleBlur={handleBlur("date")}
-                                        placeholder="Enter duration"
-                                        icon={<IconCalendar />}
-                                        error={errors.date}
-                                        value={values.date}
-                                    />
+                            <>
+                                <div className="form__group">
+                                    <div className="form__group-input">
+                                        <AppInput
+                                            name="date"
+                                            handleChange={handleChange("date")}
+                                            handleBlur={handleBlur("date")}
+                                            placeholder="Enter duration"
+                                            icon={<IconCalendar />}
+                                            error={errors.date}
+                                            value={values.date}
+                                        />
+                                    </div>
+                                    <div className="form__group-input">
+                                        <AppInput
+                                            name="group"
+                                            handleChange={handleChange("group")}
+                                            handleBlur={handleBlur("group")}
+                                            placeholder="Enter group of people"
+                                            icon={<GroupPeople />}
+                                            error={errors.group}
+                                            value={values.group}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="form__group-input">
-                                    <AppInput
-                                        name="group"
-                                        handleChange={handleChange("group")}
-                                        handleBlur={handleBlur("group")}
-                                        placeholder="Enter group of people"
-                                        icon={<GroupPeople />}
-                                        error={errors.group}
-                                        value={values.group}
-                                    />
+                                <div className="total">
+                                    <span>Total</span>
+                                    <span>$450.00</span>
                                 </div>
-                            </div>
+                                <div className="wrapperBtn">
+                                    <button className="btn" onClick={() => handleSubmit()}>
+                                        Book Now
+                                    </button>
+                                </div>
+                            </>
                         );
                     }}
                 </Formik>
-                <div className="total">
-                    <span>Total</span>
-                    <span>$450.00</span>
-                </div>
-                <div className="wrapperBtn">
-                    <button className="btn">Book Now</button>
-                </div>
             </div>
         </StyledBookingForm>
     );
