@@ -4,14 +4,19 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import React from "react";
+import clsx from "clsx";
+
+import { ComponentsRenderStars } from "@components";
 
 interface IOption {
     label?: string;
-    value?: string | number;
+    value?: string | number | number[];
+    icon?: string;
+    star?: number;
 }
 interface IProps {
     name?: string;
-    values?: Array<IOption>;
+    values?: Array<IOption> | number[];
     options?: Array<IOption>;
     title?: string;
     handleChange: (value: any) => void;
@@ -24,6 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
             "& .MuiTypography-body1": {
                 fontSize: "16px",
             },
+            "& .MuiRating-icon": {
+                paddingRight: "0.5rem",
+                fontSize: "2rem",
+            },
         },
         formControl: {
             fontSize: "16px",
@@ -32,6 +41,25 @@ const useStyles = makeStyles((theme: Theme) =>
             fontSize: "16px",
             fontWeight: "bold",
             padding: "2rem 0",
+        },
+        wrapLabel: {
+            display: "flex",
+        },
+        label: {
+            flex: "50%",
+            fontWeight: 500,
+            fontSize: "16px",
+            textTransform: "capitalize",
+        },
+        icon: {
+            height: "100%",
+            paddingLeft: "3.3rem",
+        },
+        tickSize: {
+            transform: "scale(1.5)",
+        },
+        hidden: {
+            display: "none",
         },
     })
 );
@@ -60,9 +88,33 @@ export const AppCheckBox = (props: IProps) => {
                                         // checked={values && values.includes(opt.value)}
                                         name={name}
                                         value={opt.value}
+                                        className={classes.tickSize}
                                     />
                                 }
-                                label={opt.label}
+                                label={
+                                    <div className={classes.wrapLabel}>
+                                        {/* WHAT: render with star select */}
+                                        {opt.star ? (
+                                            <ComponentsRenderStars number={opt.star} />
+                                        ) : (
+                                            ""
+                                        )}
+                                        {/* WHAT: render with image  */}
+                                        <span
+                                            className={clsx(
+                                                classes.label,
+                                                opt.star ? classes.hidden : ""
+                                            )}
+                                        >
+                                            {opt.label}
+                                        </span>
+                                        {opt.icon ? (
+                                            <img className={classes.icon} src={opt.icon} />
+                                        ) : (
+                                            ""
+                                        )}
+                                    </div>
+                                }
                             />
                         ))}
                 </FormGroup>

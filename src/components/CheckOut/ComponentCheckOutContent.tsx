@@ -5,16 +5,6 @@ import { StyledComponentCheckOutContent, ComponentPaymentMethod, ComponentCheckO
 import { formSchemaCheckOut } from "@utils";
 import { AppInput } from "..";
 
-// const options = [
-//     {
-//         label: "credit Method",
-//         value: "credit",
-//     },
-//     {
-//         label: "paypal",
-//         value: "paypal",
-//     },
-// ];
 export const ComponentCheckOutContent = () => {
     // component variable
     const initialValuesPackage = {
@@ -31,6 +21,7 @@ export const ComponentCheckOutContent = () => {
         payment: [],
         dispatchEvent: "",
         group: "",
+        promoCode: "",
     };
 
     return (
@@ -38,6 +29,7 @@ export const ComponentCheckOutContent = () => {
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
+                    console.log(values);
                     resetForm();
                 }}
                 validationSchema={formSchemaCheckOut}

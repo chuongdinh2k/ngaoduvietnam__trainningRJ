@@ -5,6 +5,7 @@ import { AppInput, GroupPeople, IconCalendar, IconLocation } from "..";
 interface IValues {
     date?: string;
     group?: string;
+    promoCode?: string;
 }
 interface IProps {
     handleChange: {
@@ -67,11 +68,23 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 value={props.values.group}
                             />
                         </div>
+                        <div className="form__group-promo">
+                            <div className="form__group-inputPromo ">
+                                <AppInput
+                                    name="promoCode"
+                                    handleChange={handleChange("promoCode")}
+                                    handleBlur={handleBlur("promoCode")}
+                                    placeholder="Promo Code"
+                                    value={props.values.promoCode}
+                                />
+                            </div>
+                            <div className="form__group-btn">Apply</div>
+                        </div>
                     </div>
                 </div>
                 <div className="bottom">
                     <span>Total</span>
-                    <span>$450.00</span>
+                    <span className="bottom__money">$450.00</span>
                 </div>
             </div>
         </StyledComponentCheckOutContent>
@@ -90,6 +103,7 @@ const StyledComponentCheckOutContent = styled.div`
     }
     .content {
         padding-top: 4rem;
+        padding-bottom: 1rem;
         &__title {
             font-size: 1.8rem;
             color: ${(p) => p.theme.colors.darkBlack};
@@ -128,6 +142,32 @@ const StyledComponentCheckOutContent = styled.div`
         .MuiInputBase-root {
             padding-left: 1.8rem;
         }
+        &-promo {
+            margin-top: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .muiInputbase-root {
+                padding-left: 0;
+            }
+        }
+        &-inputPromo {
+            width: 80%;
+        }
+        &-btn {
+            font-size: 1.4rem;
+            margin-left: 1rem;
+            padding: 1.2rem 3.2rem 1.6rem 3.2rem;
+            color: ${(p) => p.theme.colors.orange};
+            font-weight: ${(p) => p.theme.typography.fontWeightMedium};
+            border: 1px solid ${(p) => p.theme.colors.orange};
+            cursor: pointer;
+            &:hover {
+                background-color: ${(p) => p.theme.colors.orange};
+                color: ${(p) => p.theme.colors.pureWhite};
+                transition: all 0.5s ease-in-out;
+            }
+        }
     }
     .bottom {
         display: flex;
@@ -138,5 +178,8 @@ const StyledComponentCheckOutContent = styled.div`
         padding-top: 3.4rem;
         padding-bottom: 3.4rem;
         font-size: 2rem;
+        &__money {
+            font-weight: ${(p) => p.theme.typography.fontWeightBold};
+        }
     }
 `;
