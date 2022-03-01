@@ -5,20 +5,20 @@ import { ComponentExpendTourItinerary } from ".";
 import { IDiscription } from "@types";
 
 interface IProps {
-    discription: IDiscription;
+    description?: IDiscription;
 }
 export const ComponentTabDetailDescription = (props: IProps) => {
-    const { discription } = props;
-    const { overview, included, tourItinerary, departure } = discription;
+    const { description } = props;
+    // const { overview, included, tourItinerary, departure } = description;
     return (
         <StyledComponentTab>
             <div className="wrapper">
                 <div className="content overview">
-                    <h3 className="content__title">{overview.name}</h3>
-                    <p className="content__text">{overview.title}</p>
+                    <h3 className="content__title">{description?.overview.name}</h3>
+                    <p className="content__text">{description?.overview.title}</p>
 
                     <ul className="content__wrapperlist">
-                        {overview.list?.map((item, index) => (
+                        {description?.overview?.list?.map((item, index) => (
                             <li key={index}>
                                 <a>
                                     <span className="content__icon">
@@ -31,9 +31,9 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                     </ul>
                 </div>
                 <div className="content included">
-                    <h3 className="content__title">{included.name}</h3>
+                    <h3 className="content__title">{description?.included?.name}</h3>
                     <ul className="content__wrapperlist">
-                        {included.list?.map((item) => (
+                        {description?.included?.list?.map((item) => (
                             <li key={item}>
                                 <a>
                                     <span className="content__icon">
@@ -46,10 +46,12 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                     </ul>
                 </div>
                 <div className="content departure">
-                    <h3 className="content__title">{departure.name}</h3>
-                    <p className="content__subtitle">{departure.departure_point.title}</p>
+                    <h3 className="content__title">{description?.departure.name}</h3>
+                    <p className="content__subtitle">
+                        {description?.departure.departure_point.title}
+                    </p>
                     <ul className="content__wrapperlist">
-                        {departure.departure_point.list?.map((item, index) => (
+                        {description?.departure.departure_point.list?.map((item, index) => (
                             <li key={item}>
                                 <a>
                                     <span className="content__text">
@@ -59,9 +61,11 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                             </li>
                         ))}
                     </ul>
-                    <p className="content__subtitle">{departure.departure_time.title}</p>
+                    <p className="content__subtitle">
+                        {description?.departure.departure_time.title}
+                    </p>
                     <ul className="content__wrapperlist">
-                        {departure.departure_time.list?.map((item) => (
+                        {description?.departure.departure_time.list?.map((item) => (
                             <li key={item}>
                                 <a>
                                     <span className="content__text">{item}</span>
@@ -71,9 +75,9 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                     </ul>
                 </div>
                 <div className="content itinerary">
-                    <h3 className="content__title">{tourItinerary?.name}</h3>
-                    {tourItinerary &&
-                        tourItinerary.list.map((item) => (
+                    <h3 className="content__title">{description?.tourItinerary?.name}</h3>
+                    {description?.tourItinerary &&
+                        description?.tourItinerary.list.map((item) => (
                             <div key={item.title}>
                                 <ComponentCollapse title={item?.title}>
                                     <ComponentExpendTourItinerary tourItinerary={item} />

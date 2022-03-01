@@ -9,30 +9,47 @@ interface IInfor {
     rating?: number;
     duration?: string;
     typeOfTour?: string;
+    star?: number;
+    reviewNumber?: number;
 }
 interface IProps {
     inforTour?: IInfor;
+    inforHotel?: IInfor;
 }
 export const ComponentDetailInfor = (props: IProps) => {
-    const { inforTour } = props;
+    const { inforTour, inforHotel } = props;
+    console.log(inforHotel);
     return (
         <StyledComponentDetailInfor>
             <div className="wrapper">
-                <h3>{inforTour?.title}</h3>
+                <h3>
+                    {inforTour?.title}
+                    {inforHotel?.title}
+                </h3>
                 <div className="location">
                     <span className="location__icon">
                         <IconLocation width="16" height="18" />
                     </span>
-                    <span className="location__text">{inforTour?.location}</span>
+                    <span className="location__text">
+                        {inforTour?.location}
+                        {inforHotel?.location}
+                    </span>
                 </div>
                 <div className="wrapperStar">
                     <div className="star">
-                        <span className="star__icon">
-                            <IconStar />
-                        </span>
-                        <span className="star__text">{inforTour?.rating}</span>
+                        {inforTour?.rating && (
+                            <>
+                                <span className="star__icon">
+                                    <IconStar />
+                                </span>
+                                <span className="star__text">{inforTour?.rating}</span>
+                            </>
+                        )}
+                        {inforHotel?.rating && (
+                            <span className="star__text">Rating: {inforHotel?.rating}</span>
+                        )}
                     </div>
-                    <span className="reviews__text">128 reviews</span>
+                    <span className="reviews__text">{`(${inforHotel?.reviewNumber})`} reviews</span>
                 </div>
             </div>
         </StyledComponentDetailInfor>
@@ -66,8 +83,8 @@ const StyledComponentDetailInfor = styled.div`
     }
     .star {
         margin-top: 1.6rem;
-        padding: 0.7rem 0.4rem;
-        width: 6.5rem;
+        padding: 0.4rem 0.8rem;
+        /* width: 6.5rem; */
         background-color: ${(p) => p.theme.colors.orange};
         &__text {
             color: ${(p) => p.theme.colors.pureWhite};
@@ -76,7 +93,9 @@ const StyledComponentDetailInfor = styled.div`
         }
     }
     .reviews__text {
-        color: ${(p) => p.theme.colors.pureWhite};
+        color: ${(p) => p.theme.colors.gray1};
         font-size: 1.4rem;
+        padding-left: 0.8rem;
+        padding-top: 2rem;
     }
 `;

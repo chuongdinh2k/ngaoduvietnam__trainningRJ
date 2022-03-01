@@ -1,21 +1,26 @@
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
-import { BookingForm, ComponentBreadscrumb } from "..";
+import { BookingForm } from "..";
 import {
     ComponentDetailInfor,
     ComponentCustomViewImage,
     ComponentDetailTab,
     ComponentRelated,
 } from ".";
-import { IDataTour } from "@types";
+import { IDataTour, IHotel } from "@types";
+import { TourTabs, HotelTabs } from "@demos";
 
 interface IProps {
     dataTour?: IDataTour;
+    dataHotel?: IHotel;
 }
 export const ComponentTourDetailContent = (props: IProps) => {
-    const { dataTour } = props;
+    // props
+    const { dataTour, dataHotel } = props;
+
     // componet variable
+    const tabs = dataTour ? TourTabs : HotelTabs;
     const inforTour = {
         id: dataTour?.id,
         title: dataTour?.title,
@@ -24,19 +29,30 @@ export const ComponentTourDetailContent = (props: IProps) => {
         duration: dataTour?.duration,
         typeOfTour: dataTour?.typeOfTour,
     };
+    const inforHotel = {
+        id: dataHotel?.id,
+        title: dataHotel?.title,
+        location: dataHotel?.location,
+        rating: dataHotel?.rating,
+        reviewNumber: dataHotel?.reviewNumber,
+        star: dataHotel?.star,
+    };
     return (
         <StyledComponentTourDetailContent>
-            <Grid container spacing={8}>
+            <Grid container>
                 <Grid item xs={12} md={8}>
-                    <ComponentDetailInfor inforTour={inforTour} />
+                    <ComponentDetailInfor inforTour={inforTour} inforHotel={inforHotel} />
                 </Grid>
                 <Grid item xs={12} md={4}></Grid>
             </Grid>
             <Grid container>
                 <Grid item xs={12} md={8}>
                     <div className="wrapper__left">
-                        <ComponentCustomViewImage listImages={dataTour?.listImage} />
-                        <ComponentDetailTab />
+                        <ComponentCustomViewImage
+                            listTourImages={dataTour?.listImage}
+                            listHotelImages={dataHotel?.listImage}
+                        />
+                        <ComponentDetailTab tabs={tabs} dataHotel={dataHotel} dataTour={dataTour} />
                     </div>
                 </Grid>
                 <Grid item xs={12} md={4}>
@@ -48,10 +64,6 @@ export const ComponentTourDetailContent = (props: IProps) => {
     );
 };
 const StyledComponentTourDetailContent = styled.div`
-    .MuiGrid-spacing-xs-8 {
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-        }
-    }
     .wrapper__left {
         width: 63.5rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {

@@ -7,13 +7,15 @@ import {
     ComponentTabDetailAdditionalInfo,
     ComponentTabReview,
 } from ".";
-import { dataTourDetail } from "@demos";
+// import { dataTourDetail } from "@demos";
 import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO } from "@configs";
+import { IDataTour, IHotel } from "@types";
+import { ComponentHotelDetailDescription, ComponentListRooms } from "..";
 
 interface TabPanelProps {
     children?: React.ReactNode;
-    index: any;
-    value: any;
+    index: number;
+    value: number;
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -79,7 +81,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-export const ComponentDetailTab = () => {
+interface ITab {
+    name?: string;
+    index?: number;
+}
+interface IProps {
+    tabs?: Array<ITab>;
+    dataTour?: IDataTour;
+    dataHotel?: IHotel;
+}
+export const ComponentDetailTab = (props: IProps) => {
+    // component variable
+    const { tabs, dataTour, dataHotel } = props;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -96,31 +109,32 @@ export const ComponentDetailTab = () => {
                     TabIndicatorProps={{ style: { display: "none" } }}
                     aria-label="simple tabs example"
                 >
-                    <Tab
-                        label="Descriptions"
-                        className={clsx(value === NUMBER_ZERO ? classes.activeTab : "")}
-                        {...a11yProps(NUMBER_ZERO)}
-                    />
-                    <Tab
-                        label="Additional Info"
-                        className={clsx(value === NUMBER_ONE ? classes.activeTab : "")}
-                        {...a11yProps(NUMBER_ONE)}
-                    />
-                    <Tab
-                        label="Reviews(54)"
-                        className={clsx(value === NUMBER_TWO ? classes.activeTab : "")}
-                        {...a11yProps(NUMBER_TWO)}
-                    />
+                    {tabs &&
+                        tabs.map((tab) => (
+                            <Tab
+                                key={tab.index}
+                                label={tab.name}
+                                className={clsx(value === tab.index ? classes.activeTab : "")}
+                                {...a11yProps(tab.index)}
+                            />
+                        ))}
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={NUMBER_ZERO}>
-                <ComponentTabDetailDescription discription={dataTourDetail.discription} />
+                {dataTour && <ComponentTabDetailDescription description={dataTour.discription} />}
+                {dataHotel && <ComponentListRooms selectRooms={dataHotel.selectRooms} />}
             </TabPanel>
             <TabPanel value={value} index={NUMBER_ONE}>
-                <ComponentTabDetailAdditionalInfo additionalInfo={dataTourDetail.additionalInfo} />
+                {dataHotel && (
+                    <ComponentHotelDetailDescription description={dataHotel.description} />
+                )}
+                {dataTour && (
+                    <ComponentTabDetailAdditionalInfo additionalInfo={dataTour.additionalInfo} />
+                )}
             </TabPanel>
             <TabPanel value={value} index={NUMBER_TWO}>
-                <ComponentTabReview reviews={dataTourDetail.reviews} />
+                {dataTour && <ComponentTabReview tourReviews={dataTour.reviews} />}
+                {dataHotel && <ComponentTabReview hotelReviews={dataHotel.reviews} />}
             </TabPanel>
         </div>
     );
