@@ -8,3 +8,6 @@ export * from "./Slider";
 export * from "./ListTour";
 export * from "./TourDetail";
 export * from "./BookingForm";
+export * from "./CheckOut";
+export * from "./Hotels";
+export * from "./HotelDetail";

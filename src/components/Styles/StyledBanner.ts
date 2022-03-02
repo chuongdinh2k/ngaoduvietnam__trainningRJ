@@ -1,4 +1,4 @@
-import { PAGE_ABOUT, PAGE_HOME, PAGE_LISTTOUR } from "@configs";
+import { PAGE_ABOUT, PAGE_HOME, PAGE_HOTELS, PAGE_LISTTOUR } from "@configs";
 import styled from "styled-components";
 
 interface IStyledBanner {
@@ -6,11 +6,9 @@ interface IStyledBanner {
 }
 export const StyledBanner = styled.div<IStyledBanner>`
     padding-top: ${(p) => {
-        if (p.typeComponent === PAGE_HOME) {
+        if (p.typeComponent === PAGE_HOME || PAGE_HOTELS) {
             return "24rem";
-        } else if (p.typeComponent === PAGE_ABOUT) {
-            return "20rem";
-        } else if (p.typeComponent === PAGE_LISTTOUR) {
+        } else if (p.typeComponent === PAGE_ABOUT || PAGE_LISTTOUR) {
             return "20rem";
         }
     }};
@@ -19,6 +17,8 @@ export const StyledBanner = styled.div<IStyledBanner>`
             return "40%";
         } else if (p.typeComponent === PAGE_ABOUT) {
             return "100%";
+        } else if (p.typeComponent === PAGE_HOTELS) {
+            return "50%";
         }
     }};
     text-align: ${(p) => {
@@ -52,7 +52,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
     }
 
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-        width: 100%;
+        width: 50%;
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding-top: 10rem;

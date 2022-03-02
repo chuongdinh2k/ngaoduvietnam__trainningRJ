@@ -4,35 +4,49 @@ import Slider from "react-slick";
 import { IconFlagMark } from "..";
 import { sliceArray } from "@utils";
 
-// const listImages = [
-//     {
-//         id:1,
-//         url:[
-//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
-//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
-//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional2_ykxdqc.png",
-//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
-//             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional1_culpgb.png",
-
-//         ]
-//     }
-// ];
-
 interface IStyledCustomViewImage {
-    number?: number;
+    numberTour?: number;
+    numberHotel?: number;
 }
 interface IProps {
-    listImages?: Array<string>;
+    listTourImages?: Array<string>;
+    listHotelImages?: Array<string>;
+    viewRoomImages?: Array<string>;
 }
 export const ComponentCustomViewImage = (props: IProps) => {
-    const { listImages } = props;
+    const { listTourImages, listHotelImages, viewRoomImages } = props;
+    console.log(viewRoomImages);
     const settings = {
         customPaging: function (i: number) {
             return (
                 <div className="wrapDot">
-                    <a>
-                        <img className="image__dot" src={`${listImages && listImages[i]}`} />
-                    </a>
+                    {/* WHAT: render list tour images */}
+                    {listTourImages && (
+                        <a>
+                            <img
+                                className="image__dot"
+                                src={`${listTourImages && listTourImages[i]}`}
+                            />
+                        </a>
+                    )}
+                    {/* WHAT: render list hotel images */}
+                    {listHotelImages && (
+                        <a>
+                            <img
+                                className="image__dot"
+                                src={`${listHotelImages && listHotelImages[i]}`}
+                            />
+                        </a>
+                    )}
+                    {/* WHAT: render list room images */}
+                    {viewRoomImages && (
+                        <a>
+                            <img
+                                className="image__dot"
+                                src={`${viewRoomImages && viewRoomImages[i]}`}
+                            />
+                        </a>
+                    )}
                 </div>
             );
         },
@@ -44,17 +58,41 @@ export const ComponentCustomViewImage = (props: IProps) => {
         slidesToScroll: 1,
     };
     return (
-        <StyledCustomViewImage number={listImages && listImages.length - 4}>
+        <StyledCustomViewImage
+            numberTour={listTourImages && listTourImages.length - 4}
+            numberHotel={listHotelImages && listHotelImages.length - 4}
+        >
             <div className="wrapper">
                 <Slider {...settings}>
-                    {sliceArray(listImages, 0, 4)?.map((img, index) => (
-                        <div key={index} className="wrapper__image">
-                            <span className="icon">
-                                <IconFlagMark width="46" height="29" />
-                            </span>
-                            <img className="image" src={img} />
-                        </div>
-                    ))}
+                    {listTourImages &&
+                        sliceArray(listTourImages, 0, 4)?.map((img, index) => (
+                            <div key={index} className="wrapper__image">
+                                <span className="icon">
+                                    <IconFlagMark width="46" height="29" />
+                                </span>
+                                <img className="image" src={img} />
+                            </div>
+                        ))}
+                    {/* WHAT: render data hotel */}
+                    {listHotelImages &&
+                        sliceArray(listHotelImages, 0, 4)?.map((img, index) => (
+                            <div key={index} className="wrapper__image">
+                                <span className="icon">
+                                    <IconFlagMark width="46" height="29" />
+                                </span>
+                                <img className="image" src={img} />
+                            </div>
+                        ))}
+                    {/* WHAT: render data room */}
+                    {viewRoomImages &&
+                        sliceArray(viewRoomImages, 0, 4)?.map((img, index) => (
+                            <div key={index} className="wrapper__image">
+                                <span className="icon">
+                                    <IconFlagMark width="46" height="29" />
+                                </span>
+                                <img className="image" src={img} />
+                            </div>
+                        ))}
                 </Slider>
             </div>
         </StyledCustomViewImage>
@@ -89,6 +127,18 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     .slick-slide {
         img {
             width: 100%;
+        }
+    }
+    .slick-prev {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            left: 0;
+            background: ${(p) => p.theme.colors.pureWhite} !important;
+            color: ${(p) => p.theme.colors.pureWhite} !important;
+        }
+    }
+    .slick-next {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            right: 0;
         }
     }
     .slick-dots {
@@ -138,7 +188,7 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         li:nth-child(4) {
             position: relative;
             &:after {
-                content: "${(p) => p.number}+";
+                content: "${(p) => (p.numberTour as number) || (p.numberHotel as number)}+";
                 width: 100%;
                 position: absolute;
                 z-index: 999;

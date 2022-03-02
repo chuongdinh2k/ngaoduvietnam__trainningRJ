@@ -54,7 +54,7 @@ export const AppInput = (props: IAppInput) => {
     return (
         <CustomInputWrapper>
             <InputWrapper hasBorder={props.hasBorder}>
-                <LabelWrapper>{props.icon}</LabelWrapper>
+                {props.icon ? <LabelWrapper>{props.icon}</LabelWrapper> : ""}
                 <TextField
                     className={clsx(classes.input, props.className)}
                     placeholder={props.placeholder}
@@ -67,7 +67,7 @@ export const AppInput = (props: IAppInput) => {
                     InputProps={{
                         disableUnderline: true,
                         style: {
-                            fontSize: "14px",
+                            fontSize: "16px",
                         },
                         classes: {},
                     }}

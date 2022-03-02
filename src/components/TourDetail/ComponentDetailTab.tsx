@@ -112,6 +112,7 @@ export const ComponentDetailTab = (props: IProps) => {
                     {tabs &&
                         tabs.map((tab) => (
                             <Tab
+                                disableRipple
                                 key={tab.index}
                                 label={tab.name}
                                 className={clsx(value === tab.index ? classes.activeTab : "")}

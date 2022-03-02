@@ -1,5 +1,5 @@
 import { SliderCustom } from "@components";
-import { StyledWrapperTitleComponent } from ".";
+import { StyledWrapperTitleComponent } from "..";
 import { ICard } from "@types";
 
 interface IProps {

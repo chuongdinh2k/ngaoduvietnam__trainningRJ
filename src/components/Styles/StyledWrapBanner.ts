@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import background from "@assets/banner.png";
-import { PAGE_HOME, BREAK_ONLY_MOBILE, PAGE_ABOUT } from "@configs";
+import { PAGE_HOME, BREAK_ONLY_MOBILE, PAGE_ABOUT, PAGE_LISTTOUR, PAGE_HOTELS } from "@configs";
 
 interface IWrapHeader {
     background_banner?: string;
@@ -18,7 +18,8 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
             : "66.6rem"};
     padding: 0 16.5rem;
     width: 100%;
-    background-image: url(${background});
+    /* background-image: url(${background}); */
+    background-image: url(${(p) => p.background_banner});
     background-position: center;
     background-size: cover;
     font-family: ${(p) => p.theme.typography.fontFamily};
@@ -49,6 +50,15 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         );
         backdrop-filter: blur(42px);
     }
+    @media (min-width: 1441px) {
+        padding: 0 135rem;
+        .featured {
+            left: 135rem;
+        }
+        .filter {
+            right: 135rem;
+        }
+    }
     @media (max-width: 992px) {
         height: ${(p) =>
             p.typeComponent === PAGE_HOME
@@ -73,7 +83,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
                 ? "87.6rem"
                 : p.typeComponent === PAGE_ABOUT
                 ? "20rem"
-                : "60rem"};
+                : "65rem"};
         .featured {
             top: 30%;
             left: 2rem;
@@ -81,6 +91,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
             width: 90%;
             height: 6.9rem;
             padding: 2rem;
+            display: ${(p) => (p.typeComponent === PAGE_LISTTOUR || PAGE_HOTELS ? "none" : "")};
         }
 
         .filter {

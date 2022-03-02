@@ -93,6 +93,9 @@ const StyledHeader = styled.div<IStyledHeader>`
         height: 4rem;
         width: 4rem;
     }
+    @media (min-width: 1441px) {
+        padding: 0 135rem;
+    }
     @media (max-width: ${BREAK_MEDIUM}) {
         padding: 0 8rem;
     }

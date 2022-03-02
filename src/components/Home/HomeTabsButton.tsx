@@ -15,6 +15,8 @@ interface TabPanelProps {
 }
 interface IProps {
     show?: boolean;
+    formTitle?: string;
+    inputTypeOfTour?: boolean;
 }
 function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
@@ -43,10 +45,10 @@ const useStyles = makeStyles((theme) => ({
     },
     tabContent: {
         padding: "3.4rem 3.1rem",
-        height: "52.2rem",
-        [theme.breakpoints.down("sm")]: {
-            height: "46.6rem",
-        },
+        // height: "52.2rem",
+        // [theme.breakpoints.down("sm")]: {
+        //     height: "46.6rem",
+        // },
     },
 }));
 // WHAT: create id for tab
@@ -78,7 +80,7 @@ export const HomeTabsButtonComponent = (props: IProps) => {
     // material ui hooks
     const classes = useStyles();
 
-    // component state
+    // componentvalue state
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.ChangeEvent<Record<string, unknown>>, newValue: number) => {
@@ -99,7 +101,10 @@ export const HomeTabsButtonComponent = (props: IProps) => {
             </div>
             <TabPanel value={value} index={NUMBER_ZERO}>
                 <div className={classes.tabContent}>
-                    <HomeToursTab />
+                    <HomeToursTab
+                        formTitle={props.formTitle}
+                        inputTypeOfTour={props.inputTypeOfTour}
+                    />
                 </div>
             </TabPanel>
             <TabPanel value={value} index={NUMBER_ONE}>

@@ -69,6 +69,9 @@ export const StyledFooter = styled.div`
         margin-block-start: 0;
         font-size: ${(p) => p.theme.typography.fontSize}px;
     }
+    @media (min-width: 1441px) {
+        padding: 0 135rem;
+    }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         padding: 0 8rem;
     }

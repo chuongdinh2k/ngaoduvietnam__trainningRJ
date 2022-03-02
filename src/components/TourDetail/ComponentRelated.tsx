@@ -3,27 +3,40 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import { getRelatedArray } from "@utils";
-import { IRelated } from "@types";
-import { Card } from "..";
+import { IRelated, IRelatedHotel } from "@types";
+import { Card, HotelCard } from "..";
 
 interface IProps {
-    related?: IRelated;
+    relatedTour?: IRelated;
+    relatedHotel?: IRelatedHotel;
 }
 export const ComponentRelated = (props: IProps) => {
-    const { related } = props;
+    const { relatedTour, relatedHotel } = props;
+    console.log(relatedHotel);
     //component variable
     const history = useHistory();
-    const handleViewDetail = (id: number | undefined) => {
+    const handleViewTourDetail = (id: number | undefined) => {
         history.push(`/tours/${id}`);
     };
-
+    const handleViewHotelDetail = (id: string | undefined) => {
+        history.push(`/hotels/${id}`);
+    };
     return (
         <StyledComponentRelated>
-            <h3 className="title">{related?.title}</h3>
+            <h3 className="title">
+                {relatedTour?.title} {relatedHotel?.title}
+            </h3>
             <Grid container spacing={4}>
-                {getRelatedArray(related?.list, 3)?.map((item) => (
+                {/*WHAT: show related tour */}
+                {getRelatedArray(relatedTour?.list, 3)?.map((item) => (
                     <Grid key={item.id} item xs={12} md={4}>
-                        <Card typeCardIcon data={item} onClick={handleViewDetail} />
+                        <Card typeCardIcon data={item} onClick={handleViewTourDetail} />
+                    </Grid>
+                ))}
+                {/* WHAT: show related hotel */}
+                {getRelatedArray(relatedHotel?.listRelated, 3)?.map((item) => (
+                    <Grid key={item.id} item xs={12} md={4}>
+                        <HotelCard data={item} onClick={handleViewHotelDetail} />
                     </Grid>
                 ))}
             </Grid>

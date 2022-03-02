@@ -81,6 +81,12 @@ const StyledSlider = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding-right: 0;
         }
+        .slick-next {
+            top: 11rem;
+            @media (max-width: 768px) {
+                right: 0;
+            }
+        }
     }
     .slick-list {
         margin-right: -2.5rem;
@@ -90,6 +96,11 @@ const StyledSlider = styled.div`
     }
     .slick-next {
         top: 11rem;
+        @media (max-width: 768px) {
+            right: 0;
+        }
+    }
+    .slick-arrow {
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             display: none !important;
         }

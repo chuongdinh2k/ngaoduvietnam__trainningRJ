@@ -3,6 +3,7 @@ export enum appRoutesEnum {
     ABOUT = "/about",
     TOURS = "/tours",
     TOURS_DETAIL = "/tours/:id",
+    TOURS_CHECKOUT = "/tours/:id/checkout",
     HOTELS = "/hotels",
     HOTEL_DETAIL = "/hotels/:id",
     CONTACT = "/contact",

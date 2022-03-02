@@ -1,8 +1,10 @@
+import background_header_hotels from "@assets/background__header_hotel.png";
+import background_header from "@assets/banner.png";
 // WHAT: component's dimension
 export const HEADER_HEIGHT = "13.2rem";
 // WHAT: define background
-export const BACKGROUND_WRAPHEADER = "../../assets/banner.png";
-
+export const BACKGROUND_WRAPHEADER = background_header;
+export const BACKGROUND_WRAPHEADER_HOTELS = background_header_hotels;
 //WHAT: define number
 export const NUMBER_ZERO = 0;
 export const NUMBER_ONE = 1;
@@ -25,3 +27,4 @@ export const BREAK_BIG = "1440px";
 export const PAGE_HOME = "Home";
 export const PAGE_ABOUT = "About";
 export const PAGE_LISTTOUR = "ListTour";
+export const PAGE_HOTELS = "Hotels";

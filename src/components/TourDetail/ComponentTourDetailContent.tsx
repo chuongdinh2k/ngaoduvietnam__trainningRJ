@@ -59,7 +59,8 @@ export const ComponentTourDetailContent = (props: IProps) => {
                     <BookingForm />
                 </Grid>
             </Grid>
-            <ComponentRelated related={dataTour?.related} />
+            {dataTour && <ComponentRelated relatedTour={dataTour?.related} />}
+            {dataHotel && <ComponentRelated relatedHotel={dataHotel?.relatedHotels} />}
         </StyledComponentTourDetailContent>
     );
 };

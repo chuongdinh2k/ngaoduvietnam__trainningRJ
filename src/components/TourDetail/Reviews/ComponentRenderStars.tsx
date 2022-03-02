@@ -14,7 +14,7 @@ export const ComponentsRenderStars = (props: IProps) => {
     const { number, small, large, medium } = props;
     // component state
     return (
-        <StyledComponentsRenderStars {...props}>
+        <StyledComponentsRenderStars small>
             <Box component="fieldset" borderColor="transparent">
                 <Rating name="read-only" value={number} readOnly />
             </Box>

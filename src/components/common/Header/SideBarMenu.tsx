@@ -58,7 +58,9 @@ export const ComponentSidebar = (props: IMenu) => {
         <StyledMenu hasColor={props.hasColor}>
             {routes.map((route, index) => (
                 <li key={index}>
-                    <NavLink to={`${route.path}`}>{route.name}</NavLink>
+                    <NavLink to={`${route.path}`} exact>
+                        {route.name}
+                    </NavLink>
                 </li>
             ))}
         </StyledMenu>
@@ -85,7 +87,7 @@ const StyledMenu = styled.ul<IMenu>`
             font-family: ${(p) => p.theme.typography.fontFamily};
             color: ${(p) => (p.hasColor ? `#1C1C1E` : p.theme.colors.pureWhite)};
             @media (max-width: 992px) {
-                margin-right: 1.5rem;
+                margin-right: 1.7rem;
             }
         }
         a:hover {

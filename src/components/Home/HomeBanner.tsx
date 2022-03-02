@@ -6,23 +6,24 @@ import { BACKGROUND_WRAPHEADER, BREAK_ONLY_MOBILE, PAGE_HOME } from "@configs";
 import { StyledWrapBanner, StyledBanner, IconDot } from "..";
 import { HomeTabsButtonComponent } from ".";
 
-interface fakeData {
+interface banner {
     title?: string;
     subTitle?: string;
+    formTitle?: string;
 }
 
 interface IProps {
-    fakeData: fakeData;
+    banner: banner;
 }
 
 export const HomeBanner = (props: IProps) => {
-    const { fakeData } = props;
+    const { banner } = props;
     return (
         <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent={PAGE_HOME}>
             <StyledBanner typeComponent={PAGE_HOME}>
                 <div className="content">
-                    <p className="content__subTitle">{fakeData?.title}</p>
-                    <h3 className="content__title">{fakeData?.subTitle}</h3>
+                    <p className="content__subTitle">{banner?.subTitle}</p>
+                    <h3 className="content__title">{banner?.title}</h3>
                 </div>
             </StyledBanner>
             <div className="featured">
@@ -54,7 +55,7 @@ export const HomeBanner = (props: IProps) => {
                 </StyledFeaturedContent>
             </div>
             <div className="filter">
-                <HomeTabsButtonComponent show />
+                <HomeTabsButtonComponent show formTitle={banner.formTitle} inputTypeOfTour />
             </div>
         </StyledWrapBanner>
     );

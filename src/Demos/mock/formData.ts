@@ -49,3 +49,55 @@ export const moneyRange = {
     max: 1200,
     min: 0,
 };
+
+export const stars = {
+    name: "Hotel star",
+    data: [
+        {
+            label: "five stars",
+            value: 5,
+            star: 5,
+        },
+        {
+            label: "four stars",
+            value: 4,
+            star: 4,
+        },
+        {
+            label: "three stars",
+            value: 3,
+            star: 3,
+        },
+        {
+            label: "two stars",
+            value: 2,
+            star: 2,
+        },
+        {
+            label: "one star",
+            value: 1,
+            star: 1,
+        },
+    ],
+};
+export const reviewScore = {
+    name: "Review Score",
+    data: [
+        {
+            label: "Wonderful : 9.5+",
+            value: 9.5,
+        },
+        {
+            label: "Very Good : 9+",
+            value: 9,
+        },
+        {
+            label: "Good : 8+",
+            value: 8,
+        },
+        {
+            label: "Pleasant : 7+",
+            value: 7,
+        },
+    ],
+};

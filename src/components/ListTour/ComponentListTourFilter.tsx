@@ -98,7 +98,7 @@ export const ComponentListTourFilter = (props: IProps) => {
         </StyleComponentFilter>
     );
 };
-const StyleComponentFilter = styled.div`
+export const StyleComponentFilter = styled.div`
     .wrapper {
         background-color: ${(p) => p.theme.colors.pureWhite};
         width: 35rem;

@@ -53,6 +53,30 @@ export const StyledCardWithIcon = styled.div`
         top: 0;
         right: 3rem;
     }
+    /* style for hotel card */
+    .renderStars {
+        position: absolute;
+        bottom: 1.9rem;
+        left: 1.8rem;
+        .MuiRating-icon {
+            margin-right: 0.5rem;
+        }
+    }
+    .rating {
+        margin-top: 1rem;
+        &__point {
+            padding: 0.4rem 0.8rem;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+            background-color: ${(p) => p.theme.colors.orange};
+            color: ${(p) => p.theme.colors.pureWhite};
+            font-weight: ${(p) => p.theme.typography.fontWeightBold};
+        }
+        &__text {
+            font-size: 1.4rem;
+        }
+    }
+    /*  */
     .starWrapper {
         position: absolute;
         bottom: 1.9rem;

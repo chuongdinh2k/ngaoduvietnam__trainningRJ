@@ -16,3 +16,20 @@ export const formSchemaEmail = Yup.object().shape({
 export const formSchemaComment = Yup.object().shape({
     comment: Yup.string().trim().required("This field is required!"),
 });
+
+export const formSchemaCheckOut = Yup.object().shape({
+    email: Yup.string()
+        .trim()
+        .required("This field is required!")
+        .email("Email is not value")
+        .max(255, "This field is cannot be longer than 255 characters!"),
+    firstName: Yup.string()
+        .trim()
+        .required()
+        .max(25, "This field is cannot be longer than 25 characters!"),
+    lastName: Yup.string()
+        .trim()
+        .required()
+        .max(25, "This field is cannot be longer than 25 characters!"),
+    phoneNumber: Yup.number().required(),
+});

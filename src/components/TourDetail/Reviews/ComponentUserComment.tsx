@@ -2,34 +2,61 @@ import { Avatar } from "@material-ui/core";
 import styled from "styled-components";
 
 import { ComponentsRenderStars } from ".";
-import { IComment } from "@types";
+import { IComment, IHotelComment } from "@types";
+import { IconDot } from "@components";
 
 interface IProps {
-    comment?: IComment;
+    commentTour?: IComment;
+    commentHotel?: IHotelComment;
 }
+
 export const ComponentUserComment = (props: IProps) => {
-    const { comment } = props;
+    const { commentTour, commentHotel } = props;
     return (
         <StyledComponentUserComment>
             <div className="wrapperUserComment">
                 <div className="user__info">
-                    <Avatar src={comment?.avatar} />
+                    {commentTour && <Avatar src={commentTour?.avatar} />}
+                    {commentHotel && <Avatar src={commentHotel?.avatar} />}
                     <div className="user__info-content">
-                        <ComponentsRenderStars small number={5} />
-                        <p className="user__info-title">{comment?.title}</p>
+                        {commentTour && <ComponentsRenderStars small number={5} />}
+                        {commentHotel && (
+                            <p className="user__info-rating">
+                                {`Rating `}
+                                {commentHotel.rating}
+                                <span className="user__info-dot">
+                                    <IconDot color="#C4C4C4" />
+                                </span>
+                                {commentHotel.status}
+                            </p>
+                        )}
+                        <p className="user__info-title">
+                            {commentTour?.title} {commentHotel?.title}
+                        </p>
                         <p className="user__info-time">
-                            <span>{comment?.username}</span>-<span>{comment?.time}</span>
+                            <span>
+                                {commentTour?.username}
+                                {commentHotel?.username}
+                            </span>
+                            -
+                            <span>
+                                {commentTour?.time}
+                                {commentHotel?.time}
+                            </span>
                         </p>
                     </div>
                 </div>
-                <p className="comment__content">{comment?.comment}</p>
+                <p className="comment__content">
+                    {commentTour?.comment}
+                    {commentHotel?.comment}
+                </p>
             </div>
         </StyledComponentUserComment>
     );
 };
 const StyledComponentUserComment = styled.div`
     .wrapperUserComment {
-        border-top: 1px solid #d9dadc;
+        border-bottom: 1px solid #d9dadc;
         padding: 3rem 0;
     }
     .user__info {
@@ -48,6 +75,14 @@ const StyledComponentUserComment = styled.div`
         &-time {
             font-size: 1.6rem;
             color: #4f4f4f;
+        }
+        &-rating {
+            font-size: 1.8rem;
+            font-weight: ${(p) => p.theme.typography.fontWeightBold};
+            color: ${(p) => p.theme.colors.orange};
+        }
+        &-dot {
+            padding: 0 0.5rem;
         }
     }
     .comment__content {

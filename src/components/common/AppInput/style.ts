@@ -22,7 +22,7 @@ export const InputWrapper = styled.div<ISWrapper>`
     height: 5rem;
     border: ${(p) => {
         if (p.hasBorder) {
-            return `1px solid #636567`;
+            return `1px solid #E5E5E5`;
         }
     }};
     width: ${(props) => props.width || "100%"};

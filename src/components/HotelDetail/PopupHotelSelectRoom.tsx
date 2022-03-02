@@ -3,7 +3,9 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Modal, Backdrop, Fade, Grid } from "@material-ui/core";
 import styled from "styled-components";
 
-import { ComponentCustomViewImage, IconChecked } from "..";
+import { ComponentCustomViewImage, GroupPeople, IconBed, IconChecked, IconSquare } from "..";
+import { ISelectRoom } from "@types";
+import { convertCurrency } from "@utils";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IProps {
     isOpen: boolean;
     handleClose: () => void;
+    selectRoom?: ISelectRoom;
 }
 
 const hotelListRoom = [
@@ -35,9 +38,9 @@ const hotelListRoom = [
 ];
 export const PopupHotelSelectRoom = (props: IProps) => {
     // props
-    const { isOpen, handleClose } = props;
+    const { isOpen, handleClose, selectRoom } = props;
     const classes = useStyles();
-
+    console.log(selectRoom);
     return (
         <div>
             <Modal
@@ -62,14 +65,16 @@ export const PopupHotelSelectRoom = (props: IProps) => {
                                         <div className="left__top">
                                             <p className="left__top-text">
                                                 <del>$600</del>
-                                                <span className="highlight-primary">$40.00</span>
+                                                <span className="highlight-primary">
+                                                    ${convertCurrency(selectRoom?.price)}
+                                                </span>
                                                 /night
                                             </p>
                                             <div className="left__top-btn">Select Room</div>
                                         </div>
                                         <div className="left__content">
                                             <ComponentCustomViewImage
-                                                listHotelImages={hotelListRoom}
+                                                viewRoomImages={selectRoom?.viewImages}
                                             />
                                         </div>
                                     </div>
@@ -77,61 +82,51 @@ export const PopupHotelSelectRoom = (props: IProps) => {
                                 <Grid item xs={12} md={5}>
                                     <div className="right">
                                         <div className="right__top">
-                                            <span className="right__top-text">90 m2</span>
-                                            <span className="right__top-text">90 m2</span>
-                                            <span className="right__top-text">90 m2</span>
+                                            <span className="right__top-text">
+                                                <span className="right__top-icon">
+                                                    <IconSquare />
+                                                </span>
+                                                <span>{selectRoom?.type?.dimension}</span>
+                                            </span>
+                                            <span className="right__top-text">
+                                                <span className="right__top-icon">
+                                                    <IconBed />
+                                                </span>
+                                                <span>{selectRoom?.type?.equipment}</span>
+                                            </span>
+                                            <span className="right__top-text">
+                                                <span className="right__top-icon">
+                                                    <GroupPeople color="#4f4f4f" />
+                                                </span>
+                                                <span>{selectRoom?.type?.group}</span>
+                                            </span>
+                                            {}
                                         </div>
                                         <div className="right__text">
-                                            <p className="right__text-child">
-                                                This air-conditioned room features large windows and
-                                                a balcony with views of the city and sea. It
-                                                contains a sitting area, flat-screen TV, a fridge
-                                                and tea-and-coffee-making facilities. The bathroom
-                                                has a shower and toilet.
-                                            </p>
-
-                                            <p className="right__text-child">
-                                                Maximum occupancy is 2 adults and 1 child under the
-                                                age of 2 years old in a crib. Please note that extra
-                                                beds cannot be accommodated in this room type.
-                                            </p>
+                                            {selectRoom?.about?.map((paragraph, index) => (
+                                                <p key={index} className="right__text-child">
+                                                    {paragraph}
+                                                </p>
+                                            ))}
                                         </div>
                                         <div className="right__list">
                                             <p className="right__list-title">Room Facilities:</p>
                                             <ul className="right__wrapperList">
-                                                <li>
-                                                    <a>
-                                                        {" "}
-                                                        <span className="content__icon">
-                                                            <IconChecked />
-                                                        </span>
-                                                        <span className="right__list-text">
-                                                            Air Conditioning
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a>
-                                                        {" "}
-                                                        <span className="content__icon">
-                                                            <IconChecked />
-                                                        </span>
-                                                        <span className="right__list-text">
-                                                            Air Conditioning
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a>
-                                                        {" "}
-                                                        <span className="content__icon">
-                                                            <IconChecked />
-                                                        </span>
-                                                        <span className="right__list-text">
-                                                            Air Conditioning
-                                                        </span>
-                                                    </a>
-                                                </li>
+                                                <Grid container>
+                                                    {selectRoom?.advanced?.map((item) => (
+                                                        <Grid key={item} item xs={6}>
+                                                            <a>
+                                                                {" "}
+                                                                <span className="content__icon">
+                                                                    <IconChecked />
+                                                                </span>
+                                                                <span className="right__list-text">
+                                                                    {item}
+                                                                </span>
+                                                            </a>
+                                                        </Grid>
+                                                    ))}
+                                                </Grid>
                                             </ul>
                                         </div>
                                     </div>
@@ -146,14 +141,21 @@ export const PopupHotelSelectRoom = (props: IProps) => {
 };
 const StyledComponentPopup = styled.div`
     .wrapperPopup {
-        /* width: 1170px; */
         max-width: 1170px;
         height: 60rem;
         overflow-y: auto;
         background-color: ${(p) => p.theme.colors.pureWhite};
         padding: 3rem 4rem;
+        @media (min-width: 1441px) {
+            height: 100rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            width: 55rem;
+            height: 50rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            width: 33rem;
+            width: 37rem;
+            height: 60rem;
         }
     }
     .title {
@@ -188,8 +190,8 @@ const StyledComponentPopup = styled.div`
                 text-align: center;
                 background-color: ${(p) => p.theme.colors.orange};
                 @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                    font-size: 1.2rem;
-                    padding: 0.5rem 1.6rem;
+                    font-size: 1.4rem;
+                    padding: 1rem 1.6rem;
                     margin-top: 0.5rem;
                 }
             }
@@ -197,8 +199,37 @@ const StyledComponentPopup = styled.div`
         &__content {
             padding-top: 2rem;
             height: 55rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}md) {
+                height: 40rem;
+            }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 height: 30rem;
+            }
+            .wrapper__image {
+                height: 42rem;
+                @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                    height: 30rem;
+                }
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    height: 19rem;
+                }
+            }
+            .slick-dots {
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    bottom: -6rem;
+                }
+            }
+            .slick-dots li {
+                @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                    width: 9.7rem;
+                    height: 7.7rem;
+                    margin-right: 2rem;
+                }
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    width: 6rem;
+                    height: 5rem;
+                    margin-right: 1.2rem;
+                }
             }
         }
     }
@@ -215,6 +246,14 @@ const StyledComponentPopup = styled.div`
             &-text {
                 font-size: 1.6rem;
                 font-weight: ${(p) => p.theme.typography.fontWeightMedium};
+                color: #0069e4;
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+            &-icon {
+                padding-right: 1rem;
             }
         }
         &__text {
@@ -227,9 +266,30 @@ const StyledComponentPopup = styled.div`
                 padding-bottom: 3rem;
             }
         }
+
         &__wrapperList {
+            display: flex;
+            flex-direction: column;
             li {
+                width: 50%;
                 list-style: none;
+            }
+        }
+        &__list {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 2.4rem;
+            &-title {
+                font-size: 1.6rem;
+                font-weight: ${(p) => p.theme.typography.fontWeightBold};
+                padding-bottom: 1.4rem;
+            }
+            &-text {
+                font-size: 1.6rem;
+                padding-left: 1.2rem;
+                line-height: 2;
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    font-size: 1.2rem;
+                }
             }
         }
     }

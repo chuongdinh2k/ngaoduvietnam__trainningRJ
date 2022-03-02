@@ -46,3 +46,7 @@ html {
     transform: rotate(360deg);
   }
 }
+/* Material ui */
+.slick-next {
+  right: 0;
+}

@@ -6,7 +6,7 @@ import { ComponentsRenderStars } from "@components";
 
 interface IProps {
     data?: IHotel;
-    onClick?: (id: string | number | undefined) => void;
+    onClick?: (id: string | undefined) => void;
 }
 
 export const HotelCard = (props: IProps) => {

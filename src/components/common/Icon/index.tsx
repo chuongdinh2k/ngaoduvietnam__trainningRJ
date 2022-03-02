@@ -17,3 +17,6 @@ export * from "./IconChecked";
 export * from "./IconDownArrow";
 export * from "./IconUpArrow";
 export * from "./IconProfile";
+export * from "./IconPicture";
+export * from "./IconSquare";
+export * from "./IconBed";

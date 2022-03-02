@@ -8,7 +8,9 @@ interface IStyledWrapContent {
 export const StyledWrapContent = styled.div<IStyledWrapContent>`
     padding: 0 16.5rem;
     padding-top: ${(p) => (p.withOutBanner ? "17rem" : "0rem")};
-
+    @media (min-width: 1441px) {
+        padding: 0 135rem;
+    }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         padding: 0 8rem;
         padding-top: ${(p) => (p.withOutBanner ? HEADER_HEIGHT : "0rem")};

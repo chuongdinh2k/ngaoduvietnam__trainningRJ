@@ -1,20 +1,22 @@
+import React from "react";
+
 import {
     ComponentBreadscrumb,
-    ComponentListTourBanner,
-    ComponentListTourContent,
+    ComponentHotelsBanner,
+    ComponentHotelsContent,
     Header,
     StyledWrapContent,
 } from "@components";
-import { dataListsTour, banner } from "@demos";
+import { banner } from "@demos";
 
-export const ListTour = () => {
+export const Hotels = () => {
     return (
         <>
             <Header hasColor={false} />
-            <ComponentListTourBanner banner={banner.listTour} />
+            <ComponentHotelsBanner banner={banner.hotels} />
             <StyledWrapContent>
                 <ComponentBreadscrumb />
-                <ComponentListTourContent dataListsTour={dataListsTour} />
+                <ComponentHotelsContent />
             </StyledWrapContent>
         </>
     );

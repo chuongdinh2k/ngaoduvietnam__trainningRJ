@@ -6,6 +6,7 @@ import room1 from "@assets/room1.png";
 import { GroupPeople, IconBed, IconPicture, IconSquare, PopupHotelSelectRoom } from "..";
 import { ISelectRoom } from "@types";
 import clsx from "clsx";
+import { convertCurrency } from "@utils";
 
 interface IProps {
     selectRoom?: ISelectRoom;
@@ -23,7 +24,11 @@ export const ComponentHotelRoom = (props: IProps) => {
     };
     return (
         <StyledComponentHotelRoom>
-            <PopupHotelSelectRoom isOpen={isOpen} handleClose={handleClose} />
+            <PopupHotelSelectRoom
+                isOpen={isOpen}
+                handleClose={handleClose}
+                selectRoom={selectRoom}
+            />
             <div className="wrapperRoom">
                 <div className="wrapper__image">
                     <span className="wrapper__image-icon">
@@ -75,7 +80,9 @@ export const ComponentHotelRoom = (props: IProps) => {
                             {selectRoom?.roomAvailable === 0 ? "Out of Room" : "Select Room"}
                         </Button>
                         <div className="content__price">
-                            <span className="content__price-highlight">${selectRoom?.price}</span>
+                            <span className="content__price-highlight">
+                                ${convertCurrency(selectRoom?.price)}
+                            </span>
                             /night
                         </div>
                     </div>
@@ -175,8 +182,9 @@ const StyledComponentHotelRoom = styled.div`
             }
             &-highlight {
                 font-size: 1.8rem;
-                font-weight: 1.8rem;
+                font-weight: 700;
                 color: ${(p) => p.theme.colors.red};
+                font-family: "Poppins";
             }
         }
         &__btn {

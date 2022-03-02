@@ -8,7 +8,6 @@ interface IProps {
 }
 export const ComponentListRooms = (props: IProps) => {
     const { selectRooms } = props;
-    console.log(selectRooms);
     return (
         <StyledComponentSelectedRoom>
             <div className="wrapperSelectedRoom">
@@ -26,6 +25,7 @@ export const ComponentListRooms = (props: IProps) => {
 const StyledComponentSelectedRoom = styled.div`
     .wrapperSelectedRoom {
         padding-top: 2.3rem;
+        padding-bottom: 7rem;
     }
     .title {
         font-size: 2rem;

@@ -16,7 +16,12 @@ export const splitUrl = (url: string | undefined, value: string) => {
         }
     }
 };
-export const getRelatedArray = (array?: Array<ICard>, id?: number) => {
+export const getRelatedArray = (array?: Array<any>, id?: number) => {
     const newArray = array?.filter((item) => item.id !== id);
     return newArray;
+};
+
+// WHAT: convert number to string currency
+export const convertCurrency = (value: number | undefined) => {
+    return value && value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 };

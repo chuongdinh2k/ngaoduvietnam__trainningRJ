@@ -18,13 +18,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const HomeToursTab = () => {
+interface IProps {
+    formTitle?: string;
+    inputTypeOfTour?: boolean;
+}
+
+export const HomeToursTab = (props: IProps) => {
     // component variable
     const initialValuesPackage = {
         location: "",
         departure: "",
     };
-
+    console.log(props.inputTypeOfTour);
     const classes = useStyles();
     // component state
     const [selectedTour, setSelectedTour] = useState<string>();
@@ -41,7 +46,7 @@ export const HomeToursTab = () => {
     };
     return (
         <StyledHomeToursTab>
-            <p className="title">Discover beautiful Vietnam</p>
+            <p className="title">{props.formTitle}</p>
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
@@ -75,18 +80,22 @@ export const HomeToursTab = () => {
                                     placeholder="Departure time"
                                 />
                             </div>
-                            <div className="input-group">
-                                <AppSelect
-                                    icon={<Flag width="16" height="18" />}
-                                    value={selectedTour}
-                                    placeholder="Type of Tour"
-                                    options={[
-                                        { label: "Beach", value: "Beach" },
-                                        { label: "Moutain", value: "Moutain" },
-                                    ]}
-                                    handleChange={handleChangeSelect}
-                                />
-                            </div>
+                            {!props.inputTypeOfTour ? (
+                                ""
+                            ) : (
+                                <div className="input-group">
+                                    <AppSelect
+                                        icon={<Flag width="16" height="18" />}
+                                        value={selectedTour}
+                                        placeholder="Type of Tour"
+                                        options={[
+                                            { label: "Beach", value: "Beach" },
+                                            { label: "Moutain", value: "Moutain" },
+                                        ]}
+                                        handleChange={handleChangeSelect}
+                                    />
+                                </div>
+                            )}
                             <div className="input-group">
                                 <AppSelect
                                     icon={<GroupPeople width="16" height="18" />}
