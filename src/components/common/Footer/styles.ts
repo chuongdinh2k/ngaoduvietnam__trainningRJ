@@ -2,13 +2,16 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.div`
     display: flex;
-    /* height: 41.8rem; */
-    /* padding: 0 16.5rem; */
+    justify-content: center;
     padding: 5rem 16.5rem 6rem 16.5rem;
     padding-top: 5rem;
     margin-top: 15rem;
     color: ${(p) => p.theme.colors.pureWhite};
     background-color: ${(p) => p.theme.colors.darkBlack};
+    .wrapper {
+        width: 100%;
+        max-width: 1440px;
+    }
     .logo {
         @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {
             display: flex;
@@ -69,9 +72,9 @@ export const StyledFooter = styled.div`
         margin-block-start: 0;
         font-size: ${(p) => p.theme.typography.fontSize}px;
     }
-    @media (min-width: 1441px) {
+    /* @media (min-width: 1680px) {
         padding: 0 135rem;
-    }
+    } */
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         padding: 0 8rem;
     }

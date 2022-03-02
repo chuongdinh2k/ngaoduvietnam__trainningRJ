@@ -94,7 +94,10 @@ const StyledMenu = styled.ul<IMenu>`
             color: ${(p) => p.theme.colors.orange};
         }
     }
-    @media (max-width: 768px) {
+    @media (min-width: 1441px) {
+        justify-content: space-between;
+    }
+    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         display: none;
     }
 `;

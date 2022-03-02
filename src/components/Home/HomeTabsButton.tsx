@@ -46,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
     tabContent: {
         padding: "3.4rem 3.1rem",
         // height: "52.2rem",
-        // [theme.breakpoints.down("sm")]: {
-        //     height: "46.6rem",
-        // },
+        [theme.breakpoints.down("sm")]: {
+            padding: "1rem 1.5rem",
+        },
     },
 }));
 // WHAT: create id for tab

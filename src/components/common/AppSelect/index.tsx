@@ -24,16 +24,8 @@ interface IAppSelect {
     error?: string;
     value?: string | Array<string> | number;
     defaultValue?: string;
-    handleChange:
-        | ((
-              event: React.ChangeEvent<{
-                  name?: string | undefined;
-                  value: unknown;
-              }>,
-              child: React.ReactNode
-          ) => void)
-        | undefined;
-    // handleBlur: (value: any) => void;
+    handleChange: (value: any) => void;
+    // handleBlur?: (value: any) => void;
     name?: string;
     options?: any;
     disabled?: boolean;
@@ -46,24 +38,27 @@ export const AppSelect = (props: IAppSelect) => {
     const RendePlaceholder = ({ children }: any) => {
         return <Placeholder>{children}</Placeholder>;
     };
-
     return (
         <InputWrapper>
             <LabelWrapper>{props.icon}</LabelWrapper>
             <Select
+                name={props.name}
                 className={classes.select}
                 value={props.value}
                 displayEmpty
                 disableUnderline
                 multiple={props.multiple}
                 onChange={props.handleChange}
+                placeholder={props.placeholder}
                 renderValue={
-                    props.value !== ""
-                        ? undefined
-                        : () => <RendePlaceholder>{props.placeholder}</RendePlaceholder>
+                    props.value === ""
+                        ? () => <RendePlaceholder>{props.placeholder}sadasd</RendePlaceholder>
+                        : undefined
                 }
             >
-                <MenuItem value="">{props.placeholder}</MenuItem>
+                <MenuItem value="" disabled>
+                    {props.placeholder}
+                </MenuItem>
                 {props.options &&
                     props.options.length > 0 &&
                     props.options.map((item: any) => (

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { BREAK_ONLY_MOBILE } from "@configs";
-
 interface ISWrapper {
     width?: string;
     marginTop?: string;
@@ -30,7 +28,7 @@ export const InputWrapper = styled.div<ISWrapper>`
     background-color: white;
     padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
-    @media (max-width: ${BREAK_ONLY_MOBILE}) {
+    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 1rem 1.2rem;
     }
 `;

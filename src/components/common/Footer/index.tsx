@@ -21,85 +21,87 @@ export const Footer = () => {
         <div style={{ backgroundColor: "#000000" }}>
             <div className="wrapperFooter">
                 <StyledFooter>
-                    <Grid container>
-                        <Grid item md={5} xs={12}>
-                            <div className="logo">
-                                <img src={logo} alt="logo" />
-                                <div className="socialMedia">
-                                    <span className="socialMedia__item">
-                                        <IconFacebook />
-                                    </span>
-                                    <span className="socialMedia__item">
-                                        <IconInstagram />
-                                    </span>
-                                    <span className="socialMedia__item">
-                                        <IconTwitter />
-                                    </span>
+                    <div className="wrapper">
+                        <Grid container>
+                            <Grid item md={5} xs={12}>
+                                <div className="logo">
+                                    <img src={logo} alt="logo" />
+                                    <div className="socialMedia">
+                                        <span className="socialMedia__item">
+                                            <IconFacebook />
+                                        </span>
+                                        <span className="socialMedia__item">
+                                            <IconInstagram />
+                                        </span>
+                                        <span className="socialMedia__item">
+                                            <IconTwitter />
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </Grid>
-                        <Grid item md={7} xs={12}>
-                            <div className="text">
-                                <Grid container>
-                                    <Grid md={3} xs={12}>
-                                        <ul className="text__nav">
-                                            {fakeDataNav.nav
-                                                ? fakeDataNav.nav.map(
-                                                      (item: string, index: number) => (
-                                                          <li
-                                                              key={index}
-                                                              className="text__nav-item"
-                                                          >
-                                                              <a>{item}</a>
-                                                          </li>
+                            </Grid>
+                            <Grid item md={7} xs={12}>
+                                <div className="text">
+                                    <Grid container>
+                                        <Grid md={3} xs={12}>
+                                            <ul className="text__nav">
+                                                {fakeDataNav.nav
+                                                    ? fakeDataNav.nav.map(
+                                                          (item: string, index: number) => (
+                                                              <li
+                                                                  key={index}
+                                                                  className="text__nav-item"
+                                                              >
+                                                                  <a>{item}</a>
+                                                              </li>
+                                                          )
                                                       )
-                                                  )
-                                                : ""}
-                                        </ul>
-                                    </Grid>
-                                    <Grid md={4} xs={12}>
-                                        <ul className="text__nav">
-                                            {fakeDataNav.policy
-                                                ? fakeDataNav.policy.map(
-                                                      (item: string, index: number) => (
-                                                          <li
-                                                              key={index}
-                                                              className="text__nav-item"
-                                                          >
-                                                              <a>{item}</a>
-                                                          </li>
+                                                    : ""}
+                                            </ul>
+                                        </Grid>
+                                        <Grid md={4} xs={12}>
+                                            <ul className="text__nav">
+                                                {fakeDataNav.policy
+                                                    ? fakeDataNav.policy.map(
+                                                          (item: string, index: number) => (
+                                                              <li
+                                                                  key={index}
+                                                                  className="text__nav-item"
+                                                              >
+                                                                  <a>{item}</a>
+                                                              </li>
+                                                          )
                                                       )
-                                                  )
-                                                : ""}
-                                        </ul>
+                                                    : ""}
+                                            </ul>
+                                        </Grid>
+                                        <Grid md={5} xs={12}>
+                                            <div className="text_address">
+                                                <span className="text_address-icon">
+                                                    <IconLocation
+                                                        color="white"
+                                                        width="18px"
+                                                        height="20px"
+                                                    />
+                                                </span>
+                                                <p className="text_address-sub">
+                                                    Lilama 10 Tower, 56 To Huu, Trung Van, Nam Tu
+                                                    Liem, Ha Noi
+                                                </p>
+                                            </div>
+                                            <div className="text_address">
+                                                <span className="text_address-icon">
+                                                    <IconLetter />
+                                                </span>
+                                                <p className="text_address-sub">
+                                                    hello@adamotravel.com
+                                                </p>
+                                            </div>
+                                        </Grid>
                                     </Grid>
-                                    <Grid md={5} xs={12}>
-                                        <div className="text_address">
-                                            <span className="text_address-icon">
-                                                <IconLocation
-                                                    color="white"
-                                                    width="18px"
-                                                    height="20px"
-                                                />
-                                            </span>
-                                            <p className="text_address-sub">
-                                                Lilama 10 Tower, 56 To Huu, Trung Van, Nam Tu Liem,
-                                                Ha Noi
-                                            </p>
-                                        </div>
-                                        <div className="text_address">
-                                            <span className="text_address-icon">
-                                                <IconLetter />
-                                            </span>
-                                            <p className="text_address-sub">
-                                                hello@adamotravel.com
-                                            </p>
-                                        </div>
-                                    </Grid>
-                                </Grid>
-                            </div>
+                                </div>
+                            </Grid>
                         </Grid>
-                    </Grid>
+                    </div>
                 </StyledFooter>
                 <StyledCoppyRight>
                     <p>Copyright © We.travel. All rights reserved</p>

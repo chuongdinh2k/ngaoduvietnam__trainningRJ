@@ -1,4 +1,3 @@
-import { BREAK_ONLY_MOBILE } from "@configs";
 import styled from "styled-components";
 
 interface ISWrapper {
@@ -14,19 +13,20 @@ interface ISLabel {
 }
 
 export const InputWrapper = styled.div<ISWrapper>`
+    height: 5rem;
     width: ${(props) => props.width || "100%"};
     margin-top: ${(props) => props.marginTop || "0px"};
     background-color: white;
-    padding: 1.5rem;
+    padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
     margin-bottom: 1.8rem;
-    @media (max-width: ${BREAK_ONLY_MOBILE}) {
+    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 1rem 1.2rem;
     }
 `;
 
 export const Placeholder = styled.div`
-    color: #808285;
+    color: #c6c6c7;
 `;
 
 export const Label = styled.p<ISLabel>`

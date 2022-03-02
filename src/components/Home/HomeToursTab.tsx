@@ -4,7 +4,6 @@ import { makeStyles, Button } from "@material-ui/core";
 
 import { AppSelect, GroupPeople, Flag } from "@components";
 import { IconSearch, AppInput, IconCalendar, IconLocation } from "@components";
-import { BREAK_ONLY_MOBILE } from "@configs";
 import { Formik } from "formik";
 import { formSchemaHomeFilter } from "@utils";
 
@@ -28,22 +27,10 @@ export const HomeToursTab = (props: IProps) => {
     const initialValuesPackage = {
         location: "",
         departure: "",
+        group: "",
+        typeOfTour: "",
     };
-    console.log(props.inputTypeOfTour);
     const classes = useStyles();
-    // component state
-    const [selectedTour, setSelectedTour] = useState<string>();
-    const [selectedQuantityPeople, setSelectedQuantityPeople] = useState<number>();
-
-    const handleChangeSelect = (
-        event: React.ChangeEvent<{
-            name?: string | undefined;
-            value: unknown;
-        }>
-    ) => {
-        const value = event.target.value as number;
-        setSelectedQuantityPeople(value);
-    };
     return (
         <StyledHomeToursTab>
             <p className="title">{props.formTitle}</p>
@@ -85,22 +72,24 @@ export const HomeToursTab = (props: IProps) => {
                             ) : (
                                 <div className="input-group">
                                     <AppSelect
+                                        name="typeOfTour"
                                         icon={<Flag width="16" height="18" />}
-                                        value={selectedTour}
+                                        value={values.typeOfTour}
                                         placeholder="Type of Tour"
                                         options={[
                                             { label: "Beach", value: "Beach" },
                                             { label: "Moutain", value: "Moutain" },
                                         ]}
-                                        handleChange={handleChangeSelect}
+                                        handleChange={handleChange("typeOfTour")}
                                     />
                                 </div>
                             )}
                             <div className="input-group">
                                 <AppSelect
-                                    icon={<GroupPeople width="16" height="18" />}
-                                    value={selectedQuantityPeople}
-                                    handleChange={handleChangeSelect}
+                                    name="group"
+                                    icon={<GroupPeople width="16" height="18" color="#FF7B42" />}
+                                    value={values.group}
+                                    handleChange={handleChange("group")}
                                     placeholder="Number of Guest"
                                     options={[
                                         { label: "1", value: 1 },
@@ -129,13 +118,16 @@ const StyledHomeToursTab = styled.div`
         font-size: 2.4rem;
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-start: 0;
-        @media (max-width: ${BREAK_ONLY_MOBILE}) {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            font-size: 2rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.5rem;
         }
     }
     .input-group {
         margin-top: 1.8rem;
-        @media (max-width: ${BREAK_ONLY_MOBILE}) {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-top: 0.8rem;
         }
     }

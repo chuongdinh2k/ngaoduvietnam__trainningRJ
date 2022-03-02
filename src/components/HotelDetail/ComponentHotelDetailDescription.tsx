@@ -33,22 +33,6 @@ export const ComponentHotelDetailDescription = (props: IProps) => {
                                 </p>
                             </Grid>
                         ))}
-                        <Grid item xs={6}>
-                            <p>
-                                <span className="listChecked__icon">
-                                    <IconChecked />
-                                </span>
-                                <span className="listChecked__text">Air Conditioning</span>
-                            </p>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <p>
-                                <span className="listChecked__icon">
-                                    <IconChecked />
-                                </span>
-                                <span className="listChecked__text">Air Conditioning</span>
-                            </p>
-                        </Grid>
                     </Grid>
                 </div>
                 <div className="rules">
@@ -64,15 +48,11 @@ export const ComponentHotelDetailDescription = (props: IProps) => {
                         </Grid>
                     </Grid>
                     <ul className="rules__list">
-                        <li>
-                            <a>Smoking is not allowed</a>
-                        </li>
-                        <li>
-                            <a>Smoking is not allowed</a>
-                        </li>
-                        <li>
-                            <a>Smoking is not allowed</a>
-                        </li>
+                        {description?.rules?.list?.map((item, index) => (
+                            <li key={index}>
+                                <a>{item}</a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>

@@ -33,6 +33,10 @@ export const Header = (props: IProps) => {
     });
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
+        // remove event listener when component will unmount
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     // WHAT: change backgroundColor Header when scroll
@@ -51,30 +55,34 @@ export const Header = (props: IProps) => {
     };
     return (
         <StyledHeader backgroundColor={backgroundColor} hasColor={hasColor}>
-            <Grid container>
-                <Grid item xs={6} md={6}>
-                    {hasColor ? <img src={logoBlack} /> : <img src={logo} />}
+            <div className="wrapHeader">
+                <Grid container>
+                    <Grid item xs={6} md={6}>
+                        {hasColor ? <img src={logoBlack} /> : <img src={logo} />}
+                    </Grid>
+                    <Grid xs={6} md={6}>
+                        <ComponentSidebar hasColor={hasColor} />
+                        <div className="mobile__NavLogo">
+                            <span onClick={() => handleToggleDrawswer("right", true)}>
+                                <ViewHeadlineIcon className="logo" />
+                            </span>
+                            <ComponentDrawserNav
+                                handleToggleDrawswer={handleToggleDrawswer}
+                                anchor={"right"}
+                                isOpen={location["right"]}
+                            />
+                        </div>
+                    </Grid>
                 </Grid>
-                <Grid xs={6} md={6}>
-                    <ComponentSidebar hasColor={hasColor} />
-                    <div className="mobile__NavLogo">
-                        <span onClick={() => handleToggleDrawswer("right", true)}>
-                            <ViewHeadlineIcon className="logo" />
-                        </span>
-                        <ComponentDrawserNav
-                            handleToggleDrawswer={handleToggleDrawswer}
-                            anchor={"right"}
-                            isOpen={location["right"]}
-                        />
-                    </div>
-                </Grid>
-            </Grid>
+            </div>
         </StyledHeader>
     );
 };
 const StyledHeader = styled.div<IStyledHeader>`
     position: relative;
     padding: 2rem 16.5rem;
+    display: flex;
+    justify-content: center;
     position: fixed;
     z-index: 999;
     width: 100%;
@@ -82,6 +90,10 @@ const StyledHeader = styled.div<IStyledHeader>`
     background-color: ${(p) => p?.backgroundColor};
     opacity: 0.8;
     color: ${(p) => (p?.hasColor ? `#1C1C1E` : `#ffffff`)};
+    .wrapHeader {
+        width: 100%;
+        max-width: 1440px;
+    }
     .mobile__NavLogo {
         display: none;
         position: absolute;
@@ -93,13 +105,10 @@ const StyledHeader = styled.div<IStyledHeader>`
         height: 4rem;
         width: 4rem;
     }
-    @media (min-width: 1441px) {
-        padding: 0 135rem;
-    }
-    @media (max-width: ${BREAK_MEDIUM}) {
+    @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         padding: 0 8rem;
     }
-    @media (max-width: ${BREAK_ONLY_MOBILE}) {
+    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 0 2rem;
         .mobile__NavLogo {
             display: block;

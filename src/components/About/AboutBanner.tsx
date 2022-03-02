@@ -14,11 +14,13 @@ export const AboutBanner = (props: IProps) => {
     const { fakeData } = props;
     return (
         <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent={PAGE_ABOUT}>
-            <StyledBanner typeComponent={PAGE_ABOUT}>
-                <div className="content">
-                    <h3 className="content__title">{fakeData?.title}</h3>
-                </div>
-            </StyledBanner>
+            <div className="wrapContainer">
+                <StyledBanner typeComponent={PAGE_ABOUT}>
+                    <div className="content">
+                        <h3 className="content__title">{fakeData?.title}</h3>
+                    </div>
+                </StyledBanner>
+            </div>
         </StyledWrapBanner>
     );
 };
