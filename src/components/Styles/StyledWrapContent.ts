@@ -6,10 +6,13 @@ interface IStyledWrapContent {
     withOutBanner?: boolean;
 }
 export const StyledWrapContent = styled.div<IStyledWrapContent>`
+    display: flex;
+    justify-content: center;
     padding: 0 16.5rem;
     padding-top: ${(p) => (p.withOutBanner ? "17rem" : "0rem")};
-    @media (min-width: 1441px) {
-        padding: 0 135rem;
+    .wrapperContent {
+        max-width: 1440px;
+        width: 100%;
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         padding: 0 8rem;

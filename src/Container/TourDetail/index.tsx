@@ -34,14 +34,16 @@ export const TourDetail = () => {
         <>
             <Header hasColor />
             <StyledWrapContent withOutBanner>
-                {loading ? (
-                    <ComponentLoader />
-                ) : (
-                    <>
-                        <ComponentBreadscrumb />
-                        <ComponentTourDetailContent dataTour={detailTour} />
-                    </>
-                )}
+                <div className="wrapperContent">
+                    {loading ? (
+                        <ComponentLoader />
+                    ) : (
+                        <>
+                            <ComponentBreadscrumb />
+                            <ComponentTourDetailContent dataTour={detailTour} />
+                        </>
+                    )}
+                </div>
             </StyledWrapContent>
         </>
     );

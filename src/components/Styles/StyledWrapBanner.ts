@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-import background from "@assets/banner.png";
-import { PAGE_HOME, BREAK_ONLY_MOBILE, PAGE_ABOUT, PAGE_LISTTOUR, PAGE_HOTELS } from "@configs";
+import { PAGE_HOME, PAGE_ABOUT, PAGE_LISTTOUR, PAGE_HOTELS } from "@configs";
 
 interface IWrapHeader {
     background_banner?: string;
@@ -9,7 +8,9 @@ interface IWrapHeader {
     typeComponent?: string;
 }
 export const StyledWrapBanner = styled.div<IWrapHeader>`
-    position: relative;
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
     height: ${(p) =>
         p.typeComponent === PAGE_HOME
             ? "76.6rem"
@@ -18,16 +19,21 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
             : "66.6rem"};
     padding: 0 16.5rem;
     width: 100%;
-    /* background-image: url(${background}); */
     background-image: url(${(p) => p.background_banner});
     background-position: center;
     background-size: cover;
     font-family: ${(p) => p.theme.typography.fontFamily};
+    .wrapContainer {
+        width: 100%;
+        height: 100%;
+        max-width: 1440px;
+        position: relative;
+    }
     .featured {
         position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 83rem;
+        left: -17rem;
+        bottom: -0.5rem;
+        width: 84rem;
         height: 9.9rem;
         padding: 2.6rem 16.5rem 0 16.5rem;
         background-color: ${(p) => p.theme.colors.pureWhite};
@@ -41,7 +47,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     .filter {
         position: absolute;
         bottom: 0;
-        right: 16.5rem;
+        right: 0;
         width: 44.5rem;
         background: linear-gradient(
             0deg,
@@ -51,12 +57,12 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         backdrop-filter: blur(42px);
     }
     @media (min-width: 1441px) {
-        padding: 0 135rem;
+        padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
-            left: 135rem;
+            left: 0;
         }
         .filter {
-            right: 135rem;
+            right: 16.5rem;
         }
     }
     @media (max-width: 992px) {
@@ -68,22 +74,16 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
                 : "60rem"};
         padding: 0 8rem;
         .featured {
-            width: 60rem;
-            padding: 2.6rem 8rem 0 8rem;
+            width: 54rem;
+            padding: 2.6rem 2rem 0 16rem;
         }
         .filter {
             width: 45%;
-            right: 8rem;
         }
     }
-    @media (max-width: ${BREAK_ONLY_MOBILE}) {
+    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 0 2rem;
-        height: ${(p) =>
-            p.typeComponent === PAGE_HOME
-                ? "87.6rem"
-                : p.typeComponent === PAGE_ABOUT
-                ? "20rem"
-                : "65rem"};
+        height: ${(p) => (p.typeComponent === PAGE_ABOUT ? "20rem" : "62rem")};
         .featured {
             top: 30%;
             left: 2rem;

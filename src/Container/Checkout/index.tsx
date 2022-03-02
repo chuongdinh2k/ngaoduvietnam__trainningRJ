@@ -3,7 +3,9 @@ import { ComponentCheckOutContent, StyledWrapContent } from "@components";
 export const CheckOut = () => {
     return (
         <StyledWrapContent>
-            <ComponentCheckOutContent />
+            <div className="wrapperContent">
+                <ComponentCheckOutContent />
+            </div>
         </StyledWrapContent>
     );
 };

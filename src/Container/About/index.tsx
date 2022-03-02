@@ -19,8 +19,10 @@ export const About = () => {
             <Header hasColor={false} />
             <AboutBanner fakeData={fakeData} />
             <StyledWrapContent>
-                <ComponentIntroduce />
-                <ComponentAboutIntro />
+                <div className="wrapperContent">
+                    <ComponentIntroduce />
+                    <ComponentAboutIntro />
+                </div>
             </StyledWrapContent>
         </div>
     );

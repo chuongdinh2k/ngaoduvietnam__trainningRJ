@@ -29,6 +29,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
         }
     }};
     .content {
+        max-width: 1440px;
         &__subTitle {
             color: ${(p) => p.theme.colors.lightPink};
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
@@ -42,17 +43,25 @@ export const StyledBanner = styled.div<IStyledBanner>`
             color: ${(p) => p.theme.colors.pureWhite};
             font-family: ${(p) => p.theme.typography.fontFamily};
             font-weight: ${(p) => p.theme.typography.fontWeightMedium};
-            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+
+            @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {
                 font-size: 4rem;
+                width: 50%;
+            }
+
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                font-size: 3rem;
+                width: 50%;
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 font-size: 3rem;
+                width: 100%;
             }
         }
     }
 
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-        width: 50%;
+        width: 100%;
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding-top: 10rem;

@@ -11,8 +11,10 @@ export const HotelDetail = () => {
         <>
             <Header hasColor />
             <StyledWrapContent withOutBanner>
-                <ComponentBreadscrumb />
-                <ComponentTourDetailContent dataHotel={datalistHotels.hotels[0]} />
+                <div className="wrapperContent">
+                    <ComponentBreadscrumb />
+                    <ComponentTourDetailContent dataHotel={datalistHotels.hotels[0]} />
+                </div>
             </StyledWrapContent>
         </>
     );

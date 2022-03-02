@@ -13,8 +13,10 @@ export const ListTour = () => {
             <Header hasColor={false} />
             <ComponentListTourBanner banner={banner.listTour} />
             <StyledWrapContent>
-                <ComponentBreadscrumb />
-                <ComponentListTourContent dataListsTour={dataListsTour} />
+                <div className="wrapperContent">
+                    <ComponentBreadscrumb />
+                    <ComponentListTourContent dataListsTour={dataListsTour} />
+                </div>
             </StyledWrapContent>
         </>
     );

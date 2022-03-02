@@ -14,19 +14,21 @@ export const ComponentListTourBanner = (props: IProps) => {
     const { banner } = props;
     return (
         <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent={PAGE_LISTTOUR}>
-            <StyledBanner typeComponent={PAGE_LISTTOUR}>
-                <div className="content">
-                    <p className="content__subTitle">{banner?.subTitle}</p>
-                    <h3 className="content__title">{banner?.title}</h3>
+            <div className="wrapContainer">
+                <StyledBanner typeComponent={PAGE_LISTTOUR}>
+                    <div className="content">
+                        <p className="content__subTitle">{banner?.subTitle}</p>
+                        <h3 className="content__title">{banner?.title}</h3>
+                    </div>
+                </StyledBanner>
+                <div className="featured"></div>
+                <div className="filter">
+                    <HomeTabsButtonComponent
+                        show={false}
+                        formTitle={banner.formTitle}
+                        inputTypeOfTour
+                    />
                 </div>
-            </StyledBanner>
-            <div className="featured"></div>
-            <div className="filter">
-                <HomeTabsButtonComponent
-                    show={false}
-                    formTitle={banner.formTitle}
-                    inputTypeOfTour
-                />
             </div>
         </StyledWrapBanner>
     );

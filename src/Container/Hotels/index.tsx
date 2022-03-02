@@ -15,8 +15,10 @@ export const Hotels = () => {
             <Header hasColor={false} />
             <ComponentHotelsBanner banner={banner.hotels} />
             <StyledWrapContent>
-                <ComponentBreadscrumb />
-                <ComponentHotelsContent />
+                <div className="wrapperContent">
+                    <ComponentBreadscrumb />
+                    <ComponentHotelsContent />
+                </div>
             </StyledWrapContent>
         </>
     );

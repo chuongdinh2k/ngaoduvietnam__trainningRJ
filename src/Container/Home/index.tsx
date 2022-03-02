@@ -25,11 +25,13 @@ export const Home = () => {
             <Header hasColor={false} />
             <HomeBanner banner={banner.home} />
             <StyledWrapContent>
-                <ComponentIntroduce />
-                <HomeDiscoverFas HomeDiscoverFasListsData={HomeDiscoverFasListsData} />
-                <HomeAttractiveTourComponent AttractiveTourLists={AttractiveTourLists} />
-                <ComponentHomeExperience HomeExperienceListsData={HomeExperienceListsData} />
-                <ComponentHomeContact />
+                <div className="wrapperContent">
+                    <ComponentIntroduce />
+                    <HomeDiscoverFas HomeDiscoverFasListsData={HomeDiscoverFasListsData} />
+                    <HomeAttractiveTourComponent AttractiveTourLists={AttractiveTourLists} />
+                    <ComponentHomeExperience HomeExperienceListsData={HomeExperienceListsData} />
+                    <ComponentHomeContact />
+                </div>
             </StyledWrapContent>
         </>
     );
