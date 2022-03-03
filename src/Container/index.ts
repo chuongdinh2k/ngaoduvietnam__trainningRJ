@@ -5,3 +5,4 @@ export * from "./TourDetail";
 export * from "./Checkout";
 export * from "./Hotels";
 export * from "./HotelDetail";
+export * from "./Auth";

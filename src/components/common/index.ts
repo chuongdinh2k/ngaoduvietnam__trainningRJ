@@ -12,6 +12,6 @@ export * from "./Breadscrumb";
 export * from "./AppPagination";
 export * from "./RangeSlider";
 export * from "./AppCheckBoxGroup";
-export * from "./AppInputMultiline";
+export * from "./AppInputOutLined";
 export * from "./Collapse";
 export * from "./Loader";

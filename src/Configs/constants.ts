@@ -28,3 +28,6 @@ export const PAGE_HOME = "Home";
 export const PAGE_ABOUT = "About";
 export const PAGE_LISTTOUR = "ListTour";
 export const PAGE_HOTELS = "Hotels";
+export const PAGE_LOGIN = "Login";
+
+export const LOGOUT = "Logout";

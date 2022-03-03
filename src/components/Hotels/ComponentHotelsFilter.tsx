@@ -47,7 +47,7 @@ export const ComponentHotelsFilter = (props: IProps) => {
                 </div>
                 <Formik
                     initialValues={initialValuesPackage}
-                    onSubmit={(values) => console.log(values)}
+                    onSubmit={(values) => console.log(valueRange)}
                 >
                     {({ handleSubmit, values, handleChange }) => {
                         return (

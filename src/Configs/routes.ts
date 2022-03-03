@@ -1,5 +1,15 @@
-import { Home, About, ListTour, TourDetail, HotelDetail, CheckOut, Hotels } from "@containers";
-import { appRoutesEnum } from "@enums";
+import {
+    Home,
+    About,
+    ListTour,
+    TourDetail,
+    HotelDetail,
+    CheckOut,
+    Hotels,
+    Login,
+} from "@containers";
+import { appRoutesEnum, authRoutesEnum } from "@enums";
+import { LayoutAuth } from "@layouts";
 import { IRoute } from "@types";
 
 // WHAT: route name
@@ -19,6 +29,7 @@ export const routes: Array<IRoute> = [
     { name: TOURS, path: appRoutesEnum.TOURS, exact: true, component: ListTour },
     { name: HOTELS, path: appRoutesEnum.HOTEL_DETAIL, exact: true, component: HotelDetail },
     { name: HOTELS, path: appRoutesEnum.HOTELS, exact: true, component: Hotels },
+    { name: HOTELS, path: authRoutesEnum.LOGIN, exact: true, component: Login, layout: LayoutAuth },
     // { name: CONTACT, path: appRoutesEnum.CONTACT, exact: true, component: About },
     // { name: LOGIN, path: authRoutesEnum.LOGIN, exact: true, component: About },
 ];
