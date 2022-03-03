@@ -5,7 +5,9 @@ import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-import { routes } from "@configs";
+import { ISideBarRoute, navRoutes } from "..";
+import { authRoutesEnum } from "@enums";
+import { PAGE_LOGIN } from "@configs";
 
 const useStyles = makeStyles({
     list: {
@@ -13,6 +15,14 @@ const useStyles = makeStyles({
     },
     fullList: {
         width: "auto",
+    },
+    wrapList: {},
+    list__item: {},
+    list__text: {
+        "& .MuiTypography-body1": {
+            fontSize: "1.4rem",
+            textDecoration: "none",
+        },
     },
 });
 
@@ -33,14 +43,21 @@ export const ComponentDrawserNav = (props: IProps) => {
             })}
             role="presentation"
         >
-            <List>
-                {routes.map((route, index) => (
-                    <ListItem button key={index}>
-                        <ListItemText>
+            <List className={classes.wrapList}>
+                {navRoutes.map((route: ISideBarRoute, index: number) => (
+                    <ListItem button key={index} className={classes.list__item}>
+                        <ListItemText className={classes.list__text}>
                             <NavLink to={`${route.path}`}>{route.name}</NavLink>
                         </ListItemText>
                     </ListItem>
                 ))}
+                <ListItem button className={classes.list__item}>
+                    <ListItemText className={classes.list__text}>
+                        <NavLink className="text" to={`${authRoutesEnum.LOGIN}`}>
+                            {PAGE_LOGIN}
+                        </NavLink>
+                    </ListItemText>
+                </ListItem>
             </List>
         </div>
     );

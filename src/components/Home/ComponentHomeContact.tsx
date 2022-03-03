@@ -25,7 +25,7 @@ export const ComponentHomeContact = () => {
                             initialValues={{
                                 email: "",
                             }}
-                            onSubmit={(values) => console.log(values)}
+                            onSubmit={(values, { resetForm }) => resetForm()}
                             validationSchema={formSchemaEmail}
                         >
                             {({ handleSubmit, values, errors, handleChange, handleBlur }) => {

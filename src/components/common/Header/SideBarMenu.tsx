@@ -1,4 +1,4 @@
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
@@ -6,24 +6,11 @@ import { appRoutesEnum, authRoutesEnum } from "@enums";
 import { LOGOUT, PAGE_LOGIN } from "@configs";
 import { logout, selectAuth, useAppSelector } from "@redux";
 
-interface ISideBarRoute {
+export interface ISideBarRoute {
     path?: string;
     name: string;
-    icon?: JSX.Element;
-    children?: Array<{
-        path: string;
-        name: string;
-        badge?: {
-            value: string;
-        };
-    }>;
-    badge?: {
-        value: string;
-    };
-    permission?: string;
 }
-
-const routes: ISideBarRoute[] = [
+export const navRoutes: ISideBarRoute[] = [
     {
         path: appRoutesEnum.HOME,
         name: "Home",
@@ -57,10 +44,9 @@ interface IMenu {
 export const ComponentSidebar = (props: IMenu) => {
     const auth = useAppSelector(selectAuth);
     const dispatch = useDispatch();
-    const history = useHistory();
     return (
         <StyledMenu hasColor={props.hasColor}>
-            {routes.map((route, index) => (
+            {navRoutes.map((route, index) => (
                 <li key={index}>
                     <NavLink to={`${route.path}`} exact>
                         {route.name}
@@ -76,7 +62,6 @@ export const ComponentSidebar = (props: IMenu) => {
                     <a
                         onClick={() => {
                             dispatch(logout());
-                            history.push(authRoutesEnum.LOGIN);
                         }}
                     >
                         {LOGOUT}

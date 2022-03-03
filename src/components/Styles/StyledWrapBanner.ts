@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { PAGE_HOME, PAGE_ABOUT, PAGE_LISTTOUR, PAGE_HOTELS } from "@configs";
+import { PAGE_HOME, PAGE_ABOUT, PAGE_LISTTOUR, PAGE_HOTELS, PAGE_CONTACT } from "@configs";
 
 interface IWrapHeader {
     background_banner?: string;
@@ -12,9 +12,9 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     display: flex;
     justify-content: center;
     height: ${(p) =>
-        p.typeComponent === PAGE_HOME
+        p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_HOTELS
             ? "76.6rem"
-            : p.typeComponent === PAGE_ABOUT
+            : p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT
             ? "40rem"
             : "66.6rem"};
     padding: 0 16.5rem;
@@ -67,9 +67,9 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     }
     @media (max-width: 992px) {
         height: ${(p) =>
-            p.typeComponent === PAGE_HOME
+            p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_HOTELS
                 ? "60rem"
-                : p.typeComponent === PAGE_ABOUT
+                : p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT
                 ? "20rem"
                 : "60rem"};
         padding: 0 8rem;
@@ -83,7 +83,8 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 0 2rem;
-        height: ${(p) => (p.typeComponent === PAGE_ABOUT ? "20rem" : "62rem")};
+        height: ${(p) =>
+            p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT ? "20rem" : "62rem"};
         .featured {
             top: 30%;
             left: 2rem;
@@ -91,7 +92,11 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
             width: 90%;
             height: 6.9rem;
             padding: 2rem;
-            display: ${(p) => (p.typeComponent === PAGE_LISTTOUR || PAGE_HOTELS ? "none" : "")};
+            display: none;
+            /* display: ${(p) =>
+                p.typeComponent === PAGE_LISTTOUR || p.typeComponent === PAGE_HOTELS
+                    ? "none"
+                    : ""}; */
         }
 
         .filter {

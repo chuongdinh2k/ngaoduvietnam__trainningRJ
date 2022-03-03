@@ -6,3 +6,5 @@ export * from "./Checkout";
 export * from "./Hotels";
 export * from "./HotelDetail";
 export * from "./Auth";
+export * from "./Contact";
+export * from "./Error";

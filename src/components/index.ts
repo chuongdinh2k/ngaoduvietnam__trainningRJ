@@ -11,3 +11,4 @@ export * from "./BookingForm";
 export * from "./CheckOut";
 export * from "./Hotels";
 export * from "./HotelDetail";
+export * from "./Contact";

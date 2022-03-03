@@ -29,7 +29,6 @@ export const ComponentCheckOutContent = () => {
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
-                    console.log(values);
                     resetForm();
                 }}
                 validationSchema={formSchemaCheckOut}
