@@ -12,7 +12,8 @@
         "@assets":["src/assets"],
         "@redux":["src/redux"],
         "@utils":["src/utils"],
-        "@demos":["src/Demos"]
+        "@demos":["src/Demos"],
+        "@api":["src/api"]
       }
     }
   }

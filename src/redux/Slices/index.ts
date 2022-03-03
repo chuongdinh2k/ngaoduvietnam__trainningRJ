@@ -3,12 +3,15 @@ import { AnyAction, Reducer } from "@reduxjs/toolkit";
 
 import appReducer from "./app";
 import tourReducer from "./tours";
+import authReducer from "./auth";
 
 export * from "./app";
 export * from "./tours";
+export * from "./auth";
 
 const productReducer = combineReducers({
     app: appReducer,
+    auth: authReducer,
     tours: tourReducer,
 });
 

@@ -33,3 +33,12 @@ export const formSchemaCheckOut = Yup.object().shape({
         .max(25, "This field is cannot be longer than 25 characters!"),
     phoneNumber: Yup.number().required(),
 });
+
+export const formSchemaLogin = Yup.object().shape({
+    email: Yup.string()
+        .trim()
+        .required("This field is required!")
+        .email("Email is not value")
+        .max(255, "This field is cannot be longer than 255 characters!"),
+    password: Yup.string().trim().required("This field is required!"),
+});

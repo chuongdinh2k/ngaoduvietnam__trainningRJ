@@ -10,7 +10,8 @@ export enum appRoutesEnum {
 }
 export enum authRoutesEnum {
     LOGIN = "/login",
+    SIGN_UP = "./signup",
     REGISTER = "/register",
-    FORGOT_PASSWORD = "/reset-password/:id",
+    FORGOT_PASSWORD = "/forgot-password",
     CHANGE_PASSWORD = "/change-password/:id",
 }

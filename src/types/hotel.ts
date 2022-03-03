@@ -55,7 +55,7 @@ export interface IHotel {
     marked?: boolean;
     reviewNumber?: number;
     money?: string;
-    listImage: Array<string>;
+    listImage?: Array<string>;
     star?: number;
     description?: IDescription;
     selectRooms?: Array<ISelectRoom>;
