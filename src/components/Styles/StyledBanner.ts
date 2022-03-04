@@ -6,12 +6,12 @@ interface IStyledBanner {
 }
 export const StyledBanner = styled.div<IStyledBanner>`
     padding-top: ${(p) => {
-        if (p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_CONTACT) {
+        if (p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_HOTELS) {
             return "24rem";
         } else if (
             p.typeComponent === PAGE_ABOUT ||
             p.typeComponent === PAGE_LISTTOUR ||
-            p.typeComponent === PAGE_HOTELS
+            p.typeComponent === PAGE_CONTACT
         ) {
             return "20rem";
         }

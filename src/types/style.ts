@@ -16,4 +16,5 @@ export interface ThemeColors {
     backgroundGray: React.CSSProperties["color"];
     darkOrange: React.CSSProperties["color"];
     darkBlue2: React.CSSProperties["color"];
+    backgroundGray2: React.CSSProperties["color"];
 }

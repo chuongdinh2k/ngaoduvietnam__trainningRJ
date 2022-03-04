@@ -32,3 +32,7 @@ export const PAGE_LOGIN = "Login";
 export const PAGE_CONTACT = "Contact";
 
 export const LOGOUT = "Logout";
+
+// WHAT : phone validate
+export const validate_phone =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;

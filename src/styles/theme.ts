@@ -23,6 +23,7 @@ const colors = {
     gray3: "#C4C4C4",
     gray4: "#E8E9EA",
     backgroundGray: "#F4F4F4",
+    backgroundGray2: "#F5F5F5",
     textGray: "#8E8E93",
     darkOrange: "#F76E11",
     red: "#FF1700",

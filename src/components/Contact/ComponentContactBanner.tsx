@@ -2,7 +2,7 @@ import backgroundContact from "@assets/bannerContact.png";
 import { StyledWrapBanner, StyledBanner } from "@components";
 import { PAGE_CONTACT } from "@configs";
 
-export const ComponentHotelBanner = () => {
+export const ComponentContactBanner = () => {
     return (
         <StyledWrapBanner background_banner={backgroundContact} typeComponent={PAGE_CONTACT}>
             <div className="wrapContainer">

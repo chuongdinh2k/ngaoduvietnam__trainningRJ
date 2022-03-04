@@ -43,22 +43,26 @@ export const ComponentDrawserNav = (props: IProps) => {
             })}
             role="presentation"
         >
-            <List className={classes.wrapList}>
-                {navRoutes.map((route: ISideBarRoute, index: number) => (
-                    <ListItem button key={index} className={classes.list__item}>
-                        <ListItemText className={classes.list__text}>
-                            <NavLink to={`${route.path}`}>{route.name}</NavLink>
+            <StyledListMenu>
+                <List className={classes.wrapList}>
+                    {navRoutes.map((route: ISideBarRoute, index: number) => (
+                        <ListItem button key={index} className="list">
+                            <ListItemText className="list__item">
+                                <NavLink className="list__item-text" to={`${route.path}`} exact>
+                                    {route.name}
+                                </NavLink>
+                            </ListItemText>
+                        </ListItem>
+                    ))}
+                    <ListItem button className="list">
+                        <ListItemText className="list__item">
+                            <NavLink className="list__item-text" to={`${authRoutesEnum.LOGIN}`}>
+                                {PAGE_LOGIN}
+                            </NavLink>
                         </ListItemText>
                     </ListItem>
-                ))}
-                <ListItem button className={classes.list__item}>
-                    <ListItemText className={classes.list__text}>
-                        <NavLink className="text" to={`${authRoutesEnum.LOGIN}`}>
-                            {PAGE_LOGIN}
-                        </NavLink>
-                    </ListItemText>
-                </ListItem>
-            </List>
+                </List>
+            </StyledListMenu>
         </div>
     );
 
@@ -79,5 +83,32 @@ export const ComponentDrawserNav = (props: IProps) => {
 const StyledComponentDrawserNav = styled.div`
     .active {
         color: ${(p) => p.theme.colors.orange}!important;
+    }
+`;
+const StyledListMenu = styled.div`
+    .list {
+        padding: 0;
+        &__item {
+            width: 100%;
+            &__text {
+                width: 100%;
+            }
+            a {
+                display: block;
+                width: 25rem;
+                padding: 0.5rem 0;
+                padding-left: 1rem;
+                font-size: 2.6rem;
+                text-decoration: none;
+                color: ${(p) => p.theme.colors.darkBlack};
+            }
+            a:hover {
+                color: ${(p) => p.theme.colors.orange};
+            }
+            .active {
+                color: ${(p) => p.theme.colors.pureWhite}!important;
+                background-color: ${(p) => p.theme.colors.orange};
+            }
+        }
     }
 `;

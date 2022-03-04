@@ -4,6 +4,7 @@ interface ISWrapper {
     width?: string;
     marginTop?: string;
     hasBorder?: boolean;
+    backgroundColor?: string;
 }
 
 interface ISLabel {
@@ -17,6 +18,7 @@ export const CustomInputWrapper = styled.div`
     flex-direction: column;
 `;
 export const InputWrapper = styled.div<ISWrapper>`
+    background-color: ${(props) => props.backgroundColor || "white"};
     height: 5rem;
     border: ${(p) => {
         if (p.hasBorder) {
@@ -25,7 +27,6 @@ export const InputWrapper = styled.div<ISWrapper>`
     }};
     width: ${(props) => props.width || "100%"};
     margin-top: ${(props) => props.marginTop || "0px"};
-    background-color: white;
     padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {

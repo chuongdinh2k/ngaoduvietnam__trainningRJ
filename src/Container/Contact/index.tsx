@@ -1,13 +1,20 @@
-import { ComponentBreadscrumb, ComponentHotelBanner, Header, StyledWrapContent } from "@components";
+import {
+    ComponentBreadscrumb,
+    ComponentContactBanner,
+    ComponentContactForm,
+    Header,
+    StyledWrapContent,
+} from "@components";
 
 export const Contact = () => {
     return (
         <>
             <Header hasColor={false} />
-            <ComponentHotelBanner />
+            <ComponentContactBanner />
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
+                    <ComponentContactForm />
                 </div>
             </StyledWrapContent>
         </>

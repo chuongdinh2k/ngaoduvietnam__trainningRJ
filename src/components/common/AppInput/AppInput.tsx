@@ -27,6 +27,8 @@ interface IAppInput {
     hasBorder?: boolean;
     error?: string;
     className?: string;
+    style?: any;
+    backgroundColor?: string;
 }
 
 export const AppInput = (props: IAppInput) => {
@@ -52,8 +54,8 @@ export const AppInput = (props: IAppInput) => {
         [props]
     );
     return (
-        <CustomInputWrapper>
-            <InputWrapper hasBorder={props.hasBorder}>
+        <CustomInputWrapper {...props.style}>
+            <InputWrapper hasBorder={props.hasBorder} backgroundColor={props.backgroundColor}>
                 {props.icon ? <LabelWrapper>{props.icon}</LabelWrapper> : ""}
                 <TextField
                     className={clsx(classes.input, props.className)}

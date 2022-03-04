@@ -1,3 +1,4 @@
+import { validate_phone } from "@configs";
 import * as Yup from "yup";
 
 export const formSchemaHomeFilter = Yup.object().shape({
@@ -42,4 +43,18 @@ export const formSchemaLogin = Yup.object().shape({
         .email("Email is not value")
         .max(255, "This field is cannot be longer than 255 characters!"),
     password: Yup.string().trim().required("This field is required!"),
+});
+
+export const formSchemaContact = Yup.object().shape({
+    name: Yup.string().trim().required("This field is required!"),
+    email: Yup.string()
+        .trim()
+        .required("This field is required!")
+        .email("Email is not value")
+        .max(255, "This field is cannot be longer than 255 characters!"),
+    phone: Yup.string()
+        .trim()
+        .required("This field is required!")
+        .matches(validate_phone, "Phone number is not valid"),
+    message: Yup.string().trim().required("This field is required!"),
 });
