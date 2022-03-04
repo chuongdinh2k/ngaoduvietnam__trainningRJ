@@ -1,3 +1,4 @@
+import { SuccessMessage } from "@components";
 import {
     Home,
     About,
@@ -11,7 +12,7 @@ import {
     Contact,
 } from "@containers";
 import { appRoutesEnum, authRoutesEnum } from "@enums";
-import { LayoutAuth, LayoutError } from "@layouts";
+import { FinalPopup, LayoutAuth, LayoutError } from "@layouts";
 import { IRoute } from "@types";
 
 // WHAT: route name
@@ -34,5 +35,6 @@ export const routes: Array<IRoute> = [
     { name: HOTELS, path: appRoutesEnum.HOTELS, exact: true, component: Hotels },
     { name: CONTACT, path: appRoutesEnum.CONTACT, exact: true, component: Contact },
     { name: LOGIN, path: authRoutesEnum.LOGIN, exact: true, component: Login, layout: LayoutAuth },
-    { name: ERROR, exact: false, component: Page404Error, layout: LayoutError },
+    { path: appRoutesEnum.SUCCESS, exact: true, component: SuccessMessage, layout: FinalPopup },
+    { name: ERROR, exact: true, component: Page404Error, layout: LayoutError },
 ];

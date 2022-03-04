@@ -4,7 +4,7 @@ export const AttractiveTourLists = [
         title: "Discover interesting things in the romantic coastal city of Vungtau",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.3_wxkgsh.png",
         duration: "3 days - 2 night",
-        money: "$146.00",
+        price: 146,
         rating: 4.5,
     },
     {
@@ -12,7 +12,7 @@ export const AttractiveTourLists = [
         title: "Discover the most majestic Fansipan peak in Vietnam - the roof of Indochina",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.1_z2op9b.png",
         duration: "3 days - 2 night",
-        money: "$200.00",
+        price: 20,
         rating: 5,
     },
     {
@@ -20,7 +20,7 @@ export const AttractiveTourLists = [
         title: "Experience sea tourism on Phuquoc golden pearl",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897848/discovery4_ajazk0.png",
         duration: "3 days - 2 night",
-        money: "$120.00",
+        price: 120,
         rating: 3,
     },
     {
@@ -28,7 +28,7 @@ export const AttractiveTourLists = [
         title: "Experience sea tourism on Phuquoc golden pearl",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.1_z2op9b.png",
         duration: "3 days - 2 night",
-        money: "$120.00",
+        price: 120,
         rating: 3,
     },
 ];
@@ -71,7 +71,7 @@ export const HomeExperienceListsData = [
         title: "“ Com lang Vong “ - Traditional culinary features of the old Hanoi people",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional1_culpgb.png",
         duration: "3 days - 2 night",
-        money: "$146.00",
+        price: 146,
         rating: 4.5,
     },
     {
@@ -80,7 +80,7 @@ export const HomeExperienceListsData = [
         title: "Heritage of Quan Ho Bac Ninh - Singing passionate hearts",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
         duration: "6 hours",
-        money: "$200.00",
+        price: 20,
         rating: 5,
     },
     {
@@ -89,7 +89,7 @@ export const HomeExperienceListsData = [
         title: "“Com lang Vong “ - Traditional culinary features of the old Hanoi people",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional2_ykxdqc.png",
         duration: "3 days - 2 night",
-        money: "$120.00",
+        price: 120,
         rating: 3,
     },
     {
@@ -98,7 +98,7 @@ export const HomeExperienceListsData = [
         title: "Heritage of Quan Ho Bac Ninh - Singing passionate hearts",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
         duration: "6 hours",
-        money: "$200.00",
+        price: 20,
         rating: 5,
     },
     {
@@ -107,7 +107,7 @@ export const HomeExperienceListsData = [
         title: "Heritage of Quan Ho Bac Ninh - Singing passionate hearts",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
         duration: "6 hours",
-        money: "$200.00",
+        price: 20,
         rating: 5,
     },
     {
@@ -116,7 +116,7 @@ export const HomeExperienceListsData = [
         title: "Heritage of Quan Ho Bac Ninh - Singing passionate hearts",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
         duration: "6 hours",
-        money: "$200.00",
+        price: 20,
         rating: 5,
     },
 ];

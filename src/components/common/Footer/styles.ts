@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { DEFAULT_SCREEN } from "@configs";
+
 export const StyledFooter = styled.div`
     display: flex;
     justify-content: center;
@@ -10,7 +12,7 @@ export const StyledFooter = styled.div`
     background-color: ${(p) => p.theme.colors.darkBlack};
     .wrapper {
         width: 100%;
-        max-width: 1440px;
+        max-width: ${DEFAULT_SCREEN};
     }
     .logo {
         @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {

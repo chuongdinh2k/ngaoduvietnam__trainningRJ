@@ -45,6 +45,9 @@ export const StyledContentAuth = styled.div`
                 border-radius: 0;
                 box-shadow: none;
             }
+            .pl-1 {
+                padding-left: 1rem;
+            }
             &-forgot {
                 display: flex;
                 font-size: 1.4rem;

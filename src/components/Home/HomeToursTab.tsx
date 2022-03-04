@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { makeStyles, Button } from "@material-ui/core";
 
@@ -37,20 +37,17 @@ export const HomeToursTab = (props: IProps) => {
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
-                    console.log(values);
                     resetForm();
                 }}
                 validationSchema={formSchemaHomeFilter}
             >
-                {({ handleSubmit, values, errors, handleChange, handleBlur }) => {
+                {({ handleSubmit, values, handleChange }) => {
                     return (
                         <div className="tour__form">
                             <div className="input-group">
                                 <AppInput
                                     handleChange={handleChange("location")}
-                                    handleBlur={handleBlur("location")}
                                     icon={<IconLocation />}
-                                    error={errors.location}
                                     value={values.location}
                                     name="location"
                                     placeholder="Enter Location"
@@ -59,9 +56,7 @@ export const HomeToursTab = (props: IProps) => {
                             <div className="input-group">
                                 <AppInput
                                     handleChange={handleChange("departure")}
-                                    handleBlur={handleBlur("departure")}
                                     icon={<IconCalendar />}
-                                    error={errors.departure}
                                     value={values.departure}
                                     name="departure"
                                     placeholder="Departure time"
@@ -102,6 +97,7 @@ export const HomeToursTab = (props: IProps) => {
                                 color="primary"
                                 className={classes.button}
                                 startIcon={<IconSearch />}
+                                type="submit"
                                 onClick={() => handleSubmit()}
                             >
                                 Search

@@ -51,7 +51,6 @@ const StyledHomeDiscoverFas = styled.div`
         }
     }
     .btn {
-        width: 9.2rem;
         height: 3.8rem;
         margin-top: 1rem;
         background-color: ${(p) => p.theme.colors.darkBlack};
@@ -59,6 +58,7 @@ const StyledHomeDiscoverFas = styled.div`
         padding: 1rem 2rem;
         font-size: ${(p) => p.theme.typography.fontSize}px;
         text-transform: capitalize;
+        font-weight: ${(p) => p.theme.typography.fontWeightBold};
         cursor: pointer;
         &:hover {
             color: ${(p) => p.theme.colors.orange};

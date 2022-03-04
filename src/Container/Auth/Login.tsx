@@ -10,6 +10,7 @@ import { authRoutesEnum, appRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
 import { AppInputOutLined } from "@components";
 import { formSchemaLogin } from "@utils";
+import clsx from "clsx";
 
 export const Login = () => {
     const auth = useAppSelector(selectAuth);
@@ -79,7 +80,9 @@ export const Login = () => {
                                         disabled={auth.isLoading}
                                     >
                                         {auth.isLoading && <CircularProgress size={24} />}
-                                        Sign in
+                                        <span className={clsx(auth.isLoading ? "pl-1" : "")}>
+                                            Sign In
+                                        </span>
                                     </Button>
                                 </div>
                             );

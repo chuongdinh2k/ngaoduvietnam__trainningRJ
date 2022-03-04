@@ -1,4 +1,11 @@
-import { PAGE_ABOUT, PAGE_CONTACT, PAGE_HOME, PAGE_HOTELS, PAGE_LISTTOUR } from "@configs";
+import {
+    PAGE_ABOUT,
+    PAGE_CONTACT,
+    PAGE_HOME,
+    PAGE_HOTELS,
+    PAGE_LISTTOUR,
+    DEFAULT_SCREEN,
+} from "@configs";
 import styled from "styled-components";
 
 interface IStyledBanner {
@@ -33,7 +40,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
         }
     }};
     .content {
-        max-width: 1440px;
+        max-width: ${DEFAULT_SCREEN};
         &__subTitle {
             color: ${(p) => p.theme.colors.lightPink};
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
@@ -47,7 +54,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
             color: ${(p) => p.theme.colors.pureWhite};
             font-family: ${(p) => p.theme.typography.fontFamily};
             font-weight: ${(p) => p.theme.typography.fontWeightMedium};
-
+            @media (min-width: 2000px) {
+                font-size: 10rem;
+            }
             @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {
                 font-size: 4rem;
                 width: 50%;

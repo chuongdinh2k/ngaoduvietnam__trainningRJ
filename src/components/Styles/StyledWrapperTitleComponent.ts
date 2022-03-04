@@ -55,13 +55,15 @@ export const StyledWrapperTitleComponent = styled.div`
         color: ${(p) => p.theme.colors.darkBlack} !important;
     }
     .btn {
-        width: 9.2rem;
+        /* width: 9.2rem; */
         height: 3.8rem;
         background-color: ${(p) => p.theme.colors.darkBlack};
         color: ${(p) => p.theme.colors.pureWhite};
         padding: 1rem 2rem;
         font-size: ${(p) => p.theme.typography.fontSize}px;
         text-transform: capitalize;
+        font-weight: ${(p) => p.theme.typography.fontWeightBold};
+        border: none;
         cursor: pointer;
         &:hover {
             color: ${(p) => p.theme.colors.orange};
@@ -69,7 +71,7 @@ export const StyledWrapperTitleComponent = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 10px;
             height: 2rem;
-            margin-top: 2rem;
+            /* margin-top: 2rem; */
             padding: 0.3rem 2rem;
             width: 8rem;
         }

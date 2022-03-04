@@ -55,7 +55,6 @@ export const ComponentCheckOutContent = () => {
                                                     </label>
                                                     <AppInput
                                                         handleChange={handleChange("firstName")}
-                                                        handleBlur={handleBlur("firstName")}
                                                         name="firstName"
                                                         value={values.firstName}
                                                         placeholder="First Name"
@@ -72,7 +71,6 @@ export const ComponentCheckOutContent = () => {
                                                     </label>
                                                     <AppInput
                                                         handleChange={handleChange("lastName")}
-                                                        handleBlur={handleBlur("lastName")}
                                                         name="lastName"
                                                         value={values.lastName}
                                                         placeholder="Last Name"
@@ -88,7 +86,6 @@ export const ComponentCheckOutContent = () => {
                                                     </label>
                                                     <AppInput
                                                         handleChange={handleChange("email")}
-                                                        handleBlur={handleBlur("email")}
                                                         name="email"
                                                         value={values.email}
                                                         placeholder="email@domain.com"
@@ -105,7 +102,6 @@ export const ComponentCheckOutContent = () => {
                                                     </label>
                                                     <AppInput
                                                         handleChange={handleChange("phoneNumber")}
-                                                        handleBlur={handleBlur("phoneNumber")}
                                                         name="phoneNumber"
                                                         value={values.phoneNumber}
                                                         placeholder="Your Phone"
@@ -120,7 +116,6 @@ export const ComponentCheckOutContent = () => {
                                                     <label className="label">Your Address</label>
                                                     <AppInput
                                                         handleChange={handleChange("address")}
-                                                        handleBlur={handleBlur("address")}
                                                         name="address"
                                                         value={values.address}
                                                         placeholder="Your Address"
@@ -134,7 +129,6 @@ export const ComponentCheckOutContent = () => {
                                                     <label className="label">City</label>
                                                     <AppInput
                                                         handleChange={handleChange("city")}
-                                                        handleBlur={handleBlur("city")}
                                                         name="city"
                                                         value={values.city}
                                                         placeholder="Your City"
@@ -150,7 +144,6 @@ export const ComponentCheckOutContent = () => {
                                                     </label>
                                                     <AppInput
                                                         handleChange={handleChange("state")}
-                                                        handleBlur={handleBlur("state")}
                                                         name="state"
                                                         value={values.state}
                                                         placeholder="State/Province/Region"
@@ -166,7 +159,6 @@ export const ComponentCheckOutContent = () => {
                                                     </label>
                                                     <AppInput
                                                         handleChange={handleChange("zipCode")}
-                                                        handleBlur={handleBlur("zipCode")}
                                                         name="zipCode"
                                                         value={values.zipCode}
                                                         placeholder="Your Zip Code/ Postal Code"
@@ -180,7 +172,6 @@ export const ComponentCheckOutContent = () => {
                                                     <label className="label">Country</label>
                                                     <AppInput
                                                         handleChange={handleChange("country")}
-                                                        handleBlur={handleBlur("country")}
                                                         name="country"
                                                         value={values.country}
                                                         placeholder="Your Country"

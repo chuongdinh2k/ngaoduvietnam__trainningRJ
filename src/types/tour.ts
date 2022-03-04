@@ -86,6 +86,7 @@ export interface IDataTour {
     rating?: number;
     duration?: string;
     typeOfTour?: string;
+    price?: number;
     listImage?: Array<string>;
     discription?: IDiscription;
     additionalInfo?: IAdditionalInfo;

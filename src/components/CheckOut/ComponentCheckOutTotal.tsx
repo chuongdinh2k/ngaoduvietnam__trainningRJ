@@ -63,7 +63,7 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 handleChange={handleChange("group")}
                                 handleBlur={handleBlur("group")}
                                 placeholder="Enter group of people"
-                                icon={<GroupPeople />}
+                                icon={<GroupPeople color="#FF7B42" />}
                                 // error={errors.group}
                                 value={props.values.group}
                             />

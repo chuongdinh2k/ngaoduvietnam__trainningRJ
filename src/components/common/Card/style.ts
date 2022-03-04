@@ -7,21 +7,19 @@ export const StyledCard = styled.div`
     }
     .imageWrapper {
         width: 100%;
-        height: 29.1em;
     }
     .image {
         width: 100%;
-        height: 100%;
+        height: 29.1em;
+        /* min-height: 29.1em; */
     }
     h4 {
+        padding-top: 1rem;
         color: ${(p) => p.theme.colors.darkBlack};
         font-size: 2rem;
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-end: 0;
         cursor: pointer;
-        &:hover {
-            text-decoration: underline;
-        }
     }
     .subTitle {
         font-size: ${(p) => p.theme.typography.fontSize}px;

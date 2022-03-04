@@ -1,6 +1,7 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import { ErrorMessage } from "formik";
 
 import { InputWrapper, LabelWrapper, CustomInputWrapper, Error } from ".";
 import clsx from "clsx";
@@ -19,40 +20,26 @@ interface IAppInput {
     placeholder?: string;
     value?: string;
     handleChange: (value: any) => void;
-    handleBlur: (value: any) => void;
+    handleBlur?: (value: any) => void;
     defaultValue?: string;
     multiple?: boolean;
     name?: string;
     label?: string;
     hasBorder?: boolean;
+    noError?: boolean;
     error?: string;
     className?: string;
     style?: any;
+    ref?: any;
     backgroundColor?: string;
 }
 
-export const AppInput = (props: IAppInput) => {
+export const AppInput = forwardRef((props: IAppInput, ref) => {
     const classes = useStyles();
     // component state
-    const [inputValue, setInputValue] = React.useState("");
-    const [selectedItem, setSelectedItem] = React.useState<any>([]);
-    const handleOnChange = React.useCallback(
-        (event) => {
-            props.handleChange(event);
-            // setInputValue(event.target.value);
-            if (props.multiple) {
-                props.handleChange(selectedItem.concat([event.target.value]).join(","));
-                setInputValue(event.target.value);
-            }
-        },
-        [props, selectedItem]
-    );
-    const handleOnBlur = React.useCallback(
-        (event) => {
-            props.handleBlur(event);
-        },
-        [props]
-    );
+    const handleOnChange = (event: any) => {
+        props.handleChange(event);
+    };
     return (
         <CustomInputWrapper {...props.style}>
             <InputWrapper hasBorder={props.hasBorder} backgroundColor={props.backgroundColor}>
@@ -62,10 +49,8 @@ export const AppInput = (props: IAppInput) => {
                     placeholder={props.placeholder}
                     fullWidth
                     multiline={props.multiple ? true : false}
-                    value={props.multiple ? inputValue : props.value?.toString() || ""}
+                    value={props.value?.toString()}
                     onChange={handleOnChange}
-                    defaultValue="Default value"
-                    onBlur={handleOnBlur}
                     InputProps={{
                         disableUnderline: true,
                         style: {
@@ -75,7 +60,7 @@ export const AppInput = (props: IAppInput) => {
                     }}
                 />
             </InputWrapper>
-            {props.error && <Error>{props.error}</Error>}
+            {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
         </CustomInputWrapper>
     );
-};
+});

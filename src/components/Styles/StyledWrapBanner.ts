@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-import { PAGE_HOME, PAGE_ABOUT, PAGE_LISTTOUR, PAGE_HOTELS, PAGE_CONTACT } from "@configs";
+import {
+    PAGE_HOME,
+    PAGE_ABOUT,
+    PAGE_LISTTOUR,
+    PAGE_HOTELS,
+    PAGE_CONTACT,
+    DEFAULT_SCREEN,
+} from "@configs";
 
 interface IWrapHeader {
     background_banner?: string;
@@ -26,7 +33,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     .wrapContainer {
         width: 100%;
         height: 100%;
-        max-width: 1440px;
+        /* max-width: ${DEFAULT_SCREEN}; */
         position: relative;
     }
     .featured {
@@ -56,13 +63,14 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         );
         backdrop-filter: blur(42px);
     }
-    @media (min-width: 1441px) {
+    @media (min-width: 2000px) {
+        height: 60vh;
         padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
             left: 0;
         }
         .filter {
-            right: 16.5rem;
+            right: 0;
         }
     }
     @media (max-width: 992px) {

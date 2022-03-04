@@ -7,7 +7,7 @@ import styled from "styled-components";
 import ViewHeadlineIcon from "@material-ui/icons/ViewHeadline";
 
 import { ComponentSidebar } from "./SideBarMenu";
-import { BREAK_ONLY_MOBILE, BREAK_MEDIUM } from "@configs";
+import { DEFAULT_SCREEN } from "@configs";
 import { theme } from "@styles";
 import { ComponentDrawserNav } from "..";
 
@@ -92,7 +92,7 @@ const StyledHeader = styled.div<IStyledHeader>`
     color: ${(p) => (p?.hasColor ? `#1C1C1E` : `#ffffff`)};
     .wrapHeader {
         width: 100%;
-        max-width: 1440px;
+        /* max-width: ${DEFAULT_SCREEN}; */
     }
     .mobile__NavLogo {
         display: none;

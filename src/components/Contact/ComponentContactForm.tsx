@@ -1,10 +1,10 @@
 import { Button, Grid, TextField } from "@material-ui/core";
+import { ErrorMessage, Formik } from "formik";
+
 import { theme } from "@styles";
 import { formSchemaContact } from "@utils";
-import { Formik } from "formik";
-
 import { StyledComponentContactForm } from ".";
-import { AppInput } from "..";
+import { AppInput, Error } from "..";
 
 export const ComponentContactForm = () => {
     // component variable
@@ -29,7 +29,7 @@ export const ComponentContactForm = () => {
                                 onSubmit={(values, { resetForm }) => resetForm()}
                                 validationSchema={formSchemaContact}
                             >
-                                {({ handleSubmit, values, errors, handleChange, handleBlur }) => {
+                                {({ handleSubmit, values, handleChange, handleBlur }) => {
                                     return (
                                         <div className="form">
                                             <div className="form__input">
@@ -39,7 +39,6 @@ export const ComponentContactForm = () => {
                                                     placeholder="Your name"
                                                     handleChange={handleChange("name")}
                                                     handleBlur={handleBlur("name")}
-                                                    error={errors.name}
                                                     backgroundColor={theme.colors.backgroundGray2}
                                                 />
                                             </div>
@@ -50,7 +49,6 @@ export const ComponentContactForm = () => {
                                                     placeholder="Your email"
                                                     handleChange={handleChange("email")}
                                                     handleBlur={handleBlur("email")}
-                                                    error={errors.email}
                                                     backgroundColor={theme.colors.backgroundGray2}
                                                 />
                                             </div>
@@ -61,7 +59,6 @@ export const ComponentContactForm = () => {
                                                     placeholder="Your phone"
                                                     handleChange={handleChange("phone")}
                                                     handleBlur={handleBlur("phone")}
-                                                    error={errors.phone}
                                                     backgroundColor={theme.colors.backgroundGray2}
                                                 />
                                             </div>
@@ -78,9 +75,7 @@ export const ComponentContactForm = () => {
                                                     value={values.message}
                                                     onChange={handleChange("message")}
                                                 />
-                                                {errors.message && (
-                                                    <p className="error">{errors.message}</p>
-                                                )}
+                                                <ErrorMessage name="message" component={Error} />
                                             </div>
                                             <div className="form__wrappButton">
                                                 <Button

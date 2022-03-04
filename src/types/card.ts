@@ -3,9 +3,10 @@ export type ICard = {
     typeCardIcon?: boolean;
     title?: string;
     subTitle?: string;
-    money?: string;
+    price?: number;
     duration?: string;
     rating?: number;
     image?: string;
     typeOfTour?: string;
+    listImage?: Array<string>;
 };

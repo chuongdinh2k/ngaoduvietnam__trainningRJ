@@ -2,6 +2,7 @@ import { ICard } from "@types";
 import { theme } from "@styles";
 import { IconStar, IconFlagMark, IconLocation, IconCalendar } from "..";
 import { StyledCard, StyledCardWithIcon } from ".";
+import { convertCurrency } from "@utils";
 
 interface IProps {
     data?: ICard;
@@ -15,9 +16,13 @@ export const Card = (props: IProps) => {
             {/* WHAT: render card with specific type */}
             {typeCardIcon === true ? (
                 <StyledCardWithIcon>
-                    <div className="cardWrapper">
+                    <div className="cardWrapper" onClick={() => onClick && onClick(data?.id)}>
                         <div className="imageWrapper">
-                            <img className="image" src={data?.image} />
+                            {data?.listImage && (
+                                <img className="image" src={data && data?.listImage[0]} />
+                            )}
+                            {data?.image && <img className="image" src={data?.image} />}
+
                             <span className="iconFlag">
                                 <IconFlagMark color={theme.colors.orange} />
                             </span>
@@ -32,7 +37,7 @@ export const Card = (props: IProps) => {
                             </span>
                             <p className="location__text">{data?.subTitle}</p>
                         </div>
-                        <h4 onClick={() => onClick && onClick(data?.id)}>{data?.title}</h4>
+                        <h4>{data?.title}</h4>
                         <div className="bottom">
                             <div className="time">
                                 <span>
@@ -42,17 +47,19 @@ export const Card = (props: IProps) => {
                             </div>
                             <div className="money">
                                 from
-                                <span className="money__value">{data?.money}</span>
+                                <span className="money__value">
+                                    ${convertCurrency(data?.price)}
+                                </span>
                             </div>
                         </div>
                     </div>
                 </StyledCardWithIcon>
             ) : (
                 <StyledCard>
-                    <div className="imageWrapper">
+                    <div className="imageWrapper" onClick={() => onClick && onClick(data?.id)}>
                         <img className="image" src={data?.image} />
                     </div>
-                    <h4 onClick={() => onClick && onClick(data?.id)}>{data?.title}</h4>
+                    <h4>{data?.title}</h4>
                     <div className="subTitle">{data?.subTitle}</div>
                 </StyledCard>
             )}

@@ -5,14 +5,15 @@ import styled from "styled-components";
 import { getRelatedArray } from "@utils";
 import { IRelated, IRelatedHotel } from "@types";
 import { Card, HotelCard } from "..";
+import { selectTour, useAppSelector } from "@redux";
 
 interface IProps {
     relatedTour?: IRelated;
     relatedHotel?: IRelatedHotel;
 }
 export const ComponentRelated = (props: IProps) => {
+    // redux state
     const { relatedTour, relatedHotel } = props;
-    console.log(relatedHotel);
     //component variable
     const history = useHistory();
     const handleViewTourDetail = (id: number | undefined) => {

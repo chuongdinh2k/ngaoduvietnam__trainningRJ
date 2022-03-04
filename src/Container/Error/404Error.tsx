@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import pageNotFound from "@assets/pageNotFound.jpg";
 import { appRoutesEnum } from "@enums";
+import { DEFAULT_SCREEN } from "@configs";
 
 export const Page404Error = () => {
     const history = useHistory();
@@ -38,7 +39,7 @@ const StyledPage404Error = styled.div`
     display: flex;
     justify-content: center;
     .wrapper {
-        max-width: 1440px;
+        max-width: ${DEFAULT_SCREEN};
         .title {
             font-size: 4.5rem;
             color: #ef6d6d;

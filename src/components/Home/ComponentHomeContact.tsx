@@ -37,7 +37,6 @@ export const ComponentHomeContact = () => {
                                             hasBorder
                                             handleChange={handleChange("email")}
                                             // setFieldValue={setFieldValue}
-                                            handleBlur={handleBlur("email")}
                                             value={values.email}
                                             icon={<IconLetter color={`${theme.colors.orange}`} />}
                                             placeholder="example@gmail.com"
@@ -102,6 +101,7 @@ const StyledComponentHomeContact = styled.div`
         font-size: ${(p) => p.theme.typography.fontSize}px;
         height: 5rem;
         padding: 1rem 3.3rem;
+        padding-top: 1.5rem;
         background-color: ${(p) => p.theme.colors.darkBlack};
         color: ${(p) => p.theme.colors.pureWhite};
         margin-left: 2.1rem;

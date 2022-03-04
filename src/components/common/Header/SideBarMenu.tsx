@@ -42,61 +42,73 @@ export const ComponentSidebar = (props: IMenu) => {
     const dispatch = useDispatch();
     return (
         <StyledMenu hasColor={props.hasColor}>
-            {navRoutes.map((route, index) => (
-                <li key={index}>
-                    <NavLink to={`${route.path}`} exact>
-                        {route.name}
-                    </NavLink>
+            <ul className="menu">
+                {navRoutes.map((route, index) => (
+                    <li key={index}>
+                        <NavLink to={`${route.path}`} exact>
+                            {route.name}
+                        </NavLink>
+                    </li>
+                ))}
+                <li>
+                    {!auth?.tokenInfoAuth ? (
+                        <NavLink to={`${authRoutesEnum.LOGIN}`} exact>
+                            {PAGE_LOGIN}
+                        </NavLink>
+                    ) : (
+                        <a
+                            onClick={() => {
+                                dispatch(logout());
+                            }}
+                        >
+                            {LOGOUT}
+                        </a>
+                    )}
                 </li>
-            ))}
-            <li>
-                {!auth?.tokenInfoAuth ? (
-                    <NavLink to={`${authRoutesEnum.LOGIN}`} exact>
-                        {PAGE_LOGIN}
-                    </NavLink>
-                ) : (
-                    <a
-                        onClick={() => {
-                            dispatch(logout());
-                        }}
-                    >
-                        {LOGOUT}
-                    </a>
-                )}
-            </li>
+            </ul>
         </StyledMenu>
     );
 };
-const StyledMenu = styled.ul<IMenu>`
+const StyledMenu = styled.div<IMenu>`
+    /* display: flex;
+    flex-direction: row; */
     display: flex;
-    flex-direction: row;
+    justify-content: flex-end;
     margin-top: 3rem;
     padding: 0;
     .active {
-        color: ${(p) => p.theme.colors.orange};
+        color: ${(p) => p.theme.colors.orange} !important;
         font-weight: bold;
     }
-    li {
-        list-style: none;
-        a {
-            text-decoration: none;
-            margin-right: 6.1rem;
-            font-size: ${(p) => p.theme.typography.fontSize}px;
-            line-height: 200%;
-            font-weight: normal;
-            cursor: pointer;
-            font-family: ${(p) => p.theme.typography.fontFamily};
-            color: ${(p) => (p.hasColor ? `#1C1C1E` : p.theme.colors.pureWhite)};
-            @media (max-width: 992px) {
-                margin-right: 1.7rem;
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        li {
+            list-style: none;
+            a {
+                text-decoration: none;
+                margin-left: 6.1rem;
+                font-size: ${(p) => p.theme.typography.fontSize}px;
+                line-height: 200%;
+                font-weight: normal;
+                cursor: pointer;
+                font-family: ${(p) => p.theme.typography.fontFamily};
+                color: ${(p) => (p.hasColor ? `#1C1C1E` : p.theme.colors.pureWhite)};
+                @media (min-width: 2000px) {
+                    font-size: 4rem;
+                }
+                @media (max-width: 992px) {
+                    margin-right: 1.7rem;
+                }
+            }
+            a:hover {
+                color: ${(p) => p.theme.colors.orange};
             }
         }
-        a:hover {
-            color: ${(p) => p.theme.colors.orange};
-        }
     }
-    @media (min-width: 1441px) {
-        justify-content: space-between;
+    @media (min-width: 2000px) {
+        justify-content: flex-end;
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         display: none;

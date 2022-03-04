@@ -7,6 +7,7 @@ export enum appRoutesEnum {
     HOTELS = "/hotels",
     HOTEL_DETAIL = "/hotels/:id",
     CONTACT = "/contact",
+    SUCCESS = "/success",
 }
 export enum authRoutesEnum {
     LOGIN = "/login",

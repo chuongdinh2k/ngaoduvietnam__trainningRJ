@@ -11,18 +11,9 @@ export const NUMBER_ONE = 1;
 export const NUMBER_TWO = 2;
 // WHAT: define logo
 export const WHITE_LOGO = "../../assets/logo.png";
-// WHAT: custome breakpoints
-export const BREAK_SMALL = "321px";
-export const BREAK_MOBILE = "375px";
-export const BREAK_MOBILEPHONE = "414px";
-export const BREAK_MOBILE_MEDIUM = "575px";
-export const BREAK_TABLET = "767px";
-export const BREAK_ONLY_MOBILE = "768px";
-export const BREAK_MEDIUM = "980px";
-export const BREAK_IPAD_PRO = "1024px";
-export const BREAK_LARGE = "1200px";
-export const BREAK_BIG = "1440px";
 
+// WHAT: default breakpoints width padding;
+export const DEFAULT_SCREEN = "1407px";
 // WHAT: name of page
 export const PAGE_HOME = "Home";
 export const PAGE_ABOUT = "About";

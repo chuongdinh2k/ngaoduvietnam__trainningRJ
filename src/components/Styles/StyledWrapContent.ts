@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { HEADER_HEIGHT } from "@configs";
+import { DEFAULT_SCREEN, HEADER_HEIGHT } from "@configs";
 
 interface IStyledWrapContent {
     withOutBanner?: boolean;
@@ -11,7 +11,7 @@ export const StyledWrapContent = styled.div<IStyledWrapContent>`
     padding: 0 16.5rem;
     padding-top: ${(p) => (p.withOutBanner ? "17rem" : "0rem")};
     .wrapperContent {
-        max-width: 1440px;
+        max-width: ${DEFAULT_SCREEN};
         width: 100%;
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {

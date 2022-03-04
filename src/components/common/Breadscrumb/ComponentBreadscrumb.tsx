@@ -20,7 +20,6 @@ export const ComponentBreadscrumb = () => {
                 separator={<IconDot width="4px" height="4px" color={theme.colors.gray3} />}
                 aria-label="breadcrumb"
             >
-                {/* /details/:id  */}
                 {array.map((item, index: number) => {
                     return (
                         <Link key={index} onClick={() => handleClick(item)}>
@@ -33,7 +32,7 @@ export const ComponentBreadscrumb = () => {
     );
 };
 const StyledCustomBreadscrumb = styled.div`
-    padding-top: 2.2rem;
+    padding-top: 4rem;
     margin-bottom: 4rem;
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         margin-bottom: 2rem;

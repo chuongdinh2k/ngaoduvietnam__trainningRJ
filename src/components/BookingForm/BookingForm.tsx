@@ -38,7 +38,6 @@ export const BookingForm = (props: IProps) => {
                         group: "",
                     }}
                     onSubmit={(values) => {
-                        console.log(values);
                         history.push(`/tours/${id}/checkout`);
                     }}
                 >
@@ -63,7 +62,7 @@ export const BookingForm = (props: IProps) => {
                                             handleChange={handleChange("group")}
                                             handleBlur={handleBlur("group")}
                                             placeholder="Enter group of people"
-                                            icon={<GroupPeople />}
+                                            icon={<GroupPeople color="#FF7B42" />}
                                             error={errors.group}
                                             value={values.group}
                                         />
