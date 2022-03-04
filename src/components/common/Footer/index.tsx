@@ -88,7 +88,13 @@ export const Footer = () => {
                                                                   key={index}
                                                                   className="text__nav-item"
                                                               >
-                                                                  <a>{item}</a>
+                                                                  <a
+                                                                      onClick={() =>
+                                                                          history.push("/undefined")
+                                                                      }
+                                                                  >
+                                                                      {item}
+                                                                  </a>
                                                               </li>
                                                           )
                                                       )

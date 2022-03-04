@@ -3,11 +3,13 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
 import { ISideBarRoute, navRoutes } from "..";
 import { authRoutesEnum } from "@enums";
-import { PAGE_LOGIN } from "@configs";
+import { PAGE_LOGIN, LOGOUT } from "@configs";
+import { logout, selectAuth, useAppSelector } from "@redux";
 
 const useStyles = makeStyles({
     list: {
@@ -33,9 +35,13 @@ interface IProps {
     handleToggleDrawswer(anchor?: Anchor | null, isOpen?: boolean | undefined): void;
 }
 export const ComponentDrawserNav = (props: IProps) => {
+    // redux state
+    const auth = useAppSelector(selectAuth);
     // props states
     const { isOpen, anchor = "left", handleToggleDrawswer } = props;
     const classes = useStyles();
+
+    const dispatch = useDispatch();
     const list = (anchor: Anchor) => (
         <div
             className={clsx(classes.list, {
@@ -56,9 +62,19 @@ export const ComponentDrawserNav = (props: IProps) => {
                     ))}
                     <ListItem button className="list">
                         <ListItemText className="list__item">
-                            <NavLink className="list__item-text" to={`${authRoutesEnum.LOGIN}`}>
-                                {PAGE_LOGIN}
-                            </NavLink>
+                            {!auth?.tokenInfoAuth ? (
+                                <NavLink className="list__item-text" to={`${authRoutesEnum.LOGIN}`}>
+                                    {PAGE_LOGIN}
+                                </NavLink>
+                            ) : (
+                                <a
+                                    onClick={() => {
+                                        dispatch(logout());
+                                    }}
+                                >
+                                    {LOGOUT}
+                                </a>
+                            )}
                         </ListItemText>
                     </ListItem>
                 </List>

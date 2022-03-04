@@ -55,7 +55,7 @@ const StyledPage404Error = styled.div`
             position: absolute;
             width: 50%;
             height: 50%;
-            top: 50%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {

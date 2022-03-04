@@ -31,10 +31,6 @@ export const navRoutes: ISideBarRoute[] = [
         path: appRoutesEnum.CONTACT,
         name: "Contact",
     },
-    // {
-    //     path: authRoutesEnum.LOGIN,
-    //     name: "Login",
-    // },
 ];
 
 interface IMenu {
