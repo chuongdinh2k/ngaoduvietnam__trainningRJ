@@ -1,13 +1,15 @@
-import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import { SliderCustom } from "@components";
 import { ICard } from "@types";
 import { StyledWrapperTitleComponent } from "..";
+import { appRoutesEnum } from "@enums";
 
 interface IProps {
     AttractiveTourLists?: Array<ICard>;
 }
 export const HomeAttractiveTourComponent = (props: IProps) => {
+    const history = useHistory();
     const { AttractiveTourLists } = props;
     return (
         <StyledWrapperTitleComponent>
@@ -17,7 +19,9 @@ export const HomeAttractiveTourComponent = (props: IProps) => {
                         Attractive tour and
                         <br /> interesting experiences
                     </h3>
-                    <div className="btn">View All</div>
+                    <div className="btn" onClick={() => history.push(appRoutesEnum.TOURS)}>
+                        View All
+                    </div>
                 </div>
                 <div className="slide">
                     <SliderCustom data={AttractiveTourLists} numberSlides={3} typeCardIcon={true} />

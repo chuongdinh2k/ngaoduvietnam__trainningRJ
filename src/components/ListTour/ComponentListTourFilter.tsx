@@ -47,7 +47,7 @@ export const ComponentListTourFilter = (props: IProps) => {
                 </div>
                 <Formik
                     initialValues={initialValuesPackage}
-                    onSubmit={(values) => console.log(values)}
+                    onSubmit={(values, { resetForm }) => resetForm()}
                 >
                     {({ handleSubmit, values, handleChange }) => {
                         return (

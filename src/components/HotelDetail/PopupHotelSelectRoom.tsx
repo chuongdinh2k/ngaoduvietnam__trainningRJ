@@ -27,20 +27,14 @@ interface IProps {
     isOpen: boolean;
     handleClose: () => void;
     selectRoom?: ISelectRoom;
+    handleSelectRoom?: () => void;
+    isSelected: boolean;
 }
 
-const hotelListRoom = [
-    "https://res.cloudinary.com/chuongdinh/image/upload/v1645063929/about4_kwrzro.png",
-    "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
-    "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional2_ykxdqc.png",
-    "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
-    "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional1_culpgb.png",
-];
 export const PopupHotelSelectRoom = (props: IProps) => {
     // props
-    const { isOpen, handleClose, selectRoom } = props;
+    const { isOpen, handleClose, isSelected, selectRoom, handleSelectRoom } = props;
     const classes = useStyles();
-    console.log(selectRoom);
     return (
         <div>
             <Modal
@@ -70,7 +64,12 @@ export const PopupHotelSelectRoom = (props: IProps) => {
                                                 </span>
                                                 /night
                                             </p>
-                                            <div className="left__top-btn">Select Room</div>
+                                            <div
+                                                className="left__top-btn"
+                                                onClick={handleSelectRoom}
+                                            >
+                                                {isSelected ? "Selected Room" : "Select Room"}
+                                            </div>
                                         </div>
                                         <div className="left__content">
                                             <ComponentCustomViewImage
@@ -188,6 +187,7 @@ const StyledComponentPopup = styled.div`
                 font-size: 1.6rem;
                 font-weight: ${(p) => p.theme.typography.fontWeightBold};
                 text-align: center;
+                cursor: pointer;
                 background-color: ${(p) => p.theme.colors.orange};
                 @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                     font-size: 1.4rem;

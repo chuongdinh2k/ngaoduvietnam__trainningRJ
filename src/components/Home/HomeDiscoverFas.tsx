@@ -1,12 +1,15 @@
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import { SliderCustom } from "@components";
 import { ICard } from "@types";
+import { appRoutesEnum } from "@enums";
 
 interface IProps {
     HomeDiscoverFasListsData?: Array<ICard>;
 }
 export const HomeDiscoverFas = (props: IProps) => {
+    const history = useHistory();
     const { HomeDiscoverFasListsData } = props;
     return (
         <StyledHomeDiscoverFas>
@@ -14,7 +17,9 @@ export const HomeDiscoverFas = (props: IProps) => {
                 <h3>
                     Discover fascinating <br /> destinations
                 </h3>
-                <div className="btn">View All</div>
+                <div className="btn" onClick={() => history.push(appRoutesEnum.TOURS)}>
+                    View All
+                </div>
             </div>
             <div className="slide">
                 <SliderCustom data={HomeDiscoverFasListsData} numberSlides={4} />

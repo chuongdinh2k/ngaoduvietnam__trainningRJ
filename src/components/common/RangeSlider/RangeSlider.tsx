@@ -65,6 +65,7 @@ export const AppRangeSlider = (props: IProps) => {
                 valueLabelDisplay="on"
                 aria-labelledby="range-slider"
                 getAriaValueText={valuetext}
+                valueLabelFormat={valuetext}
                 min={min}
                 max={max}
             />

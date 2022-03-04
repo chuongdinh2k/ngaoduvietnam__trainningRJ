@@ -14,8 +14,13 @@ interface IProps {
 export const ComponentHotelRoom = (props: IProps) => {
     const { selectRoom } = props;
 
+    // state component
+    const [selected, setSelected] = React.useState<boolean>(false);
     // component states
     const [isOpen, setIsOpen] = React.useState(false);
+    const handleSelectRoom = () => {
+        setSelected(!selected);
+    };
     const handleClose = () => {
         setIsOpen(false);
     };
@@ -28,9 +33,11 @@ export const ComponentHotelRoom = (props: IProps) => {
                 isOpen={isOpen}
                 handleClose={handleClose}
                 selectRoom={selectRoom}
+                handleSelectRoom={handleSelectRoom}
+                isSelected={selected}
             />
             <div className="wrapperRoom">
-                <div className="wrapper__image">
+                <div className="wrapper__image" onClick={handleOpen}>
                     <span className="wrapper__image-icon">
                         <IconPicture />
                     </span>
@@ -70,14 +77,22 @@ export const ComponentHotelRoom = (props: IProps) => {
                     </ul>
                     <div className="wrapperBottom">
                         <Button
-                            onClick={handleOpen}
+                            onClick={handleSelectRoom}
                             disabled={selectRoom?.roomAvailable === 0 ? true : false}
                             className={clsx(
                                 "content__btn",
-                                selectRoom?.roomAvailable === 0 ? "outDated" : ""
+                                selectRoom?.roomAvailable === 0
+                                    ? "outDated"
+                                    : selected
+                                    ? "active"
+                                    : ""
                             )}
                         >
-                            {selectRoom?.roomAvailable === 0 ? "Out of Room" : "Select Room"}
+                            {selectRoom?.roomAvailable === 0
+                                ? "Out of Room"
+                                : selected
+                                ? "Selected Room"
+                                : "Select Room"}
                         </Button>
                         <div className="content__price">
                             <span className="content__price-highlight">
@@ -99,6 +114,7 @@ const StyledComponentHotelRoom = styled.div`
     }
     .wrapper__image {
         position: relative;
+        cursor: pointer;
         &-icon {
             top: 0.6rem;
             left: 0.6rem;
@@ -193,7 +209,7 @@ const StyledComponentHotelRoom = styled.div`
             text-align: center;
             width: 17rem;
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
-            padding: 1.5rem 3rem 1rem 3rem;
+            padding: 1.5rem 0 1rem 0;
             cursor: pointer;
             color: ${(p) => p.theme.colors.orange};
             border: 1px solid ${(p) => p.theme.colors.orange};

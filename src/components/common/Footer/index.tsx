@@ -1,22 +1,35 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import { StyledFooter } from "./styles";
 import logo from "@assets/logo.png";
 import { IconFacebook, IconTwitter, IconInstagram, IconLocation, IconLetter } from "@components";
+import { appRoutesEnum } from "@enums";
 
+interface INav {
+    title?: string;
+    route?: string;
+}
 interface IData {
-    nav?: Array<string>;
+    nav?: Array<INav>;
     policy?: Array<string>;
 }
 
 const fakeDataNav: IData = {
-    nav: ["Home", "About", "Tours", "Hotels", "Contact"],
+    nav: [
+        { title: "Home", route: appRoutesEnum.HOME },
+        { title: "About", route: appRoutesEnum.ABOUT },
+        { title: "Tours", route: appRoutesEnum.TOURS },
+        { title: "Hotels", route: appRoutesEnum.HOTELS },
+        { title: "Contact", route: appRoutesEnum.CONTACT },
+    ],
     policy: ["Partner with us", "Term & Conditions", "Privacy Policy", "Guest Policy"],
 };
 
 export const Footer = () => {
+    const history = useHistory();
     return (
         <div style={{ backgroundColor: "#000000" }}>
             <div className="wrapperFooter">
@@ -46,12 +59,20 @@ export const Footer = () => {
                                             <ul className="text__nav">
                                                 {fakeDataNav.nav
                                                     ? fakeDataNav.nav.map(
-                                                          (item: string, index: number) => (
+                                                          (item: INav, index: number) => (
                                                               <li
                                                                   key={index}
                                                                   className="text__nav-item"
                                                               >
-                                                                  <a>{item}</a>
+                                                                  <a
+                                                                      onClick={() =>
+                                                                          history.push(
+                                                                              item.route as string
+                                                                          )
+                                                                      }
+                                                                  >
+                                                                      {item?.title}
+                                                                  </a>
                                                               </li>
                                                           )
                                                       )
