@@ -35,13 +35,14 @@ export const Login = () => {
                     </p>
                     <Formik
                         initialValues={initialValuesPackage}
-                        onSubmit={(values, { setSubmitting }) => {
+                        onSubmit={(values, { setSubmitting, resetForm }) => {
                             dispatch(login(values));
                             setSubmitting(true);
+                            resetForm();
                         }}
                         validationSchema={formSchemaLogin}
                     >
-                        {({ handleSubmit, values, errors, handleChange, handleBlur }) => {
+                        {({ handleSubmit, values, handleChange }) => {
                             return (
                                 <div className="content__form">
                                     <div className="content__form-input">
@@ -51,8 +52,6 @@ export const Login = () => {
                                             name="email"
                                             typePassword={false}
                                             handleChange={handleChange("email")}
-                                            handleBlur={handleBlur("email")}
-                                            error={errors.email}
                                         />
                                     </div>
                                     <div className="content__form-input">
@@ -62,8 +61,6 @@ export const Login = () => {
                                             name="password"
                                             typePassword
                                             handleChange={handleChange("password")}
-                                            handleBlur={handleBlur("password")}
-                                            error={errors.password}
                                         />
                                     </div>
                                     <div className="content__form-forgot">

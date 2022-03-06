@@ -99,7 +99,7 @@ const StyledMenu = styled.div<IMenu>`
                     font-size: 4rem;
                 }
                 @media (max-width: 992px) {
-                    margin-right: 1.7rem;
+                    margin-left: 1.7rem;
                 }
             }
             a:hover {

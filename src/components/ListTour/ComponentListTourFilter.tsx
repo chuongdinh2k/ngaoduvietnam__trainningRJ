@@ -2,8 +2,10 @@ import React, { ChangeEvent } from "react";
 import { Divider } from "@material-ui/core";
 import styled from "styled-components";
 import { Formik } from "formik";
+import { useDispatch } from "react-redux";
 
 import { AppRangeSlider, AppCheckBox } from "..";
+import { filterTour } from "@redux";
 
 interface IRangeSlider {
     name?: string;
@@ -32,9 +34,9 @@ export const ComponentListTourFilter = (props: IProps) => {
     const initialValuesPackage = {
         typeOfTour: [],
         duration: [],
-        range: valueRange,
     };
-    // WHAT: handle range value
+    const dispatch = useDispatch();
+    // WHAT: handle price value
     const handleChangeRange = (event: ChangeEvent<any>, newValue: number | number[]) => {
         setValueRange(newValue as number[]);
     };
@@ -47,7 +49,12 @@ export const ComponentListTourFilter = (props: IProps) => {
                 </div>
                 <Formik
                     initialValues={initialValuesPackage}
-                    onSubmit={(values, { resetForm }) => resetForm()}
+                    onSubmit={(values, { resetForm, setSubmitting }) => {
+                        console.log({ ...values, price: valueRange });
+                        dispatch(filterTour({ ...values, price: valueRange }));
+                        resetForm();
+                        setSubmitting(true);
+                    }}
                 >
                     {({ handleSubmit, values, handleChange }) => {
                         return (
@@ -55,7 +62,7 @@ export const ComponentListTourFilter = (props: IProps) => {
                                 <div className="slide">
                                     <AppRangeSlider
                                         value={valueRange}
-                                        name="range"
+                                        name="price"
                                         handleChange={handleChangeRange}
                                         title={moneyRange && moneyRange.name}
                                         min={moneyRange && moneyRange.min}

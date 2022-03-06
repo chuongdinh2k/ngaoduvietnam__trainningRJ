@@ -13,8 +13,9 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
 import clsx from "clsx";
 import React from "react";
 import { Error } from "..";
+import { ErrorMessage } from "formik";
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
     createStyles({
         root: {
             display: "flex",
@@ -26,9 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: {
             // margin: theme.spacing(1),
         },
-        // withoutLabel: {
-        //     marginTop: theme.spacing(3),
-        // },
+
         textField: {
             width: "100%",
             "& .MuiOutlinedInput-input": {
@@ -45,11 +44,12 @@ interface IProps {
     placeholder?: string;
     value?: string;
     handleChange: (value: string) => void;
-    handleBlur: (value: string) => void;
+    handleBlur?: (value: string) => void;
     name?: string;
     label?: string;
     error?: string;
     typePassword?: boolean;
+    noError?: boolean;
 }
 export const AppInputOutLined = (props: IProps) => {
     const classes = useStyles();
@@ -65,13 +65,6 @@ export const AppInputOutLined = (props: IProps) => {
         },
         [props]
     );
-    const handleOnBlur = React.useCallback(
-        (event) => {
-            props.handleBlur(event);
-            // setShowPassword(!showPassword);
-        },
-        [props]
-    );
     return (
         <StyledAppInputOutLined>
             <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
@@ -82,7 +75,6 @@ export const AppInputOutLined = (props: IProps) => {
                     type={showPassword ? "password" : "text"}
                     value={props.value}
                     onChange={handleOnChange}
-                    onBlur={handleOnBlur}
                     fullWidth
                     endAdornment={
                         <InputAdornment position="end">
@@ -101,7 +93,7 @@ export const AppInputOutLined = (props: IProps) => {
                     labelWidth={70}
                 />
             </FormControl>
-            {props.error && <Error>{props.error}</Error>}
+            {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
         </StyledAppInputOutLined>
     );
 };

@@ -64,9 +64,11 @@ export const StyledWrapperTitleComponent = styled.div`
         text-transform: capitalize;
         font-weight: ${(p) => p.theme.typography.fontWeightBold};
         border: none;
+        transition: 250ms;
         cursor: pointer;
         &:hover {
             color: ${(p) => p.theme.colors.orange};
+            transform: translateX(-10px);
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 10px;

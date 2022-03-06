@@ -68,7 +68,7 @@ export const dataTours = [
         rating: 4.5,
         duration: "3 days - 2 nights",
         typeOfTour: "Sun - Beach",
-        price: 20,
+        price: 220,
         listImage: [
             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
             "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",

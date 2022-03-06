@@ -15,7 +15,7 @@ export const StyledWrapContent = styled.div<IStyledWrapContent>`
         width: 100%;
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-        padding: 0 8rem;
+        padding: 0 12rem;
         padding-top: ${(p) => (p.withOutBanner ? HEADER_HEIGHT : "0rem")};
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {

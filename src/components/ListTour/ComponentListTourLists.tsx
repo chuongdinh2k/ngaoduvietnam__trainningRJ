@@ -12,6 +12,7 @@ interface IProps {
 export const ComponentListTourLists = (props: IProps) => {
     // redux states
     const tourData = useAppSelector(selectTour);
+    const filterTour = tourData.filterData;
     // props
     const { data } = props;
     // component variable
@@ -23,12 +24,18 @@ export const ComponentListTourLists = (props: IProps) => {
         <StyledComponentListTourLists>
             <div className="wrapper">
                 <Grid container spacing={4}>
-                    {tourData &&
-                        tourData.dataToursList.map((item: ICard, index) => (
-                            <Grid item key={index} xs={12} md={4}>
-                                <Card typeCardIcon data={item} onClick={handleViewDetail} />
-                            </Grid>
-                        ))}
+                    {!filterTour.length
+                        ? tourData &&
+                          tourData.dataToursList.map((item: ICard, index) => (
+                              <Grid item key={index} xs={12} sm={4}>
+                                  <Card typeCardIcon data={item} onClick={handleViewDetail} />
+                              </Grid>
+                          ))
+                        : filterTour.map((item: ICard, index) => (
+                              <Grid item key={index} xs={12} sm={4}>
+                                  <Card typeCardIcon data={item} onClick={handleViewDetail} />
+                              </Grid>
+                          ))}
                 </Grid>
             </div>
         </StyledComponentListTourLists>

@@ -106,5 +106,9 @@ const StyledComponentHomeContact = styled.div`
         color: ${(p) => p.theme.colors.pureWhite};
         margin-left: 2.1rem;
         margin-bottom: 2rem;
+        transition: 250ms;
+        &:hover {
+            transition: translateY(-10px);
+        }
     }
 `;

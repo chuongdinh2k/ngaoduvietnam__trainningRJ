@@ -7,11 +7,17 @@ export const StyledCard = styled.div`
     }
     .imageWrapper {
         width: 100%;
+        /* overflow: hidden; */
+    }
+    .imageWrapper .image {
+        &:hover {
+            transform: scale(1);
+        }
     }
     .image {
         width: 100%;
         height: 29.1em;
-        /* min-height: 29.1em; */
+        transition: 250ms;
     }
     h4 {
         padding-top: 1rem;
@@ -19,7 +25,6 @@ export const StyledCard = styled.div`
         font-size: 2rem;
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-end: 0;
-        cursor: pointer;
     }
     .subTitle {
         font-size: ${(p) => p.theme.typography.fontSize}px;
@@ -32,6 +37,11 @@ export const StyledCardWithIcon = styled.div`
         /* padding: 1.5rem; */
         width: 100%;
         margin-right: 3rem;
+        transition: 250ms;
+        &:hover {
+            cursor: pointer;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding: 0;
             margin-right: 0;
@@ -44,7 +54,11 @@ export const StyledCardWithIcon = styled.div`
     .imageWrapper {
         width: 100%;
         height: 24.9rem;
+        overflow: hidden;
         position: relative;
+    }
+    .image {
+        transition: 250ms;
     }
     .iconFlag {
         position: absolute;
@@ -114,10 +128,6 @@ export const StyledCardWithIcon = styled.div`
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         margin-block-start: 0.9rem;
         margin-block-end: 1rem;
-        cursor: pointer;
-        &:hover {
-            text-decoration: underline;
-        }
     }
     .bottom {
         justify-content: space-between;

@@ -14,7 +14,7 @@ export const HotelCard = (props: IProps) => {
     return (
         <>
             <StyledCardWithIcon>
-                <div className="cardWrapper">
+                <div className="cardWrapper" onClick={() => onClick && onClick(data?.id)}>
                     <div className="imageWrapper">
                         <img className="image" src={data?.listImage && data?.listImage[0]} />
                         <span className="iconFlag">
@@ -32,7 +32,7 @@ export const HotelCard = (props: IProps) => {
                         </span>
                         <p className="location__text">{data?.location}</p>
                     </div>
-                    <h4 onClick={() => onClick && onClick(data?.id)}>{data?.title}</h4>
+                    <h4>{data?.title}</h4>
                     <div className="bottom">
                         <div className="rating">
                             <span className="rating__point">Rating: {data?.rating}</span>
