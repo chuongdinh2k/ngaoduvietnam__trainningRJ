@@ -1,21 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { makeStyles, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 import { AppSelect, GroupPeople, Flag } from "@components";
 import { IconSearch, AppInput, IconCalendar, IconLocation } from "@components";
 import { Formik } from "formik";
 import { formSchemaHomeFilter } from "@utils";
-
-const useStyles = makeStyles((theme) => ({
-    button: {
-        margin: theme.spacing,
-        width: "100%",
-        height: "6.4rem",
-        color: theme.colors.pureWhite,
-        textTransform: "capitalize",
-    },
-}));
 
 interface IProps {
     formTitle?: string;
@@ -30,7 +20,6 @@ export const HomeToursTab = (props: IProps) => {
         group: "",
         typeOfTour: "",
     };
-    const classes = useStyles();
     return (
         <StyledHomeToursTab>
             <p className="title">{props.formTitle}</p>
@@ -95,7 +84,7 @@ export const HomeToursTab = (props: IProps) => {
                             <Button
                                 variant="contained"
                                 color="primary"
-                                className={classes.button}
+                                className="btn"
                                 startIcon={<IconSearch />}
                                 type="submit"
                                 onClick={() => handleSubmit()}
@@ -125,6 +114,17 @@ const StyledHomeToursTab = styled.div`
         margin-top: 1.8rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-top: 0.8rem;
+        }
+    }
+    .btn {
+        margin: 8px;
+        width: 100%;
+        height: 6.4rem;
+        color: ${(p) => p.theme.colors.pureWhite};
+        text-transform: capitalize;
+        @media (min-width: 2000px) {
+            height: 10rem;
+            font-size: 2.6rem;
         }
     }
 `;

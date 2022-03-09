@@ -14,7 +14,7 @@ export const ComponentTabDetailDescription = (props: IProps) => {
         <StyledComponentTab>
             <div className="wrapper">
                 <div className="content overview">
-                    <h3 className="content__title">{description?.overview.name}</h3>
+                    <h3 className="content__title">{description?.overview?.name}</h3>
                     <p className="content__text">{description?.overview.title}</p>
 
                     <ul className="content__wrapperlist">

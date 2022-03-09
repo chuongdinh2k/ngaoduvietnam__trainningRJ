@@ -29,6 +29,13 @@ export const InputWrapper = styled.div<ISWrapper>`
     margin-top: ${(props) => props.marginTop || "0px"};
     padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
+    @media (min-width: 2000px) {
+        height: 10rem;
+        padding: 3.2rem 2rem 1.6rem 2rem;
+        .MuiInputBase-input {
+            font-size: 2.6rem;
+        }
+    }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 1rem 1.2rem;
     }

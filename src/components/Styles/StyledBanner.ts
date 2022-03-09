@@ -46,6 +46,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
             font-size: 16px;
             font-family: ${(p) => p.theme.typography.fontFamily};
+            @media (min-width: 2000px) {
+                font-size: 5rem;
+            }
         }
         &__title {
             margin-block-start: 0;
@@ -72,7 +75,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
             }
         }
     }
-
+    @media (min-width: 2000px) {
+        padding-top: 50rem;
+    }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         width: 100%;
     }

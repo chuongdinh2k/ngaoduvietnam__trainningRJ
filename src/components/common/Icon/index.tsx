@@ -20,3 +20,4 @@ export * from "./IconProfile";
 export * from "./IconPicture";
 export * from "./IconSquare";
 export * from "./IconBed";
+export * from "./IconDownload";

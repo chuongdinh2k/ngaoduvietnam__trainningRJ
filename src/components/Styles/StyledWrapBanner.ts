@@ -68,9 +68,21 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
             left: 0;
+            width: 40%;
+            padding: 2.6rem 2rem 0 2rem;
+            font-size: 2.2rem;
         }
         .filter {
             right: 0;
+            width: 40%;
+            .MuiTabs-flexContainer {
+                justify-content: space-between;
+            }
+            .MuiTab-root {
+                height: 10rem ;
+                font-size: 2.6rem;
+                max-width: 50%;
+            }
         }
     }
     @media (max-width: 992px) {

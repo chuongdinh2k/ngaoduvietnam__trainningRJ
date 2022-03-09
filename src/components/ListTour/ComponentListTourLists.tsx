@@ -13,8 +13,6 @@ export const ComponentListTourLists = (props: IProps) => {
     // redux states
     const tourData = useAppSelector(selectTour);
     const filterTour = tourData.filterData;
-    // props
-    const { data } = props;
     // component variable
     const history = useHistory();
     const handleViewDetail = (id: number | undefined) => {

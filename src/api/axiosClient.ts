@@ -6,7 +6,7 @@ import { SecureStorageEnum } from "@enums";
 
 const accessToken = secureStorageGetItem(SecureStorageEnum.ACCESS_TOKEN);
 export const axiosClient = axios.create({
-    baseURL: "https://ducky-ecommerce-server.herokuapp.com",
+    // baseURL: "https://ducky-ecommerce-server.herokuapp.com",
     headers: {
         "access-token": `${accessToken}`,
         "Content-Type": "application/json",

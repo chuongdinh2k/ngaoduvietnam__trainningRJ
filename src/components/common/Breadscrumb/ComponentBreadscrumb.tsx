@@ -1,16 +1,25 @@
 import { Breadcrumbs, Link } from "@material-ui/core";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { IconDot } from "..";
 import { theme } from "@styles";
 import { concatUrl, splitUrl } from "@utils";
 
-export const ComponentBreadscrumb = () => {
+interface IProps {
+    id?: string;
+    title?: string;
+}
+export const ComponentBreadscrumb = (props: IProps) => {
     const history = useHistory();
     //WHAT: get url then put params to array;
     const url = window.location.pathname;
+    const { id } = useParams<{ id: string }>();
     const array = concatUrl(url);
+    // WHAT: display title of detail instead of id
+    if (id && props.id === id) {
+        array[array.length - 1].name = props.title;
+    }
     function handleClick(value: string) {
         history.push(`${splitUrl(url, value)?.join("/")}`);
     }
@@ -22,8 +31,8 @@ export const ComponentBreadscrumb = () => {
             >
                 {array.map((item, index: number) => {
                     return (
-                        <Link key={index} onClick={() => handleClick(item)}>
-                            {item === "" ? "Home" : item}
+                        <Link key={index} onClick={() => handleClick(item?.value)}>
+                            {item?.name === "" ? "Home" : item?.name}
                         </Link>
                     );
                 })}

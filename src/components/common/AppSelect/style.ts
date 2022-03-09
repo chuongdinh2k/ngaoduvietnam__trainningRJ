@@ -20,6 +20,13 @@ export const InputWrapper = styled.div<ISWrapper>`
     padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
     margin-bottom: 1.8rem;
+    @media (min-width: 2000px) {
+        height: 10rem;
+        padding: 3.2rem 2rem 1.6rem 2rem;
+        .MuiInputBase-input {
+            font-size: 2.6rem;
+        }
+    }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 1rem 1.2rem;
     }

@@ -50,7 +50,6 @@ export const ComponentListTourFilter = (props: IProps) => {
                 <Formik
                     initialValues={initialValuesPackage}
                     onSubmit={(values, { resetForm, setSubmitting }) => {
-                        console.log({ ...values, price: valueRange });
                         dispatch(filterTour({ ...values, price: valueRange }));
                         resetForm();
                         setSubmitting(true);

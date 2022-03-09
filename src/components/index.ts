@@ -13,3 +13,4 @@ export * from "./Hotels";
 export * from "./HotelDetail";
 export * from "./Contact";
 export * from "./SuccessMessage";
+export * from "./PrivicyPolicy";

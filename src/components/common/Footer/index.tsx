@@ -14,7 +14,7 @@ interface INav {
 }
 interface IData {
     nav?: Array<INav>;
-    policy?: Array<string>;
+    policy?: Array<INav>;
 }
 
 const fakeDataNav: IData = {
@@ -25,7 +25,24 @@ const fakeDataNav: IData = {
         { title: "Hotels", route: appRoutesEnum.HOTELS },
         { title: "Contact", route: appRoutesEnum.CONTACT },
     ],
-    policy: ["Partner with us", "Term & Conditions", "Privacy Policy", "Guest Policy"],
+    policy: [
+        {
+            title: "Partner with us",
+            route: "Partner with us",
+        },
+        {
+            title: "Term & Conditions",
+            route: "Term & Conditions",
+        },
+        {
+            title: "Privacy Policy",
+            route: appRoutesEnum.PRIVACY,
+        },
+        {
+            title: "Guest Policy",
+            route: "Guest Policy",
+        },
+    ],
 };
 
 export const Footer = () => {
@@ -83,17 +100,19 @@ export const Footer = () => {
                                             <ul className="text__nav">
                                                 {fakeDataNav.policy
                                                     ? fakeDataNav.policy.map(
-                                                          (item: string, index: number) => (
+                                                          (item: INav, index: number) => (
                                                               <li
                                                                   key={index}
                                                                   className="text__nav-item"
                                                               >
                                                                   <a
                                                                       onClick={() =>
-                                                                          history.push("/undefined")
+                                                                          history.push(
+                                                                              item.route as string
+                                                                          )
                                                                       }
                                                                   >
-                                                                      {item}
+                                                                      {item.title}
                                                                   </a>
                                                               </li>
                                                           )

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import React from "react";
 
-import { IHotelReviews, IReviews } from "@types";
+import { IComment, IHotelReviews, IReviews } from "@types";
 import { ComponentShowRating, ComponentCommentBox, ComponentUserComment } from ".";
 
 interface IProps {
@@ -8,6 +9,7 @@ interface IProps {
     hotelReviews?: IHotelReviews;
 }
 export const ComponentTabReview = (props: IProps) => {
+    // const [comments, setComment] = React.useState<Array<IComment>>();
     const { tourReviews, hotelReviews } = props;
     return (
         <StyledComponentTabReview>
@@ -20,11 +22,11 @@ export const ComponentTabReview = (props: IProps) => {
                 />
             )}
             {tourReviews && <ComponentCommentBox />}
-            {tourReviews?.listComments?.map((item, index) => (
+            {/* {tourReviews?.listComments?.map((item, index) => (
                 <div key={index}>
                     <ComponentUserComment commentTour={item} />
                 </div>
-            ))}
+            ))} */}
             {/* hotel review element */}
             {hotelReviews && (
                 <div className="rating">

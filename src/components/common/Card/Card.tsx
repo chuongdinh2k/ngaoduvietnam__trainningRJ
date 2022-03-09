@@ -35,7 +35,7 @@ export const Card = (props: IProps) => {
                             <span>
                                 <IconLocation />
                             </span>
-                            <p className="location__text">{data?.subTitle}</p>
+                            <p className="location__text">{data?.location}</p>
                         </div>
                         <h4>{data?.title}</h4>
                         <div className="bottom">
