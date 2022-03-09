@@ -1,72 +1,58 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik } from "formik";
 import { Button } from "@material-ui/core";
-import { useDispatch } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 
-import { login, selectAuth, useAppSelector } from "@redux";
-import { authRoutesEnum, appRoutesEnum } from "@enums";
+import { selectAuth, useAppSelector } from "@redux";
+import { authRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
 import { AppInputOutLined, IconFacebook } from "@components";
-import { formSchemaLogin } from "@utils";
+import { formSchemaChangePassword } from "@utils";
 import clsx from "clsx";
 
-export const Login = () => {
-    const auth = useAppSelector(selectAuth);
-    const dispatch = useDispatch();
+export const ChangePassword = () => {
+    // hook
     const history = useHistory();
-    useEffect(() => {
-        if (auth.tokenInfoAuth) {
-            history.push(appRoutesEnum.HOME);
-        }
-    }, [auth]);
+    const auth = useAppSelector(selectAuth);
     const initialValuesPackage = {
-        password: "",
-        email: "",
+        newPassword: "",
+        confirmPassword: "",
     };
     return (
         <StyledContentAuth>
             <div className="wrapperAuth">
                 <div className="content">
-                    <h2 className="content__title">Sign In</h2>
-                    <p className="content__subTitle">
-                        Welcome to <span>NgaoduVietNam</span>
-                    </p>
+                    <h2 className="content__title">New Password</h2>
+                    <p className="content__subTitle">Ceate your new password</p>
                     <Formik
                         initialValues={initialValuesPackage}
                         onSubmit={(values, { setSubmitting, resetForm }) => {
-                            dispatch(login(values));
                             setSubmitting(true);
                             resetForm();
                         }}
-                        validationSchema={formSchemaLogin}
+                        validationSchema={formSchemaChangePassword}
                     >
                         {({ handleSubmit, values, handleChange }) => {
                             return (
                                 <div className="content__form">
                                     <div className="content__form-input">
                                         <AppInputOutLined
-                                            value={values.email}
-                                            label="Email"
-                                            name="email"
-                                            typePassword={false}
-                                            handleChange={handleChange("email")}
+                                            value={values.newPassword}
+                                            label="New password"
+                                            name="newPassword"
+                                            typePassword
+                                            handleChange={handleChange("newPassword")}
                                         />
                                     </div>
                                     <div className="content__form-input">
                                         <AppInputOutLined
-                                            value={values.password}
-                                            label="Password"
-                                            name="password"
+                                            value={values.confirmPassword}
+                                            label="Confirm Password"
+                                            name="confirmPassword"
                                             typePassword
-                                            handleChange={handleChange("password")}
+                                            handleChange={handleChange("confirmPassword")}
                                         />
-                                    </div>
-                                    <div className="content__form-forgot">
-                                        <Link to={authRoutesEnum.FORGOT_PASSWORD}>
-                                            Forgot Password?
-                                        </Link>
                                     </div>
                                     <Button
                                         variant="contained"
@@ -77,6 +63,7 @@ export const Login = () => {
                                         disabled={auth.isLoading}
                                     >
                                         {auth.isLoading && <CircularProgress size={24} />}
+
                                         <span className={clsx(auth.isLoading ? "pl-1" : "")}>
                                             Sign In
                                         </span>
@@ -96,7 +83,7 @@ export const Login = () => {
                         }}
                     </Formik>
                     <p className="content__bottom">
-                        Don't have an account? <Link to={authRoutesEnum.REGISTER}>Sign up</Link>
+                        Member already? <Link to={authRoutesEnum.LOGIN}>Log in</Link>{" "}
                     </p>
                 </div>
             </div>

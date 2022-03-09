@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { dataTours } from "@demos";
 import { IDataTour } from "@types";
 import { filterArry } from "@utils";
 import { toursApi } from "@api";

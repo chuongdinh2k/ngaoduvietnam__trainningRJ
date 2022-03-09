@@ -12,6 +12,8 @@ import {
     Page404Error,
     Contact,
     PrivacyPolicy,
+    ChangePassword,
+    ForgotPassword,
 } from "@containers";
 import { appRoutesEnum, authRoutesEnum } from "@enums";
 import { FinalPopup, LayoutAuth, LayoutError } from "@layouts";
@@ -27,6 +29,8 @@ export const LOGIN = "Login";
 export const REGISTER = "Register";
 export const CHECKOUT = "Checkout";
 export const ERROR = "Error";
+export const CHANGE_PASSWORD_NAME = "Change Password";
+export const FORGOT_PASSWORD_NAME = "Forgot Password";
 
 export const routes: Array<IRoute> = [
     { name: HOME, path: appRoutesEnum.HOME, exact: true, component: Home },
@@ -44,7 +48,21 @@ export const routes: Array<IRoute> = [
         component: Register,
         layout: LayoutAuth,
     },
+    {
+        name: FORGOT_PASSWORD_NAME,
+        path: authRoutesEnum.FORGOT_PASSWORD,
+        exact: true,
+        component: ForgotPassword,
+        layout: LayoutAuth,
+    },
     { name: LOGIN, path: authRoutesEnum.LOGIN, exact: true, component: Login, layout: LayoutAuth },
+    {
+        name: FORGOT_PASSWORD_NAME,
+        path: authRoutesEnum.CHANGE_PASSWORD,
+        exact: true,
+        component: ChangePassword,
+        layout: LayoutAuth,
+    },
     { name: "", path: appRoutesEnum.PRIVACY, exact: true, component: PrivacyPolicy },
     { path: appRoutesEnum.SUCCESS, exact: true, component: SuccessMessage, layout: FinalPopup },
 

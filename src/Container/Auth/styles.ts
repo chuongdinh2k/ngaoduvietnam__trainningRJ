@@ -1,6 +1,21 @@
 import styled from "styled-components";
 
 export const StyledContentAuth = styled.div`
+    .withOutBG {
+        color: ${(p) => p.theme.colors.orange} !important;
+        background-color: ${(p) => p.theme.colors.pureWhite};
+        border: 1px solid ${(p) => p.theme.colors.orange};
+        transition: 250ms;
+        text-transform: none;
+        &:hover {
+            background-color: ${(p) => p.theme.colors.orange};
+            color: ${(p) => p.theme.colors.pureWhite} !important;
+        }
+    }
+
+    .facebook {
+        background-color: ${(p) => p.theme.colors.blue};
+    }
     .success {
         color: #019267;
         font-size: 16px;
@@ -17,13 +32,14 @@ export const StyledContentAuth = styled.div`
         left: 50%;
         top: 40%;
         width: 50%;
+        min-width: 35rem;
         transform: translate(-50%, -50%);
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             width: 100%;
             padding: 2rem;
         }
         &__title {
-            font-size: 5.8rem;
+            font-size: 4.8rem;
             font-weight: 500;
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 font-size: 3.6rem;
@@ -55,6 +71,7 @@ export const StyledContentAuth = styled.div`
                 text-transform: capitalize;
                 border-radius: 0;
                 box-shadow: none;
+                margin-top: 3.2rem;
             }
             .pl-1 {
                 padding-left: 1rem;

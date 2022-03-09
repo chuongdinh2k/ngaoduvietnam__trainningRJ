@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import {
     ComponentBreadscrumb,
@@ -8,8 +9,15 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
+import { getListHotels, selectHotel, useAppSelector } from "@redux";
 
 export const Hotels = () => {
+    const dispatch = useDispatch();
+    const hotels = useAppSelector(selectHotel);
+    console.log(hotels);
+    React.useEffect(() => {
+        dispatch(getListHotels());
+    }, []);
     return (
         <>
             <Header hasColor={false} />

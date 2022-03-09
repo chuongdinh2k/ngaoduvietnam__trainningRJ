@@ -47,27 +47,23 @@ export interface ISelectRoom {
     about?: Array<string>;
     viewImages?: Array<string>;
 }
+export interface IRelatedHotel {
+    title?: string;
+    listRelated?: Array<IHotel>;
+}
 export interface IHotel {
+    createdAt?: string;
     id: string;
     title?: string;
     location?: string;
     rating?: number;
     marked?: boolean;
     reviewNumber?: number;
-    money?: string;
+    price?: number;
     listImage?: Array<string>;
     star?: number;
     description?: IDescription;
     selectRooms?: Array<ISelectRoom>;
     reviews?: IHotelReviews;
     relatedHotels?: IRelatedHotel;
-}
-export interface IRelatedHotel {
-    title?: string;
-    listRelated?: Array<IHotel>;
-}
-export interface IHotels {
-    page?: number;
-    totalPage?: number;
-    hotels?: Array<IHotel>;
 }

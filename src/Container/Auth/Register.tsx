@@ -1,20 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik } from "formik";
 import { Button, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { register, selectAuth, useAppSelector } from "@redux";
 import { CircularProgress } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
+import { register, selectAuth, useAppSelector } from "@redux";
 import { authRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
-import { AppInputOutLined, Error } from "@components";
+import { AppInputOutLined, Error, IconFacebook } from "@components";
 import { formSchemaSignup } from "@utils";
 import clsx from "clsx";
 
 export const Register = () => {
+    // hook
+    const history = useHistory();
     const auth = useAppSelector(selectAuth);
-    console.log(auth);
     const dispatch = useDispatch();
     const initialValuesPackage = {
         password: "",
@@ -101,6 +102,16 @@ export const Register = () => {
                                         <span className={clsx(auth.isLoading ? "pl-1" : "")}>
                                             Sign In
                                         </span>
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        size="small"
+                                        className="content__form-btn facebook"
+                                        startIcon={<IconFacebook />}
+                                        onClick={() => history.push("/undefined")}
+                                    >
+                                        Sign in with Facebook
                                     </Button>
                                 </div>
                             );

@@ -69,3 +69,11 @@ export const formSchemaContact = Yup.object().shape({
         .matches(validate_phone, "Phone number is not valid"),
     message: Yup.string().trim().required("This field is required!"),
 });
+
+export const formSchemaChangePassword = Yup.object().shape({
+    newPassword: Yup.string()
+        .trim()
+        .required("This field is required!")
+        .min(8, "Password required at least 8 characters"),
+    confirmPassword: Yup.string().oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
+});

@@ -28,6 +28,7 @@ const colors = {
     darkOrange: "#F76E11",
     red: "#FF1700",
     darkBlue2: "#04316A",
+    blue: "#4E86DB",
 };
 
 const defaultFontFamily = "DM Sans, Roboto, Arial, sans-serif";
