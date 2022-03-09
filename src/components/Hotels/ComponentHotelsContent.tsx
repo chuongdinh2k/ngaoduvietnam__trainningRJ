@@ -2,13 +2,13 @@ import React from "react";
 import { Popover } from "@material-ui/core";
 
 import { StyledWrapperTitleComponent, AppPagination, IconDownArrow } from "..";
-import { IHotels } from "@types";
+import { IHotel } from "@types";
 import { datalistHotels, stars, moneyRange, reviewScore } from "@demos";
 import { ComponentHotelsFilter, ComponentListHotels } from ".";
 import clsx from "clsx";
 
 interface IProps {
-    dataListHotels?: IHotels;
+    dataListHotels?: IHotel;
 }
 export const ComponentHotelsContent = (props: IProps) => {
     // props state

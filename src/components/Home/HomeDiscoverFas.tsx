@@ -65,9 +65,7 @@ const StyledHomeDiscoverFas = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 10px;
-            height: 2rem;
-            margin-top: 2rem;
-            padding: 0.3rem 2rem;
+            padding: 1.3rem 2rem;
             width: 8rem;
         }
     }

@@ -72,7 +72,7 @@ export const Footer = () => {
                             <Grid item md={7} xs={12}>
                                 <div className="text">
                                     <Grid container>
-                                        <Grid md={3} xs={12}>
+                                        <Grid item md={3} xs={12}>
                                             <ul className="text__nav">
                                                 {fakeDataNav.nav
                                                     ? fakeDataNav.nav.map(
@@ -96,7 +96,7 @@ export const Footer = () => {
                                                     : ""}
                                             </ul>
                                         </Grid>
-                                        <Grid md={4} xs={12}>
+                                        <Grid item md={4} xs={12}>
                                             <ul className="text__nav">
                                                 {fakeDataNav.policy
                                                     ? fakeDataNav.policy.map(
@@ -120,7 +120,7 @@ export const Footer = () => {
                                                     : ""}
                                             </ul>
                                         </Grid>
-                                        <Grid md={5} xs={12}>
+                                        <Grid item md={5} xs={12}>
                                             <div className="text_address">
                                                 <span className="text_address-icon">
                                                     <IconLocation

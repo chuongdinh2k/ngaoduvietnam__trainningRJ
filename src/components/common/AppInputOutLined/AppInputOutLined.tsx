@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {
     makeStyles,
-    Theme,
     createStyles,
     FormControl,
     InputLabel,
@@ -22,6 +21,9 @@ const useStyles = makeStyles(() =>
             flexWrap: "wrap",
             "& .MuiOutlinedInput-notchedOutline": {
                 borderColor: "black",
+            },
+            "& .MuiFormLabel-root": {
+                background: "white !important",
             },
         },
         margin: {
@@ -82,7 +84,6 @@ export const AppInputOutLined = (props: IProps) => {
                                 <IconButton
                                     aria-label="toggle password visibility"
                                     onClick={handleClickShowPassword}
-                                    // onMouseDown={handleMouseDownPassword}
                                     edge="end"
                                 >
                                     {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -98,4 +99,8 @@ export const AppInputOutLined = (props: IProps) => {
     );
 };
 
-const StyledAppInputOutLined = styled.div``;
+const StyledAppInputOutLined = styled.div`
+    label {
+        background-color: white;
+    }
+`;

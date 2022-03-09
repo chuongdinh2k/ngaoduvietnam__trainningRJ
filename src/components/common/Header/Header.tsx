@@ -60,7 +60,7 @@ export const Header = (props: IProps) => {
                     <Grid item xs={6} md={6}>
                         {hasColor ? <img src={logoBlack} /> : <img src={logo} />}
                     </Grid>
-                    <Grid xs={6} md={6}>
+                    <Grid item xs={6} md={6}>
                         <ComponentSidebar hasColor={hasColor} />
                         <div className="mobile__NavLogo">
                             <span onClick={() => handleToggleDrawswer("right", true)}>

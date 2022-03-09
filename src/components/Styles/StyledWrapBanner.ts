@@ -79,7 +79,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
                 justify-content: space-between;
             }
             .MuiTab-root {
-                height: 10rem ;
+                height: 10rem;
                 font-size: 2.6rem;
                 max-width: 50%;
             }
@@ -120,9 +120,9 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         }
 
         .filter {
-            left: 2rem;
-            right: 2rem;
-            width: 90%;
+            left: 0;
+            right: 0;
+            width: 99%;
             bottom: 1rem;
         }
     }

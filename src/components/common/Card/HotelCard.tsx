@@ -40,7 +40,7 @@ export const HotelCard = (props: IProps) => {
                         </div>
                         <div className="money">
                             from
-                            <span className="money__value">{data?.money}</span>
+                            <span className="money__value">{data?.price}</span>
                             /night
                         </div>
                     </div>

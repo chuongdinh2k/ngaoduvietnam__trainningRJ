@@ -14,9 +14,9 @@ export const IconArrowNext = (props: IIcon) => {
                 <path
                     d="M17 7L1 7M17 7L11 13M17 7L11 0.999999"
                     stroke={props.color ? props.color : theme.colors.gray1}
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 />
             </svg>
         </>
