@@ -8,3 +8,4 @@ export * from "./HotelDetail";
 export * from "./Auth";
 export * from "./Contact";
 export * from "./Error";
+export * from "./PrivacyPolicy";

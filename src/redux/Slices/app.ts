@@ -7,7 +7,7 @@ interface IState {
 }
 
 const initialState: IState = {
-    loading: true,
+    loading: false,
 };
 
 const appSlice = createSlice({

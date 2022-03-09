@@ -1,48 +1,39 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import {
     ComponentTourDetailContent,
     StyledWrapContent,
     Header,
-    ComponentLoader,
     ComponentBreadscrumb,
 } from "@components";
 import { IDataTour } from "@types";
-import { selectTour, useAppSelector } from "@redux";
+import { setLoading, useAppSelector, selectApp } from "@redux";
+import { toursApi } from "@api";
 
 export const TourDetail = () => {
     const { id } = useParams<{ id: string }>();
-    // hook props
-    const dataTour = useAppSelector(selectTour);
+    const dispatch = useDispatch();
+    const app = useAppSelector(selectApp);
     // component state
     const [detailTour, setDetailTour] = React.useState<IDataTour>();
-    const [loading, setLoading] = React.useState<boolean>(true);
-
     useEffect(() => {
-        const tourDetail = dataTour.dataToursList.filter((tour) => tour.id === id);
-        setLoading(true);
-        const timer = setTimeout(() => {
-            setLoading(false);
-            setDetailTour(tourDetail[0]);
-        }, 1000);
-        return () => {
-            clearTimeout(timer);
+        dispatch(setLoading(true));
+        const fetchDetailTour = async () => {
+            const response = await toursApi.viewListDetail(id);
+            setDetailTour(response.data);
         };
-    }, [id]);
+        dispatch(setLoading(false));
+        fetchDetailTour();
+    }, []);
     return (
         <>
             <Header hasColor />
             <StyledWrapContent withOutBanner>
                 <div className="wrapperContent">
-                    {loading ? (
-                        <ComponentLoader />
-                    ) : (
-                        <>
-                            <ComponentBreadscrumb />
-                            <ComponentTourDetailContent dataTour={detailTour} />
-                        </>
-                    )}
+                    <ComponentBreadscrumb id={detailTour?.id} title={detailTour?.title} />
+                    <ComponentTourDetailContent dataTour={detailTour} />
                 </div>
             </StyledWrapContent>
         </>

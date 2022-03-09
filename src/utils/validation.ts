@@ -45,6 +45,17 @@ export const formSchemaLogin = Yup.object().shape({
     password: Yup.string().trim().required("This field is required!"),
 });
 
+export const formSchemaSignup = Yup.object().shape({
+    email: Yup.string()
+        .trim()
+        .required("This field is required!")
+        .email("Email is not value")
+        .max(255, "This field is cannot be longer than 255 characters!"),
+    password: Yup.string().trim().required("This field is required!"),
+    lastName: Yup.string().trim().required("This field is required!"),
+    firstName: Yup.string().trim().required("This field is required"),
+});
+
 export const formSchemaContact = Yup.object().shape({
     name: Yup.string().trim().required("This field is required!"),
     email: Yup.string()

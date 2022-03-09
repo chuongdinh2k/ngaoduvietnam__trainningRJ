@@ -7,11 +7,11 @@ export enum appRoutesEnum {
     HOTELS = "/hotels",
     HOTEL_DETAIL = "/hotels/:id",
     CONTACT = "/contact",
+    PRIVACY = "/privacy",
     SUCCESS = "/success",
 }
 export enum authRoutesEnum {
     LOGIN = "/login",
-    SIGN_UP = "./signup",
     REGISTER = "/register",
     FORGOT_PASSWORD = "/forgot-password",
     CHANGE_PASSWORD = "/change-password/:id",

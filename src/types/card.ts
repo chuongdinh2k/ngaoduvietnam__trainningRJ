@@ -1,8 +1,9 @@
 export type ICard = {
     id?: any;
     typeCardIcon?: boolean;
-    title?: string;
     subTitle?: string;
+    title?: string;
+    location?: string;
     price?: number;
     duration?: string;
     rating?: number;

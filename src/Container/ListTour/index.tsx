@@ -1,3 +1,6 @@
+import React from "react";
+import { useDispatch } from "react-redux";
+
 import {
     ComponentBreadscrumb,
     ComponentListTourBanner,
@@ -5,9 +8,15 @@ import {
     Header,
     StyledWrapContent,
 } from "@components";
-import { dataListsTour, banner } from "@demos";
+import { banner } from "@demos";
+import { getListTours, selectTour, useAppSelector } from "@redux";
 
 export const ListTour = () => {
+    const dispatch = useDispatch();
+    const tours = useAppSelector(selectTour);
+    React.useEffect(() => {
+        dispatch(getListTours());
+    }, []);
     return (
         <>
             <Header hasColor={false} />
@@ -15,7 +24,7 @@ export const ListTour = () => {
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
-                    <ComponentListTourContent dataListsTour={dataListsTour} />
+                    <ComponentListTourContent dataListsTour={tours.dataToursList} />
                 </div>
             </StyledWrapContent>
         </>

@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const StyledContentAuth = styled.div`
+    .success {
+        color: #019267;
+        font-size: 16px;
+        padding-bottom: 1rem;
+    }
     .wrapperAuth {
         position: relative;
         width: 100%;
@@ -20,6 +25,9 @@ export const StyledContentAuth = styled.div`
         &__title {
             font-size: 5.8rem;
             font-weight: 500;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                font-size: 3.6rem;
+            }
         }
         &__subTitle {
             font-size: 1.8rem;
@@ -34,6 +42,9 @@ export const StyledContentAuth = styled.div`
             }
             &-input {
                 margin-bottom: 2.8rem;
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    margin-bottom: 1rem;
+                }
             }
             &-btn {
                 color: ${(p) => p.theme.colors.pureWhite};

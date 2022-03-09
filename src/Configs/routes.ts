@@ -8,8 +8,10 @@ import {
     CheckOut,
     Hotels,
     Login,
+    Register,
     Page404Error,
     Contact,
+    PrivacyPolicy,
 } from "@containers";
 import { appRoutesEnum, authRoutesEnum } from "@enums";
 import { FinalPopup, LayoutAuth, LayoutError } from "@layouts";
@@ -22,6 +24,7 @@ export const TOURS = "Tours";
 export const HOTELS = "Hotels";
 export const CONTACT = "Contact";
 export const LOGIN = "Login";
+export const REGISTER = "Register";
 export const CHECKOUT = "Checkout";
 export const ERROR = "Error";
 
@@ -34,7 +37,16 @@ export const routes: Array<IRoute> = [
     { name: HOTELS, path: appRoutesEnum.HOTEL_DETAIL, exact: true, component: HotelDetail },
     { name: HOTELS, path: appRoutesEnum.HOTELS, exact: true, component: Hotels },
     { name: CONTACT, path: appRoutesEnum.CONTACT, exact: true, component: Contact },
+    {
+        name: REGISTER,
+        path: authRoutesEnum.REGISTER,
+        exact: true,
+        component: Register,
+        layout: LayoutAuth,
+    },
     { name: LOGIN, path: authRoutesEnum.LOGIN, exact: true, component: Login, layout: LayoutAuth },
+    { name: "", path: appRoutesEnum.PRIVACY, exact: true, component: PrivacyPolicy },
     { path: appRoutesEnum.SUCCESS, exact: true, component: SuccessMessage, layout: FinalPopup },
+
     { name: ERROR, exact: true, component: Page404Error, layout: LayoutError },
 ];

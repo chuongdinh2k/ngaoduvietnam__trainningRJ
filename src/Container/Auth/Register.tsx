@@ -1,50 +1,71 @@
 import React, { useEffect } from "react";
 import { Formik } from "formik";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { login, selectAuth, useAppSelector } from "@redux";
+import { register, selectAuth, useAppSelector } from "@redux";
 import { CircularProgress } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { authRoutesEnum, appRoutesEnum } from "@enums";
+import { authRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
-import { AppInputOutLined } from "@components";
-import { formSchemaLogin } from "@utils";
+import { AppInputOutLined, Error } from "@components";
+import { formSchemaSignup } from "@utils";
 import clsx from "clsx";
 
-export const Login = () => {
+export const Register = () => {
     const auth = useAppSelector(selectAuth);
+    console.log(auth);
     const dispatch = useDispatch();
-    const history = useHistory();
-    useEffect(() => {
-        if (auth.tokenInfoAuth) {
-            history.push(appRoutesEnum.HOME);
-        }
-    }, [auth]);
     const initialValuesPackage = {
         password: "",
         email: "",
+        firstName: "",
+        lastName: "",
     };
     return (
         <StyledContentAuth>
             <div className="wrapperAuth">
                 <div className="content">
-                    <h2 className="content__title">Sign In</h2>
+                    <h2 className="content__title">Register</h2>
                     <p className="content__subTitle">
                         Welcome to <span>NgaoduVietNam</span>
                     </p>
                     <Formik
                         initialValues={initialValuesPackage}
                         onSubmit={(values, { setSubmitting, resetForm }) => {
-                            dispatch(login(values));
+                            dispatch(register({ ...values, username: values.lastName }));
                             setSubmitting(true);
                             resetForm();
                         }}
-                        validationSchema={formSchemaLogin}
+                        validationSchema={formSchemaSignup}
                     >
                         {({ handleSubmit, values, handleChange }) => {
                             return (
                                 <div className="content__form">
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12} md={6}>
+                                            <div className="content__form-input">
+                                                <AppInputOutLined
+                                                    value={values.firstName}
+                                                    label="First Name"
+                                                    name="firstName"
+                                                    typePassword={false}
+                                                    handleChange={handleChange("firstName")}
+                                                />
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={12} md={6}>
+                                            <div className="content__form-input">
+                                                <AppInputOutLined
+                                                    value={values.lastName}
+                                                    label="Last Name"
+                                                    name="lastName"
+                                                    typePassword={false}
+                                                    handleChange={handleChange("lastName")}
+                                                />
+                                            </div>
+                                        </Grid>
+                                    </Grid>
                                     <div className="content__form-input">
                                         <AppInputOutLined
                                             value={values.email}
@@ -63,11 +84,10 @@ export const Login = () => {
                                             handleChange={handleChange("password")}
                                         />
                                     </div>
-                                    <div className="content__form-forgot">
-                                        <Link to={authRoutesEnum.FORGOT_PASSWORD}>
-                                            Forgot Password?
-                                        </Link>
-                                    </div>
+                                    {auth?.message?.length && (
+                                        <p className="success">{auth.message}</p>
+                                    )}
+                                    {auth?.error?.length && <Error>{auth.error}</Error>}
                                     <Button
                                         variant="contained"
                                         color="primary"
@@ -77,6 +97,7 @@ export const Login = () => {
                                         disabled={auth.isLoading}
                                     >
                                         {auth.isLoading && <CircularProgress size={24} />}
+
                                         <span className={clsx(auth.isLoading ? "pl-1" : "")}>
                                             Sign In
                                         </span>
@@ -86,7 +107,7 @@ export const Login = () => {
                         }}
                     </Formik>
                     <p className="content__bottom">
-                        Don't have an account? <Link to={authRoutesEnum.REGISTER}>Sign up</Link>
+                        Member already? <Link to={authRoutesEnum.LOGIN}>Log in</Link>{" "}
                     </p>
                 </div>
             </div>

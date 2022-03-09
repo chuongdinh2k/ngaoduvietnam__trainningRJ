@@ -61,16 +61,18 @@ export interface IListStar {
 export interface IComment {
     userId?: string;
     avatar?: string;
+    rating?: number;
     username?: string;
     title?: string;
     time?: string;
     comment?: string;
+    status?: string;
 }
 export interface IReviews {
     number?: number;
     average?: number;
     listStars?: Array<IListStar>;
-    listComments?: Array<IComment>;
+    // listComments?: Array<IComment>;
 }
 
 // related
@@ -80,6 +82,7 @@ export interface IRelated {
 }
 
 export interface IDataTour {
+    createdAt?: string;
     id?: string;
     title?: string;
     location?: string;
@@ -92,4 +95,5 @@ export interface IDataTour {
     additionalInfo?: IAdditionalInfo;
     reviews?: IReviews;
     related?: IRelated;
+    comments?: Array<IComment>;
 }

@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { IAuth, ILogin } from "@types";
+import { IAuth, ILogin, IRegister } from "@types";
 import { authApi } from "@api";
 import { RootState } from ".";
 
@@ -12,6 +12,20 @@ export const login = createAsyncThunk("auth/login", async (values: ILogin, { rej
         return rejectWithValue(err);
     }
 });
+
+export const register = createAsyncThunk(
+    "auth/register",
+    async (values: IRegister, { rejectWithValue }) => {
+        try {
+            const res = await authApi.register(values);
+            return res.data as IAuth;
+        } catch (err: any) {
+            console.log(err);
+            return rejectWithValue(err);
+        }
+    }
+);
+
 interface IState {
     auth: IAuth | null;
     isRemember?: boolean;
@@ -19,6 +33,7 @@ interface IState {
     error: string;
     tokenInfoAuth: string;
     userInfo: any | null;
+    message?: string;
 }
 const initialState: IState = {
     auth: null,
@@ -50,6 +65,21 @@ const authSlice = createSlice({
         builder.addCase(login.rejected, (state) => {
             state.auth = null;
             state.isLoading = false;
+        });
+        // register
+        builder.addCase(register.pending, (state) => {
+            state.isLoading = true;
+            state.message = "";
+            state.error = "";
+        });
+        builder.addCase(register.fulfilled, (state, action: { payload: any }) => {
+            state.message = action.payload.message;
+            state.isLoading = false;
+        });
+        builder.addCase(register.rejected, (state, action: { payload: any }) => {
+            state.auth = null;
+            state.isLoading = false;
+            state.error = `Something is wrong! please try again with a different email or password`;
         });
     },
 });
