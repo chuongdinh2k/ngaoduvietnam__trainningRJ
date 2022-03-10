@@ -3,6 +3,7 @@ import { theme } from "@styles";
 import { StyledCardWithIcon } from ".";
 import { IconFlagMark, IconLocation } from "..";
 import { ComponentsRenderStars } from "@components";
+import { convertCurrency } from "@utils";
 
 interface IProps {
     data?: IHotel;
@@ -40,7 +41,7 @@ export const HotelCard = (props: IProps) => {
                         </div>
                         <div className="money">
                             from
-                            <span className="money__value">{data?.price}</span>
+                            <span className="money__value">{convertCurrency(data?.price)}</span>
                             /night
                         </div>
                     </div>

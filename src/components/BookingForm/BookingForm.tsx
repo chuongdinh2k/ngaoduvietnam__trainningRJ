@@ -1,36 +1,66 @@
 import { Formik } from "formik";
 import styled from "styled-components";
 import { useHistory, useParams } from "react-router-dom";
+import React from "react";
 
-import { ICard } from "@types";
-import { GroupPeople, IconCalendar, AppInput } from "..";
+import { ICard, IDataTour, IHotel } from "@types";
+import { IconLocation, GroupPeople, IconCalendar, AppInput } from "..";
+import { convertCurrency } from "@utils";
 
 interface IProps {
     data?: ICard;
+    dataTour?: IDataTour;
+    dataHotel?: IHotel;
 }
 
 export const BookingForm = (props: IProps) => {
+    const { dataTour, dataHotel } = props;
     // hook
     const { id } = useParams<{ id: string }>();
     const history = useHistory();
 
+    // variable component
+    const totalTour = dataTour?.price;
+    const totalHotel = dataHotel?.price;
     return (
         <StyledBookingForm>
             <div className="wrapper">
-                <p className="showMoney">
-                    from <span className="showMoney__title">$234.00</span>
-                </p>
+                {dataTour && (
+                    <p className="showMoney">
+                        from{" "}
+                        <span className="showMoney__title">
+                            ${convertCurrency(dataTour?.price)}
+                        </span>
+                    </p>
+                )}
                 <div className="content">
                     <div className="content__title">
-                        <div className="content__left">
-                            <p className="content__text">Duration</p>
-                            <p className="content__sub">3 days - 2 nights</p>
-                        </div>
-                        <div className="content__right">
-                            <p className="content__text">Tour type:</p>
-                            <p className="content__sub">Sun - Beach</p>
-                        </div>
+                        {dataTour && (
+                            <>
+                                <div className="content__left">
+                                    <p className="content__text">Duration</p>
+                                    <p className="content__sub">{dataTour?.duration}</p>
+                                </div>
+                                <div className="content__right">
+                                    <p className="content__text">Tour type:</p>
+                                    <p className="content__sub">{dataTour?.typeOfTour}</p>
+                                </div>
+                            </>
+                        )}
                     </div>
+                    {dataHotel && (
+                        <>
+                            <p className="content__name">{dataHotel?.title}</p>
+                            <p className="content__location">
+                                <span>
+                                    <IconLocation />
+                                </span>
+                                <span className="content__location-text">
+                                    {dataHotel?.location}
+                                </span>
+                            </p>
+                        </>
+                    )}
                 </div>
                 <Formik
                     initialValues={{
@@ -70,7 +100,8 @@ export const BookingForm = (props: IProps) => {
                                 </div>
                                 <div className="total">
                                     <span>Total</span>
-                                    <span>$450.00</span>
+                                    {dataHotel && <span>${convertCurrency(totalHotel)}</span>}
+                                    {dataTour && <span>${convertCurrency(totalTour)}</span>}
                                 </div>
                                 <div className="wrapperBtn">
                                     <button className="btn" onClick={() => handleSubmit()}>
@@ -117,6 +148,18 @@ const StyledBookingForm = styled.div`
         &__sub {
             font-size: ${(p) => p.theme.typography.fontSize}px;
             font-weight: ${(p) => p.theme.typography.fontWeightMedium};
+        }
+        &__name {
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 2.7rem;
+        }
+        &__location {
+            &-text {
+                font-size: ${(p) => p.theme.typography.fontSize}px;
+                color: ${(p) => p.theme.colors.gray1};
+                padding-left: 1rem;
+            }
         }
     }
     .total {

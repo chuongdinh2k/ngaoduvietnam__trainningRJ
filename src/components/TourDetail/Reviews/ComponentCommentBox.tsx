@@ -22,7 +22,7 @@ export const ComponentCommentBox = () => {
                     <Formik
                         initialValues={initialValuesPackage}
                         validationSchema={formSchemaComment}
-                        onSubmit={(values) => console.log(values)}
+                        onSubmit={(values, { resetForm }) => resetForm()}
                     >
                         {({ handleSubmit, values, errors, handleChange }) => {
                             return (

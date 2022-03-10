@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { getRelatedArray } from "@utils";
 import { IRelated, IRelatedHotel } from "@types";
 import { Card, HotelCard } from "..";
-import { selectTour, useAppSelector } from "@redux";
 
 interface IProps {
     relatedTour?: IRelated;

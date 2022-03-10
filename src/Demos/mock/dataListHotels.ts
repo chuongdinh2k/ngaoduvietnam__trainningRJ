@@ -78,7 +78,7 @@ export const datalistHotels = {
             },
             selectRooms: [
                 {
-                    id: "room1",
+                    id: "1",
                     image: "https://res.cloudinary.com/chuongdinh/image/upload/v1646109029/room1_sbj9it.png",
                     title: "Family Suite",
                     type: {
@@ -100,7 +100,7 @@ export const datalistHotels = {
                     ],
                 },
                 {
-                    id: "room2",
+                    id: "2",
                     image: "https://res.cloudinary.com/chuongdinh/image/upload/v1646109029/room1_sbj9it.png",
                     title: "Standard room",
                     type: {
@@ -154,7 +154,7 @@ export const datalistHotels = {
                 title: "Recommended for you",
                 listRelated: [
                     {
-                        id: "hotel2",
+                        id: "3",
                         title: "Chic Urban Living in The heart of Ho Chi Minh City",
                         location: "Phu Nhuan, Ho Chi Minh",
                         rating: 9.5,
@@ -171,7 +171,7 @@ export const datalistHotels = {
                         ],
                     },
                     {
-                        id: "hotel3",
+                        id: "4",
                         title: "Chic Urban Living in The heart of Ho Chi Minh City",
                         location: "Phu Nhuan, Ho Chi Minh",
                         rating: 9.5,

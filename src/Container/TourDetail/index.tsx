@@ -9,13 +9,12 @@ import {
     ComponentBreadscrumb,
 } from "@components";
 import { IDataTour } from "@types";
-import { setLoading, useAppSelector, selectApp } from "@redux";
+import { setLoading } from "@redux";
 import { toursApi } from "@api";
 
 export const TourDetail = () => {
     const { id } = useParams<{ id: string }>();
     const dispatch = useDispatch();
-    const app = useAppSelector(selectApp);
     // component state
     const [detailTour, setDetailTour] = React.useState<IDataTour>();
     useEffect(() => {
@@ -26,7 +25,7 @@ export const TourDetail = () => {
         };
         dispatch(setLoading(false));
         fetchDetailTour();
-    }, []);
+    }, [id]);
     return (
         <>
             <Header hasColor />

@@ -6,10 +6,10 @@ export const hotelsApi = {
         const url = `${MockHotelApi}/hotels`;
         return axiosClient.get(url);
     },
-    // viewListDetail: (id: string) => {
-    //     const url = `${MockApi}/${id}`;
-    //     return axiosClient.get(url);
-    // },
+    viewListDetail: (id: string) => {
+        const url = `${MockHotelApi}/hotels/${id}`;
+        return axiosClient.get(url);
+    },
     // reviewTours: (id: string) => {
     //     const url = `${MockApi}/${id}/reviews`;
     //     return axiosClient.get(url);

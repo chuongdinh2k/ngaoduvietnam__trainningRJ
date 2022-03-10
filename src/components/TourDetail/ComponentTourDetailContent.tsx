@@ -56,7 +56,7 @@ export const ComponentTourDetailContent = (props: IProps) => {
                     </div>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <BookingForm />
+                    <BookingForm dataHotel={dataHotel} dataTour={dataTour} />
                 </Grid>
             </Grid>
             {dataTour && <ComponentRelated relatedTour={dataTour?.related} />}
