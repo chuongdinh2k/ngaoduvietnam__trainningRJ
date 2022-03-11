@@ -20,7 +20,6 @@ export const register = createAsyncThunk(
             const res = await authApi.register(values);
             return res.data as IAuth;
         } catch (err: any) {
-            console.log(err);
             return rejectWithValue(err);
         }
     }
@@ -76,7 +75,7 @@ const authSlice = createSlice({
             state.message = action.payload.message;
             state.isLoading = false;
         });
-        builder.addCase(register.rejected, (state, action: { payload: any }) => {
+        builder.addCase(register.rejected, (state) => {
             state.auth = null;
             state.isLoading = false;
             state.error = `Something is wrong! please try again with a different email or password`;

@@ -1,15 +1,17 @@
 import React from "react";
 import { Popover } from "@material-ui/core";
 
-import { StyledWrapperTitleComponent, AppPagination, IconDownArrow } from "..";
+import { StyledWrapperTitleComponent, IconDownArrow } from "..";
 import { stars, moneyRange, reviewScore } from "@demos";
 import { ComponentHotelsFilter, ComponentListHotels } from ".";
 import clsx from "clsx";
-import { selectHotel, useAppSelector } from "@redux";
+import { IHotel } from "@types";
 
-export const ComponentHotelsContent = () => {
-    // props state
-    const hotels = useAppSelector(selectHotel);
+interface Iprops {
+    datalistHotels: Array<IHotel>;
+}
+export const ComponentHotelsContent = (props: Iprops) => {
+    const { datalistHotels } = props;
     // component prop
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
@@ -64,9 +66,8 @@ export const ComponentHotelsContent = () => {
                         </Popover>
                     </div>
                 </div>
-                <ComponentListHotels data={hotels.dataHotelsList} />
+                <ComponentListHotels data={datalistHotels} />
             </div>
-            <AppPagination totalPage={hotels.dataHotelsList?.length} />
         </StyledWrapperTitleComponent>
     );
 };

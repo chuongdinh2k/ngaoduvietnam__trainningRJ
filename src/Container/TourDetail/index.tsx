@@ -25,7 +25,7 @@ export const TourDetail = () => {
         };
         dispatch(setLoading(false));
         fetchDetailTour();
-    }, [id]);
+    }, [id, setLoading]);
     return (
         <>
             <Header hasColor />

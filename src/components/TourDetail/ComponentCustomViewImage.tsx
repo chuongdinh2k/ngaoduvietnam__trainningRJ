@@ -15,7 +15,6 @@ interface IProps {
 }
 export const ComponentCustomViewImage = (props: IProps) => {
     const { listTourImages, listHotelImages, viewRoomImages } = props;
-    console.log(viewRoomImages);
     const settings = {
         customPaging: function (i: number) {
             return (
@@ -104,6 +103,8 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         position: relative;
         &__image {
             width: 100%;
+            height: 54rem;
+
             position: relative;
             .icon {
                 position: absolute;
@@ -112,12 +113,16 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                 z-index: 99;
             }
             .image {
+                height: 100%;
                 width: 100%;
             }
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             width: 100%;
             margin-bottom: 10rem;
+            // &__image {
+            //     height:
+            // }
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             width: 100%;

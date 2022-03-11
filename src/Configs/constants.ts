@@ -27,3 +27,6 @@ export const LOGOUT = "Logout";
 // WHAT : phone validate
 export const validate_phone =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+// limit record perpage = 6
+export const LIMIT_RECORD_6 = 6;

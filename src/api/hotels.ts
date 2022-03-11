@@ -1,13 +1,17 @@
-export const MockHotelApi = "https://62286a999fd6174ca8230be0.mockapi.io/api/v1";
+export const MockHotelUrl = "https://62286a999fd6174ca8230be0.mockapi.io";
 import { axiosClient } from ".";
 
+interface IPagination {
+    page?: number;
+    limit?: number;
+}
 export const hotelsApi = {
-    getListHotels: () => {
-        const url = `${MockHotelApi}/hotels`;
+    getListHotels: (values: IPagination) => {
+        const url = `${MockHotelUrl}/api/v1/hotels?page=${values?.page}&limit=${values?.limit}`;
         return axiosClient.get(url);
     },
     viewListDetail: (id: string) => {
-        const url = `${MockHotelApi}/hotels/${id}`;
+        const url = `${MockHotelUrl}/api/v1/hotels/${id}`;
         return axiosClient.get(url);
     },
     // reviewTours: (id: string) => {

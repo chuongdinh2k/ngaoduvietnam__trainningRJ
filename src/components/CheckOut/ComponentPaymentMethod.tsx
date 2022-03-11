@@ -27,7 +27,7 @@ export const ComponentPaymentMethod = (props: IProps) => {
                 />
                 <ul className="list">
                     {paymentMethod.listPolicy.map((item) => (
-                        <li>{item}</li>
+                        <li key={item}>{item}</li>
                     ))}
                 </ul>
             </div>

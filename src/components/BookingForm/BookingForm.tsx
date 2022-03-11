@@ -1,11 +1,16 @@
-import { Formik } from "formik";
-import styled from "styled-components";
-import { useHistory, useParams } from "react-router-dom";
 import React from "react";
+import { Formik } from "formik";
+import { useHistory, useParams } from "react-router-dom";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
+import { Divider, IconButton } from "@material-ui/core";
 
+import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
-import { IconLocation, GroupPeople, IconCalendar, AppInput } from "..";
+import { GroupPeople, IconCalendar, AppInput } from "..";
 import { convertCurrency } from "@utils";
+import { useDispatch } from "react-redux";
+import { setBookingForm } from "@redux";
 
 interface IProps {
     data?: ICard;
@@ -18,21 +23,25 @@ export const BookingForm = (props: IProps) => {
     // hook
     const { id } = useParams<{ id: string }>();
     const history = useHistory();
-
+    const dispatch = useDispatch();
+    // component state
+    const [standardRoom, setStandardRoom] = React.useState<number>(0);
+    const [familySuite, setFamilySuite] = React.useState<number>(0);
+    const [breakFast, setBreakFast] = React.useState<number>(0);
     // variable component
     const totalTour = dataTour?.price;
-    const totalHotel = dataHotel?.price;
+    const totalHotel =
+        Number(dataHotel?.price) + standardRoom * 25 + familySuite * 24 + breakFast * 20;
     return (
         <StyledBookingForm>
             <div className="wrapper">
-                {dataTour && (
-                    <p className="showMoney">
-                        from{" "}
-                        <span className="showMoney__title">
-                            ${convertCurrency(dataTour?.price)}
-                        </span>
-                    </p>
-                )}
+                <p className="showMoney">
+                    from{" "}
+                    <span className="showMoney__title">
+                        ${dataTour && convertCurrency(dataTour?.price)}
+                        {dataHotel && convertCurrency(dataHotel?.price)}
+                    </span>
+                </p>
                 <div className="content">
                     <div className="content__title">
                         {dataTour && (
@@ -48,19 +57,6 @@ export const BookingForm = (props: IProps) => {
                             </>
                         )}
                     </div>
-                    {dataHotel && (
-                        <>
-                            <p className="content__name">{dataHotel?.title}</p>
-                            <p className="content__location">
-                                <span>
-                                    <IconLocation />
-                                </span>
-                                <span className="content__location-text">
-                                    {dataHotel?.location}
-                                </span>
-                            </p>
-                        </>
-                    )}
                 </div>
                 <Formik
                     initialValues={{
@@ -68,6 +64,14 @@ export const BookingForm = (props: IProps) => {
                         group: "",
                     }}
                     onSubmit={(values) => {
+                        dispatch(
+                            setBookingForm({
+                                ...values,
+                                standardRoom: standardRoom,
+                                familySuite: familySuite,
+                                breakFast: breakFast,
+                            })
+                        );
                         history.push(`/tours/${id}/checkout`);
                     }}
                 >
@@ -97,6 +101,111 @@ export const BookingForm = (props: IProps) => {
                                             value={values.group}
                                         />
                                     </div>
+                                    {dataHotel && (
+                                        <>
+                                            <div className="content__option">
+                                                <p className="content__option-title">
+                                                    Standard Room
+                                                </p>
+                                                <span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() =>
+                                                            setStandardRoom(standardRoom + 1)
+                                                        }
+                                                    >
+                                                        <AddIcon />
+                                                    </IconButton>
+                                                    <span>{standardRoom}</span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() => {
+                                                            standardRoom > 0
+                                                                ? setStandardRoom(standardRoom - 1)
+                                                                : standardRoom;
+                                                        }}
+                                                    >
+                                                        <RemoveIcon />
+                                                    </IconButton>
+                                                </span>
+                                                <span className="content__option-price">
+                                                    ${convertCurrency(standardRoom * 25)}
+                                                </span>
+                                            </div>
+                                            <div className="content__option">
+                                                <span className="content__option-title">
+                                                    Family Suite
+                                                </span>
+                                                <span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() =>
+                                                            setFamilySuite(familySuite + 1)
+                                                        }
+                                                    >
+                                                        <AddIcon />
+                                                    </IconButton>
+                                                    <span>{familySuite}</span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() => {
+                                                            familySuite > 0
+                                                                ? setFamilySuite(familySuite - 1)
+                                                                : familySuite;
+                                                        }}
+                                                    >
+                                                        <RemoveIcon />
+                                                    </IconButton>
+                                                </span>
+                                                <span className="content__option-price">
+                                                    {" "}
+                                                    ${convertCurrency(familySuite * 24)}
+                                                </span>
+                                            </div>
+                                            <Divider />
+                                            <p className="content__addOn">Add-on:</p>
+                                            <div className="content__option">
+                                                <span className="content__option-title">
+                                                    Breakfast
+                                                </span>
+                                                <span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() => setBreakFast(breakFast + 1)}
+                                                    >
+                                                        <AddIcon />
+                                                    </IconButton>
+                                                    <span>{breakFast}</span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() => {
+                                                            breakFast > 0
+                                                                ? setBreakFast(breakFast - 1)
+                                                                : breakFast;
+                                                        }}
+                                                    >
+                                                        <RemoveIcon />
+                                                    </IconButton>
+                                                </span>
+                                                <span className="content__option-price">
+                                                    {" "}
+                                                    ${convertCurrency(breakFast * 24)}
+                                                </span>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                                 <div className="total">
                                     <span>Total</span>
@@ -116,77 +225,3 @@ export const BookingForm = (props: IProps) => {
         </StyledBookingForm>
     );
 };
-const StyledBookingForm = styled.div`
-    .wrapper {
-        background-color: ${(p) => p.theme.colors.backgroundGray};
-    }
-    .showMoney {
-        padding: 3rem;
-        border-bottom: 1px solid ${(p) => p.theme.colors.gray2};
-        font-size: ${(p) => p.theme.typography.fontSize}px;
-        &__title {
-            font-size: 2rem;
-            color: ${(p) => p.theme.colors.gray};
-            font-weight: ${(p) => p.theme.typography.fontWeightMedium};
-            padding-left: 0.8rem;
-        }
-    }
-    .content {
-        padding: 2.3rem 3rem 0 3rem;
-        &__title {
-            display: flex;
-            flex-direction: row;
-        }
-        &__left {
-            padding-right: 6.4rem;
-        }
-        &__text {
-            color: ${(p) => p.theme.colors.gray1};
-            font-weight: 400;
-            font-size: ${(p) => p.theme.typography.fontSize}px;
-        }
-        &__sub {
-            font-size: ${(p) => p.theme.typography.fontSize}px;
-            font-weight: ${(p) => p.theme.typography.fontWeightMedium};
-        }
-        &__name {
-            font-size: 1.8rem;
-            font-weight: 500;
-            line-height: 2.7rem;
-        }
-        &__location {
-            &-text {
-                font-size: ${(p) => p.theme.typography.fontSize}px;
-                color: ${(p) => p.theme.colors.gray1};
-                padding-left: 1rem;
-            }
-        }
-    }
-    .total {
-        padding: 0 3rem;
-        display: flex;
-        justify-content: space-between;
-        font-size: 2rem;
-        font-weight: 400;
-    }
-    .wrapperBtn {
-        padding: 2rem 3rem 3rem 3rem;
-        .btn {
-            width: 100%;
-            padding: 2.1rem;
-            background-color: ${(p) => p.theme.colors.orange};
-            color: ${(p) => p.theme.colors.pureWhite};
-            border-color: transparent;
-            cursor: pointer;
-            &:hover {
-                background-color: ${(p) => p.theme.colors.darkOrange};
-            }
-        }
-    }
-    .form__group {
-        padding: 1.7rem 3rem 0 3rem;
-        &-input {
-            margin-bottom: 2rem;
-        }
-    }
-`;

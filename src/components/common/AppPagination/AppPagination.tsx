@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { makeStyles, createStyles, Grid } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 import styled from "styled-components";
@@ -27,29 +27,35 @@ const useStyles = makeStyles((theme) =>
 
 interface IProps {
     totalPage?: number;
+    showPerpage?: boolean;
+    currentPage?: number;
+    handleChange?: (event: ChangeEvent<any>, value: any) => void;
 }
 
 export const AppPagination = (props: IProps) => {
-    const { totalPage } = props;
+    const { totalPage, showPerpage, currentPage, handleChange } = props;
     const classes = useStyles();
-
     return (
         <StyledAppPagination>
             <Grid container>
                 <Grid item xs={12} md={4}></Grid>
                 <Grid item xs={12} md={8}>
                     <div className="wrapper">
-                        <p className="wrapper__text">
-                            Showing{" "}
-                            <span className="wrapper__number">
-                                {1}/{totalPage}
-                            </span>
-                        </p>
+                        {showPerpage && (
+                            <p className="wrapper__text">
+                                Showing{" "}
+                                <span className="wrapper__number">
+                                    {currentPage}/{totalPage}
+                                </span>
+                            </p>
+                        )}
                         <div className="paginationWrapper">
                             <div className={classes.root}>
                                 <Pagination
                                     classes={{ ul: classes.ul }}
                                     count={totalPage}
+                                    page={currentPage}
+                                    onChange={handleChange}
                                     variant="outlined"
                                 />
                             </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover } from "@material-ui/core";
 
-import { StyledWrapperTitleComponent, AppPagination } from "..";
+import { StyledWrapperTitleComponent } from "..";
 import { ComponentListTourLists, ComponentListTourFilter } from ".";
 import { ICard } from "@types";
 import { Duration, TypeOfTour, moneyRange } from "@demos";
@@ -60,7 +60,6 @@ export const ComponentListTourContent = (props: IProps) => {
                 </div>
                 <ComponentListTourLists data={dataListsTour} />
             </div>
-            <AppPagination totalPage={5} />
         </StyledWrapperTitleComponent>
     );
 };

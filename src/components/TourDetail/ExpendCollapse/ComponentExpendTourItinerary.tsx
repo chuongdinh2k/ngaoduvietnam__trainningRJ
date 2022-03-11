@@ -11,7 +11,7 @@ export const ComponentExpendTourItinerary = (props: IProps) => {
     return (
         <StyledExpendComponent>
             {tourItinerary?.locations?.map((item) => (
-                <div className="collapse__content">
+                <div key={item.title} className="collapse__content">
                     <div className="collapse__content-top">
                         <span className="content__icon">
                             <IconLocation color="#04316A" />

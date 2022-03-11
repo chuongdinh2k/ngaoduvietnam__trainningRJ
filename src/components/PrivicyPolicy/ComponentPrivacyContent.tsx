@@ -9,7 +9,6 @@ interface IProps {
 }
 export const ComponentPrivacyContent = (props: IProps) => {
     const { privacyData } = props;
-    console.log(privacyData);
     return (
         <StyledComponentPrivacyContent>
             <div className="wrapperPolicy">

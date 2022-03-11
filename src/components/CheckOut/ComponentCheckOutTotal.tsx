@@ -1,5 +1,8 @@
-import { ChangeEvent, FocusEvent } from "react";
+import React, { ChangeEvent, FocusEvent } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+
+import { resetForm, selectHotel, useAppSelector } from "@redux";
 import { AppInput, GroupPeople, IconCalendar, IconLocation } from "..";
 
 interface IValues {
@@ -22,6 +25,16 @@ interface IProps {
 }
 export const ComponentCheckOutTotal = (props: IProps) => {
     const { handleChange, handleBlur } = props;
+    // hooks
+    const dispatch = useDispatch();
+    const hotel = useAppSelector(selectHotel);
+
+    React.useEffect(() => {
+        return () => {
+            dispatch(resetForm());
+        };
+    }, []);
+
     return (
         <StyledComponentCheckOutContent>
             <div className="wrapperTotal">
@@ -53,7 +66,6 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 handleBlur={handleBlur("date")}
                                 placeholder="Enter duration"
                                 icon={<IconCalendar />}
-                                // error={errors.date}
                                 value={props.values.date}
                             />
                         </div>
@@ -68,6 +80,24 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 value={props.values.group}
                             />
                         </div>
+                        {/* <div className="form__group-option">
+                            <p>
+                                <span className="highlight">1x</span>Standard room
+                            </p>
+                            <span>$120.00</span>
+                        </div> */}
+                        {hotel?.bookingHotel?.standardRoom &&
+                            hotel?.bookingHotel?.standardRoom > 0 && (
+                                <div className="form__group-option">
+                                    <p>
+                                        <span className="highlight">
+                                            {hotel?.bookingHotel?.standardRoom}x
+                                        </span>
+                                        Standard room
+                                    </p>
+                                    <span>$120.00</span>
+                                </div>
+                            )}
                         <div className="form__group-promo">
                             <div className="form__group-inputPromo ">
                                 <AppInput
@@ -92,6 +122,9 @@ export const ComponentCheckOutTotal = (props: IProps) => {
 };
 
 const StyledComponentCheckOutContent = styled.div`
+    .highlight {
+        color: ${(p) => p.theme.colors.orange};
+    }
     .wrapperTotal {
         width: 100%;
         background-color: ${(p) => p.theme.colors.backgroundGray};
@@ -138,6 +171,13 @@ const StyledComponentCheckOutContent = styled.div`
     .form__group {
         &-input {
             margin-top: 2rem;
+        }
+        &-option {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 2rem;
+            font-size: 1.6rem;
+            font-weight: ${(p) => p.theme.typography.fontWeightBold};
         }
         .MuiInputBase-root {
             padding-left: 1.8rem;

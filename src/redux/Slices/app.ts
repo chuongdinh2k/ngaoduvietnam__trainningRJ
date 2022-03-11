@@ -16,6 +16,7 @@ const appSlice = createSlice({
     reducers: {
         setLoading: (state, action: PayloadAction<boolean>) => {
             state.loading = action.payload;
+            console.log(action.payload);
         },
     },
 });

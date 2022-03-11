@@ -5,8 +5,12 @@ import { filterArry } from "@utils";
 import { toursApi } from "@api";
 import { RootState } from ".";
 
-export const getListTours = createAsyncThunk("tours/getList", async () => {
-    const res = await toursApi.getListTours();
+interface IPagination {
+    page?: number;
+    limit?: number;
+}
+export const getListTours = createAsyncThunk("tours/getList", async (values: IPagination) => {
+    const res = await toursApi.getListTours(values);
     return res.data;
 });
 // WHAT: action view tour detail

@@ -18,7 +18,6 @@ interface IProps {
 }
 export const ComponentDetailInfor = (props: IProps) => {
     const { inforTour, inforHotel } = props;
-    console.log(inforHotel);
     return (
         <StyledComponentDetailInfor>
             <div className="wrapper">
