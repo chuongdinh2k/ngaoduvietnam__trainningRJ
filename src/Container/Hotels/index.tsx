@@ -11,13 +11,11 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListHotels, selectHotel, useAppSelector } from "@redux";
+import { getListHotels } from "@redux";
 import { useHistory } from "react-router-dom";
 import { LIMIT_RECORD_6 } from "@configs";
 
 export const Hotels = () => {
-    // redux state
-    const hotels = useAppSelector(selectHotel);
     // get params of url
     const parsed = qs.parse(location.search);
     // hooks
@@ -44,7 +42,7 @@ export const Hotels = () => {
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
-                    <ComponentHotelsContent datalistHotels={hotels.dataHotelsList} />
+                    <ComponentHotelsContent />
                     <AppPagination
                         totalPage={5}
                         showPerpage

@@ -40,7 +40,7 @@ export const TypeOfTour = {
         },
         {
             label: "Sun and Beaches",
-            value: "Sun - Beach",
+            value: "Sun and Beaches",
         },
     ],
 };

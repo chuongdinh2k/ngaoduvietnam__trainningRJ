@@ -3,15 +3,12 @@ import { Popover } from "@material-ui/core";
 
 import { StyledWrapperTitleComponent } from "..";
 import { ComponentListTourLists, ComponentListTourFilter } from ".";
-import { ICard } from "@types";
 import { Duration, TypeOfTour, moneyRange } from "@demos";
+import { useAppSelector, selectTour } from "@redux";
 
-interface IProps {
-    dataListsTour?: Array<ICard>;
-}
-export const ComponentListTourContent = (props: IProps) => {
-    // props state
-    const { dataListsTour } = props;
+export const ComponentListTourContent = () => {
+    // redux state
+    const tours = useAppSelector(selectTour);
 
     // component prop
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
@@ -23,7 +20,10 @@ export const ComponentListTourContent = (props: IProps) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
+    const [listFilter, setListFilter] = React.useState(tours.dataToursList);
+    React.useEffect(() => {
+        setListFilter(tours.dataToursList);
+    }, [tours.dataToursList]);
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
     return (
@@ -55,10 +55,11 @@ export const ComponentListTourContent = (props: IProps) => {
                             duration={Duration}
                             typeOfTour={TypeOfTour}
                             moneyRange={moneyRange}
+                            setListFilter={setListFilter}
                         />
                     </Popover>
                 </div>
-                <ComponentListTourLists data={dataListsTour} />
+                <ComponentListTourLists data={listFilter} />
             </div>
         </StyledWrapperTitleComponent>
     );

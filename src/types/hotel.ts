@@ -52,6 +52,7 @@ export interface IRelatedHotel {
     listRelated?: Array<IHotel>;
 }
 export interface IHotel {
+    image?: string;
     createdAt?: string;
     id: string;
     title?: string;

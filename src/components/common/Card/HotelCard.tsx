@@ -17,7 +17,9 @@ export const HotelCard = (props: IProps) => {
             <StyledCardWithIcon>
                 <div className="cardWrapper" onClick={() => onClick && onClick(data?.id)}>
                     <div className="imageWrapper">
-                        <img className="image" src={data?.listImage && data?.listImage[0]} />
+                        {/* <img className="image" src={data?.listImage && data?.listImage[0]} /> */}
+                        <img className="image" src={data?.image && data?.image} />
+
                         <span className="iconFlag">
                             <IconFlagMark
                                 color={data?.marked ? theme.colors.orange : theme.colors.pureWhite}

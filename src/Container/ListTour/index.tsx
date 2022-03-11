@@ -12,7 +12,7 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListTours, selectTour, useAppSelector } from "@redux";
+import { getListTours } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
 
 export const ListTour = () => {
@@ -21,8 +21,6 @@ export const ListTour = () => {
     // hooka
     const dispatch = useDispatch();
     const history = useHistory();
-    // redux state
-    const tours = useAppSelector(selectTour);
     // component state
     const [page, setPage] = useState<any>(parsed?.page || 1);
     const handleChange = (event: ChangeEvent<any>, value: string) => {
@@ -44,7 +42,7 @@ export const ListTour = () => {
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
-                    <ComponentListTourContent dataListsTour={tours.dataToursList} />
+                    <ComponentListTourContent />
                     <AppPagination
                         totalPage={5}
                         showPerpage

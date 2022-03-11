@@ -1,17 +1,40 @@
 import React from "react";
-import { Popover } from "@material-ui/core";
+import { makeStyles, MenuItem, Popover, Select } from "@material-ui/core";
 
-import { StyledWrapperTitleComponent, IconDownArrow } from "..";
+import { StyledWrapperTitleComponent } from "..";
 import { stars, moneyRange, reviewScore } from "@demos";
 import { ComponentHotelsFilter, ComponentListHotels } from ".";
 import clsx from "clsx";
-import { IHotel } from "@types";
+import { selectHotel, useAppSelector } from "@redux";
+import { sortItem } from "@utils";
 
-interface Iprops {
-    datalistHotels: Array<IHotel>;
-}
-export const ComponentHotelsContent = (props: Iprops) => {
-    const { datalistHotels } = props;
+const useStyles = makeStyles({
+    root: {},
+    select: {
+        marginLeft: "1rem",
+        marginRight: "2rem",
+        "& .MuiSelect-select.MuiSelect-select": {
+            fontSize: "2rem",
+        },
+        "& .MuiSelect-icon": {
+            top: "calc(-10%)",
+            fontSize: "3rem",
+            fontWeight: 700,
+        },
+        "& .MuiListItem-root": {
+            fontSsize: "2rem",
+        },
+    },
+});
+export const ComponentHotelsContent = () => {
+    const classes = useStyles();
+    const hotels = useAppSelector(selectHotel);
+    //component state
+    const [selected, setSelected] = React.useState("price");
+    const [listFilter, setListFilter] = React.useState(hotels.dataHotelsList);
+    React.useEffect(() => {
+        setListFilter(hotels.dataHotelsList);
+    }, [hotels.dataHotelsList]);
     // component prop
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
@@ -23,6 +46,10 @@ export const ComponentHotelsContent = (props: Iprops) => {
         setAnchorEl(null);
     };
 
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        setSelected(event.target.value as string);
+        setListFilter(sortItem(hotels.dataHotelsList, event.target.value));
+    };
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
     return (
@@ -32,11 +59,23 @@ export const ComponentHotelsContent = (props: Iprops) => {
                     <h3 className="top__title hotel">Hotels</h3>
                     <div className="top__filter">
                         <div className="top__filter-text">
-                            <span className="top__filter-highlight">Sort By:</span> Price
+                            <span className="top__filter-highlight">Sort By:</span>{" "}
+                            <Select
+                                className={classes.select}
+                                disableUnderline
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={selected}
+                                onChange={handleChange}
+                            >
+                                <MenuItem value="price">Price</MenuItem>
+                                <MenuItem value="star">Star</MenuItem>
+                                <MenuItem value="reviewScore">Review Score</MenuItem>
+                            </Select>
                         </div>
-                        <span className="top__filter-icon">
+                        {/* <span className="top__filter-icon">
                             <IconDownArrow color="#4F4F4F" />
-                        </span>
+                        </span> */}
                         <button
                             className={clsx("btn", anchorEl ? "activeBtn" : "")}
                             aria-describedby={id}
@@ -62,11 +101,12 @@ export const ComponentHotelsContent = (props: Iprops) => {
                                 reviewScore={reviewScore}
                                 stars={stars}
                                 moneyRange={moneyRange}
+                                setListFilter={setListFilter}
                             />
                         </Popover>
                     </div>
                 </div>
-                <ComponentListHotels data={datalistHotels} />
+                <ComponentListHotels data={listFilter} />
             </div>
         </StyledWrapperTitleComponent>
     );

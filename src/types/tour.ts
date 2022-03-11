@@ -96,4 +96,5 @@ export interface IDataTour {
     reviews?: IReviews;
     related?: IRelated;
     comments?: Array<IComment>;
+    image?: string;
 }

@@ -25,23 +25,6 @@ export const convertCurrency = (value: number | undefined) => {
 };
 
 // WHAT: filter form
-// function filterArry1(array: Array<any>, filters: any) {
-//     // get key in object as array
-//     const filterKeys = Object.keys(filters);
-//     return array.filter((item: any) => {
-//         // return with condition filter
-//         return filterKeys.every((key) => {
-//             // ignore empty value
-//             if (!filters[key].length) return true;
-//             //if value is array
-//             if (Array.isArray(filters[key]))
-//                 return filters[key][0] <= item[key] && item[key] <= filters[key][1];
-//             // same value
-//             return filters[key] === item[key] ? true : false;
-//         });
-//     });
-// }
-
 export const filterArry = (array: Array<any>, filters: any) => {
     // get key in object as array
     const filterKeys = Object.keys(filters);
@@ -62,4 +45,9 @@ export const filterArry = (array: Array<any>, filters: any) => {
 // get Related record (in list response);
 export const relatedList = (array: Array<any>, id: string) => {
     return array.filter((item) => item.id !== id);
+};
+
+// WHAT: sort by condition
+export const sortItem = (array: Array<any>, condition: any) => {
+    return array.slice().sort((a, b) => a[condition] - b[condition]);
 };

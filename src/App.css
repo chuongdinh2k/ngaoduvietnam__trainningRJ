@@ -50,3 +50,6 @@ html {
 .slick-next {
   right: 0;
 }
+.MuiMenuItem-root {
+  font-size: 2rem !important;
+}

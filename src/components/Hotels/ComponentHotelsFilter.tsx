@@ -3,6 +3,9 @@ import { Divider } from "@material-ui/core";
 import { Formik } from "formik";
 
 import { AppRangeSlider, AppCheckBox, StyleComponentFilter } from "..";
+import { selectHotel, useAppSelector } from "@redux";
+import { IHotel } from "@types";
+import { filterArry } from "@utils";
 
 interface IRangeSlider {
     name?: string;
@@ -22,17 +25,19 @@ interface IProps {
     reviewScore?: ICheckBoxGroup;
     stars?: ICheckBoxGroup;
     moneyRange?: IRangeSlider;
+    setListFilter: React.Dispatch<React.SetStateAction<IHotel[]>>;
 }
 
 export const ComponentHotelsFilter = (props: IProps) => {
-    const { stars, moneyRange, reviewScore } = props;
+    const hotels = useAppSelector(selectHotel);
+    //    hooks
+    const { stars, moneyRange, reviewScore, setListFilter } = props;
     // component state
-    const [valueRange, setValueRange] = React.useState<number[]>([150, 1000]);
+    const [valueRange, setValueRange] = React.useState<number[]>([0, 1000]);
     // component variable
     const initialValuesPackage = {
-        hotelStars: [] as number[],
-        reviewScore: [] as number[],
-        range: valueRange,
+        star: [] as number[],
+        rating: [] as number[],
     };
     // WHAT: handle range value
     const handleChangeRange = (event: ChangeEvent<any>, newValue: number | number[]) => {
@@ -47,7 +52,11 @@ export const ComponentHotelsFilter = (props: IProps) => {
                 </div>
                 <Formik
                     initialValues={initialValuesPackage}
-                    onSubmit={(values, { resetForm }) => resetForm()}
+                    onSubmit={(values) => {
+                        setListFilter(
+                            filterArry(hotels.dataHotelsList, { ...values, price: valueRange })
+                        );
+                    }}
                 >
                     {({ handleSubmit, values, handleChange }) => {
                         return (
@@ -65,20 +74,20 @@ export const ComponentHotelsFilter = (props: IProps) => {
                                 </div>
                                 <div className="select">
                                     <AppCheckBox
-                                        handleChange={handleChange("hotelStars")}
+                                        handleChange={handleChange("star")}
                                         title="Hotel Stars"
-                                        name="hotelStars"
-                                        values={values.hotelStars}
+                                        name="star"
+                                        values={values.star}
                                         options={stars && stars.data}
                                     />
                                     <Divider />
                                 </div>
                                 <div className="select">
                                     <AppCheckBox
-                                        handleChange={handleChange("reviewScore")}
+                                        handleChange={handleChange("rating")}
                                         title={reviewScore && reviewScore.name}
-                                        name={reviewScore && reviewScore.name}
-                                        values={values.reviewScore}
+                                        name="rating"
+                                        values={values.rating}
                                         options={reviewScore && reviewScore.data}
                                     />
                                     <Divider />

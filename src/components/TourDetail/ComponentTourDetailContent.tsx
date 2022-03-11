@@ -9,7 +9,7 @@ import {
     ComponentRelated,
 } from ".";
 import { IDataTour, IHotel } from "@types";
-import { TourTabs, HotelTabs } from "@demos";
+import { TourTabs, HotelTabs, hotelDetail, dataTourDetail } from "@demos";
 
 interface IProps {
     dataTour?: IDataTour;
@@ -48,10 +48,12 @@ export const ComponentTourDetailContent = (props: IProps) => {
             <Grid container>
                 <Grid item xs={12} md={8}>
                     <div className="wrapper__left">
-                        <ComponentCustomViewImage
-                            listTourImages={dataTour?.listImage}
-                            listHotelImages={dataHotel?.listImage}
-                        />
+                        {dataTour && (
+                            <ComponentCustomViewImage listTourImages={dataTourDetail?.listImage} />
+                        )}
+                        {dataHotel && (
+                            <ComponentCustomViewImage listHotelImages={hotelDetail?.listImage} />
+                        )}
                         <ComponentDetailTab tabs={tabs} dataHotel={dataHotel} dataTour={dataTour} />
                     </div>
                 </Grid>

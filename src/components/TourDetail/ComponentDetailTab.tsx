@@ -11,7 +11,7 @@ import {
 import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO } from "@configs";
 import { IDataTour, IHotel } from "@types";
 import { ComponentHotelDetailDescription, ComponentListRooms } from "..";
-import { dataTourDetail } from "@demos";
+import { dataTourDetail, hotelDetail } from "@demos";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -126,11 +126,11 @@ export const ComponentDetailTab = (props: IProps) => {
                 {dataTour && (
                     <ComponentTabDetailDescription description={dataTourDetail.discription} />
                 )}
-                {dataHotel && <ComponentListRooms selectRooms={dataHotel.selectRooms} />}
+                {dataHotel && <ComponentListRooms selectRooms={hotelDetail.selectRooms} />}
             </TabPanel>
             <TabPanel value={value} index={NUMBER_ONE}>
                 {dataHotel && (
-                    <ComponentHotelDetailDescription description={dataHotel.description} />
+                    <ComponentHotelDetailDescription description={hotelDetail.description} />
                 )}
                 {dataTour && (
                     <ComponentTabDetailAdditionalInfo

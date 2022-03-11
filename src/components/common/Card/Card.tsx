@@ -18,9 +18,9 @@ export const Card = (props: IProps) => {
                 <StyledCardWithIcon>
                     <div className="cardWrapper" onClick={() => onClick && onClick(data?.id)}>
                         <div className="imageWrapper">
-                            {data?.listImage && (
+                            {/* {data?.listImage && (
                                 <img className="image" src={data && data?.listImage[0]} />
-                            )}
+                            )} */}
                             {data?.image && <img className="image" src={data?.image} />}
 
                             <span className="iconFlag">

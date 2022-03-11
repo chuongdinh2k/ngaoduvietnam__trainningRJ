@@ -2,10 +2,11 @@ import React, { ChangeEvent } from "react";
 import { Divider } from "@material-ui/core";
 import styled from "styled-components";
 import { Formik } from "formik";
-import { useDispatch } from "react-redux";
 
 import { AppRangeSlider, AppCheckBox } from "..";
-import { filterTour } from "@redux";
+import { IDataTour } from "@types";
+import { useAppSelector, selectTour } from "@redux";
+import { filterArry } from "@utils";
 
 interface IRangeSlider {
     name?: string;
@@ -24,18 +25,20 @@ interface IProps {
     duration?: ICheckBoxGroup;
     typeOfTour?: ICheckBoxGroup;
     moneyRange?: IRangeSlider;
+    setListFilter: React.Dispatch<React.SetStateAction<IDataTour[]>>;
 }
 
 export const ComponentListTourFilter = (props: IProps) => {
-    const { duration, typeOfTour, moneyRange } = props;
+    const { duration, typeOfTour, moneyRange, setListFilter } = props;
+    // redux store
+    const tours = useAppSelector(selectTour);
     // component state
-    const [valueRange, setValueRange] = React.useState<number[]>([150, 1000]);
+    const [valueRange, setValueRange] = React.useState<number[]>([0, 1000]);
     // component variable
     const initialValuesPackage = {
         typeOfTour: [],
         duration: [],
     };
-    const dispatch = useDispatch();
     // WHAT: handle price value
     const handleChangeRange = (event: ChangeEvent<any>, newValue: number | number[]) => {
         setValueRange(newValue as number[]);
@@ -49,10 +52,10 @@ export const ComponentListTourFilter = (props: IProps) => {
                 </div>
                 <Formik
                     initialValues={initialValuesPackage}
-                    onSubmit={(values, { resetForm, setSubmitting }) => {
-                        dispatch(filterTour({ ...values, price: valueRange }));
-                        resetForm();
-                        setSubmitting(true);
+                    onSubmit={(values) => {
+                        setListFilter(
+                            filterArry(tours.dataToursList, { ...values, price: valueRange })
+                        );
                     }}
                 >
                     {({ handleSubmit, values, handleChange }) => {

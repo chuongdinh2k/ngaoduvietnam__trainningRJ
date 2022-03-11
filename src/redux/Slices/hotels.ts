@@ -1,6 +1,7 @@
 import { hotelsApi } from "@api";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IHotel } from "@types";
+import { filterArry } from "@utils";
 import { RootState } from ".";
 
 interface IPagination {
@@ -35,6 +36,9 @@ const hotelsSlice = createSlice({
     name: "hotels",
     initialState: initialState,
     reducers: {
+        filterHotel: (state, action: PayloadAction<any>) => {
+            state.dataHotelsList = filterArry(state.dataHotelsList, action.payload);
+        },
         setBookingForm: (state, action: PayloadAction<any>) => {
             state.bookingHotel = action.payload;
         },
@@ -50,6 +54,6 @@ const hotelsSlice = createSlice({
     },
 });
 
-export const { setBookingForm, resetForm } = hotelsSlice.actions;
+export const { setBookingForm, resetForm, filterHotel } = hotelsSlice.actions;
 export const selectHotel = (state: RootState) => state.hotels;
 export default hotelsSlice.reducer;
