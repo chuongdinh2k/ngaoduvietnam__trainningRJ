@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 import { AppSelect, GroupPeople, Flag } from "@components";
-import { IconSearch, AppInput, IconCalendar, IconLocation } from "@components";
+import { IconSearch, AppInput,AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
 import { formSchemaHomeFilter } from "@utils";
 
@@ -19,6 +19,10 @@ export const HomeToursTab = (props: IProps) => {
         departure: "",
         group: "",
         typeOfTour: "",
+    };
+    const [time, setTime] = React.useState("");
+    const handleOnChange = (e: any) => {
+        setTime(e);
     };
     return (
         <StyledHomeToursTab>
@@ -43,13 +47,12 @@ export const HomeToursTab = (props: IProps) => {
                                 />
                             </div>
                             <div className="input-group">
-                                <AppInput
-                                    handleChange={handleChange("departure")}
-                                    icon={<IconCalendar />}
-                                    value={values.departure}
+                                <AppDatePicker
                                     name="departure"
+                                    value={time}
+                                    handleChange={(date:any)=>handleOnChange(date)}
                                     placeholder="Departure time"
-                                />
+                               />
                             </div>
                             {!props.inputTypeOfTour ? (
                                 ""
@@ -67,7 +70,7 @@ export const HomeToursTab = (props: IProps) => {
                                         handleChange={handleChange("typeOfTour")}
                                     />
                                 </div>
-                            )}
+                        )}
                             <div className="input-group">
                                 <AppSelect
                                     name="group"
@@ -117,7 +120,7 @@ const StyledHomeToursTab = styled.div`
         }
     }
     .btn {
-        margin: 8px;
+        /* margin: 8px; */
         width: 100%;
         height: 6.4rem;
         color: ${(p) => p.theme.colors.pureWhite};

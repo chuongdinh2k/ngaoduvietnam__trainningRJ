@@ -7,7 +7,7 @@ import { Divider, IconButton } from "@material-ui/core";
 
 import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
-import { GroupPeople, IconCalendar, AppInput } from "..";
+import { GroupPeople, AppInput,AppDatePicker } from "..";
 import { convertCurrency } from "@utils";
 import { useDispatch } from "react-redux";
 import { setBookingForm } from "@redux";
@@ -28,6 +28,10 @@ export const BookingForm = (props: IProps) => {
     const [standardRoom, setStandardRoom] = React.useState<number>(0);
     const [familySuite, setFamilySuite] = React.useState<number>(0);
     const [breakFast, setBreakFast] = React.useState<number>(0);
+    const [duration,setDuration] = React.useState<string>('');
+    const handleOnChange = (e: any) => {
+        setDuration(e);
+    };
     // variable component
     const totalTour = dataTour?.price;
     const totalHotel =
@@ -80,7 +84,13 @@ export const BookingForm = (props: IProps) => {
                             <>
                                 <div className="form__group">
                                     <div className="form__group-input">
-                                        <AppInput
+                                        <AppDatePicker
+                                            name="date"
+                                            value={duration}
+                                            handleChange={(date:any)=>handleOnChange(date)}
+                                            placeholder="Enter Departure"
+                                        />
+                                        {/* <AppInput
                                             name="date"
                                             handleChange={handleChange("date")}
                                             handleBlur={handleBlur("date")}
@@ -88,7 +98,7 @@ export const BookingForm = (props: IProps) => {
                                             icon={<IconCalendar />}
                                             error={errors.date}
                                             value={values.date}
-                                        />
+                                        /> */}
                                     </div>
                                     <div className="form__group-input">
                                         <AppInput

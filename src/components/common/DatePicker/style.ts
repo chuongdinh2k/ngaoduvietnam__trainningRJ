@@ -1,27 +1,55 @@
 import styled from "styled-components";
 
 interface ISWrapper {
-    width?: any;
-    marginTop?: any;
+    width?: string;
+    marginTop?: string;
+    hasBorder?: boolean;
+    backgroundColor?: string;
 }
-
 interface ISLabel {
     color?: string;
-    fontSize?: any;
-    marginBottom?: any;
-    fontWeight?: any;
+    fontSize?: string;
+    marginBottom?: string;
+    fontWeight?: string;
 }
 
 export const InputWrapper = styled.div<ISWrapper>`
+    background-color: ${(props) => props.backgroundColor || "white"};
+    height: 5rem;
+    border: ${(p) => {
+        if (p.hasBorder) {
+            return `1px solid #E5E5E5`;
+        }
+    }};
     width: ${(props) => props.width || "100%"};
     margin-top: ${(props) => props.marginTop || "0px"};
-    background-color: white;
-    padding: 1.5rem;
+    padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
-    margin-bottom: 1.8rem;
+    // mui overide css
+    .MuiButtonBase-root{
+        padding: 0;
+    }
+    .MuiOutlinedInput-adornedStart{
+        padding-left: 0;
+    }
+    .MuiInputBase-input{
+        font-size: 1.4rem;
+        padding-left: 1rem;
+        font-weight: 500;
+    }
+    @media (min-width: 2000px) {
+        height: 10rem;
+        padding: 3.2rem 2rem 1.6rem 2rem;
+        .MuiInputBase-input {
+            font-size: 2.6rem;
+        }
+    }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 1rem 1.2rem;
     }
+`;
+export const Placeholder = styled.div`
+    color: #808285;
 `;
 
 export const Label = styled.p<ISLabel>`
@@ -33,7 +61,10 @@ export const Label = styled.p<ISLabel>`
         font-size: 16px;
     }
 `;
-
+export const Error = styled.span`
+    font-size: 14px;
+    color: ${(p) => p.theme.colors.red};
+`;
 export const LabelWrapper = styled.div`
     display: flex;
     padding-top: 0.4rem;

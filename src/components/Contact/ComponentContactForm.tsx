@@ -1,10 +1,13 @@
 import { Button, Grid, TextField } from "@material-ui/core";
 import { ErrorMessage, Formik } from "formik";
 
+import React from "react";
+
+import { AppInput, Error } from "..";
 import { theme } from "@styles";
 import { formSchemaContact } from "@utils";
 import { StyledComponentContactForm } from ".";
-import { AppInput, Error } from "..";
+import { AppDatePicker } from "..";
 
 export const ComponentContactForm = () => {
     // component variable
@@ -13,6 +16,11 @@ export const ComponentContactForm = () => {
         email: "",
         phone: "",
         message: "",
+    };
+
+    const [time, setTime] = React.useState("");
+    const handleOnChange = (e: any) => {
+        setTime(e);
     };
     return (
         <StyledComponentContactForm>
@@ -93,6 +101,9 @@ export const ComponentContactForm = () => {
                                 }}
                             </Formik>
                         </div>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <AppDatePicker handleChange={(date:any)=>handleOnChange(date)} value={time} />
                     </Grid>
                 </Grid>
             </div>

@@ -34,7 +34,7 @@ interface IAppInput {
     backgroundColor?: string;
 }
 
-export const AppInput = forwardRef((props: IAppInput, ref) => {
+export const AppInput = forwardRef((props: IAppInput) => {
     const classes = useStyles();
     // component state
     const handleOnChange = (event: any) => {

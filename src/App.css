@@ -53,3 +53,6 @@ html {
 .MuiMenuItem-root {
   font-size: 2rem !important;
 }
+.MuiTypography-root{
+  font-size: 1.4rem;
+}
