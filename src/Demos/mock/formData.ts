@@ -101,3 +101,24 @@ export const reviewScore = {
         },
     ],
 };
+export const groupOfPeople = {
+    name: "groupOfPeople",
+    data: [
+        {
+            label: "2 adults - 1 children",
+            value: "2 adults - 1 children",
+        },
+        {
+            label: "1 adults - 1 children",
+            value: "1 adults - 1 children",
+        },
+        {
+            label: "2 adults",
+            value: "2 adults",
+        },
+        {
+            label: "1 adult",
+            value: "1 adult",
+        },
+    ],
+};

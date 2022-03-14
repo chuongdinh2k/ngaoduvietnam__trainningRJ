@@ -12,13 +12,15 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListTours } from "@redux";
+import { getListTours, useAppSelector, selectTour } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
 
 export const ListTour = () => {
+    // redux state
+    const tours = useAppSelector(selectTour);
     // get params of url
     const parsed = qs.parse(location.search);
-    // hooka
+    // hooks
     const dispatch = useDispatch();
     const history = useHistory();
     // component state
@@ -42,7 +44,7 @@ export const ListTour = () => {
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
-                    <ComponentListTourContent />
+                    {!tours.dataToursList.length ? "Empty" : <ComponentListTourContent />}
                     <AppPagination
                         totalPage={5}
                         showPerpage

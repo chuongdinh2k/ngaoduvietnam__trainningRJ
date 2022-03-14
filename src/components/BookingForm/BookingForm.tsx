@@ -7,10 +7,11 @@ import { Divider, IconButton } from "@material-ui/core";
 
 import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
-import { GroupPeople, AppInput,AppDatePicker } from "..";
+import { GroupPeople, AppDatePicker, AppSelect } from "..";
 import { convertCurrency } from "@utils";
 import { useDispatch } from "react-redux";
 import { setBookingForm } from "@redux";
+import { groupOfPeople } from "@demos";
 
 interface IProps {
     data?: ICard;
@@ -28,7 +29,7 @@ export const BookingForm = (props: IProps) => {
     const [standardRoom, setStandardRoom] = React.useState<number>(0);
     const [familySuite, setFamilySuite] = React.useState<number>(0);
     const [breakFast, setBreakFast] = React.useState<number>(0);
-    const [duration,setDuration] = React.useState<string>('');
+    const [duration, setDuration] = React.useState<string>("");
     const handleOnChange = (e: any) => {
         setDuration(e);
     };
@@ -36,6 +37,7 @@ export const BookingForm = (props: IProps) => {
     const totalTour = dataTour?.price;
     const totalHotel =
         Number(dataHotel?.price) + standardRoom * 25 + familySuite * 24 + breakFast * 20;
+
     return (
         <StyledBookingForm>
             <div className="wrapper">
@@ -64,22 +66,27 @@ export const BookingForm = (props: IProps) => {
                 </div>
                 <Formik
                     initialValues={{
-                        date: "",
                         group: "",
                     }}
                     onSubmit={(values) => {
                         dispatch(
                             setBookingForm({
                                 ...values,
+                                date: duration,
                                 standardRoom: standardRoom,
                                 familySuite: familySuite,
                                 breakFast: breakFast,
+                                title: dataTour?.title || dataHotel?.title,
+                                location: dataTour?.location || dataHotel?.location,
+                                duration: dataTour?.duration || "",
+                                typeOfTour: dataTour?.typeOfTour || "",
+                                total: totalHotel || totalTour,
                             })
                         );
                         history.push(`/tours/${id}/checkout`);
                     }}
                 >
-                    {({ handleSubmit, values, errors, handleChange, handleBlur }) => {
+                    {({ handleSubmit, values, handleChange }) => {
                         return (
                             <>
                                 <div className="form__group">
@@ -87,28 +94,18 @@ export const BookingForm = (props: IProps) => {
                                         <AppDatePicker
                                             name="date"
                                             value={duration}
-                                            handleChange={(date:any)=>handleOnChange(date)}
+                                            handleChange={(date: any) => handleOnChange(date)}
                                             placeholder="Enter Departure"
                                         />
-                                        {/* <AppInput
-                                            name="date"
-                                            handleChange={handleChange("date")}
-                                            handleBlur={handleBlur("date")}
-                                            placeholder="Enter duration"
-                                            icon={<IconCalendar />}
-                                            error={errors.date}
-                                            value={values.date}
-                                        /> */}
                                     </div>
                                     <div className="form__group-input">
-                                        <AppInput
+                                        <AppSelect
                                             name="group"
-                                            handleChange={handleChange("group")}
-                                            handleBlur={handleBlur("group")}
-                                            placeholder="Enter group of people"
                                             icon={<GroupPeople color="#FF7B42" />}
-                                            error={errors.group}
                                             value={values.group}
+                                            placeholder="Enter group of people"
+                                            options={groupOfPeople.data}
+                                            handleChange={handleChange("group")}
                                         />
                                     </div>
                                     {dataHotel && (

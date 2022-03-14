@@ -1,9 +1,11 @@
 import React, { ChangeEvent, FocusEvent } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { resetForm, selectHotel, useAppSelector } from "@redux";
 import { AppInput, GroupPeople, IconCalendar, IconLocation } from "..";
+import { convertCurrency } from "@utils";
 
 interface IValues {
     date?: string;
@@ -27,8 +29,13 @@ export const ComponentCheckOutTotal = (props: IProps) => {
     const { handleChange, handleBlur } = props;
     // hooks
     const dispatch = useDispatch();
+    const history = useHistory();
+    // redux store
     const hotel = useAppSelector(selectHotel);
-
+    // WHAT: go back if hotel is empty
+    if (Object.keys(hotel.bookingHotel).length === 0) {
+        history.goBack();
+    }
     React.useEffect(() => {
         return () => {
             dispatch(resetForm());
@@ -39,24 +46,28 @@ export const ComponentCheckOutTotal = (props: IProps) => {
         <StyledComponentCheckOutContent>
             <div className="wrapperTotal">
                 <div className="content">
-                    <h3 className="content__title">
-                        Discover interesting things in the romantic coastal city of Vungtau
-                    </h3>
+                    <h3 className="content__title">{hotel.bookingHotel?.title}</h3>
                     <div className="content__location">
                         <span className="content__location-icon">
                             <IconLocation />
                         </span>
-                        <p className="content__location-title">Vungtau City, Baria-Vungtau</p>
+                        <p className="content__location-title">{hotel.bookingHotel?.location}</p>
                     </div>
                     <div className="content__type">
-                        <div className="content__type-left">
-                            <p className="content__type-subText">Duration:</p>
-                            <p className="content__type-text">3 days - 2 night</p>
-                        </div>
-                        <div className="content__type-left">
-                            <p className="content__type-subText">Tour Type:</p>
-                            <p className="content__type-text">Sun - Beach</p>
-                        </div>
+                        {hotel.bookingHotel?.duration && (
+                            <div className="content__type-left">
+                                <p className="content__type-subText">Duration:</p>
+                                <p className="content__type-text">{hotel.bookingHotel?.duration}</p>
+                            </div>
+                        )}
+                        {hotel?.bookingHotel?.typeOfTour && (
+                            <div className="content__type-left">
+                                <p className="content__type-subText">Tour Type:</p>
+                                <p className="content__type-text">
+                                    {hotel?.bookingHotel?.typeOfTour}
+                                </p>
+                            </div>
+                        )}
                     </div>
                     <div className="form__group">
                         <div className="form__group-input">
@@ -114,7 +125,9 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                 </div>
                 <div className="bottom">
                     <span>Total</span>
-                    <span className="bottom__money">$450.00</span>
+                    <span className="bottom__money">
+                        ${convertCurrency(hotel.bookingHotel?.total)}
+                    </span>
                 </div>
             </div>
         </StyledComponentCheckOutContent>

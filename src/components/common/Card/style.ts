@@ -40,7 +40,7 @@ export const StyledCardWithIcon = styled.div`
         transition: 250ms;
         &:hover {
             cursor: pointer;
-            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            transform: translateY(-10px);
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding: 0;

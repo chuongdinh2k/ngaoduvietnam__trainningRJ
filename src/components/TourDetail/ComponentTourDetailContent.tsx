@@ -1,3 +1,4 @@
+import React, { ChangeEvent } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
@@ -8,18 +9,29 @@ import {
     ComponentDetailTab,
     ComponentRelated,
 } from ".";
-import { IComment, IDataTour, IHotel } from "@types";
+import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
 import { TourTabs, HotelTabs, hotelDetail, dataTourDetail } from "@demos";
 
 interface IProps {
     dataTour?: IDataTour;
     dataHotel?: IHotel;
     tourComment?: IComment[];
+    hotelComment?: IHotelComment[];
+    currentPage?: number;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
+    handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
 }
 export const ComponentTourDetailContent = (props: IProps) => {
     // props
-    const { dataTour, dataHotel, tourComment, handleSubmitReviewTour } = props;
+    const {
+        dataTour,
+        dataHotel,
+        tourComment,
+        hotelComment,
+        currentPage,
+        handleSubmitReviewTour,
+        handleChangeReviewPage,
+    } = props;
 
     // componet variable
     const tabs = dataTour ? TourTabs : HotelTabs;
@@ -60,6 +72,8 @@ export const ComponentTourDetailContent = (props: IProps) => {
                                     tourComment={tourComment}
                                     dataTour={dataTour}
                                     handleSubmitReviewTour={handleSubmitReviewTour}
+                                    handleChangeReviewPage={handleChangeReviewPage}
+                                    currentPage={currentPage}
                                 />
                             </>
                         )}
@@ -68,7 +82,13 @@ export const ComponentTourDetailContent = (props: IProps) => {
                                 <ComponentCustomViewImage
                                     listHotelImages={hotelDetail?.listImage}
                                 />
-                                <ComponentDetailTab tabs={tabs} dataHotel={dataHotel} />
+                                <ComponentDetailTab
+                                    tabs={tabs}
+                                    dataHotel={dataHotel}
+                                    hotelComment={hotelComment}
+                                    handleChangeReviewPage={handleChangeReviewPage}
+                                    currentPage={currentPage}
+                                />
                             </>
                         )}
 

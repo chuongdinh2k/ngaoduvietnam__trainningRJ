@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { makeStyles, Theme, AppBar, Tabs, Tab, Typography, Box } from "@material-ui/core";
 import clsx from "clsx";
 
@@ -9,8 +9,8 @@ import {
 } from ".";
 // import { dataTourDetail } from "@demos";
 import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO } from "@configs";
-import { IComment, IDataTour, IHotel } from "@types";
-import { ComponentHotelDetailDescription, ComponentListRooms } from "..";
+import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
+import { ComponentHotelDetailDescription, ComponentListRooms, AppPagination } from "..";
 import { dataTourDetail, hotelDetail } from "@demos";
 
 interface TabPanelProps {
@@ -91,11 +91,23 @@ interface IProps {
     dataTour?: IDataTour;
     dataHotel?: IHotel;
     tourComment?: IComment[];
+    hotelComment?: IHotelComment[];
+    currentPage?: number;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
+    handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
 }
 export const ComponentDetailTab = (props: IProps) => {
     // component variable
-    const { tabs, dataTour, dataHotel, tourComment, handleSubmitReviewTour } = props;
+    const {
+        tabs,
+        dataTour,
+        dataHotel,
+        hotelComment,
+        tourComment,
+        handleSubmitReviewTour,
+        handleChangeReviewPage,
+        currentPage,
+    } = props;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -142,13 +154,34 @@ export const ComponentDetailTab = (props: IProps) => {
             </TabPanel>
             <TabPanel value={value} index={NUMBER_TWO}>
                 {dataTour && (
-                    <ComponentTabReview
-                        tourReviews={dataTourDetail.reviews}
-                        tourComment={tourComment}
-                        handleSubmitReviewTour={handleSubmitReviewTour}
-                    />
+                    <>
+                        <ComponentTabReview
+                            tourReviews={dataTourDetail.reviews}
+                            tourComment={tourComment}
+                            handleSubmitReviewTour={handleSubmitReviewTour}
+                        />
+                        <AppPagination
+                            totalPage={5}
+                            showPerpage={false}
+                            currentPage={currentPage}
+                            handleChange={handleChangeReviewPage}
+                        />
+                    </>
                 )}
-                {dataHotel && <ComponentTabReview hotelReviews={dataHotel.reviews} />}
+                {dataHotel && (
+                    <>
+                        <ComponentTabReview
+                            hotelReviews={dataHotel.reviews}
+                            hotelComment={hotelComment}
+                        />
+                        <AppPagination
+                            totalPage={5}
+                            showPerpage={false}
+                            currentPage={currentPage}
+                            handleChange={handleChangeReviewPage}
+                        />
+                    </>
+                )}
             </TabPanel>
         </div>
     );

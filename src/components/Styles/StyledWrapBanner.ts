@@ -63,18 +63,23 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         );
         backdrop-filter: blur(42px);
     }
+    @media (min-width: 3000px) {
+        .featured {
+            width: 30%;
+        }
+    }
     @media (min-width: 2000px) {
         height: 60vh;
         padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
             left: 0;
-            width: 40%;
+            width: 35%;
             padding: 2.6rem 2rem 0 2rem;
             font-size: 2.2rem;
         }
         .filter {
             right: 0;
-            width: 40%;
+            width: 35%;
             .MuiTabs-flexContainer {
                 justify-content: space-between;
             }

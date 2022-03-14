@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import {
     ComponentTourDetailContent,
@@ -11,7 +12,7 @@ import {
 import { IComment, IDataTour } from "@types";
 import { selectAuth, setLoading, useAppSelector } from "@redux";
 import { toursApi } from "@api";
-import { PAGINATION_REVIEWS } from "@configs";
+import { FAIL, PAGINATION_REVIEWS, REVIEW_SUCCESS } from "@configs";
 
 export const TourDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -35,7 +36,7 @@ export const TourDetail = () => {
     // WHAT: call api review
     useEffect(() => {
         fetchDataReviews();
-    }, []);
+    }, [params]);
 
     const fetchDataReviews = async () => {
         const response = await toursApi.reviewTours(id, { ...params });
@@ -55,7 +56,17 @@ export const TourDetail = () => {
                 status: "wonderful",
             });
             setComments([...comments, res.data]);
-        } catch (err) {}
+            toast.success(`${REVIEW_SUCCESS}`);
+        } catch (err) {
+            toast.error(`${FAIL}`);
+        }
+    };
+
+    const handleChangeReviewPage = (event: ChangeEvent<any>, value: string) => {
+        setParams({
+            page: Number(value),
+            limit: PAGINATION_REVIEWS,
+        });
     };
     return (
         <>
@@ -67,6 +78,8 @@ export const TourDetail = () => {
                         dataTour={detailTour}
                         tourComment={comments}
                         handleSubmitReviewTour={handleSubmitReview}
+                        handleChangeReviewPage={handleChangeReviewPage}
+                        currentPage={params.page}
                     />
                 </div>
             </StyledWrapContent>

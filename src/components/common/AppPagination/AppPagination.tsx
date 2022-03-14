@@ -38,7 +38,7 @@ export const AppPagination = (props: IProps) => {
     return (
         <StyledAppPagination>
             <Grid container>
-                <Grid item xs={12} md={4}></Grid>
+                {showPerpage && <Grid item xs={12} md={4}></Grid>}
                 <Grid item xs={12} md={8}>
                     <div className="wrapper">
                         {showPerpage && (
@@ -78,8 +78,12 @@ const StyledAppPagination = styled.div`
         &__number {
             padding-left: 1rem;
         }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding-bottom: 1rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             flex-direction: column;
+            padding-bottom: 1rem;
         }
     }
     /* display: flex;

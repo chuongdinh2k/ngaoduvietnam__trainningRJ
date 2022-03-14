@@ -104,8 +104,10 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         &__image {
             width: 100%;
             height: 54rem;
-
             position: relative;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                height: 25rem;
+            }
             .icon {
                 position: absolute;
                 right: 2.5rem;

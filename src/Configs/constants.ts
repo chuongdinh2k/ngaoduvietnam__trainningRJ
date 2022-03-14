@@ -35,3 +35,7 @@ export const PAGINATION_REVIEWS = 2;
 // Login account
 export const EMAIL = "jame95@gmail.com";
 export const PASSWORD = "123456789";
+
+// alert success review
+export const REVIEW_SUCCESS = "You've added a review successfully!";
+export const FAIL = "something went wrong! please try again!";

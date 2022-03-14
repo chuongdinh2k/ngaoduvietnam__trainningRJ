@@ -10,7 +10,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { theme } from "./styles/theme";
-
+import "react-toastify/dist/ReactToastify.css";
 import { store } from "@redux";
 
 ReactDOM.render(

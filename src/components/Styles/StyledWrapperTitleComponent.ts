@@ -14,7 +14,6 @@ export const StyledWrapperTitleComponent = styled.div`
         }
         &__filter {
             display: flex;
-
             &-text {
                 margin-top: 1rem;
                 font-weight: ${(p) => p.theme.typography.fontWeightBold};

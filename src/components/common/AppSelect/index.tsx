@@ -52,7 +52,7 @@ export const AppSelect = (props: IAppSelect) => {
                 placeholder={props.placeholder}
                 renderValue={
                     props.value === ""
-                        ? () => <RendePlaceholder>{props.placeholder}sadasd</RendePlaceholder>
+                        ? () => <RendePlaceholder>{props.placeholder}</RendePlaceholder>
                         : undefined
                 }
             >

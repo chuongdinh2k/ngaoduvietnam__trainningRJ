@@ -47,7 +47,7 @@ export const Login = () => {
                         {({ handleSubmit, values, handleChange }) => {
                             return (
                                 <div className="content__form">
-                                    <Alert className="content__form-alert" severity="info">
+                                    {/* <Alert className="content__form-alert" severity="info">
                                         <span>
                                             <b>email:</b> {EMAIL}
                                         </span>
@@ -55,7 +55,7 @@ export const Login = () => {
                                             {" "}
                                             <b>pass:</b> {PASSWORD}
                                         </span>
-                                    </Alert>
+                                    </Alert> */}
                                     <div className="content__form-input">
                                         <AppInputOutLined
                                             value={values.email}

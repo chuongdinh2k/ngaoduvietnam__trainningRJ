@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 
-import { IComment, IHotelReviews, IReviews } from "@types";
+import { IComment, IHotelReviews, IReviews, IHotelComment } from "@types";
 import { ComponentShowRating, ComponentCommentBox, ComponentUserComment } from ".";
 import { selectAuth, useAppSelector } from "@redux";
 import { useHistory } from "react-router-dom";
@@ -10,11 +10,13 @@ import { authRoutesEnum } from "@enums";
 interface IProps {
     tourReviews?: IReviews;
     tourComment?: IComment[];
+    hotelComment?: IHotelComment[];
     hotelReviews?: IHotelReviews;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
 }
 export const ComponentTabReview = (props: IProps) => {
-    const { tourReviews, hotelReviews, tourComment, handleSubmitReviewTour } = props;
+    const { tourReviews, hotelReviews, tourComment, hotelComment, handleSubmitReviewTour } = props;
+    console.log(hotelComment);
     // redux
     const auth = useAppSelector(selectAuth);
     // hook
@@ -51,7 +53,7 @@ export const ComponentTabReview = (props: IProps) => {
             )}
 
             {/* hotel review element */}
-            {hotelReviews && (
+            {hotelComment && (
                 <div className="rating">
                     <div className="rating__point">
                         <span className="rating__point-text">9.5</span>
@@ -65,10 +67,10 @@ export const ComponentTabReview = (props: IProps) => {
                     </div>
                 </div>
             )}
-            {hotelReviews &&
-                hotelReviews?.listReviews?.map((item, index) => (
+            {hotelComment &&
+                hotelComment?.map((comment, index) => (
                     <div key={index}>
-                        <ComponentUserComment commentHotel={item} />
+                        <ComponentUserComment commentHotel={comment} />
                     </div>
                 ))}
         </StyledComponentTabReview>
