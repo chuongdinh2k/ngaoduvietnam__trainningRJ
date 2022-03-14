@@ -4,6 +4,7 @@ import { ThemeProvider as ThemeProviders } from "styled-components";
 import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline } from "@material-ui/core";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 import "./index.css";
 import App from "./App";
@@ -18,6 +19,7 @@ ReactDOM.render(
             <ThemeProviders theme={theme}>
                 <CssBaseline />
                 <App />
+                <ToastContainer />
             </ThemeProviders>
         </ThemeProvider>
     </Provider>,

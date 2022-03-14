@@ -9,7 +9,7 @@ import {
 } from ".";
 // import { dataTourDetail } from "@demos";
 import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO } from "@configs";
-import { IDataTour, IHotel } from "@types";
+import { IComment, IDataTour, IHotel } from "@types";
 import { ComponentHotelDetailDescription, ComponentListRooms } from "..";
 import { dataTourDetail, hotelDetail } from "@demos";
 
@@ -90,10 +90,12 @@ interface IProps {
     tabs?: Array<ITab>;
     dataTour?: IDataTour;
     dataHotel?: IHotel;
+    tourComment?: IComment[];
+    handleSubmitReviewTour?: (value: any) => Promise<void>;
 }
 export const ComponentDetailTab = (props: IProps) => {
     // component variable
-    const { tabs, dataTour, dataHotel } = props;
+    const { tabs, dataTour, dataHotel, tourComment, handleSubmitReviewTour } = props;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -139,7 +141,13 @@ export const ComponentDetailTab = (props: IProps) => {
                 )}
             </TabPanel>
             <TabPanel value={value} index={NUMBER_TWO}>
-                {dataTour && <ComponentTabReview tourReviews={dataTourDetail.reviews} />}
+                {dataTour && (
+                    <ComponentTabReview
+                        tourReviews={dataTourDetail.reviews}
+                        tourComment={tourComment}
+                        handleSubmitReviewTour={handleSubmitReviewTour}
+                    />
+                )}
                 {dataHotel && <ComponentTabReview hotelReviews={dataHotel.reviews} />}
             </TabPanel>
         </div>

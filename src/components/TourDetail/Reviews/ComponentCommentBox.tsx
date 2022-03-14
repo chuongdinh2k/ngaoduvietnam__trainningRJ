@@ -5,7 +5,11 @@ import { IconProfile } from "@components";
 import { Formik } from "formik";
 import { formSchemaComment } from "@utils";
 
-export const ComponentCommentBox = () => {
+interface IProps {
+    handleSubmitReviewTour?: (value: any) => Promise<void>;
+}
+export const ComponentCommentBox = (props: IProps) => {
+    const { handleSubmitReviewTour } = props;
     // Component variable
     const initialValuesPackage = {
         comment: "",
@@ -22,7 +26,12 @@ export const ComponentCommentBox = () => {
                     <Formik
                         initialValues={initialValuesPackage}
                         validationSchema={formSchemaComment}
-                        onSubmit={(values, { resetForm }) => resetForm()}
+                        onSubmit={(values, { resetForm }) => {
+                            {
+                                handleSubmitReviewTour && handleSubmitReviewTour(values);
+                                resetForm();
+                            }
+                        }}
                     >
                         {({ handleSubmit, values, errors, handleChange }) => {
                             return (

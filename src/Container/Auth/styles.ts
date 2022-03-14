@@ -30,7 +30,7 @@ export const StyledContentAuth = styled.div`
     .content {
         position: absolute;
         left: 50%;
-        top: 40%;
+        top: 50%;
         width: 50%;
         min-width: 35rem;
         transform: translate(-50%, -50%);
@@ -55,6 +55,11 @@ export const StyledContentAuth = styled.div`
             width: 100%;
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 padding-top: 2rem;
+            }
+            &-alert {
+                font-size: 1.2rem;
+                display: flex;
+                margin-bottom: 1rem;
             }
             &-input {
                 margin-bottom: 2.8rem;

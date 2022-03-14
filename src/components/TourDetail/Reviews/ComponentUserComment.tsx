@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ComponentsRenderStars } from ".";
 import { IComment, IHotelComment } from "@types";
 import { IconDot } from "@components";
+import { fomatToShowDate } from "@utils";
 
 interface IProps {
     commentTour?: IComment;
@@ -38,9 +39,9 @@ export const ComponentUserComment = (props: IProps) => {
                                 {commentTour?.username}
                                 {commentHotel?.username}
                             </span>
-                            -
-                            <span>
-                                {commentTour?.time}
+                            <span className="user__info-spacing">-</span>
+                            <span className="user__info-date">
+                                {fomatToShowDate(commentHotel?.time as string)}
                                 {commentHotel?.time}
                             </span>
                         </p>
@@ -83,6 +84,9 @@ const StyledComponentUserComment = styled.div`
         }
         &-dot {
             padding: 0 0.5rem;
+        }
+        &-spacing {
+            padding: 0 1rem;
         }
     }
     .comment__content {

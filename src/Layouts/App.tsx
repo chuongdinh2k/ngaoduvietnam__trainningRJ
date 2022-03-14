@@ -3,6 +3,7 @@ import React from "react";
 import { ComponentLoader, Footer, StyledContainer } from "@components";
 import { ILayout } from "@types";
 import { useAppSelector, selectApp } from "@redux";
+import { ToastContainer } from "react-toastify";
 
 export const LayoutApp = (props: ILayout) => {
     const app = useAppSelector(selectApp);
@@ -16,6 +17,7 @@ export const LayoutApp = (props: ILayout) => {
             ) : (
                 <StyledContainer>
                     <div className="workspace">
+                        <ToastContainer />
                         <div>{props.children}</div>
                     </div>
                     <Footer />

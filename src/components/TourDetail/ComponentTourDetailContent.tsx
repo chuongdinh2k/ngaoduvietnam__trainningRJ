@@ -8,16 +8,18 @@ import {
     ComponentDetailTab,
     ComponentRelated,
 } from ".";
-import { IDataTour, IHotel } from "@types";
+import { IComment, IDataTour, IHotel } from "@types";
 import { TourTabs, HotelTabs, hotelDetail, dataTourDetail } from "@demos";
 
 interface IProps {
     dataTour?: IDataTour;
     dataHotel?: IHotel;
+    tourComment?: IComment[];
+    handleSubmitReviewTour?: (value: any) => Promise<void>;
 }
 export const ComponentTourDetailContent = (props: IProps) => {
     // props
-    const { dataTour, dataHotel } = props;
+    const { dataTour, dataHotel, tourComment, handleSubmitReviewTour } = props;
 
     // componet variable
     const tabs = dataTour ? TourTabs : HotelTabs;
@@ -49,12 +51,28 @@ export const ComponentTourDetailContent = (props: IProps) => {
                 <Grid item xs={12} md={8}>
                     <div className="wrapper__left">
                         {dataTour && (
-                            <ComponentCustomViewImage listTourImages={dataTourDetail?.listImage} />
+                            <>
+                                <ComponentCustomViewImage
+                                    listTourImages={dataTourDetail?.listImage}
+                                />
+                                <ComponentDetailTab
+                                    tabs={tabs}
+                                    tourComment={tourComment}
+                                    dataTour={dataTour}
+                                    handleSubmitReviewTour={handleSubmitReviewTour}
+                                />
+                            </>
                         )}
                         {dataHotel && (
-                            <ComponentCustomViewImage listHotelImages={hotelDetail?.listImage} />
+                            <>
+                                <ComponentCustomViewImage
+                                    listHotelImages={hotelDetail?.listImage}
+                                />
+                                <ComponentDetailTab tabs={tabs} dataHotel={dataHotel} />
+                            </>
                         )}
-                        <ComponentDetailTab tabs={tabs} dataHotel={dataHotel} dataTour={dataTour} />
+
+                        {/* <ComponentDetailTab tabs={tabs} dataHotel={dataHotel} dataTour={dataTour} /> */}
                     </div>
                 </Grid>
                 <Grid item xs={12} md={4}>

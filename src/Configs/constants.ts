@@ -30,3 +30,8 @@ export const validate_phone =
 
 // limit record perpage = 6
 export const LIMIT_RECORD_6 = 6;
+export const PAGINATION_REVIEWS = 2;
+
+// Login account
+export const EMAIL = "jame95@gmail.com";
+export const PASSWORD = "123456789";

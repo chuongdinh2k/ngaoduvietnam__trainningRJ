@@ -3,14 +3,22 @@ import React from "react";
 
 import { IComment, IHotelReviews, IReviews } from "@types";
 import { ComponentShowRating, ComponentCommentBox, ComponentUserComment } from ".";
+import { selectAuth, useAppSelector } from "@redux";
+import { useHistory } from "react-router-dom";
+import { authRoutesEnum } from "@enums";
 
 interface IProps {
     tourReviews?: IReviews;
+    tourComment?: IComment[];
     hotelReviews?: IHotelReviews;
+    handleSubmitReviewTour?: (value: any) => Promise<void>;
 }
 export const ComponentTabReview = (props: IProps) => {
-    // const [comments, setComment] = React.useState<Array<IComment>>();
-    const { tourReviews, hotelReviews } = props;
+    const { tourReviews, hotelReviews, tourComment, handleSubmitReviewTour } = props;
+    // redux
+    const auth = useAppSelector(selectAuth);
+    // hook
+    const history = useHistory();
     return (
         <StyledComponentTabReview>
             {/* tour review element */}
@@ -21,12 +29,27 @@ export const ComponentTabReview = (props: IProps) => {
                     listStars={tourReviews?.listStars}
                 />
             )}
-            {tourReviews && <ComponentCommentBox />}
-            {/* {tourReviews?.listComments?.map((item, index) => (
-                <div key={index}>
-                    <ComponentUserComment commentTour={item} />
-                </div>
-            ))} */}
+            {tourReviews && (
+                <>
+                    {/* <ComponentCommentBox handleSubmitReviewTour={handleSubmitReviewTour} /> */}
+                    {auth?.tokenInfoAuth ? (
+                        <ComponentCommentBox handleSubmitReviewTour={handleSubmitReviewTour} />
+                    ) : (
+                        <span
+                            className="btnLogin"
+                            onClick={() => history.push(authRoutesEnum.LOGIN)}
+                        >
+                            Login to comment
+                        </span>
+                    )}
+                    {tourComment?.map((comment, index) => (
+                        <div key={index}>
+                            <ComponentUserComment commentTour={comment} />
+                        </div>
+                    ))}
+                </>
+            )}
+
             {/* hotel review element */}
             {hotelReviews && (
                 <div className="rating">
@@ -53,6 +76,19 @@ export const ComponentTabReview = (props: IProps) => {
 };
 const StyledComponentTabReview = styled.div`
     padding-top: 3rem;
+    .btnLogin {
+        padding: 1rem 2rem;
+        color: ${(p) => p.theme.colors.orange};
+        border: 1px solid ${(p) => p.theme.colors.orange};
+        font-size: 1.6rem;
+        text-transform: capitalize;
+        transition: 250ms;
+        cursor: pointer;
+        &:hover {
+            color: ${(p) => p.theme.colors.pureWhite};
+            background-color: ${(p) => p.theme.colors.orange};
+        }
+    }
     .rating {
         padding-bottom: 4rem;
         display: flex;

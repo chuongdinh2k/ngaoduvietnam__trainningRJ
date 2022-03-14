@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 import { IAuth, ILogin, IRegister } from "@types";
 import { authApi } from "@api";
@@ -7,6 +8,7 @@ import { RootState } from ".";
 export const login = createAsyncThunk("auth/login", async (values: ILogin, { rejectWithValue }) => {
     try {
         const res = await authApi.login(values);
+        toast.success(res.data.message);
         return res.data as IAuth;
     } catch (err: any) {
         return rejectWithValue(err);
