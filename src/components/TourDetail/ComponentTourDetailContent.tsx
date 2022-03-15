@@ -107,6 +107,9 @@ export const ComponentTourDetailContent = (props: IProps) => {
 const StyledComponentTourDetailContent = styled.div`
     .wrapper__left {
         width: 63.5rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            width: 100%;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             width: 100%;
         }

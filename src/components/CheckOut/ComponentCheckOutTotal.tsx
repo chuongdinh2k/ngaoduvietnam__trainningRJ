@@ -76,6 +76,7 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 handleChange={handleChange("date")}
                                 handleBlur={handleBlur("date")}
                                 placeholder="Enter duration"
+                                defaultValue={hotel.bookingHotel?.date}
                                 icon={<IconCalendar />}
                                 value={props.values.date}
                             />

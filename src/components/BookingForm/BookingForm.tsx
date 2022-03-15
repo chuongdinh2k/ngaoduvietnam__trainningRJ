@@ -8,7 +8,7 @@ import { Divider, IconButton } from "@material-ui/core";
 import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
 import { GroupPeople, AppDatePicker, AppSelect } from "..";
-import { convertCurrency } from "@utils";
+import { convertCurrency, fomatObjDate } from "@utils";
 import { useDispatch } from "react-redux";
 import { setBookingForm } from "@redux";
 import { groupOfPeople } from "@demos";
@@ -72,7 +72,7 @@ export const BookingForm = (props: IProps) => {
                         dispatch(
                             setBookingForm({
                                 ...values,
-                                date: duration,
+                                date: fomatObjDate(duration),
                                 standardRoom: standardRoom,
                                 familySuite: familySuite,
                                 breakFast: breakFast,

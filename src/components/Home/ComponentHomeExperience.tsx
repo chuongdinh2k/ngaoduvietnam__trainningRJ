@@ -17,7 +17,7 @@ export const ComponentHomeExperience = (props: IProps) => {
                 <h3>
                     Experience the traditional <br /> cultural beauties of Vietnam
                 </h3>
-                <div className="btn" onClick={() => history.push(appRoutesEnum.TOURS)}>
+                <div className="btn btn-exper" onClick={() => history.push(appRoutesEnum.TOURS)}>
                     View All
                 </div>
             </div>

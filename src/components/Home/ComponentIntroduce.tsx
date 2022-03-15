@@ -67,7 +67,7 @@ const StyledComponentIntroduce = styled.div`
     .image2 {
         position: absolute;
         left: 19.3rem;
-        top: 27.6rem;
+        top: 20.6rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             width: 70%;
         }

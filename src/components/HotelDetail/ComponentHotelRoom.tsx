@@ -133,6 +133,9 @@ const StyledComponentHotelRoom = styled.div`
         width: 70%;
         padding-top: 1rem;
         padding-left: 3rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding-right: 1rem;
+        }
         &__title {
             font-size: 1.8rem;
             color: ${(p) => p.theme.colors.darkBlack};

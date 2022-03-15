@@ -7,7 +7,6 @@ export const StyledFooter = styled.div`
     justify-content: center;
     padding: 5rem 16.5rem 6rem 16.5rem;
     padding-top: 5rem;
-    margin-top: 15rem;
     color: ${(p) => p.theme.colors.pureWhite};
     background-color: ${(p) => p.theme.colors.darkBlack};
     .wrapper {
@@ -41,7 +40,7 @@ export const StyledFooter = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
         }
     }
     .text__nav-item {

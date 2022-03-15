@@ -41,6 +41,7 @@ const hotelsSlice = createSlice({
     reducers: {
         setBookingForm: (state, action: PayloadAction<IBookingHotelForm>) => {
             state.bookingHotel = action.payload;
+            console.log(action.payload);
         },
         resetForm: (state) => {
             state.bookingHotel = {};

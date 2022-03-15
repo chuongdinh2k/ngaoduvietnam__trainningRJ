@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 import { AppSelect, GroupPeople, Flag } from "@components";
-import { IconSearch, AppInput,AppDatePicker, IconLocation } from "@components";
+import { IconSearch, AppInput, AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
 import { formSchemaHomeFilter } from "@utils";
 
@@ -50,9 +50,9 @@ export const HomeToursTab = (props: IProps) => {
                                 <AppDatePicker
                                     name="departure"
                                     value={time}
-                                    handleChange={(date:any)=>handleOnChange(date)}
+                                    handleChange={(date: any) => handleOnChange(date)}
                                     placeholder="Departure time"
-                               />
+                                />
                             </div>
                             {!props.inputTypeOfTour ? (
                                 ""
@@ -70,7 +70,7 @@ export const HomeToursTab = (props: IProps) => {
                                         handleChange={handleChange("typeOfTour")}
                                     />
                                 </div>
-                        )}
+                            )}
                             <div className="input-group">
                                 <AppSelect
                                     name="group"
@@ -107,7 +107,7 @@ const StyledHomeToursTab = styled.div`
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-start: 0;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-            font-size: 2rem;
+            font-size: 1.6rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.5rem;
@@ -115,12 +115,16 @@ const StyledHomeToursTab = styled.div`
     }
     .input-group {
         margin-top: 1.8rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            margin-top: 0.5rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-top: 0.8rem;
         }
     }
     .btn {
         /* margin: 8px; */
+        margin-top: 1.8rem;
         width: 100%;
         height: 6.4rem;
         color: ${(p) => p.theme.colors.pureWhite};
@@ -128,6 +132,9 @@ const StyledHomeToursTab = styled.div`
         @media (min-width: 2000px) {
             height: 10rem;
             font-size: 2.6rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            margin-top: 0.5rem;
         }
     }
 `;

@@ -41,6 +41,8 @@ export const SliderCustom = (props: ISlider) => {
             {
                 breakpoint: 480,
                 settings: {
+                    centerMode: true,
+                    infinite: true,
                     slidesToShow: 1,
                     slidesToScroll: 1,
                 },

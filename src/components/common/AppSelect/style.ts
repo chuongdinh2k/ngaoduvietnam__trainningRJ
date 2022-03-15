@@ -19,7 +19,7 @@ export const InputWrapper = styled.div<ISWrapper>`
     background-color: white;
     padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
-    margin-bottom: 1.8rem;
+    /* margin-bottom: 1.8rem; */
     @media (min-width: 2000px) {
         height: 10rem;
         padding: 3.2rem 2rem 1.6rem 2rem;

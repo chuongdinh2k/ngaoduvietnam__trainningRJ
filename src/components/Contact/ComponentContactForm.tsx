@@ -7,7 +7,8 @@ import { AppInput, Error } from "..";
 import { theme } from "@styles";
 import { formSchemaContact } from "@utils";
 import { StyledComponentContactForm } from ".";
-import { AppDatePicker } from "..";
+import background__contact from "@assets/bannerIntro.png";
+import { IconHome } from "..";
 
 export const ComponentContactForm = () => {
     // component variable
@@ -17,15 +18,10 @@ export const ComponentContactForm = () => {
         phone: "",
         message: "",
     };
-
-    const [time, setTime] = React.useState("");
-    const handleOnChange = (e: any) => {
-        setTime(e);
-    };
     return (
         <StyledComponentContactForm>
             <div className="wrapperContact">
-                <Grid container>
+                <Grid container spacing={8}>
                     <Grid item xs={12} md={6}>
                         <div className="wrapperForm">
                             <h3 className="title">We'd love to hear from you</h3>
@@ -103,7 +99,49 @@ export const ComponentContactForm = () => {
                         </div>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <AppDatePicker handleChange={(date:any)=>handleOnChange(date)} value={time} />
+                        <div className="contact__right">
+                            <img
+                                className="contact__right-img"
+                                src={background__contact}
+                                alt="background-image contact"
+                            />
+                            <div className="contact__right-content">
+                                <h4 className="right__content-title">Our Office</h4>
+                                <div className="right__list">
+                                    <span className="right__list-icon">
+                                        <IconHome />
+                                    </span>
+                                    <p className="right__list-text">
+                                        <span className="right__list-title">Address</span>
+                                        <span className="right__list-subtext">
+                                            27 Old Gloucester Street, London, WC1N 3AX
+                                        </span>
+                                    </p>
+                                </div>
+                                <div className="right__list">
+                                    <span className="right__list-icon">
+                                        <IconHome />
+                                    </span>
+                                    <p className="right__list-text">
+                                        <span className="right__list-title">Address</span>
+                                        <span className="right__list-subtext">
+                                            27 Old Gloucester Street, London, WC1N 3AX
+                                        </span>
+                                    </p>
+                                </div>
+                                <div className="right__list">
+                                    <span className="right__list-icon">
+                                        <IconHome />
+                                    </span>
+                                    <p className="right__list-text">
+                                        <span className="right__list-title">Address</span>
+                                        <span className="right__list-subtext">
+                                            27 Old Gloucester Street, London, WC1N 3AX
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </Grid>
                 </Grid>
             </div>

@@ -151,6 +151,9 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     .slick-dots {
         text-align: left;
         bottom: -13rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            bottom: -11rem;
+        }
         li {
             width: 13.7rem;
             height: 9.7rem;
@@ -171,10 +174,13 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     opacity: 0.5;
                 }
             }
-
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                width: 11.9rem;
+                margin-right: 1.5rem;
+            }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                width: 4.7rem;
-                height: 3.7rem;
+                width: 7.7rem;
+                height: 4.7rem;
                 margin-right: 0.9rem;
             }
         }

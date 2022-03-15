@@ -46,4 +46,59 @@ export const StyledComponentContactForm = styled.div`
             }
         }
     }
+    .contact__right {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-height: 62rem;
+        &-img {
+            height: 100%;
+            width: 100%;
+        }
+        &-content {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 2.5rem 4rem 3.5rem 4rem;
+            background-color: ${(p) => p.theme.colors.darkBlack};
+        }
+    }
+    .right__content {
+        &-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            font-family: DM Sans;
+            padding-bottom: 1.3rem;
+            color: ${(p) => p.theme.colors.pureWhite};
+        }
+    }
+    .right__list {
+        display: flex;
+        padding-bottom: 1.6rem;
+        &-icon {
+            padding: 1.1rem;
+            background-color: ${(p) => p.theme.colors.orange};
+            border-radius: 100%;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                padding: 1.7rem 2rem;
+            }
+        }
+        &-text {
+            padding-left: 1rem;
+            font-family: DM Sans;
+            display: flex;
+            flex-direction: column;
+        }
+        &-title {
+            color: ${(p) => p.theme.colors.orange};
+            font-size: 1.8rem;
+            font-family: 700;
+            line-height: 2.3rem;
+        }
+        &-subtext {
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: ${(p) => p.theme.colors.pureWhite};
+        }
+    }
 `;

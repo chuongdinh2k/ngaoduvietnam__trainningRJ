@@ -28,7 +28,7 @@ export const ComponentHomeContact = () => {
                             onSubmit={(values, { resetForm }) => resetForm()}
                             validationSchema={formSchemaEmail}
                         >
-                            {({ handleSubmit, values, errors, handleChange, handleBlur }) => {
+                            {({ handleSubmit, values, errors, handleChange }) => {
                                 return (
                                     <div className="form">
                                         <AppInput
@@ -91,6 +91,7 @@ const StyledComponentHomeContact = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             margin-top: 0;
             padding-left: 0;
+            justify-content: flex-start;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-top: 0;

@@ -44,10 +44,14 @@ const StyledCustomBreadscrumb = styled.div`
     padding-top: 4rem;
     margin-bottom: 4rem;
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+        padding-top: 2rem;
     }
     .MuiBreadcrumbs-separator {
         margin: 0 2.4rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            margin: 0 0.4rem;
+        }
     }
     .MuiTypography-root {
         color: ${(p) => p.theme.colors.gray};

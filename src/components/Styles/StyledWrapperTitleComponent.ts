@@ -45,7 +45,7 @@ export const StyledWrapperTitleComponent = styled.div`
             font-size: 3rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
     }
     .activeBtn {
@@ -74,6 +74,12 @@ export const StyledWrapperTitleComponent = styled.div`
             /* margin-top: 2rem; */
             padding: 1.3rem 2rem;
             width: 8rem;
+        }
+    }
+    .btn-exper {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding: 1.3rem 0.4rem;
+            text-align: center;
         }
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {

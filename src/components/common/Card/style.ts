@@ -47,7 +47,7 @@ export const StyledCardWithIcon = styled.div`
             margin-right: 0;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding: 0;
+            padding: 0 1rem;
             margin-right: 0;
         }
     }
@@ -56,6 +56,9 @@ export const StyledCardWithIcon = styled.div`
         height: 24.9rem;
         overflow: hidden;
         position: relative;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            height: 21rem;
+        }
     }
     .image {
         transition: 250ms;
@@ -122,12 +125,18 @@ export const StyledCardWithIcon = styled.div`
         line-height: 1.5;
         color: ${(p) => p.theme.colors.gray1};
         font-size: ${(p) => p.theme.typography.fontSize}px;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            font-size: 1.2rem;
+        }
     }
     h4 {
         font-size: 1.8rem;
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         margin-block-start: 0.9rem;
         margin-block-end: 1rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            font-size: 1.4rem;
+        }
     }
     .bottom {
         justify-content: space-between;
@@ -142,5 +151,8 @@ export const StyledCardWithIcon = styled.div`
         font-family: ${(p) => p.theme.typography.fontFamily};
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         color: ${(p) => p.theme.colors.darkBlack};
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            font-size: 1.4rem;
+        }
     }
 `;
