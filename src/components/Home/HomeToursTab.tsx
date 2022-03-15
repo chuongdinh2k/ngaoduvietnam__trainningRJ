@@ -52,6 +52,7 @@ export const HomeToursTab = (props: IProps) => {
                                     value={time}
                                     handleChange={(date: any) => handleOnChange(date)}
                                     placeholder="Departure time"
+                                    minDate={new Date()}
                                 />
                             </div>
                             {!props.inputTypeOfTour ? (

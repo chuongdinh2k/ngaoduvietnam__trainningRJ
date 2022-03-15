@@ -50,6 +50,7 @@ export const AppInput = (props: IAppInput) => {
                     fullWidth
                     multiline={props.multiple ? true : false}
                     value={props.value?.toString()}
+                    defaultValue={props.defaultValue}
                     onChange={handleOnChange}
                     InputProps={{
                         disableUnderline: true,

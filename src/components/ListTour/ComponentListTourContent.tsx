@@ -56,6 +56,7 @@ export const ComponentListTourContent = () => {
                             typeOfTour={TypeOfTour}
                             moneyRange={moneyRange}
                             setListFilter={setListFilter}
+                            handleClose={handleClose}
                         />
                     </Popover>
                 </div>

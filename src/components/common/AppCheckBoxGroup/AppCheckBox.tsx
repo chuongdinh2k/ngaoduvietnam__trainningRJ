@@ -7,6 +7,8 @@ import React from "react";
 import clsx from "clsx";
 
 import { ComponentsRenderStars } from "@components";
+import { ErrorMessage } from "formik";
+import { Error } from "..";
 
 interface IOption {
     label?: string;
@@ -19,6 +21,7 @@ interface IProps {
     values?: Array<IOption> | number[];
     options?: Array<IOption>;
     title?: string;
+    noError?: boolean;
     handleChange: (value: any) => void;
 }
 
@@ -73,52 +76,55 @@ export const AppCheckBox = (props: IProps) => {
     const classes = useStyles();
     const { name, options, title } = props;
     return (
-        <div className={classes.root}>
-            <FormControl component="fieldset" className={classes.formControl}>
-                <p className={classes.title}>{title}</p>
-                <FormGroup>
-                    {options &&
-                        options.map((opt, i) => (
-                            <FormControlLabel
-                                key={i}
-                                control={
-                                    <Checkbox
-                                        onChange={handleOnChange}
-                                        color="primary"
-                                        // checked={values && values.includes(opt.value)}
-                                        name={name}
-                                        value={opt.value}
-                                        className={classes.tickSize}
-                                    />
-                                }
-                                label={
-                                    <div className={classes.wrapLabel}>
-                                        {/* WHAT: render with star select */}
-                                        {opt.star ? (
-                                            <ComponentsRenderStars number={opt.star} />
-                                        ) : (
-                                            ""
-                                        )}
-                                        {/* WHAT: render with image  */}
-                                        <span
-                                            className={clsx(
-                                                classes.label,
-                                                opt.star ? classes.hidden : ""
+        <>
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <p className={classes.title}>{title}</p>
+                    <FormGroup>
+                        {options &&
+                            options.map((opt, i) => (
+                                <FormControlLabel
+                                    key={i}
+                                    control={
+                                        <Checkbox
+                                            onChange={handleOnChange}
+                                            color="primary"
+                                            // checked={values && values.includes(opt.value)}
+                                            name={name}
+                                            value={opt.value}
+                                            className={classes.tickSize}
+                                        />
+                                    }
+                                    label={
+                                        <div className={classes.wrapLabel}>
+                                            {/* WHAT: render with star select */}
+                                            {opt.star ? (
+                                                <ComponentsRenderStars number={opt.star} />
+                                            ) : (
+                                                ""
                                             )}
-                                        >
-                                            {opt.label}
-                                        </span>
-                                        {opt.icon ? (
-                                            <img className={classes.icon} src={opt.icon} />
-                                        ) : (
-                                            ""
-                                        )}
-                                    </div>
-                                }
-                            />
-                        ))}
-                </FormGroup>
-            </FormControl>
-        </div>
+                                            {/* WHAT: render with image  */}
+                                            <span
+                                                className={clsx(
+                                                    classes.label,
+                                                    opt.star ? classes.hidden : ""
+                                                )}
+                                            >
+                                                {opt.label}
+                                            </span>
+                                            {opt.icon ? (
+                                                <img className={classes.icon} src={opt.icon} />
+                                            ) : (
+                                                ""
+                                            )}
+                                        </div>
+                                    }
+                                />
+                            ))}
+                    </FormGroup>
+                </FormControl>
+            </div>
+            {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
+        </>
     );
 };

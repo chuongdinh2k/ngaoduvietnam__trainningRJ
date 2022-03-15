@@ -25,13 +25,14 @@ interface IProps {
     reviewScore?: ICheckBoxGroup;
     stars?: ICheckBoxGroup;
     moneyRange?: IRangeSlider;
+    handleClose: () => void;
     setListFilter: React.Dispatch<React.SetStateAction<IHotel[]>>;
 }
 
 export const ComponentHotelsFilter = (props: IProps) => {
     const hotels = useAppSelector(selectHotel);
     //    hooks
-    const { stars, moneyRange, reviewScore, setListFilter } = props;
+    const { stars, moneyRange, reviewScore, setListFilter, handleClose } = props;
     // component state
     const [valueRange, setValueRange] = React.useState<number[]>([0, 1000]);
     // component variable
@@ -56,6 +57,7 @@ export const ComponentHotelsFilter = (props: IProps) => {
                         setListFilter(
                             filterArry(hotels.dataHotelsList, { ...values, price: valueRange })
                         );
+                        handleClose();
                     }}
                 >
                     {({ handleSubmit, values, handleChange }) => {

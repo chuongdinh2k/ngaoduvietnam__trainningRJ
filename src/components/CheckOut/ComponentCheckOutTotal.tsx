@@ -87,29 +87,38 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 handleChange={handleChange("group")}
                                 handleBlur={handleBlur("group")}
                                 placeholder="Enter group of people"
+                                defaultValue={hotel.bookingHotel?.group}
                                 icon={<GroupPeople color="#FF7B42" />}
                                 // error={errors.group}
                                 value={props.values.group}
                             />
                         </div>
-                        {/* <div className="form__group-option">
-                            <p>
-                                <span className="highlight">1x</span>Standard room
-                            </p>
-                            <span>$120.00</span>
-                        </div> */}
-                        {hotel?.bookingHotel?.standardRoom &&
-                            hotel?.bookingHotel?.standardRoom > 0 && (
-                                <div className="form__group-option">
-                                    <p>
-                                        <span className="highlight">
-                                            {hotel?.bookingHotel?.standardRoom}x
-                                        </span>
-                                        Standard room
-                                    </p>
-                                    <span>$120.00</span>
-                                </div>
-                            )}
+                        {hotel.bookingHotel?.standardRoom ? (
+                            <div className="form__group-option">
+                                <p>
+                                    <span className="highlight">
+                                        {hotel.bookingHotel?.standardRoom}x
+                                    </span>
+                                    Standard room
+                                </p>
+                                <span>$25.00</span>
+                            </div>
+                        ) : (
+                            ""
+                        )}
+                        {hotel.bookingHotel?.familySuite ? (
+                            <div className="form__group-option">
+                                <p>
+                                    <span className="highlight">
+                                        {hotel.bookingHotel?.familySuite}x
+                                    </span>
+                                    Family suite
+                                </p>
+                                <span>$24.00</span>
+                            </div>
+                        ) : (
+                            ""
+                        )}
                         <div className="form__group-promo">
                             <div className="form__group-inputPromo ">
                                 <AppInput

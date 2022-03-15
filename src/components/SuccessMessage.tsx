@@ -35,8 +35,13 @@ const StyledSuccessMessage = styled.div`
         padding: 11rem 14rem;
         background-color: ${(p) => p.theme.colors.pureWhite};
         text-align: center;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            width: 100%;
+            padding: 4rem 2rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             width: 100%;
+            padding: 4rem 4rem;
         }
     }
     .title {

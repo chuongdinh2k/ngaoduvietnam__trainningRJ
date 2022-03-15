@@ -96,6 +96,7 @@ export const BookingForm = (props: IProps) => {
                                             value={duration}
                                             handleChange={(date: any) => handleOnChange(date)}
                                             placeholder="Enter Departure"
+                                            minDate={new Date()}
                                         />
                                     </div>
                                     <div className="form__group-input">

@@ -3,9 +3,11 @@ import { Formik } from "formik";
 
 import { StyledComponentCheckOutContent, ComponentPaymentMethod, ComponentCheckOutTotal } from ".";
 import { formSchemaCheckOut } from "@utils";
+// import { appRoutesEnum } from "@enums";
 import { AppInput } from "..";
 
 export const ComponentCheckOutContent = () => {
+    // const history = useHistory();
     // component variable
     const initialValuesPackage = {
         firstName: "",
@@ -220,7 +222,10 @@ export const ComponentCheckOutContent = () => {
                                     <button
                                         className="btn"
                                         type="submit"
-                                        onClick={() => handleSubmit()}
+                                        onClick={() => {
+                                            handleSubmit();
+                                            // history.push(appRoutesEnum.SUCCESS);
+                                        }}
                                     >
                                         Complete Booking
                                     </button>

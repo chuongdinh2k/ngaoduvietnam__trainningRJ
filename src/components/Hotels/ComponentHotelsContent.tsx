@@ -120,6 +120,7 @@ export const ComponentHotelsContent = () => {
                                 stars={stars}
                                 moneyRange={moneyRange}
                                 setListFilter={setListFilter}
+                                handleClose={handleClose}
                             />
                         </Popover>
                     </div>

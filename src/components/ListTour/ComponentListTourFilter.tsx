@@ -25,11 +25,12 @@ interface IProps {
     duration?: ICheckBoxGroup;
     typeOfTour?: ICheckBoxGroup;
     moneyRange?: IRangeSlider;
+    handleClose: () => void;
     setListFilter: React.Dispatch<React.SetStateAction<IDataTour[]>>;
 }
 
 export const ComponentListTourFilter = (props: IProps) => {
-    const { duration, typeOfTour, moneyRange, setListFilter } = props;
+    const { duration, typeOfTour, moneyRange, setListFilter, handleClose } = props;
     // redux store
     const tours = useAppSelector(selectTour);
     // component state
@@ -56,6 +57,7 @@ export const ComponentListTourFilter = (props: IProps) => {
                         setListFilter(
                             filterArry(tours.dataToursList, { ...values, price: valueRange })
                         );
+                        handleClose();
                     }}
                 >
                     {({ handleSubmit, values, handleChange }) => {

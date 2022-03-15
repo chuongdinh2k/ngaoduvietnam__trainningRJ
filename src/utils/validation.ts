@@ -33,7 +33,7 @@ export const formSchemaCheckOut = Yup.object().shape({
         .required()
         .max(25, "This field is cannot be longer than 25 characters!"),
     phoneNumber: Yup.number().required(),
-    // payment: Yup.array().min(1, "This field is required"),
+    payment: Yup.array().min(1, "This field is required"),
 });
 
 export const formSchemaLogin = Yup.object().shape({
@@ -77,3 +77,7 @@ export const formSchemaChangePassword = Yup.object().shape({
         .min(8, "Password required at least 8 characters"),
     confirmPassword: Yup.string().oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
 });
+
+// export const formSchemaBookingForm = Yup.object().shape({
+//         group:
+// })
