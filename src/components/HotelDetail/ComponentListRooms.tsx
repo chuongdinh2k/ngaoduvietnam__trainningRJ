@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { ISelectRoom } from "@types";
 import { ComponentHotelRoom } from ".";
+import { Typography } from "@material-ui/core";
 
 interface IProps {
     selectRooms?: Array<ISelectRoom>;
@@ -11,7 +12,9 @@ export const ComponentListRooms = (props: IProps) => {
     return (
         <StyledComponentSelectedRoom>
             <div className="wrapperSelectedRoom">
-                <h3 className="title">Rooms</h3>
+                <Typography component="h3" className="title">
+                    Rooms
+                </Typography>
                 {selectRooms?.map((room) => (
                     <div key={room.id}>
                         {" "}

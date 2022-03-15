@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { ErrorMessage } from "formik";
@@ -34,7 +34,7 @@ interface IAppInput {
     backgroundColor?: string;
 }
 
-export const AppInput = forwardRef((props: IAppInput) => {
+export const AppInput = (props: IAppInput) => {
     const classes = useStyles();
     // component state
     const handleOnChange = (event: any) => {
@@ -63,4 +63,4 @@ export const AppInput = forwardRef((props: IAppInput) => {
             {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
         </CustomInputWrapper>
     );
-});
+};

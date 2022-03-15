@@ -38,7 +38,7 @@ export const routes: Array<IRoute> = [
     { name: TOURS, path: appRoutesEnum.TOURS_CHECKOUT, exact: true, component: CheckOut },
     { name: TOURS, path: appRoutesEnum.TOURS_DETAIL, exact: true, component: TourDetail },
     { name: TOURS, path: appRoutesEnum.TOURS, exact: true, component: ListTour },
-    { name: HOTELS, path: appRoutesEnum.HOTEL_DETAIL, exact: true, component: HotelDetail },
+    { name: HOTELS, path: appRoutesEnum.HOTEL_DETAIL, exact: false, component: HotelDetail },
     { name: HOTELS, path: appRoutesEnum.HOTELS, exact: true, component: Hotels },
     { name: CONTACT, path: appRoutesEnum.CONTACT, exact: true, component: Contact },
     {

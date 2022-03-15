@@ -16,6 +16,7 @@ export const ComponentLoader = () => {
 const StyledComponentLoader = styled.div`
     width: 100%;
     height: 100%;
+    min-height: 70vh;
     .wrapperLoader {
         height: 100%;
         width: 100%;

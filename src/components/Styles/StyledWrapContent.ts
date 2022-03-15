@@ -9,6 +9,7 @@ export const StyledWrapContent = styled.div<IStyledWrapContent>`
     display: flex;
     justify-content: center;
     padding: 0 16.5rem;
+    padding-bottom: 2rem;
     padding-top: ${(p) => (p.withOutBanner ? "17rem" : "0rem")};
     .wrapperContent {
         max-width: ${DEFAULT_SCREEN};

@@ -8,13 +8,19 @@ import clsx from "clsx";
 import { selectHotel, useAppSelector } from "@redux";
 import { sortItem } from "@utils";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {},
     select: {
         marginLeft: "1rem",
         marginRight: "2rem",
+        [theme.breakpoints.down("xs")]: {
+            marginRight: "1rem",
+        },
         "& .MuiSelect-select.MuiSelect-select": {
             fontSize: "2rem",
+            [theme.breakpoints.down("xs")]: {
+                fontSize: "1.4rem",
+            },
         },
         "& .MuiSelect-icon": {
             top: "calc(-10%)",
@@ -25,7 +31,10 @@ const useStyles = makeStyles({
             fontSsize: "2rem",
         },
     },
-});
+    selected: {
+        backgroundColor: "#ffffff",
+    },
+}));
 export const ComponentHotelsContent = () => {
     const classes = useStyles();
     const hotels = useAppSelector(selectHotel);
@@ -68,9 +77,18 @@ export const ComponentHotelsContent = () => {
                                 value={selected}
                                 onChange={handleChange}
                             >
-                                <MenuItem value="price">Price</MenuItem>
-                                <MenuItem value="star">Star</MenuItem>
-                                <MenuItem value="reviewScore">Review Score</MenuItem>
+                                <MenuItem classes={{ selected: classes.selected }} value="price">
+                                    Price
+                                </MenuItem>
+                                <MenuItem classes={{ selected: classes.selected }} value="star">
+                                    Star
+                                </MenuItem>
+                                <MenuItem
+                                    classes={{ selected: classes.selected }}
+                                    value="reviewScore"
+                                >
+                                    Review Score
+                                </MenuItem>
                             </Select>
                         </div>
                         {/* <span className="top__filter-icon">

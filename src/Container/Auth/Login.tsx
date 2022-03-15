@@ -4,7 +4,7 @@ import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-import { Alert } from "@material-ui/lab";
+// import { Alert } from "@material-ui/lab";
 
 import { login, selectAuth, useAppSelector } from "@redux";
 import { authRoutesEnum, appRoutesEnum } from "@enums";
@@ -12,7 +12,7 @@ import { StyledContentAuth } from ".";
 import { AppInputOutLined, IconFacebook } from "@components";
 import { formSchemaLogin } from "@utils";
 import clsx from "clsx";
-import { EMAIL, PASSWORD } from "@configs";
+// import { EMAIL, PASSWORD } from "@configs";
 
 export const Login = () => {
     const auth = useAppSelector(selectAuth);

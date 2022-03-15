@@ -3,6 +3,7 @@ import {
     ComponentContactBanner,
     ComponentContactForm,
     ComponentMapEmbed,
+    Footer,
     Header,
     StyledWrapContent,
 } from "@components";
@@ -19,6 +20,7 @@ export const Contact = () => {
                 </div>
             </StyledWrapContent>
             <ComponentMapEmbed />
+            <Footer />
         </>
     );
 };

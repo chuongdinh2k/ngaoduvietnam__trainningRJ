@@ -8,15 +8,18 @@ import {
     StyledWrapContent,
     Header,
     ComponentBreadscrumb,
+    Footer,
+    ComponentLoader,
 } from "@components";
 import { IComment, IDataTour } from "@types";
-import { selectAuth, setLoading, useAppSelector } from "@redux";
+import { selectApp, selectAuth, setLoading, useAppSelector } from "@redux";
 import { toursApi } from "@api";
 import { FAIL, PAGINATION_REVIEWS, REVIEW_SUCCESS } from "@configs";
 
 export const TourDetail = () => {
     const { id } = useParams<{ id: string }>();
     // redux
+    const app = useAppSelector(selectApp);
     const auth = useAppSelector(selectAuth);
     const dispatch = useDispatch();
     // component state
@@ -26,11 +29,11 @@ export const TourDetail = () => {
     useEffect(() => {
         dispatch(setLoading(true));
         fetchDetailTour();
-        dispatch(setLoading(false));
     }, [id]);
     const fetchDetailTour = async () => {
         const response = await toursApi.viewListDetail(id);
         setDetailTour(response.data);
+        dispatch(setLoading(false));
     };
 
     // WHAT: call api review
@@ -72,17 +75,22 @@ export const TourDetail = () => {
         <>
             <Header hasColor />
             <StyledWrapContent withOutBanner>
-                <div className="wrapperContent">
-                    <ComponentBreadscrumb id={detailTour?.id} title={detailTour?.title} />
-                    <ComponentTourDetailContent
-                        dataTour={detailTour}
-                        tourComment={comments}
-                        handleSubmitReviewTour={handleSubmitReview}
-                        handleChangeReviewPage={handleChangeReviewPage}
-                        currentPage={params.page}
-                    />
-                </div>
+                {app.loading ? (
+                    <ComponentLoader />
+                ) : (
+                    <div className="wrapperContent">
+                        <ComponentBreadscrumb id={detailTour?.id} title={detailTour?.title} />
+                        <ComponentTourDetailContent
+                            dataTour={detailTour}
+                            tourComment={comments}
+                            handleSubmitReviewTour={handleSubmitReview}
+                            handleChangeReviewPage={handleChangeReviewPage}
+                            currentPage={params.page}
+                        />
+                    </div>
+                )}
             </StyledWrapContent>
+            <Footer />
         </>
     );
 };

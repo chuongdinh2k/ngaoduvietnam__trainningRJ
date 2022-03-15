@@ -1,6 +1,7 @@
 import {
     ComponentBreadscrumb,
     ComponentPrivacyContent,
+    Footer,
     Header,
     StyledWrapContent,
 } from "@components";
@@ -16,6 +17,7 @@ export const PrivacyPolicy = () => {
                     <ComponentPrivacyContent privacyData={privacy} />
                 </div>
             </StyledWrapContent>
+            <Footer />
         </>
     );
 };

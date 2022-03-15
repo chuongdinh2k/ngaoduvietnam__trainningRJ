@@ -7,6 +7,7 @@ import {
     ComponentBreadscrumb,
     ComponentHotelsBanner,
     ComponentHotelsContent,
+    Footer,
     Header,
     StyledWrapContent,
 } from "@components";
@@ -51,6 +52,7 @@ export const Hotels = () => {
                     />
                 </div>
             </StyledWrapContent>
+            <Footer />
         </>
     );
 };

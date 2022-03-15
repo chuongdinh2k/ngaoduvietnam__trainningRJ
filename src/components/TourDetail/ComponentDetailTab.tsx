@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme: Theme) => ({
             marginTop: "12rem",
         },
         [theme.breakpoints.down("xs")]: {
-            marginTop: "8rem",
+            marginTop: "12rem",
         },
     },
     activeTab: {

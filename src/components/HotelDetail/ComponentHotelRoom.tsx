@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 import room1 from "@assets/room1.png";
 import { GroupPeople, IconBed, IconPicture, IconSquare, PopupHotelSelectRoom } from "..";
@@ -44,7 +44,10 @@ export const ComponentHotelRoom = (props: IProps) => {
                     <img className="wrapper__image-img" src={room1} alt="hotel room" />
                 </div>
                 <div className="content">
-                    <h4 className="content__title">{selectRoom?.title}</h4>
+                    <Typography component="h4" className="content__title">
+                        {" "}
+                        {selectRoom?.title}
+                    </Typography>
                     <div className="content__type">
                         <div className="content__dimension">
                             <span className="content__icon">

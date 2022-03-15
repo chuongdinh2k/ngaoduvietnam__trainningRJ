@@ -11,6 +11,7 @@ import {
     StyledWrapContent,
     ComponentAboutIntro,
     Header,
+    Footer,
 } from "@components";
 
 export const About = () => {
@@ -24,6 +25,7 @@ export const About = () => {
                     <ComponentAboutIntro />
                 </div>
             </StyledWrapContent>
+            <Footer />
         </div>
     );
 };

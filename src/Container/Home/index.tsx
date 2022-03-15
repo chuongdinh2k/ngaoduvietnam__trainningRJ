@@ -9,6 +9,7 @@ import {
     ComponentHomeContact,
     ComponentIntroduce,
     Header,
+    Footer,
 } from "@components";
 import {
     AttractiveTourLists,
@@ -33,6 +34,7 @@ export const Home = () => {
                     <ComponentHomeContact />
                 </div>
             </StyledWrapContent>
+            <Footer />
         </>
     );
 };

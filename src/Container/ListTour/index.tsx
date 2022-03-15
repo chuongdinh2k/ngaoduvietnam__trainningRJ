@@ -8,6 +8,7 @@ import {
     ComponentBreadscrumb,
     ComponentListTourBanner,
     ComponentListTourContent,
+    Footer,
     Header,
     StyledWrapContent,
 } from "@components";
@@ -53,6 +54,7 @@ export const ListTour = () => {
                     />
                 </div>
             </StyledWrapContent>
+            <Footer />
         </>
     );
 };

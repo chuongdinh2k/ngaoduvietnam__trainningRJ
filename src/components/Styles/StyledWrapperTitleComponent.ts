@@ -24,6 +24,9 @@ export const StyledWrapperTitleComponent = styled.div`
             }
             &-highlight {
                 color: ${(p) => p.theme.colors.orange};
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    font-size: 1.6rem;
+                }
             }
             &-icon {
                 margin-top: 1.5rem;

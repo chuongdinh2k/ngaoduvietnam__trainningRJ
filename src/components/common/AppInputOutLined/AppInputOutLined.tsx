@@ -73,7 +73,7 @@ export const AppInputOutLined = (props: IProps) => {
                 <InputLabel htmlFor="outlined-adornment-password">{props.label}</InputLabel>
                 <OutlinedInput
                     name={props.name}
-                    id="outlined-adornment-password"
+                    id={`outlined-adornment-password-${props.name}`}
                     type={showPassword ? "password" : "text"}
                     value={props.value}
                     onChange={handleOnChange}

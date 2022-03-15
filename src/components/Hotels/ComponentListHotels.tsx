@@ -22,7 +22,7 @@ export const ComponentListHotels = (props: IProps) => {
                 <Grid container spacing={4}>
                     {data &&
                         data.map((item, index) => (
-                            <Grid item key={index} xs={12} sm={4}>
+                            <Grid item key={index} xs={12} sm={6} md={4}>
                                 <HotelCard data={item} onClick={handleViewDetail} />
                             </Grid>
                         ))}

@@ -15,8 +15,7 @@ interface IProps {
     handleSubmitReviewTour?: (value: any) => Promise<void>;
 }
 export const ComponentTabReview = (props: IProps) => {
-    const { tourReviews, hotelReviews, tourComment, hotelComment, handleSubmitReviewTour } = props;
-    console.log(hotelComment);
+    const { tourReviews, tourComment, hotelComment, handleSubmitReviewTour } = props;
     // redux
     const auth = useAppSelector(selectAuth);
     // hook

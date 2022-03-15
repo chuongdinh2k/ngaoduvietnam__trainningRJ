@@ -7,13 +7,16 @@ import {
     StyledWrapContent,
     Header,
     ComponentBreadscrumb,
+    Footer,
+    ComponentLoader,
 } from "@components";
 import { IHotel, IHotelComment } from "@types";
 import { hotelsApi } from "@api";
-import { setLoading } from "@redux";
+import { selectApp, setLoading, useAppSelector } from "@redux";
 import { PAGINATION_REVIEWS } from "@configs";
 
 export const HotelDetail = () => {
+    const app = useAppSelector(selectApp);
     const { id } = useParams<{ id: string }>();
     const dispatch = useDispatch();
     //   component state
@@ -23,13 +26,13 @@ export const HotelDetail = () => {
 
     React.useEffect(() => {
         dispatch(setLoading(true));
-        const fetchDetailTour = async () => {
-            const response = await hotelsApi.viewListDetail(id);
-            setDetailHotel(response.data);
-        };
-        dispatch(setLoading(false));
         fetchDetailTour();
-    }, [id]);
+    }, []);
+    const fetchDetailTour = async () => {
+        const response = await hotelsApi.viewListDetail(id);
+        setDetailHotel(response.data);
+        dispatch(setLoading(false));
+    };
 
     // WHAT: call api review
     useEffect(() => {
@@ -51,16 +54,21 @@ export const HotelDetail = () => {
         <>
             <Header hasColor />
             <StyledWrapContent withOutBanner>
-                <div className="wrapperContent">
-                    <ComponentBreadscrumb id={detailHotel?.id} title={detailHotel?.title} />
-                    <ComponentTourDetailContent
-                        dataHotel={detailHotel}
-                        hotelComment={comments}
-                        currentPage={params.page}
-                        handleChangeReviewPage={handleChangeReviewPage}
-                    />
-                </div>
+                {app.loading ? (
+                    <ComponentLoader />
+                ) : (
+                    <div className="wrapperContent">
+                        <ComponentBreadscrumb id={detailHotel?.id} title={detailHotel?.title} />
+                        <ComponentTourDetailContent
+                            dataHotel={detailHotel}
+                            hotelComment={comments}
+                            currentPage={params.page}
+                            handleChangeReviewPage={handleChangeReviewPage}
+                        />
+                    </div>
+                )}
             </StyledWrapContent>
+            <Footer />
         </>
     );
 };
