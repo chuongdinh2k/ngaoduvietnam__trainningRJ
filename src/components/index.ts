@@ -15,3 +15,4 @@ export * from "./Contact";
 export * from "./SuccessMessage";
 export * from "./PrivicyPolicy";
 export * from "./MapEmbed";
+export * from "./Popup";

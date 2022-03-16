@@ -2,14 +2,22 @@ export const MockTourUrl = "https://60c0c446b8d3670017555cb3.mockapi.io";
 import { IComment } from "@types";
 import { axiosClient } from ".";
 
+interface IFilterCondition {
+    location?: string;
+    typeOfTour?: string;
+}
 interface IPagination {
     page?: number;
     limit?: number;
 }
 
 export const toursApi = {
-    getListTours: (values: IPagination) => {
-        const url = `${MockTourUrl}/api/v1/tours?page=${values?.page}&limit=${values?.limit}`;
+    getListTours: (pagination?: IPagination) => {
+        const url = `${MockTourUrl}/api/v1/tours?page=${pagination?.page}&limit=${pagination?.limit}`;
+        return axiosClient.get(url);
+    },
+    getListFilterTours: (pagination?: IPagination, filter?: IFilterCondition) => {
+        const url = `${MockTourUrl}/api/v1/tours?location=${filter?.location}&typeOfTour=${filter?.typeOfTour}&page=${pagination?.page}&limit=${pagination?.limit}`;
         return axiosClient.get(url);
     },
     viewListDetail: (id: string) => {

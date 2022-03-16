@@ -5,8 +5,11 @@ import { Button } from "@material-ui/core";
 import { AppSelect, GroupPeople, Flag } from "@components";
 import { IconSearch, AppInput, AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
-import { formSchemaHomeFilter } from "@utils";
-import { groupOfPeople } from "@demos";
+// import { formSchemaHomeFilter } from "@utils";
+import { groupOfPeople, TypeOfTour } from "@demos";
+import { getListFilterTours } from "@redux";
+import { LIMIT_RECORD_6 } from "@configs";
+import { useDispatch } from "react-redux";
 
 interface IProps {
     formTitle?: string;
@@ -14,6 +17,8 @@ interface IProps {
 }
 
 export const HomeToursTab = (props: IProps) => {
+    // hooks
+    const dispatch = useDispatch();
     // component variable
     const initialValuesPackage = {
         location: "",
@@ -31,9 +36,21 @@ export const HomeToursTab = (props: IProps) => {
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
+                    dispatch(
+                        getListFilterTours({
+                            filter: {
+                                ...values,
+                            },
+                            pagination: {
+                                page: 1,
+                                limit: LIMIT_RECORD_6,
+                            },
+                        })
+                    );
                     resetForm({ values: initialValuesPackage });
+                    setTime("");
                 }}
-                validationSchema={formSchemaHomeFilter}
+                // validationSchema={formSchemaHomeFilter}
             >
                 {({ handleSubmit, values, handleChange }) => {
                     return (
@@ -65,10 +82,7 @@ export const HomeToursTab = (props: IProps) => {
                                         icon={<Flag width="16" height="18" />}
                                         value={values.typeOfTour}
                                         placeholder="Type of Tour"
-                                        options={[
-                                            { label: "Beach", value: "Beach" },
-                                            { label: "Moutain", value: "Moutain" },
-                                        ]}
+                                        options={TypeOfTour.data}
                                         handleChange={handleChange("typeOfTour")}
                                     />
                                 </div>

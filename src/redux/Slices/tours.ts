@@ -4,15 +4,28 @@ import { IDataTour } from "@types";
 import { toursApi } from "@api";
 import { RootState } from ".";
 
-interface IPagination {
+export interface IPagination {
     page?: number;
     limit?: number;
 }
-export const getListTours = createAsyncThunk("tours/getList", async (values: IPagination) => {
-    const res = await toursApi.getListTours(values);
+interface IFilter {
+    location?: string;
+}
+interface IValues {
+    pagination?: IPagination;
+    filter?: IFilter;
+}
+export const getListTours = createAsyncThunk("tours/getList", async (pagination: IPagination) => {
+    const res = await toursApi.getListTours(pagination);
     return res.data;
 });
-
+export const getListFilterTours = createAsyncThunk(
+    "tours/getListFilter",
+    async (values: IValues) => {
+        const res = await toursApi.getListFilterTours(values.pagination, values.filter);
+        return res.data;
+    }
+);
 interface IState {
     dataToursList: Array<IDataTour>;
 }
@@ -28,6 +41,10 @@ const tourSlice = createSlice({
     extraReducers: (builder) => {
         //get list
         builder.addCase(getListTours.fulfilled, (state, action: { payload: any }) => {
+            state.dataToursList = action.payload;
+        });
+        // get list search
+        builder.addCase(getListFilterTours.fulfilled, (state, action: { payload: any }) => {
             state.dataToursList = action.payload;
         });
     },

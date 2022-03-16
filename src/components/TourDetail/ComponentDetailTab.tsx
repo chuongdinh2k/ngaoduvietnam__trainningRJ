@@ -128,15 +128,25 @@ export const ComponentDetailTab = (props: IProps) => {
                     aria-label="simple tabs example"
                 >
                     {tabs &&
-                        tabs.map((tab) => (
-                            <Tab
-                                disableRipple
-                                key={tab.index}
-                                label={tab.name}
-                                className={clsx(value === tab.index ? classes.activeTab : "")}
-                                {...a11yProps(tab.index)}
-                            />
-                        ))}
+                        tabs.map((tab) =>
+                            tab.name === "Reviews" ? (
+                                <Tab
+                                    disableRipple
+                                    key={tab.index}
+                                    label={`reviews(${46})`}
+                                    className={clsx(value === tab.index ? classes.activeTab : "")}
+                                    {...a11yProps(tab.index)}
+                                />
+                            ) : (
+                                <Tab
+                                    disableRipple
+                                    key={tab.index}
+                                    label={tab.name}
+                                    className={clsx(value === tab.index ? classes.activeTab : "")}
+                                    {...a11yProps(tab.index)}
+                                />
+                            )
+                        )}
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={NUMBER_ZERO}>

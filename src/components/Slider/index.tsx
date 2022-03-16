@@ -94,6 +94,7 @@ const StyledSlider = styled.div`
         margin-right: -2.5rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-right: 0rem;
+            padding: 0px;
         }
     }
     .slick-next {

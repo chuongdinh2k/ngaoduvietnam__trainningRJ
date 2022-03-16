@@ -46,22 +46,30 @@ export const ComponentListTourFilter = (props: IProps) => {
     };
     return (
         <StyleComponentFilter>
-            <div className="wrapper">
-                <div className="top">
-                    <p className="top__title">Filter By</p>
-                    <span className="top__btn">CLEAR</span>
-                </div>
-                <Formik
-                    initialValues={initialValuesPackage}
-                    onSubmit={(values) => {
-                        setListFilter(
-                            filterArry(tours.dataToursList, { ...values, price: valueRange })
-                        );
-                        handleClose();
-                    }}
-                >
-                    {({ handleSubmit, values, handleChange }) => {
-                        return (
+            <Formik
+                initialValues={initialValuesPackage}
+                onSubmit={(values) => {
+                    setListFilter(
+                        filterArry(tours.dataToursList, { ...values, price: valueRange })
+                    );
+                    handleClose();
+                }}
+            >
+                {({ handleSubmit, values, handleChange, resetForm }) => {
+                    return (
+                        <div className="wrapper">
+                            <div className="top">
+                                <p className="top__title">Filter By</p>
+                                <span
+                                    className="top__btn"
+                                    onClick={() => {
+                                        resetForm({ values: initialValuesPackage });
+                                        setValueRange([0, 1000]);
+                                    }}
+                                >
+                                    CLEAR
+                                </span>
+                            </div>
                             <div>
                                 <div className="slide">
                                     <AppRangeSlider
@@ -102,10 +110,10 @@ export const ComponentListTourFilter = (props: IProps) => {
                                     Apply Filter
                                 </button>
                             </div>
-                        );
-                    }}
-                </Formik>
-            </div>
+                        </div>
+                    );
+                }}
+            </Formik>
         </StyleComponentFilter>
     );
 };
@@ -120,6 +128,7 @@ export const StyleComponentFilter = styled.div`
         justify-content: space-between;
         &__title,
         &__btn {
+            cursor: pointer;
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
         }
         &__title {

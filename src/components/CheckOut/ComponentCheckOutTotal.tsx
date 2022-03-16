@@ -76,7 +76,7 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 handleChange={handleChange("date")}
                                 handleBlur={handleBlur("date")}
                                 placeholder="Enter duration"
-                                defaultValue={hotel.bookingHotel?.date}
+                                // defaultValue={hotel.bookingHotel?.date}
                                 icon={<IconCalendar />}
                                 value={props.values.date}
                             />
@@ -87,7 +87,6 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 handleChange={handleChange("group")}
                                 handleBlur={handleBlur("group")}
                                 placeholder="Enter group of people"
-                                defaultValue={hotel.bookingHotel?.group}
                                 icon={<GroupPeople color="#FF7B42" />}
                                 // error={errors.group}
                                 value={props.values.group}

@@ -37,8 +37,8 @@ export const ComponentHotelsFilter = (props: IProps) => {
     const [valueRange, setValueRange] = React.useState<number[]>([0, 1000]);
     // component variable
     const initialValuesPackage = {
-        star: [] as number[],
-        rating: [] as number[],
+        star: [],
+        rating: [],
     };
     // WHAT: handle range value
     const handleChangeRange = (event: ChangeEvent<any>, newValue: number | number[]) => {

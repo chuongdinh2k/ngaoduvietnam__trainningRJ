@@ -51,7 +51,7 @@ export const ComponentCustomViewImage = (props: IProps) => {
         },
         dots: true,
         dotsClass: "slick-dots slick-thumb",
-        infinite: true,
+        // infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,

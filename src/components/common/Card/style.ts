@@ -4,6 +4,7 @@ export const StyledCard = styled.div`
     /* width: 25.5rem; */
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         width: 100%;
+        padding: 0.5rem;
     }
     .imageWrapper {
         width: 100%;

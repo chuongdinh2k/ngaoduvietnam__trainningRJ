@@ -5,8 +5,11 @@ import { StyledComponentCheckOutContent, ComponentPaymentMethod, ComponentCheckO
 import { formSchemaCheckOut } from "@utils";
 // import { appRoutesEnum } from "@enums";
 import { AppInput } from "..";
+import { useAppSelector, selectHotel } from "@redux";
 
 export const ComponentCheckOutContent = () => {
+    // redux store
+    const hotel = useAppSelector(selectHotel);
     // const history = useHistory();
     // component variable
     const initialValuesPackage = {
@@ -21,8 +24,8 @@ export const ComponentCheckOutContent = () => {
         country: "",
         specialRequirement: "",
         payment: [],
-        dispatchEvent: "",
-        group: "",
+        date: hotel.bookingHotel?.date || "",
+        group: hotel.bookingHotel?.group || "",
         promoCode: "",
     };
 

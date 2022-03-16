@@ -10,6 +10,7 @@ import {
     ComponentBreadscrumb,
     Footer,
     ComponentLoader,
+    PopupLightBox,
 } from "@components";
 import { IComment, IDataTour } from "@types";
 import { selectApp, selectAuth, setLoading, useAppSelector } from "@redux";
@@ -80,6 +81,7 @@ export const TourDetail = () => {
                 ) : (
                     <div className="wrapperContent">
                         <ComponentBreadscrumb id={detailTour?.id} title={detailTour?.title} />
+                        {/* <PopupLightBox /> */}
                         <ComponentTourDetailContent
                             dataTour={detailTour}
                             tourComment={comments}

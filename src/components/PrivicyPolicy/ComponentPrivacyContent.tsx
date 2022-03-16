@@ -21,7 +21,7 @@ export const ComponentPrivacyContent = (props: IProps) => {
                         className="top__btn"
                         startIcon={<IconDownload />}
                     >
-                        Delete
+                        Download PDF
                     </Button>
                     {privacyData?.subText?.map((paragraph, index) => (
                         <p className="top__text" key={index}>

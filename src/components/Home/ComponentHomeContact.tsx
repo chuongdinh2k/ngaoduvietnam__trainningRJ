@@ -111,5 +111,9 @@ const StyledComponentHomeContact = styled.div`
         &:hover {
             transition: translateY(-10px);
         }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-top: 0;
+            height: 4rem;
+        }
     }
 `;

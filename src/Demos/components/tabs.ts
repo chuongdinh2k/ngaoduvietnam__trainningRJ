@@ -8,7 +8,7 @@ export const HotelTabs = [
         index: 1,
     },
     {
-        name: "Review",
+        name: "Reviews",
         index: 2,
     },
 ];
@@ -23,6 +23,6 @@ export const TourTabs = [
     },
     {
         name: "Reviews",
-        index: 3,
+        index: 2,
     },
 ];

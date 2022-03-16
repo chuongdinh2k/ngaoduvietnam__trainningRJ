@@ -64,7 +64,7 @@ export const StyledContentAuth = styled.div`
             &-input {
                 margin-bottom: 2.8rem;
                 @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                    margin-bottom: 1rem;
+                    margin-bottom: 1.5rem;
                 }
             }
             &-btn {
@@ -86,6 +86,12 @@ export const StyledContentAuth = styled.div`
                 font-size: 1.4rem;
                 justify-content: flex-end;
                 margin-bottom: 3rem;
+                @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                    margin-bottom: 1.5rem;
+                }
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    margin-bottom: 0rem;
+                }
                 a {
                     text-decoration: none;
                     color: ${(p) => p.theme.colors.gray};

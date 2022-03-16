@@ -18,7 +18,7 @@ interface IOption {
 }
 interface IProps {
     name?: string;
-    values?: Array<IOption> | number[];
+    values?: any;
     options?: Array<IOption>;
     title?: string;
     noError?: boolean;
@@ -92,6 +92,10 @@ export const AppCheckBox = (props: IProps) => {
                                             // checked={values && values.includes(opt.value)}
                                             name={name}
                                             value={opt.value}
+                                            checked={
+                                                props.values &&
+                                                props.values.indexOf(opt.value?.toString()) > -1
+                                            }
                                             className={classes.tickSize}
                                         />
                                     }
