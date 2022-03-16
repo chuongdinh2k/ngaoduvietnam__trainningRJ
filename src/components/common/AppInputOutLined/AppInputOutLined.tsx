@@ -71,7 +71,7 @@ export const AppInputOutLined = (props: IProps) => {
         <StyledAppInputOutLined>
             <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-password">{props.label}</InputLabel>
-                <OutlinedInput
+                <WithOutBorderTextField
                     name={props.name}
                     id={`outlined-adornment-password-${props.name}`}
                     type={showPassword ? "password" : "text"}
@@ -102,5 +102,15 @@ export const AppInputOutLined = (props: IProps) => {
 const StyledAppInputOutLined = styled.div`
     label {
         background-color: white;
+    }
+`;
+const WithOutBorderTextField = styled(OutlinedInput)`
+    & label.Mui-focused {
+        color: white;
+    }
+    & .MuiOutlinedInput-root {
+        &.Mui-focused fieldset {
+            border-color: white;
+        }
     }
 `;

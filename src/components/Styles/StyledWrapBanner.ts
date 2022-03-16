@@ -73,13 +73,13 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
             left: 0;
-            width: 35%;
+            width: 40%;
             padding: 2.6rem 2rem 0 2rem;
             font-size: 2.2rem;
         }
         .filter {
             right: 0;
-            width: 35%;
+            width: 30%;
             .MuiTabs-flexContainer {
                 justify-content: space-between;
             }
@@ -93,10 +93,10 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     @media (max-width: 992px) {
         height: ${(p) =>
             p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_HOTELS
-                ? "60rem"
+                ? "48rem"
                 : p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT
                 ? "20rem"
-                : "60rem"};
+                : "48rem"};
         padding: 0 8rem;
         .featured {
             width: 54rem;
@@ -109,7 +109,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 0 2rem;
         height: ${(p) =>
-            p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT ? "20rem" : "62rem"};
+            p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT ? "20rem" : "55rem"};
         .featured {
             top: 30%;
             left: 2rem;

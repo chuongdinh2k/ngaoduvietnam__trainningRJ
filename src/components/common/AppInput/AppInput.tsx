@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme: any) => ({
         "&::placeholder": {
             color: theme.colors.gray1,
         },
+        "& .MuiInputBase-input": {
+            padding: "6px 0 7px",
+        },
         paddingLeft: "1.8rem",
     },
 }));

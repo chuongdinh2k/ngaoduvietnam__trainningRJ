@@ -14,7 +14,7 @@ interface IStyledBanner {
 export const StyledBanner = styled.div<IStyledBanner>`
     padding-top: ${(p) => {
         if (p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_HOTELS) {
-            return "24rem";
+            return "14rem";
         } else if (
             p.typeComponent === PAGE_ABOUT ||
             p.typeComponent === PAGE_LISTTOUR ||
@@ -68,6 +68,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 font-size: 3rem;
                 width: 50%;
+                text-align: left;
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 font-size: 3rem;

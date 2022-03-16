@@ -19,7 +19,7 @@ export const ComponentCollapse = (props: IProps) => {
     return (
         <StyledComponentCollapse>
             <div className={`wrapperCollapse ${clsx(checked ? "active" : "")}`}>
-                <div className="collapse__header">
+                <div className="collapse__header " onClick={handleChange}>
                     <p className="collapse__header-title">{title}</p>
                     {!checked ? (
                         <span onClick={handleChange} className="collapse__header-icon">
@@ -51,6 +51,7 @@ const StyledComponentCollapse = styled.div`
     .collapse__header {
         display: flex;
         justify-content: space-between;
+        cursor: pointer;
         &-title {
             color: ${(p) => p.theme.colors.darkBlue2};
             font-size: 1.8rem;

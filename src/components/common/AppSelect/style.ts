@@ -29,6 +29,7 @@ export const InputWrapper = styled.div<ISWrapper>`
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         padding: 1rem 1.2rem;
+        height: 4rem;
     }
 `;
 

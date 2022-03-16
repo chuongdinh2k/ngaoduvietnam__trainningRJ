@@ -37,6 +37,7 @@ export const InputWrapper = styled.div<ISWrapper>`
         }
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+        height: 4rem;
         padding: 1rem 1.2rem;
     }
 `;

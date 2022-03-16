@@ -46,22 +46,30 @@ export const ComponentHotelsFilter = (props: IProps) => {
     };
     return (
         <StyleComponentFilter>
-            <div className="wrapper">
-                <div className="top">
-                    <p className="top__title">Filter By</p>
-                    <span className="top__btn">CLEAR</span>
-                </div>
-                <Formik
-                    initialValues={initialValuesPackage}
-                    onSubmit={(values) => {
-                        setListFilter(
-                            filterArry(hotels.dataHotelsList, { ...values, price: valueRange })
-                        );
-                        handleClose();
-                    }}
-                >
-                    {({ handleSubmit, values, handleChange }) => {
-                        return (
+            <Formik
+                initialValues={initialValuesPackage}
+                onSubmit={(values) => {
+                    setListFilter(
+                        filterArry(hotels.dataHotelsList, { ...values, price: valueRange })
+                    );
+                    handleClose();
+                }}
+            >
+                {({ handleSubmit, values, handleChange, resetForm }) => {
+                    return (
+                        <div className="wrapper">
+                            <div className="top">
+                                <p className="top__title">Filter By</p>
+                                <span
+                                    onClick={() => {
+                                        resetForm({ values: initialValuesPackage });
+                                        setValueRange([0, 1000]);
+                                    }}
+                                    className="top__btn"
+                                >
+                                    CLEAR
+                                </span>
+                            </div>
                             <div>
                                 <div className="slide">
                                     <AppRangeSlider
@@ -102,10 +110,10 @@ export const ComponentHotelsFilter = (props: IProps) => {
                                     Apply Filter
                                 </button>
                             </div>
-                        );
-                    }}
-                </Formik>
-            </div>
+                        </div>
+                    );
+                }}
+            </Formik>
         </StyleComponentFilter>
     );
 };

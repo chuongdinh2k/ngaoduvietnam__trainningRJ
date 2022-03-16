@@ -53,6 +53,24 @@ html {
 .MuiMenuItem-root {
   font-size: 2rem !important;
 }
-.MuiTypography-root{
+.MuiTypography-root {
   font-size: 1.4rem;
+}
+/* toast */
+.Toastify {
+  font-size: 1.4rem;
+}
+/* datePicker dialog */
+.MuiTypography-caption,
+.MuiTypography-body1,
+.MuiTypography-body2 {
+  font-size: 1.4rem !important;
+}
+
+/* .MuiPickersCalendarHeader-dayLabel .MuiTypography-caption {
+  font-size: 1.4rem !important;
+} */
+
+.MuiInputBase-input {
+  padding: 11px 0 7px;
 }

@@ -2,7 +2,7 @@ import { validate_phone } from "@configs";
 import * as Yup from "yup";
 
 export const formSchemaHomeFilter = Yup.object().shape({
-    departure: Yup.string().required("This field is required!"),
+    // departure: Yup.string().required("This field is required!"),
     location: Yup.string().required("This field is required!"),
 });
 

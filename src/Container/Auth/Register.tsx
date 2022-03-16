@@ -8,7 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 import { register, selectAuth, useAppSelector } from "@redux";
 import { authRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
-import { AppInputOutLined, Error, IconFacebook } from "@components";
+import { AppInputOutLined, IconFacebook } from "@components";
 import { formSchemaSignup } from "@utils";
 import clsx from "clsx";
 
@@ -85,10 +85,10 @@ export const Register = () => {
                                             handleChange={handleChange("password")}
                                         />
                                     </div>
-                                    {auth?.message?.length && (
+                                    {/* {auth?.message?.length && (
                                         <p className="success">{auth.message}</p>
-                                    )}
-                                    {auth?.error?.length && <Error>{auth.error}</Error>}
+                                    )} */}
+                                    {/* {auth?.error?.length && <Error>{auth.error}</Error>} */}
                                     <Button
                                         variant="contained"
                                         color="primary"

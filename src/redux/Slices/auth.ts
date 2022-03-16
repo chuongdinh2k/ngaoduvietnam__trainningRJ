@@ -1,31 +1,43 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 import { IAuth, ILogin, IRegister } from "@types";
 import { authApi } from "@api";
 import { RootState } from ".";
 
-export const login = createAsyncThunk("auth/login", async (values: ILogin, { rejectWithValue }) => {
+interface MyError {
+    message: unknown;
+}
+
+export const login = createAsyncThunk("auth/login", async (values: ILogin) => {
     try {
         const res = await authApi.login(values);
         toast.success(res.data.message);
         return res.data as IAuth;
-    } catch (err: any) {
-        return rejectWithValue(err);
+    } catch (error) {
+        if (axios.isAxiosError(error) && error.response) {
+            const errorMessage =
+                (error?.response?.data as MyError).message || error.message || "There was an error";
+            toast.error(errorMessage as string);
+            throw new Error(errorMessage as string);
+        }
     }
 });
 
-export const register = createAsyncThunk(
-    "auth/register",
-    async (values: IRegister, { rejectWithValue }) => {
-        try {
-            const res = await authApi.register(values);
-            return res.data as IAuth;
-        } catch (err: any) {
-            return rejectWithValue(err);
+export const register = createAsyncThunk("auth/register", async (values: IRegister) => {
+    try {
+        const res = await authApi.register(values);
+        return res.data as IAuth;
+    } catch (error) {
+        if (axios.isAxiosError(error) && error.response) {
+            const errorMessage =
+                (error?.response?.data as MyError).message || error.message || "There was an error";
+            toast.error(errorMessage as string);
+            throw new Error(errorMessage as string);
         }
     }
-);
+});
 
 interface IState {
     auth: IAuth | null;

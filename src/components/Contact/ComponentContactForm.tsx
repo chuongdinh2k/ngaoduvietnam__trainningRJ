@@ -71,7 +71,6 @@ export const ComponentContactForm = () => {
                                                     id="outlined-multiline-static"
                                                     multiline
                                                     rows={6}
-                                                    defaultValue="Default Value"
                                                     variant="outlined"
                                                     placeholder="Message"
                                                     name="message"

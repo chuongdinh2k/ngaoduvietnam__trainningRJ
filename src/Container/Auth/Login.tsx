@@ -47,15 +47,6 @@ export const Login = () => {
                         {({ handleSubmit, values, handleChange }) => {
                             return (
                                 <div className="content__form">
-                                    {/* <Alert className="content__form-alert" severity="info">
-                                        <span>
-                                            <b>email:</b> {EMAIL}
-                                        </span>
-                                        <span className="pl-2">
-                                            {" "}
-                                            <b>pass:</b> {PASSWORD}
-                                        </span>
-                                    </Alert> */}
                                     <div className="content__form-input">
                                         <AppInputOutLined
                                             value={values.email}

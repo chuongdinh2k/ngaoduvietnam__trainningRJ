@@ -14,9 +14,9 @@ export const IconDownArrow = (props: IIcon) => {
                 <path
                     d="M1.33936 1L9.26793 9L17.1965 1"
                     stroke={color}
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 />
             </svg>
         </>

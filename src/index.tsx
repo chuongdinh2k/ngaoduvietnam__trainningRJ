@@ -5,21 +5,24 @@ import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline } from "@material-ui/core";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import { PersistGate } from "redux-persist/integration/react";
 
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { theme } from "./styles/theme";
 import "react-toastify/dist/ReactToastify.css";
-import { store } from "@redux";
+import { store, persistor } from "@redux";
 
 ReactDOM.render(
     <Provider store={store}>
         <ThemeProvider theme={theme}>
             <ThemeProviders theme={theme}>
-                <CssBaseline />
-                <App />
-                <ToastContainer />
+                <PersistGate loading={null} persistor={persistor}>
+                    <CssBaseline />
+                    <App />
+                    <ToastContainer />
+                </PersistGate>
             </ThemeProviders>
         </ThemeProvider>
     </Provider>,

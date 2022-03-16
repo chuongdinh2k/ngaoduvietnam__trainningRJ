@@ -1,15 +1,17 @@
 import { Avatar, TextField } from "@material-ui/core";
 import styled from "styled-components";
 
-import { IconProfile } from "@components";
 import { Formik } from "formik";
 import { formSchemaComment } from "@utils";
+import { useAppSelector, selectAuth } from "@redux";
 
 interface IProps {
     handleSubmitReviewTour?: (value: any) => Promise<void>;
 }
 export const ComponentCommentBox = (props: IProps) => {
     const { handleSubmitReviewTour } = props;
+    // redux state
+    const auth = useAppSelector(selectAuth);
     // Component variable
     const initialValuesPackage = {
         comment: "",
@@ -19,8 +21,8 @@ export const ComponentCommentBox = (props: IProps) => {
             <div className="wrapperComment">
                 <div className="comment">
                     <div className="comment__profile">
-                        <Avatar>
-                            <IconProfile />
+                        <Avatar src={auth.userInfo?.picture}>
+                            {!auth.userInfo?.picture ? auth.userInfo?.name : ""}
                         </Avatar>
                     </div>
                     <Formik
@@ -41,7 +43,6 @@ export const ComponentCommentBox = (props: IProps) => {
                                         id="outlined-multiline-static"
                                         multiline
                                         rows={4}
-                                        defaultValue="Default Value"
                                         variant="outlined"
                                         placeholder="Enter Your comment"
                                         name="comment"

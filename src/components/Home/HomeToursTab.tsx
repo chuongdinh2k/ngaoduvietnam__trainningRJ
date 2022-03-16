@@ -6,6 +6,7 @@ import { AppSelect, GroupPeople, Flag } from "@components";
 import { IconSearch, AppInput, AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
 import { formSchemaHomeFilter } from "@utils";
+import { groupOfPeople } from "@demos";
 
 interface IProps {
     formTitle?: string;
@@ -30,7 +31,7 @@ export const HomeToursTab = (props: IProps) => {
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
-                    resetForm();
+                    resetForm({ values: initialValuesPackage });
                 }}
                 validationSchema={formSchemaHomeFilter}
             >
@@ -79,10 +80,7 @@ export const HomeToursTab = (props: IProps) => {
                                     value={values.group}
                                     handleChange={handleChange("group")}
                                     placeholder="Number of Guest"
-                                    options={[
-                                        { label: "1", value: 1 },
-                                        { label: "2", value: 2 },
-                                    ]}
+                                    options={groupOfPeople.data}
                                 />
                             </div>
                             <Button
@@ -135,6 +133,11 @@ const StyledHomeToursTab = styled.div`
             font-size: 2.6rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            height: 5rem;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            height: 4rem;
             margin-top: 0.5rem;
         }
     }

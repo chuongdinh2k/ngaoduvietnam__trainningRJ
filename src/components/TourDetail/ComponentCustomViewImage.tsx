@@ -170,7 +170,7 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background-color: ${(p) => p.theme.colors.darkBlack};
+                    background-color: ${(p) => p.theme.colors.pureWhite};
                     opacity: 0.5;
                 }
             }
@@ -209,7 +209,7 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                 left: 50%;
                 font-size: 16px;
                 font-weight: ${(p) => p.theme.typography.fontWeightBold};
-                color: ${(p) => p.theme.colors.pureWhite};
+                color: ${(p) => p.theme.colors.darkBlack};
                 @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                     left: 40%;
                     top: 20%;

@@ -26,13 +26,13 @@ export const InputWrapper = styled.div<ISWrapper>`
     padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
     // mui overide css
-    .MuiButtonBase-root{
+    .MuiButtonBase-root {
         padding: 0;
     }
-    .MuiOutlinedInput-adornedStart{
+    .MuiOutlinedInput-adornedStart {
         padding-left: 0;
     }
-    .MuiInputBase-input{
+    .MuiInputBase-input {
         font-size: 1.4rem;
         padding-left: 1rem;
         font-weight: 500;
@@ -45,6 +45,7 @@ export const InputWrapper = styled.div<ISWrapper>`
         }
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+        height: 4rem;
         padding: 1rem 1.2rem;
     }
 `;
