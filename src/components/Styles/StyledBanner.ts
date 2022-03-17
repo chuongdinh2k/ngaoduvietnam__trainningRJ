@@ -39,6 +39,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
             return "center";
         }
     }};
+
     .content {
         max-width: ${DEFAULT_SCREEN};
         &__subTitle {
@@ -78,6 +79,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
     }
     @media (min-width: 2000px) {
         padding-top: 50rem;
+        /* text-align: left; */
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         width: 100%;

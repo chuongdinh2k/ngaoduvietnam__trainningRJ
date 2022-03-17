@@ -13,7 +13,8 @@
         "@redux":["src/redux"],
         "@utils":["src/utils"],
         "@demos":["src/Demos"],
-        "@api":["src/api"]
+        "@api":["src/api"],
+        "@hocs":["src/hocs"]
       }
     }
   }

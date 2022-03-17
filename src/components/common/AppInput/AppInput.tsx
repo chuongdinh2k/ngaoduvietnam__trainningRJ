@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: any) => ({
             color: theme.colors.gray1,
         },
         "& .MuiInputBase-input": {
-            padding: "6px 0 7px",
+            padding: "4px 0 7px",
         },
         paddingLeft: "1.8rem",
     },

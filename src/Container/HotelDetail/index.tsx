@@ -9,6 +9,7 @@ import {
     ComponentBreadscrumb,
     Footer,
     ComponentLoader,
+    PopupLightBox,
 } from "@components";
 import { IHotel, IHotelComment } from "@types";
 import { hotelsApi } from "@api";
@@ -59,6 +60,7 @@ export const HotelDetail = () => {
                 ) : (
                     <div className="wrapperContent">
                         <ComponentBreadscrumb id={detailHotel?.id} title={detailHotel?.title} />
+                        <PopupLightBox />
                         <ComponentTourDetailContent
                             dataHotel={detailHotel}
                             hotelComment={comments}

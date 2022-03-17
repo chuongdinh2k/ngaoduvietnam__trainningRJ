@@ -8,9 +8,14 @@ export interface ISnackBar {
     anchorOrigin?: any;
     messageType?: any;
 }
+export interface ILightBox {
+    show: boolean;
+    listImages?: Array<string>;
+}
 interface IState {
     loading: boolean;
     snackBar: ISnackBar;
+    popUpLightBox: ILightBox;
 }
 
 const initialState: IState = {
@@ -19,6 +24,10 @@ const initialState: IState = {
         show: true,
         message: "You are doing alert",
         messageType: undefined,
+    },
+    popUpLightBox: {
+        show: false,
+        listImages: [],
     },
 };
 
@@ -32,10 +41,22 @@ const appSlice = createSlice({
         resetSnackBar: (state) => {
             state.snackBar = {};
         },
+        setPopUpLightBox: (state, action: PayloadAction<Array<string>>) => {
+            state.popUpLightBox = {
+                show: true,
+                listImages: action.payload,
+            };
+        },
+        resetPopUpLightBox: (state) => {
+            state.popUpLightBox = {
+                show: false,
+                listImages: [],
+            };
+        },
     },
 });
 
-export const { setLoading, resetSnackBar } = appSlice.actions;
+export const { setLoading, resetSnackBar, setPopUpLightBox, resetPopUpLightBox } = appSlice.actions;
 
 export const selectApp = (state: RootState) => state.app;
 

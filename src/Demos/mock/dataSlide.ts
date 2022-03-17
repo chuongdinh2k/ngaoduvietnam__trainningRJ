@@ -126,4 +126,6 @@ export const listImagesTour = [
     "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional2_ykxdqc.png",
     "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional3_gxl9t7.png",
     "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional1_culpgb.png",
+    "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional1_culpgb.png",
+    "https://res.cloudinary.com/chuongdinh/image/upload/v1644980380/traditional1_culpgb.png",
 ];

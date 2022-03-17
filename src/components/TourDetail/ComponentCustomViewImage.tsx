@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import { IconFlagMark } from "..";
 import { sliceArray } from "@utils";
 import { IconCamera } from "..";
+import { setPopUpLightBox } from "@redux";
+import { useDispatch } from "react-redux";
 
 interface IStyledCustomViewImage {
     numberTour?: number;
@@ -15,6 +17,8 @@ interface IProps {
     viewRoomImages?: Array<string>;
 }
 export const ComponentCustomViewImage = (props: IProps) => {
+    // hooks
+    const dispatch = useDispatch();
     const { listTourImages, listHotelImages, viewRoomImages } = props;
     const settings = {
         customPaging: function (i: number) {
@@ -22,11 +26,16 @@ export const ComponentCustomViewImage = (props: IProps) => {
                 <div className="wrapDot">
                     {/* WHAT: render list tour images */}
                     {listTourImages && (
-                        <a>
+                        <div
+                            className="wrapDot__layer"
+                            onClick={() => dispatch(setPopUpLightBox(listTourImages))}
+                        >
                             {i === 3 ? (
-                                <span className="wrapDot__icon" onClick={() => alert("lightbox")}>
+                                <span className="wrapDot__icon">
                                     <IconCamera />
-                                    <span>{listTourImages.length - 4}</span>
+                                    <span className="wrapDot__number">
+                                        {listTourImages.length - 4}+
+                                    </span>
                                 </span>
                             ) : (
                                 ""
@@ -35,16 +44,29 @@ export const ComponentCustomViewImage = (props: IProps) => {
                                 className="image__dot"
                                 src={`${listTourImages && listTourImages[i]}`}
                             />
-                        </a>
+                        </div>
                     )}
                     {/* WHAT: render list hotel images */}
                     {listHotelImages && (
-                        <a>
+                        <div
+                            className="wrapDot__layer"
+                            onClick={() => dispatch(setPopUpLightBox(listHotelImages))}
+                        >
+                            {i === 3 ? (
+                                <span className="wrapDot__icon">
+                                    <IconCamera />
+                                    <span className="wrapDot__number">
+                                        {listHotelImages.length - 4}+
+                                    </span>
+                                </span>
+                            ) : (
+                                ""
+                            )}
                             <img
                                 className="image__dot"
                                 src={`${listHotelImages && listHotelImages[i]}`}
                             />
-                        </a>
+                        </div>
                     )}
                     {/* WHAT: render list room images */}
                     {viewRoomImages && (
@@ -106,7 +128,7 @@ export const ComponentCustomViewImage = (props: IProps) => {
         </StyledCustomViewImage>
     );
 };
-const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
+export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     .wrapper {
         width: 100%;
         position: relative;
@@ -159,6 +181,8 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     }
     .slick-dots {
         text-align: left;
+        width: 100%;
+        overflow: hidden;
         bottom: -13rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             bottom: -11rem;
@@ -182,7 +206,11 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     top: 50%;
                     transform: translate(-50%, -50%);
                 }
-                &:before {
+                &__number {
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                }
+                /* &:before {
                     content: "";
                     position: absolute;
                     top: 0;
@@ -191,8 +219,13 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     height: 100%;
                     background-color: ${(p) => p.theme.colors.pureWhite};
                     opacity: 0.5;
+                } */
+                &__layer {
+                    background-color: ${(p) => p.theme.colors.pureWhite};
+                    opacity: 0.5;
                 }
             }
+
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 width: 13.9rem;
                 margin-right: 1.5rem;
@@ -205,7 +238,12 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         }
         .slick-active {
             .wrapDot {
-                &:before {
+                &__layer {
+                    background-color: transparent !important;
+                    opacity: 1;
+                    /* opacity: 0 !important; */
+                }
+                /* &:before {
                     content: "";
                     position: absolute;
                     top: 0;
@@ -214,10 +252,10 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     height: 100%;
                     background-color: ${(p) => p.theme.colors.darkBlack};
                     opacity: 0 !important;
-                }
+                } */
             }
         }
-        li:nth-child(4) {
+        /* li:nth-child(4) {
             position: relative;
             &:after {
                 content: "${(p) => (p.numberTour as number) || (p.numberHotel as number)}+";
@@ -234,7 +272,7 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     top: 20%;
                 }
             }
-        }
+        } */
         .image__dot {
             width: 100%;
             height: 100%;

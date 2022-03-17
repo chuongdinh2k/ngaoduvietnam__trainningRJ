@@ -17,6 +17,7 @@ module.exports = {
             "@utils": path.resolve(__dirname, "./src/utils"),
             "@demos": path.resolve(__dirname, "./src/Demos"),
             "@api": path.resolve(__dirname, "./src/api"),
+            "@hocs": path.resolve(__dirname, "./src/hocs"),
         },
     },
 };

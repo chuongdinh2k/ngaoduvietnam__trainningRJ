@@ -142,6 +142,7 @@ const StyledHomeToursTab = styled.div`
         height: 6.4rem;
         color: ${(p) => p.theme.colors.pureWhite};
         text-transform: capitalize;
+        font-size: 1.6rem;
         @media (min-width: 2000px) {
             height: 10rem;
             font-size: 2.6rem;
@@ -149,10 +150,10 @@ const StyledHomeToursTab = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             height: 5rem;
             margin-top: 0.5rem;
+            font-size: 1.4rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             height: 4rem;
-            margin-top: 0.5rem;
         }
     }
 `;

@@ -115,6 +115,7 @@ const StyledListMenu = styled.div`
                 padding: 0.5rem 0;
                 padding-left: 1rem;
                 font-size: 2.6rem;
+                text-align: center;
                 text-decoration: none;
                 color: ${(p) => p.theme.colors.darkBlack};
             }

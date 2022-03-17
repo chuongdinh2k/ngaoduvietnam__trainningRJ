@@ -75,7 +75,7 @@ function CustomNextArrow(props: any) {
         </div>
     );
 }
-const StyledSlider = styled.div`
+export const StyledSlider = styled.div`
     .slick-slide {
         width: 25.5rem;
         padding-right: 3rem;

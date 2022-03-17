@@ -17,9 +17,14 @@ const StyledComponentLoader = styled.div`
     width: 100%;
     height: 100%;
     min-height: 70vh;
+    position: relative;
     .wrapperLoader {
+        position: absolute;
         height: 100%;
         width: 100%;
+        left: 50%;
+        height: 50%;
+        transform: translate(-50%, -50%);
         display: flex;
         justify-content: center;
         align-items: center;
