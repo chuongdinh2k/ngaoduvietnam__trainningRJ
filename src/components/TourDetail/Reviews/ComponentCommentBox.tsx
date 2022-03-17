@@ -85,6 +85,9 @@ const StyledComponentCommentBox = styled.div`
             .MuiAvatar-colorDefault {
                 background-color: ${(p) => p.theme.colors.pureWhite};
             }
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                padding-right: 1rem;
+            }
         }
         &__wrapInput {
             width: 90%;

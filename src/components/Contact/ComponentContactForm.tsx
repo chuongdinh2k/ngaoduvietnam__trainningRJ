@@ -20,7 +20,7 @@ export const ComponentContactForm = () => {
     return (
         <StyledComponentContactForm>
             <div className="wrapperContact">
-                <Grid container spacing={8}>
+                <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
                         <div className="wrapperForm">
                             <h3 className="title">We'd love to hear from you</h3>

@@ -9,6 +9,9 @@ export const StyledWrapperTitleComponent = styled.div`
         display: flex;
         justify-content: space-between;
         padding: 6rem 0;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding: 2rem 0;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding: 1rem 0;
         }

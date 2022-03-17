@@ -62,6 +62,7 @@ function a11yProps(index: number) {
 const CustomTab = withStyles({
     root: {
         width: "50%",
+        minWidth: "50%",
         height: "4.6rem",
         color: theme.colors.darkBlack,
         textTransform: "capitalize",

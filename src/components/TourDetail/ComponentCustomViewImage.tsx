@@ -3,6 +3,7 @@ import Slider from "react-slick";
 
 import { IconFlagMark } from "..";
 import { sliceArray } from "@utils";
+import { IconCamera } from "..";
 
 interface IStyledCustomViewImage {
     numberTour?: number;
@@ -22,6 +23,14 @@ export const ComponentCustomViewImage = (props: IProps) => {
                     {/* WHAT: render list tour images */}
                     {listTourImages && (
                         <a>
+                            {i === 3 ? (
+                                <span className="wrapDot__icon" onClick={() => alert("lightbox")}>
+                                    <IconCamera />
+                                    <span>{listTourImages.length - 4}</span>
+                                </span>
+                            ) : (
+                                ""
+                            )}
                             <img
                                 className="image__dot"
                                 src={`${listTourImages && listTourImages[i]}`}
@@ -154,6 +163,9 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             bottom: -11rem;
         }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            bottom: -6rem;
+        }
         li {
             width: 13.7rem;
             height: 9.7rem;
@@ -163,6 +175,13 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                 width: 100%;
                 height: 100%;
                 position: relative;
+                &__icon {
+                    position: absolute;
+                    z-index: 99;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
                 &:before {
                     content: "";
                     position: absolute;
@@ -175,7 +194,7 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                 }
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-                width: 11.9rem;
+                width: 13.9rem;
                 margin-right: 1.5rem;
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
@@ -222,9 +241,6 @@ const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         }
         li:last-of-type {
             margin-right: 0;
-        }
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            bottom: -5rem;
         }
     }
 `;

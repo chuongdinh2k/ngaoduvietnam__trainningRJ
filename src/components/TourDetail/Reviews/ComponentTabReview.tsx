@@ -93,6 +93,9 @@ const StyledComponentTabReview = styled.div`
     .rating {
         padding-bottom: 4rem;
         display: flex;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-bottom: 0;
+        }
         &__point {
             padding: 3.3rem;
             background-color: ${(p) => p.theme.colors.orange};

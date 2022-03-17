@@ -91,8 +91,6 @@ export const ComponentTourDetailContent = (props: IProps) => {
                                 />
                             </>
                         )}
-
-                        {/* <ComponentDetailTab tabs={tabs} dataHotel={dataHotel} dataTour={dataTour} /> */}
                     </div>
                 </Grid>
                 <Grid item xs={12} md={4}>

@@ -10,14 +10,14 @@ import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { theme } from "./styles/theme";
+import { MyConFigTheme, theme } from "./styles/theme";
 import "react-toastify/dist/ReactToastify.css";
 import { store, persistor } from "@redux";
 
 ReactDOM.render(
     <Provider store={store}>
         <ThemeProvider theme={theme}>
-            <ThemeProviders theme={theme}>
+            <ThemeProviders theme={MyConFigTheme}>
                 <PersistGate loading={null} persistor={persistor}>
                     <CssBaseline />
                     <App />

@@ -78,7 +78,7 @@ const StyledMenu = styled.div<IMenu>`
     padding: 0;
     .active {
         color: ${(p) => p.theme.colors.orange} !important;
-        font-weight: bold;
+        font-weight: bold !important;
     }
     .menu {
         display: flex;

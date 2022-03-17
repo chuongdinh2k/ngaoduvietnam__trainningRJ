@@ -22,3 +22,4 @@ export * from "./IconSquare";
 export * from "./IconBed";
 export * from "./IconDownload";
 export * from "./IconHome";
+export * from "./IconCamera";

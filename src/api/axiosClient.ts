@@ -10,6 +10,7 @@ export const axiosClient = axios.create({
     headers: {
         "access-token": `${accessToken}`,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
     },
     paramsSerializer: (params) => queryString.stringify(params),
 });

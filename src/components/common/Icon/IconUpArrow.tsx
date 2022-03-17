@@ -14,9 +14,9 @@ export const IconUpArrow = (props: IIcon) => {
                 <path
                     d="M17 9L9 1L1 9"
                     stroke={color}
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 />
             </svg>
         </>

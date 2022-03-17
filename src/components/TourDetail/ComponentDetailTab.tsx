@@ -73,10 +73,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginTop: "16rem",
         backgroundColor: theme.colors.pureWhite,
         boxShadow: "none",
-        [theme.breakpoints.down("sm")]: {
-            marginTop: "12rem",
-        },
         [theme.breakpoints.down("xs")]: {
+            marginTop: "10rem",
+        },
+        [theme.breakpoints.down("sm")]: {
             marginTop: "12rem",
         },
     },

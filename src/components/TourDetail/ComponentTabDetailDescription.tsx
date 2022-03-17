@@ -98,13 +98,19 @@ export const StyledComponentTab = styled.div`
         padding-top: 2.6rem;
         padding-bottom: 4rem;
         &__title {
-            font-size: 20px;
+            font-size: 2rem;
             padding-bottom: 1.8rem;
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                font-size: 1.6rem;
+            }
         }
         &__text {
-            font-size: 16px;
+            font-size: 1.6rem;
             line-height: 30px;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                font-size: 1.4rem;
+            }
         }
         &__wrapperlist {
             li {

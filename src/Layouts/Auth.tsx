@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import { Box, Grid, Hidden } from "@material-ui/core";
+// import { useLocation } from "react-router-dom";
+import { Grid, Hidden } from "@material-ui/core";
 
 import background from "@assets/auth__background.png";
 
@@ -9,15 +9,14 @@ interface IAppLayout {
 }
 
 export const LayoutAuth = (props: IAppLayout) => {
-    const { pathname } = useLocation();
     return (
         <StyledAuth>
             <div className="wrapAuth">
                 <Grid container>
-                    <Grid item xs={12} sm={5}>
+                    <Grid item xs={12} sm={7} md={5}>
                         {props.children}
                     </Grid>
-                    <Grid item xs={12} sm={7}>
+                    <Grid item xs={12} sm={5} md={7}>
                         <Hidden xsDown>
                             <div className="background">
                                 <img

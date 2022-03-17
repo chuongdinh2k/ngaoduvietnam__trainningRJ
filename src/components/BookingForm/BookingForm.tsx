@@ -53,11 +53,11 @@ export const BookingForm = (props: IProps) => {
                         {dataTour && (
                             <>
                                 <div className="content__left">
-                                    <p className="content__text">Duration</p>
+                                    <p className="content__text">Duration: </p>
                                     <p className="content__sub">{dataTour?.duration}</p>
                                 </div>
                                 <div className="content__right">
-                                    <p className="content__text">Tour type:</p>
+                                    <p className="content__text">Tour type: </p>
                                     <p className="content__sub">{dataTour?.typeOfTour}</p>
                                 </div>
                             </>

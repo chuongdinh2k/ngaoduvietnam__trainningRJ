@@ -14,15 +14,31 @@ export const StyledBookingForm = styled.div`
             font-weight: ${(p) => p.theme.typography.fontWeightMedium};
             padding-left: 0.8rem;
         }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding: 1rem 3rem;
+        }
     }
     .content {
         padding: 2.3rem 3rem 0 3rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            &__left,
+            &__right {
+                display: flex;
+            }
+        }
         &__title {
             display: flex;
             flex-direction: row;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                justify-content: space-between;
+                padding-bottom: 1rem;
+            }
         }
         &__left {
             padding-right: 6.4rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                padding-right: 0;
+            }
         }
         &__text {
             color: ${(p) => p.theme.colors.gray1};
@@ -94,6 +110,9 @@ export const StyledBookingForm = styled.div`
     }
     .form__group {
         padding: 1.7rem 3rem 0 3rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding: 0 3rem;
+        }
         &-input {
             margin-bottom: 2rem;
         }

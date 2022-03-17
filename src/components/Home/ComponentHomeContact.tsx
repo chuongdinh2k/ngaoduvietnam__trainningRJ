@@ -96,6 +96,9 @@ const StyledComponentHomeContact = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-top: 0;
             padding-left: 0;
+            .MuiInputBase-input {
+                padding: 0 0 7px;
+            }
         }
     }
     .form__button {
@@ -112,7 +115,7 @@ const StyledComponentHomeContact = styled.div`
             transition: translateY(-10px);
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding-top: 0;
+            padding-top: 1rem;
             height: 4rem;
         }
     }

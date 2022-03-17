@@ -115,15 +115,31 @@ const StyledComponentAboutIntroduce = styled.div`
     .content__text {
         font-weight: 400;
         font-size: 1.6rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            font-size: 2rem;
+        }
+    }
+    .content__quote-text {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            font-size: 2rem;
+        }
     }
     .intro__imageWrapper {
         height: 54rem;
         width: 100%;
         padding-left: 3rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding-left: 0;
+            padding-top: 2rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding-left: 0;
             padding-top: 30rem;
         }
+        /* @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-left: 0;
+            padding-top: 30rem;
+        } */
     }
     .intro__image {
         width: 100%;
@@ -150,12 +166,21 @@ const StyledComponentAboutIntroduce = styled.div`
         }
         &__text {
             font-size: ${(p) => p.theme.typography.fontSize}px;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                font-size: 2rem;
+            }
         }
         &__image-left {
             width: 44.5rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                width: 100%;
+            }
         }
         &__image-right {
             padding-top: 4.8rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                width: 100%;
+            }
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             &__title {

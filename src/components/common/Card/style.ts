@@ -80,6 +80,9 @@ export const StyledCardWithIcon = styled.div`
     }
     .rating {
         margin-top: 1rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            margin-top: 0.5rem;
+        }
         &__point {
             padding: 0.4rem 0.8rem;
             margin-right: 0.5rem;
@@ -141,6 +144,12 @@ export const StyledCardWithIcon = styled.div`
     }
     .bottom {
         justify-content: space-between;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            flex-direction: column;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            flex-direction: row;
+        }
     }
     .money {
         font-size: ${(p) => p.theme.typography.fontSize}px;

@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import styled from "styled-components";
 
 import { Card, IconArrowNext } from "@components";
-import { theme } from "@styles";
 import { ICard } from "@types";
 
 interface ISlider {
@@ -23,7 +22,7 @@ export const SliderCustom = (props: ISlider) => {
         nextArrow: <CustomNextArrow />,
         responsive: [
             {
-                breakpoint: theme.breakpoints.values.md,
+                breakpoint: 1200,
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -32,7 +31,7 @@ export const SliderCustom = (props: ISlider) => {
                 },
             },
             {
-                breakpoint: theme.breakpoints.values.sm,
+                breakpoint: 900,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -100,7 +99,7 @@ const StyledSlider = styled.div`
     .slick-next {
         top: 11rem;
         @media (max-width: 768px) {
-            right: 0;
+            right: -5rem;
         }
     }
     .slick-arrow {

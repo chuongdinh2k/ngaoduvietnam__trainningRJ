@@ -76,6 +76,9 @@ const StyledComponenetDes = styled.div`
             font-size: 1.6rem;
             line-height: 2.5rem;
             padding-bottom: 1rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                font-size: 1.4rem;
+            }
         }
     }
     .listChecked {
@@ -84,6 +87,9 @@ const StyledComponenetDes = styled.div`
         border-bottom: 1px solid #e5e5e5;
         &__text {
             font-size: 1.6rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                font-size: 1.4rem;
+            }
             padding-left: 2rem;
             color: #4f4f4f;
         }
@@ -92,6 +98,9 @@ const StyledComponenetDes = styled.div`
         &__name {
             color: ${(p) => p.theme.colors.red};
             font-size: 1.6rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                font-size: 1.4rem;
+            }
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
         }
         &__time {

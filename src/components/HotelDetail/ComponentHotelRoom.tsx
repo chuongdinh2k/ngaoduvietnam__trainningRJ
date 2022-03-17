@@ -151,6 +151,9 @@ const StyledComponentHotelRoom = styled.div`
             font-weight: 500;
             color: #4f4f4f;
             padding: 1rem 0;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                padding: 0;
+            }
         }
         &__dimension,
         &__equipment,
@@ -226,6 +229,8 @@ const StyledComponentHotelRoom = styled.div`
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 margin-top: 0;
                 width: 100%;
+                padding: 0.5rem;
+                font-size: 1.2rem;
             }
         }
         .wrapperBottom {

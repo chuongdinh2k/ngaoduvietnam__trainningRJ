@@ -88,11 +88,19 @@ const StyledComponentUserComment = styled.div`
         &-spacing {
             padding: 0 1rem;
         }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            &-title,
+            &-time {
+                font-size: 1.4rem;
+            }
+        }
     }
     .comment__content {
         padding-top: 1rem;
         width: 90%;
-        font-size: 1.6rem;
         line-height: 150%;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            font-size: 1.4rem;
+        }
     }
 `;

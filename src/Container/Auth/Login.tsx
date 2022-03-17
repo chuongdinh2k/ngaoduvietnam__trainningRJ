@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 // import { Alert } from "@material-ui/lab";
 
 import { login, selectAuth, useAppSelector } from "@redux";
-import { authRoutesEnum, appRoutesEnum } from "@enums";
+import { authRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
 import { AppInputOutLined, IconFacebook } from "@components";
 import { formSchemaLogin } from "@utils";
@@ -20,7 +20,7 @@ export const Login = () => {
     const history = useHistory();
     useEffect(() => {
         if (auth.tokenInfoAuth) {
-            history.push(appRoutesEnum.HOME);
+            history.goBack();
         }
     }, [auth]);
     const initialValuesPackage = {

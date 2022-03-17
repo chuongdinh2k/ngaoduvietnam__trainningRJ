@@ -10,7 +10,7 @@ import {
     ComponentBreadscrumb,
     Footer,
     ComponentLoader,
-    PopupLightBox,
+    // PopupLightBox,
 } from "@components";
 import { IComment, IDataTour } from "@types";
 import { selectApp, selectAuth, setLoading, useAppSelector } from "@redux";

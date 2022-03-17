@@ -43,6 +43,10 @@ export const ComponentBreadscrumb = (props: IProps) => {
 const StyledCustomBreadscrumb = styled.div`
     padding-top: 4rem;
     margin-bottom: 4rem;
+    @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+        margin-bottom: 0;
+        padding-top: 1rem;
+    }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         margin-bottom: 1rem;
         padding-top: 2rem;

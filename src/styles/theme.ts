@@ -39,8 +39,7 @@ const defaultFontFamily = "DM Sans, Roboto, Arial, sans-serif";
  * Set default style for all MUI components
  * Allow overriding MUI default styles and props
  */
-
-const DEFAULT_THEME_CONFIG: ThemeOptions = {
+export const MyConFigTheme: ThemeOptions = {
     colors,
     breakpoints: {
         values: {
@@ -68,14 +67,29 @@ const DEFAULT_THEME_CONFIG: ThemeOptions = {
         fontWeightBold: 700,
         fontWeightMedium: 500,
         fontWeightLight: 300,
-        button: {
-            fontFamily: defaultFontFamily,
-            fontStyle: "normal",
-            fontWeight: 500,
-            fontSize: 14,
-            lineHeight: "24px",
-            color: colors.darkBlack,
+    },
+};
+const DEFAULT_THEME_CONFIG: ThemeOptions = {
+    colors,
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 960,
+            lg: 1280,
+            xl: 1920,
         },
     },
+    palette: {
+        primary: {
+            main: colors.orange,
+        },
+        text: {
+            disabled: colors.gray2,
+            primary: colors.darkBlack,
+            secondary: colors.gray2,
+        },
+    },
+    spacing: 8,
 };
 export const theme = createTheme(DEFAULT_THEME_CONFIG);

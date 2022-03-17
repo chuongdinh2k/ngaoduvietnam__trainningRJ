@@ -21,7 +21,7 @@ export const ComponentListTourLists = (props: IProps) => {
                 <Grid container spacing={4}>
                     {data &&
                         data.map((item: ICard, index) => (
-                            <Grid item key={index} xs={12} sm={4}>
+                            <Grid item key={index} xs={12} sm={6} md={4}>
                                 <Card typeCardIcon data={item} onClick={handleViewDetail} />
                             </Grid>
                         ))}
