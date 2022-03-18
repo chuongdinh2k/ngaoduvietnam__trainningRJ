@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-export const ComponentLoader = () => {
+interface ILoading {
+    type?: string;
+}
+export const ComponentLoader = (props: ILoading) => {
+    const { type } = props;
     return (
-        <StyledComponentLoader>
+        <StyledComponentLoader type={type}>
             <div className="wrapperLoader">
                 <div className="item"></div>
                 <div className="item"></div>
@@ -13,10 +17,10 @@ export const ComponentLoader = () => {
         </StyledComponentLoader>
     );
 };
-const StyledComponentLoader = styled.div`
+const StyledComponentLoader = styled.div<ILoading>`
     width: 100%;
     height: 100%;
-    min-height: 70vh;
+    min-height: 70%;
     position: relative;
     .wrapperLoader {
         position: absolute;

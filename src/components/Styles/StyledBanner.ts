@@ -41,7 +41,6 @@ export const StyledBanner = styled.div<IStyledBanner>`
     }};
 
     .content {
-        max-width: ${DEFAULT_SCREEN};
         &__subTitle {
             color: ${(p) => p.theme.colors.lightPink};
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
@@ -79,7 +78,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
     }
     @media (min-width: 2000px) {
         padding-top: 50rem;
-        width: 65%;
+        width: 60%;
         /* text-align: left; */
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {

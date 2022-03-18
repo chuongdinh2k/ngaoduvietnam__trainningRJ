@@ -70,8 +70,6 @@ export const ComponentSidebar = (props: IMenu) => {
     );
 };
 const StyledMenu = styled.div<IMenu>`
-    /* display: flex;
-    flex-direction: row; */
     display: flex;
     justify-content: flex-end;
     margin-top: 3rem;
@@ -96,7 +94,10 @@ const StyledMenu = styled.div<IMenu>`
                 font-family: ${(p) => p.theme.typography.fontFamily};
                 color: ${(p) => (p.hasColor ? `#1C1C1E` : p.theme.colors.pureWhite)};
                 @media (min-width: 2000px) {
-                    font-size: 4rem;
+                    font-size: 2.8rem;
+                }
+                @media (min-width: 3500px) {
+                    margin-left: 15.1rem;
                 }
                 @media (max-width: 992px) {
                     margin-left: 1.7rem;

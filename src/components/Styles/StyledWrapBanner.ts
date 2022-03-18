@@ -1,13 +1,6 @@
 import styled from "styled-components";
 
-import {
-    PAGE_HOME,
-    PAGE_ABOUT,
-    PAGE_LISTTOUR,
-    PAGE_HOTELS,
-    PAGE_CONTACT,
-    DEFAULT_SCREEN,
-} from "@configs";
+import { PAGE_HOME, PAGE_ABOUT, PAGE_HOTELS, PAGE_CONTACT, DEFAULT_SCREEN } from "@configs";
 
 interface IWrapHeader {
     background_banner?: string;
@@ -63,23 +56,30 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         );
         backdrop-filter: blur(42px);
     }
-    @media (min-width: 3000px) {
-        .featured {
-            width: 30%;
-        }
-    }
     @media (min-width: 2000px) {
         height: 60vh;
         padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
-            left: 0;
-            width: 40%;
-            padding: 2.6rem 2rem 0 2rem;
+            /* left: 0; */
+            width: 71%;
+            max-width: 75%;
+            padding: 2.6rem 2rem 0 16rem;
             font-size: 2.2rem;
+            &__title {
+                font-size: 2.6rem;
+            }
+            &__wrapper {
+                font-size: 2.6rem !important;
+            }
+            &__number {
+                font-size: 3.8rem !important;
+                padding-right: 1rem;
+            }
         }
         .filter {
             right: 0;
-            width: 30%;
+            width: 40%;
+            bottom: -0.5rem;
             .MuiTabs-flexContainer {
                 justify-content: space-between;
             }
@@ -88,6 +88,15 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
                 font-size: 2.6rem;
                 max-width: 50%;
             }
+        }
+    }
+    @media (min-width: 3500px) {
+        .featured {
+            width: 80%;
+        }
+        .filter {
+            bottom: -0.5rem;
+            width: 30%;
         }
     }
     @media (max-width: 992px) {
@@ -118,10 +127,6 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
             height: 6.9rem;
             padding: 2rem;
             display: none;
-            /* display: ${(p) =>
-                p.typeComponent === PAGE_LISTTOUR || p.typeComponent === PAGE_HOTELS
-                    ? "none"
-                    : ""}; */
         }
 
         .filter {

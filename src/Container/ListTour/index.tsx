@@ -20,7 +20,6 @@ import { LIMIT_RECORD_6 } from "@configs";
 export const ListTour = () => {
     // redux state
     const app = useAppSelector(selectApp);
-    // const tours = useAppSelector(selectTour);
     // get params of url
     const parsed = qs.parse(location.search);
     // hooks
@@ -33,16 +32,17 @@ export const ListTour = () => {
         history.push(`tours?page=${value}&limit=${LIMIT_RECORD_6}`);
     };
     React.useEffect(() => {
-        dispatch(setLoading(true));
         dispatch(
             getListTours({
                 page: page,
                 limit: LIMIT_RECORD_6,
             })
         );
-        dispatch(setLoading(false));
+        const timer = setTimeout(() => {
+            dispatch(setLoading(false));
+        }, 2000);
+        return () => clearTimeout(timer);
     }, [page]);
-    console.log(app.loading);
     return (
         <>
             <Header hasColor={false} />

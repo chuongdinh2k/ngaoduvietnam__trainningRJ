@@ -38,7 +38,12 @@ export const ComponentHomeContact = () => {
                                             handleChange={handleChange("email")}
                                             // setFieldValue={setFieldValue}
                                             value={values.email}
-                                            icon={<IconLetter color={`${theme.colors.orange}`} />}
+                                            icon={
+                                                <IconLetter
+                                                    size="large"
+                                                    color={`${theme.colors.orange}`}
+                                                />
+                                            }
                                             placeholder="example@gmail.com"
                                             error={errors.email}
                                         />

@@ -115,11 +115,17 @@ const StyledComponentAboutIntroduce = styled.div`
     .content__text {
         font-weight: 400;
         font-size: 1.6rem;
+        @media (min-width: 2000px) {
+            font-size: 2.6rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             font-size: 2rem;
         }
     }
     .content__quote-text {
+        @media (min-width: 2000px) {
+            font-size: 2.6rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             font-size: 2rem;
         }
@@ -149,6 +155,9 @@ const StyledComponentAboutIntroduce = styled.div`
         padding-top: 15rem;
         width: 100%;
         height: 46.3rem;
+        @media (min-width: 2000px) {
+            height: 63rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding-top: 5rem;
             height: 20rem;
@@ -166,6 +175,9 @@ const StyledComponentAboutIntroduce = styled.div`
         }
         &__text {
             font-size: ${(p) => p.theme.typography.fontSize}px;
+            @media (min-width: 2000px) {
+                font-size: 2.4rem;
+            }
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 font-size: 2rem;
             }

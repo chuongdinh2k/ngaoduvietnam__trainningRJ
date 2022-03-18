@@ -71,6 +71,7 @@ const StyledComponentDetailInfor = styled.div`
         }
     }
     .location {
+        display: flex;
         &__text {
             color: ${(p) => p.theme.colors.gray1};
             font-size: 16px;

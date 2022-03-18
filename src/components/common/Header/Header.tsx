@@ -58,7 +58,11 @@ export const Header = (props: IProps) => {
             <div className="wrapHeader">
                 <Grid container>
                     <Grid item xs={6} md={6}>
-                        {hasColor ? <img src={logoBlack} /> : <img src={logo} />}
+                        {hasColor ? (
+                            <img src={logoBlack} className="image" />
+                        ) : (
+                            <img className="image" src={logo} />
+                        )}
                     </Grid>
                     <Grid item xs={6} md={6}>
                         <ComponentSidebar hasColor={hasColor} />
@@ -93,6 +97,11 @@ const StyledHeader = styled.div<IStyledHeader>`
     .wrapHeader {
         width: 100%;
         /* max-width: ${DEFAULT_SCREEN}; */
+        .image {
+            @media (min-width: 2000px) {
+                width: 14rem !important;
+            }
+        }
     }
     .mobile__NavLogo {
         display: none;

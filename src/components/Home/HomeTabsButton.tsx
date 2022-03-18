@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     tabContent: {
         padding: "3.4rem 3.1rem",
         // height: "52.2rem",
+        [theme.breakpoints.up("xl")]: {
+            padding: "5rem 5rem",
+        },
         [theme.breakpoints.down("sm")]: {
             padding: "1rem 1.5rem",
         },

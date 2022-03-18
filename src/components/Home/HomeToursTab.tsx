@@ -135,6 +135,9 @@ const StyledHomeToursTab = styled.div`
     }
     .input-group {
         margin-top: 1.8rem;
+        @media (min-width: 3500px) {
+            margin-top: 3.5rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             margin-top: 0.5rem;
         }
@@ -151,6 +154,7 @@ const StyledHomeToursTab = styled.div`
         text-transform: capitalize;
         font-size: 1.6rem;
         @media (min-width: 2000px) {
+            margin-top: 2.8rem;
             height: 10rem;
             font-size: 2.6rem;
         }

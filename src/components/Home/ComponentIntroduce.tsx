@@ -113,6 +113,9 @@ const StyledComponentIntroduce = styled.div`
         padding-bottom: 1.6rem;
         font-weight: 400;
         font-size: 1.6rem;
+        @media (min-width: 2000px) {
+            font-size: 2.6rem;
+        }
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         padding: 4rem 0 4rem 0;

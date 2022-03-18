@@ -64,5 +64,8 @@ const StyledCustomBreadscrumb = styled.div`
     .MuiTypography-body1 {
         color: ${(p) => p.theme.colors.gray};
         font-size: ${(p) => p.theme.typography.fontSize}px;
+        &:hover {
+            cursor: pointer;
+        }
     }
 `;

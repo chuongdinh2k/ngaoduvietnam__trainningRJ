@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 
 import { IDataTour } from "@types";
 import { toursApi } from "@api";
+import { setLoading } from "@redux";
 import { RootState } from ".";
 
 export interface IPagination {

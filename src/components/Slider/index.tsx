@@ -54,12 +54,14 @@ export const SliderCustom = (props: ISlider) => {
                 {/* WHAT: Check data's undefined or not then map data */}
                 {data
                     ? data.map((item: ICard, index: number) => (
-                          <Card
-                              key={index}
-                              //  WHAT: check render normal card, not card with icon
-                              typeCardIcon={typeCardIcon}
-                              data={item}
-                          />
+                          <div className="wrapperCard">
+                              <Card
+                                  key={index}
+                                  //  WHAT: check render normal card, not card with icon
+                                  typeCardIcon={typeCardIcon}
+                                  data={item}
+                              />
+                          </div>
                       ))
                     : ""}
             </Slider>
@@ -76,6 +78,11 @@ function CustomNextArrow(props: any) {
     );
 }
 export const StyledSlider = styled.div`
+    .wrapperCard {
+        @media (min-width: 2000px) {
+            padding-right: 3rem;
+        }
+    }
     .slick-slide {
         width: 25.5rem;
         padding-right: 3rem;
@@ -85,6 +92,7 @@ export const StyledSlider = styled.div`
         .slick-next {
             top: 11rem;
             right: -25px;
+
             @media (max-width: 768px) {
                 right: 0;
             }
@@ -92,6 +100,9 @@ export const StyledSlider = styled.div`
     }
     .slick-list {
         margin-right: -2.5rem;
+        @media (min-width: 2000px) {
+            margin-right: -5rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-right: 0rem;
             padding: 0px;
@@ -99,6 +110,9 @@ export const StyledSlider = styled.div`
     }
     .slick-next {
         top: 11rem;
+        @media (min-width: 2000px) {
+            right: -7rem;
+        }
         @media (max-width: 768px) {
             right: -5rem;
         }
