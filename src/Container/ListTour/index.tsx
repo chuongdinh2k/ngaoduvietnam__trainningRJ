@@ -14,14 +14,13 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListTours, useAppSelector, selectTour, setLoading, selectApp } from "@redux";
+import { getListTours, useAppSelector, setLoading, selectApp } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
 
 export const ListTour = () => {
     // redux state
     const app = useAppSelector(selectApp);
-    console.log(app.loading);
-    const tours = useAppSelector(selectTour);
+    // const tours = useAppSelector(selectTour);
     // get params of url
     const parsed = qs.parse(location.search);
     // hooks
@@ -43,18 +42,15 @@ export const ListTour = () => {
         );
         dispatch(setLoading(false));
     }, [page]);
+    console.log(app.loading);
     return (
         <>
             <Header hasColor={false} />
-            {app.loading ? (
-                <ComponentLoader />
-            ) : (
-                <ComponentListTourBanner banner={banner.listTour} />
-            )}
+            <ComponentListTourBanner banner={banner.listTour} />
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
-                    {!tours.dataToursList.length ? "Empty" : <ComponentListTourContent />}
+                    {app.loading ? <ComponentLoader /> : <ComponentListTourContent />}
                     <AppPagination
                         totalPage={5}
                         showPerpage

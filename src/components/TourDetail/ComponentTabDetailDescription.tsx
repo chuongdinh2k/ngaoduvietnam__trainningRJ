@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { IconDot, IconChecked, ComponentCollapse } from "..";
+import { IconDot, IconChecked, ComponentCollapse, ComponentMapEmbed } from "..";
 import { ComponentExpendTourItinerary } from ".";
 import { IDiscription } from "@types";
 
@@ -84,6 +84,10 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                                 </ComponentCollapse>
                             </div>
                         ))}
+                </div>
+                <div className="content">
+                    <h3 className="content__title">Maps</h3>
+                    <ComponentMapEmbed />
                 </div>
             </div>
         </StyledComponentTab>
