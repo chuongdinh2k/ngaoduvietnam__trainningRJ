@@ -1,9 +1,10 @@
 import { theme } from "@styles";
 import { IIcon } from "@types";
+import { StyledIcon } from ".";
 
 export const IconLocation = (props: IIcon) => {
     return (
-        <>
+        <StyledIcon size={props.size}>
             <svg
                 width={props.width ? props.width : "18"}
                 height={props.height ? props.height : "20"}
@@ -26,6 +27,6 @@ export const IconLocation = (props: IIcon) => {
                     strokeLinejoin="round"
                 />
             </svg>
-        </>
+        </StyledIcon>
     );
 };

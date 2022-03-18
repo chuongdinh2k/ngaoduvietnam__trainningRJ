@@ -1,9 +1,10 @@
 import { IIcon } from "@types";
+import { StyledIcon } from ".";
 
 export const GroupPeople = (props: IIcon) => {
-    const { width = 18, height = 20, color = "#FF7B4" } = props;
+    const { width = 18, height = 20, color = "#FF7B4", size } = props;
     return (
-        <>
+        <StyledIcon size={size}>
             <svg
                 width={width}
                 height={height}
@@ -19,6 +20,6 @@ export const GroupPeople = (props: IIcon) => {
                     strokeLinejoin="round"
                 />
             </svg>
-        </>
+        </StyledIcon>
     );
 };

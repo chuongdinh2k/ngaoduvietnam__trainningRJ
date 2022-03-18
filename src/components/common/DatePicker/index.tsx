@@ -42,10 +42,9 @@ export const AppDatePicker = (props: IAppDatePicker) => {
                         format={props.format || "dd/MM/yyyy "}
                         value={props.value || null}
                         onChange={props.handleChange}
-                        InputProps={{ readOnly: true,disableUnderline: true
-                        }}
+                        InputProps={{ readOnly: true, disableUnderline: true }}
                         inputVariant="standard"
-                        keyboardIcon={props.hideIcon ? "" : <IconCalendar />}
+                        keyboardIcon={props.hideIcon ? "" : <IconCalendar size="large" />}
                         InputAdornmentProps={{ position: "start" }}
                         KeyboardButtonProps={{
                             "aria-label": "change date",
@@ -62,7 +61,6 @@ export const AppDatePicker = (props: IAppDatePicker) => {
                         onClose={() => setOpenCalendar(false)}
                         open={openCalendar}
                         style={props.styleDateInput}
-                        
                     />
                 </Grid>
             </MuiPickersUtilsProvider>

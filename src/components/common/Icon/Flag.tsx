@@ -1,9 +1,11 @@
 import { IIcon } from "@types";
 
+import { StyledIcon } from ".";
+
 export const Flag = (props: IIcon) => {
-    const { width = 18, height = 20, color = "#FF7B42" } = props;
+    const { width = 18, height = 20, color = "#FF7B42", size } = props;
     return (
-        <>
+        <StyledIcon size={size}>
             <svg
                 width={width}
                 height={height}
@@ -16,6 +18,6 @@ export const Flag = (props: IIcon) => {
                     fill={color}
                 />
             </svg>
-        </>
+        </StyledIcon>
     );
 };

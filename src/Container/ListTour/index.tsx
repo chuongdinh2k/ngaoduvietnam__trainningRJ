@@ -8,16 +8,19 @@ import {
     ComponentBreadscrumb,
     ComponentListTourBanner,
     ComponentListTourContent,
+    ComponentLoader,
     Footer,
     Header,
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListTours, useAppSelector, selectTour } from "@redux";
+import { getListTours, useAppSelector, selectTour, setLoading, selectApp } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
 
 export const ListTour = () => {
     // redux state
+    const app = useAppSelector(selectApp);
+    console.log(app.loading);
     const tours = useAppSelector(selectTour);
     // get params of url
     const parsed = qs.parse(location.search);
@@ -31,17 +34,23 @@ export const ListTour = () => {
         history.push(`tours?page=${value}&limit=${LIMIT_RECORD_6}`);
     };
     React.useEffect(() => {
+        dispatch(setLoading(true));
         dispatch(
             getListTours({
                 page: page,
                 limit: LIMIT_RECORD_6,
             })
         );
+        dispatch(setLoading(false));
     }, [page]);
     return (
         <>
             <Header hasColor={false} />
-            <ComponentListTourBanner banner={banner.listTour} />
+            {app.loading ? (
+                <ComponentLoader />
+            ) : (
+                <ComponentListTourBanner banner={banner.listTour} />
+            )}
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />

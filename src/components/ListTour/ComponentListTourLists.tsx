@@ -9,6 +9,7 @@ interface IProps {
     data?: Array<ICard>;
 }
 export const ComponentListTourLists = (props: IProps) => {
+    // props
     const { data } = props;
     // component variable
     const history = useHistory();

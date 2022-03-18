@@ -58,7 +58,7 @@ export const HomeToursTab = (props: IProps) => {
                             <div className="input-group">
                                 <AppInput
                                     handleChange={handleChange("location")}
-                                    icon={<IconLocation />}
+                                    icon={<IconLocation size="large" />}
                                     value={values.location}
                                     name="location"
                                     placeholder="Enter Location"
@@ -79,7 +79,7 @@ export const HomeToursTab = (props: IProps) => {
                                 <div className="input-group">
                                     <AppSelect
                                         name="typeOfTour"
-                                        icon={<Flag width="16" height="18" />}
+                                        icon={<Flag size="large" width="16" height="18" />}
                                         value={values.typeOfTour}
                                         placeholder="Type of Tour"
                                         options={TypeOfTour.data}
@@ -90,7 +90,14 @@ export const HomeToursTab = (props: IProps) => {
                             <div className="input-group">
                                 <AppSelect
                                     name="group"
-                                    icon={<GroupPeople width="16" height="18" color="#FF7B42" />}
+                                    icon={
+                                        <GroupPeople
+                                            size="large"
+                                            width="16"
+                                            height="18"
+                                            color="#FF7B42"
+                                        />
+                                    }
                                     value={values.group}
                                     handleChange={handleChange("group")}
                                     placeholder="Number of Guest"

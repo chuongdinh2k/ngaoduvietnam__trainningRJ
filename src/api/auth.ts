@@ -3,11 +3,11 @@ import { axiosClient } from ".";
 
 export const authApi = {
     login: (params: ILogin) => {
-        const url = "https://ducky-ecommerce-server.herokuapp.com/api/auth/login";
+        const url = `${process.env.REACT_APP_API_LOGIN}/auth/login`;
         return axiosClient.post(url, params);
     },
     register: (params: IRegister) => {
-        const url = "https://ducky-ecommerce-server.herokuapp.com/api/auth/register";
+        const url = `${process.env.REACT_APP_API_LOGIN}/auth/register`;
         return axiosClient.post(url, params);
     },
 };

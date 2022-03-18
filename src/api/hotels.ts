@@ -7,15 +7,15 @@ interface IPagination {
 }
 export const hotelsApi = {
     getListHotels: (values: IPagination) => {
-        const url = `${MockHotelUrl}/api/v1/hotels?page=${values?.page}&limit=${values?.limit}`;
+        const url = `${process.env.REACT_APP_API_HOTEL}?page=${values?.page}&limit=${values?.limit}`;
         return axiosClient.get(url);
     },
     viewListDetail: (id: string) => {
-        const url = `${MockHotelUrl}/api/v1/hotels/${id}`;
+        const url = `${process.env.REACT_APP_API_HOTEL}/${id}`;
         return axiosClient.get(url);
     },
     reviewHotels: (id: string, values: IPagination) => {
-        const url = `${MockHotelUrl}/api/v1/hotels/${id}/comment?page=${values?.page}&limit=${values?.limit}`;
+        const url = `${process.env.REACT_APP_API_HOTEL}/${id}/comment?page=${values?.page}&limit=${values?.limit}`;
         return axiosClient.get(url);
     },
     // reviewTours: (id: string) => {

@@ -78,7 +78,7 @@ const StyledSliderPopup = styled.div`
     /* width: 90vh; */
     /* height: 80vh; */
     max-height: 58rem;
-    padding: 4rem;
+    /* padding: 4rem; */
     .wrapper {
         width: 100%;
         position: relative;
@@ -113,6 +113,25 @@ const StyledSliderPopup = styled.div`
         width: 100%;
         img {
             width: 100%;
+        }
+    }
+    .slick-arrow {
+        z-index: 99;
+    }
+    .slick-prev:before,
+    .slick-next:before {
+        font-size: 5.4rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            font-size: 2.4rem;
+        }
+    }
+    .slick-prev {
+        left: 0;
+    }
+    .slick-next {
+        right: 3rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            right: 0;
         }
     }
     /* .slick-dots {
