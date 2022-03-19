@@ -32,6 +32,7 @@ interface IAppSelect {
     disabled?: boolean;
     styleSelect?: any;
     multiple?: boolean;
+    size?:string;
 }
 export const AppSelect = (props: IAppSelect) => {
     const classes = useStyles();
@@ -40,7 +41,7 @@ export const AppSelect = (props: IAppSelect) => {
         return <Placeholder>{children}</Placeholder>;
     };
     return (
-        <InputWrapper>
+        <InputWrapper size={props.size}>
             <LabelWrapper>{props.icon}</LabelWrapper>
             <Select
                 name={props.name}

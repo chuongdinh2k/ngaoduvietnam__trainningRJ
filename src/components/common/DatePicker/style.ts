@@ -5,6 +5,7 @@ interface ISWrapper {
     marginTop?: string;
     hasBorder?: boolean;
     backgroundColor?: string;
+    size?:string;
 }
 interface ISLabel {
     color?: string;
@@ -38,15 +39,18 @@ export const InputWrapper = styled.div<ISWrapper>`
         font-weight: 500;
     }
     @media (min-width: 2000px) {
-        height: 7rem;
+        height: ${p=>p.size==="large"?`7rem`:`5rem`};
         padding: 1.2rem 2rem 1.2rem 2rem;
         .MuiInputBase-input {
-            font-size: 2.6rem;
+            font-size: ${p=>p.size==="large"?`2.6rem`:`1.4rem`};
         }
     }
     @media (min-width: 3000px) {
-        height: 10rem;
-        padding: 1.2rem 2rem 1.2rem 2rem;
+        height: ${p=>p.size==="large"?`10rem`:`5rem`};
+        padding: ${p=>p.size==="large"?`3.2rem 2rem 1.6rem 2rem`:`1.2rem 2rem 1.6rem 2rem`};
+        .MuiInputBase-input {
+            font-size: ${p=>p.size==="large"?`2.6rem`:`1.4rem`};
+        }
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         height: 4rem;

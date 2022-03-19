@@ -7,7 +7,7 @@ import { Divider, IconButton } from "@material-ui/core";
 
 import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
-import { GroupPeople, AppDatePicker, AppSelect } from "..";
+import { GroupPeople, AppDatePicker,IconCalendar, AppSelect } from "..";
 import { convertCurrency, fomatObjDate } from "@utils";
 import { useDispatch } from "react-redux";
 import { setBookingForm } from "@redux";
@@ -97,6 +97,7 @@ export const BookingForm = (props: IProps) => {
                                             handleChange={(date: any) => handleOnChange(date)}
                                             placeholder="Enter Departure"
                                             minDate={new Date()}
+                                            icon={<IconCalendar/>}
                                         />
                                     </div>
                                     <div className="form__group-input">

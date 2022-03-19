@@ -65,6 +65,7 @@ export const StyledBookingForm = styled.div`
             color: ${(p) => p.theme.colors.darkBlack};
             .MuiIconButton-root {
                 padding: 0 1rem;
+                color: #FF7B42 !important;
             }
             .MuiIconButton-label {
                 color: ${(p) => p.theme.colors.darkBlack};

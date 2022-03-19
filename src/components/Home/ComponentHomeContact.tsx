@@ -93,6 +93,11 @@ const StyledComponentHomeContact = styled.div`
         width: 100%;
         display: flex;
         justify-content: flex-end;
+        @media (min-width: 2000px) {
+            .MuiInputBase-input {
+                padding: 2px 0 7px;
+            }
+        })
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             margin-top: 0;
             padding-left: 0;
@@ -102,7 +107,7 @@ const StyledComponentHomeContact = styled.div`
             margin-top: 0;
             padding-left: 0;
             .MuiInputBase-input {
-                padding: 0 0 7px;
+                padding: 0 0 0 7px !important;
             }
         }
     }

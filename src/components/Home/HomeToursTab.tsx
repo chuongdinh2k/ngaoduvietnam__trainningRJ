@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
-import { AppSelect, GroupPeople, Flag } from "@components";
+import { AppSelect,IconCalendar, GroupPeople, Flag } from "@components";
 import { IconSearch, AppInput, AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
 // import { formSchemaHomeFilter } from "@utils";
@@ -62,6 +62,7 @@ export const HomeToursTab = (props: IProps) => {
                                     value={values.location}
                                     name="location"
                                     placeholder="Enter Location"
+                                    size="large"
                                 />
                             </div>
                             <div className="input-group">
@@ -71,6 +72,8 @@ export const HomeToursTab = (props: IProps) => {
                                     handleChange={(date: any) => handleOnChange(date)}
                                     placeholder="Departure time"
                                     minDate={new Date()}
+                                    size="large"
+                                    icon={<IconCalendar size="large" color="#FF7B42"/>}
                                 />
                             </div>
                             {!props.inputTypeOfTour ? (
@@ -84,6 +87,7 @@ export const HomeToursTab = (props: IProps) => {
                                         placeholder="Type of Tour"
                                         options={TypeOfTour.data}
                                         handleChange={handleChange("typeOfTour")}
+                                        size="large"
                                     />
                                 </div>
                             )}
@@ -102,6 +106,7 @@ export const HomeToursTab = (props: IProps) => {
                                     handleChange={handleChange("group")}
                                     placeholder="Number of Guest"
                                     options={groupOfPeople.data}
+                                    size="large"
                                 />
                             </div>
                             <Button
@@ -149,7 +154,7 @@ const StyledHomeToursTab = styled.div`
         /* margin: 8px; */
         margin-top: 1.8rem;
         width: 100%;
-        height: 6.4rem;
+        height: 5rem;
         color: ${(p) => p.theme.colors.pureWhite};
         text-transform: capitalize;
         font-size: 1.6rem;

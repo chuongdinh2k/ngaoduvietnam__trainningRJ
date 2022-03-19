@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: any) => ({
             color: theme.colors.gray1,
         },
         "& .MuiInputBase-input": {
-            padding: "4px 0 7px",
+            padding: "1px 0 7px",
         },
         paddingLeft: "1.8rem",
     },
@@ -35,6 +35,7 @@ interface IAppInput {
     style?: any;
     ref?: any;
     backgroundColor?: string;
+    size?:string;
 }
 
 export const AppInput = (props: IAppInput) => {
@@ -45,7 +46,7 @@ export const AppInput = (props: IAppInput) => {
     };
     return (
         <CustomInputWrapper {...props.style}>
-            <InputWrapper hasBorder={props.hasBorder} backgroundColor={props.backgroundColor}>
+            <InputWrapper hasBorder={props.hasBorder} backgroundColor={props.backgroundColor} size={props.size}>
                 {props.icon ? <LabelWrapper>{props.icon}</LabelWrapper> : ""}
                 <TextField
                     className={clsx(classes.input, props.className)}

@@ -20,7 +20,7 @@ export const ComponentLoader = (props: ILoading) => {
 const StyledComponentLoader = styled.div<ILoading>`
     width: 100%;
     height: 100%;
-    min-height: 70%;
+    min-height: ${p=>p.type==="full"?`70vh`:`70%`};
     position: relative;
     .wrapperLoader {
         position: absolute;

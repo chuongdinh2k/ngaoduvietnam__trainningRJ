@@ -18,8 +18,6 @@ import { getListTours, useAppSelector, setLoading, selectApp } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
 
 export const ListTour = () => {
-    // redux state
-    const app = useAppSelector(selectApp);
     // get params of url
     const parsed = qs.parse(location.search);
     // hooks
@@ -50,7 +48,7 @@ export const ListTour = () => {
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
-                    {app.loading ? <ComponentLoader /> : <ComponentListTourContent />}
+                     <ComponentListTourContent />
                     <AppPagination
                         totalPage={5}
                         showPerpage

@@ -43,6 +43,7 @@ export const StyledCardWithIcon = styled.div`
             cursor: pointer;
             transform: translateY(-10px);
         }
+        @media (min-width: 2000px) {padding: 0 4rem}
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding: 0;
             margin-right: 0;
@@ -51,6 +52,9 @@ export const StyledCardWithIcon = styled.div`
             padding: 0 1rem;
             margin-right: 0;
         }
+    }
+    .cardWrapper:nth-child(1){
+        @media (min-width: 2000px) {padding-left: 0}
     }
     .imageWrapper {
         width: 100%;

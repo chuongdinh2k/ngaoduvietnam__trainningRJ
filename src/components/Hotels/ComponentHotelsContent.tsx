@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles, MenuItem, Popover, Select } from "@material-ui/core";
 
-import { StyledWrapperTitleComponent } from "..";
+import { StyledWrapperTitleComponent,ComponentLoader } from "..";
 import { stars, moneyRange, reviewScore } from "@demos";
 import { ComponentHotelsFilter, ComponentListHotels } from ".";
 import clsx from "clsx";
@@ -125,7 +125,7 @@ export const ComponentHotelsContent = () => {
                         </Popover>
                     </div>
                 </div>
-                <ComponentListHotels data={listFilter} />
+                {hotels.loading ? <ComponentLoader/> : <ComponentListHotels data={listFilter} />}
             </div>
         </StyledWrapperTitleComponent>
     );

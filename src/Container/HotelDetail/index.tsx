@@ -56,7 +56,7 @@ export const HotelDetail = () => {
             <Header hasColor />
             <StyledWrapContent withOutBanner>
                 {app.loading ? (
-                    <ComponentLoader />
+                    <ComponentLoader type="full" />
                 ) : (
                     <div className="wrapperContent">
                         <ComponentBreadscrumb id={detailHotel?.id} title={detailHotel?.title} />

@@ -41,7 +41,7 @@ export const SliderCustom = (props: ISlider) => {
                 breakpoint: 480,
                 settings: {
                     centerMode: true,
-                    infinite: true,
+                    infinite: false,
                     slidesToShow: 1,
                     slidesToScroll: 1,
                 },
@@ -80,7 +80,7 @@ function CustomNextArrow(props: any) {
 export const StyledSlider = styled.div`
     .wrapperCard {
         @media (min-width: 2000px) {
-            padding-right: 3rem;
+            /* padding-right: 3rem; */
         }
     }
     .slick-slide {
@@ -101,11 +101,12 @@ export const StyledSlider = styled.div`
     .slick-list {
         margin-right: -2.5rem;
         @media (min-width: 2000px) {
-            margin-right: -5rem;
+            margin-right: -5.5rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-right: 0rem;
             padding: 0px;
+            padding-left: 0 !important;
         }
     }
     .slick-next {

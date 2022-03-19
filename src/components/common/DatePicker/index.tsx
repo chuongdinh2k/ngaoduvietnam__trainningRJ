@@ -5,7 +5,6 @@ import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
 import { InputWrapper, LabelWrapper } from "./style";
 import { Grid } from "@material-ui/core";
-import { IconCalendar } from "@components";
 
 interface IAppDatePicker {
     icon?: JSX.Element[] | JSX.Element;
@@ -25,14 +24,15 @@ interface IAppDatePicker {
     format?: string;
     styleDateInput?: any;
     hideIcon?: boolean;
+    size?:string;
 }
 export const AppDatePicker = (props: IAppDatePicker) => {
     // component state
     const [openCalendar, setOpenCalendar] = useState(false);
 
     return (
-        <InputWrapper>
-            <LabelWrapper>{props.icon}</LabelWrapper>
+        <InputWrapper size={props.size}>
+            {/* <LabelWrapper>{props.icon}</LabelWrapper> */}
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid direction="column" container justifyContent="space-around">
                     <KeyboardDatePicker
@@ -44,7 +44,7 @@ export const AppDatePicker = (props: IAppDatePicker) => {
                         onChange={props.handleChange}
                         InputProps={{ readOnly: true, disableUnderline: true }}
                         inputVariant="standard"
-                        keyboardIcon={props.hideIcon ? "" : <IconCalendar size="large" />}
+                        keyboardIcon={props.hideIcon ? "" : props.icon}
                         InputAdornmentProps={{ position: "start" }}
                         KeyboardButtonProps={{
                             "aria-label": "change date",

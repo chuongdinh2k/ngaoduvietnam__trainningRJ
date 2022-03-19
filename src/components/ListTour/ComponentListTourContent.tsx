@@ -1,7 +1,7 @@
 import React from "react";
 import { Popover } from "@material-ui/core";
 
-import { StyledWrapperTitleComponent } from "..";
+import { StyledWrapperTitleComponent,ComponentLoader } from "..";
 import { ComponentListTourLists, ComponentListTourFilter } from ".";
 import { Duration, TypeOfTour, moneyRange } from "@demos";
 import { useAppSelector, selectTour } from "@redux";
@@ -9,7 +9,6 @@ import { useAppSelector, selectTour } from "@redux";
 export const ComponentListTourContent = () => {
     // redux state
     const tours = useAppSelector(selectTour);
-
     // component prop
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
@@ -60,7 +59,7 @@ export const ComponentListTourContent = () => {
                         />
                     </Popover>
                 </div>
-                <ComponentListTourLists data={listFilter} />
+                {tours.loading? <ComponentLoader/> : <ComponentListTourLists data={listFilter} />}
             </div>
         </StyledWrapperTitleComponent>
     );

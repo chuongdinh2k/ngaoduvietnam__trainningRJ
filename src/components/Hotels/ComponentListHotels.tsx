@@ -18,27 +18,31 @@ export const ComponentListHotels = (props: IProps) => {
     };
     return (
         <StyledComponentListHotels>
-            <div className="wrapper">
+            {data &&  data?.length>0?<div className="wrapper">
                 <Grid container spacing={4}>
-                    {data &&
+                    {
                         data.map((item, index) => (
                             <Grid item key={index} xs={12} sm={6} md={4}>
                                 <HotelCard data={item} onClick={handleViewDetail} />
                             </Grid>
                         ))}
                 </Grid>
-            </div>
+            </div>:<h5 className="notFound">Can not find matching data!</h5>}
         </StyledComponentListHotels>
     );
 };
 const StyledComponentListHotels = styled.div`
     .wrapper {
-        /* padding-top: 6rem; */
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding-top: 2rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding-top: 2rem;
         }
+    }
+    .notFound{
+        text-align: center;
+        font-size: 2.4rem;
+        color: ${(p) => p.theme.colors.red};
     }
 `;

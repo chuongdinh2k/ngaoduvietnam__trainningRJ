@@ -15,7 +15,7 @@ export const Duration = {
         },
         {
             label: "over 1 weeks",
-            value: 8,
+            value: 10,
         },
     ],
 };

@@ -77,7 +77,7 @@ export const TourDetail = () => {
             <Header hasColor />
             <StyledWrapContent withOutBanner>
                 {app.loading ? (
-                    <ComponentLoader />
+                    <ComponentLoader type="full" />
                 ) : (
                     <div className="wrapperContent">
                         <ComponentBreadscrumb id={detailTour?.id} title={detailTour?.title} />

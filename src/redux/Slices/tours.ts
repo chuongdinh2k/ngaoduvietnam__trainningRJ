@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { IDataTour } from "@types";
 import { toursApi } from "@api";
-import { setLoading } from "@redux";
+import {store, setLoading } from "@redux";
 import { RootState } from ".";
 
 export interface IPagination {
@@ -30,10 +30,12 @@ export const getListFilterTours = createAsyncThunk(
 );
 interface IState {
     dataToursList: Array<IDataTour>;
+    loading?:boolean;
 }
 
 const initialState: IState = {
     dataToursList: [],
+    loading:false
 };
 
 const tourSlice = createSlice({
@@ -42,8 +44,15 @@ const tourSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         //get list
+        builder.addCase(getListTours.pending, (state) => {
+            state.loading = true;
+        });
         builder.addCase(getListTours.fulfilled, (state, action: { payload: any }) => {
             state.dataToursList = action.payload;
+            state.loading = false;
+        });
+        builder.addCase(getListTours.rejected,(state) => {
+            state.loading = false;
         });
         // get list search
         builder.addCase(getListFilterTours.fulfilled, (state, action: { payload: any }) => {
