@@ -11,6 +11,7 @@ import {
 } from ".";
 import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
 import { TourTabs, HotelTabs, dataTourDetail } from "@demos";
+import { selectDetailHotel, useAppSelector } from "@redux";
 
 interface IProps {
     dataTour?: IDataTour;
@@ -23,6 +24,7 @@ interface IProps {
     handleSubmitReviewHotel?: (value: any) => Promise<void>;
 }
 export const ComponentTourDetailContent = (props: IProps) => {
+    const hotelDetail = useAppSelector(selectDetailHotel);
     // props
     const {
         dataTour,
@@ -84,7 +86,7 @@ export const ComponentTourDetailContent = (props: IProps) => {
                                 <ComponentDetailTab
                                     tabs={tabs}
                                     dataHotel={dataHotel}
-                                    hotelComment={hotelComment}
+                                    hotelComment={hotelDetail?.hotel?.reviews}
                                     handleChangeReviewPage={handleChangeReviewPage}
                                     handleSubmitReviewHotel={handleSubmitReviewHotel}
                                     currentPage={currentPage}

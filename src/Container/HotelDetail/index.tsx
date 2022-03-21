@@ -15,12 +15,13 @@ import {
 } from "@components";
 import { IHotel, IHotelComment } from "@types";
 import { hotelsApi } from "@api";
-import { selectApp, setLoading, useAppSelector } from "@redux";
+import { selectApp, setLoading, useAppSelector, selectDetailHotel, viewDetailHotel } from "@redux";
 import { PAGINATION_REVIEWS, REVIEW_SUCCESS, FAIL } from "@configs";
 import { handlePagination } from "@utils";
 
 export const HotelDetail = () => {
     const app = useAppSelector(selectApp);
+    const hotelDetail = useAppSelector(selectDetailHotel);
     const { id } = useParams<{ id: string }>();
     const dispatch = useDispatch();
     //   component state
@@ -30,16 +31,16 @@ export const HotelDetail = () => {
     const [comments, setComments] = React.useState<IHotelComment[]>([]);
     // component variable
     React.useEffect(() => {
-        dispatch(setLoading(true));
-        fetchDetailTour();
+        // dispatch(setLoading(true));
+        dispatch(viewDetailHotel(id));
     }, [id]);
-    const fetchDetailTour = async () => {
-        const response = await hotelsApi.viewListDetail(id);
-        setDetailHotel(response.data.hotel);
-        setRelatedHotel(response.data.relatedHotel);
-        setComments(response.data.hotel.reviews);
-        dispatch(setLoading(false));
-    };
+    // const fetchDetailTour = async () => {
+    //     const response = await hotelsApi.viewListDetail(id);
+    //     setDetailHotel(response.data.hotel);
+    //     setRelatedHotel(response.data.relatedHotel);
+    //     setComments(response.data.hotel.reviews);
+    //     dispatch(setLoading(false));
+    // };
     // WHAT: call api review
     // useEffect(() => {
     //     fetchDataReviews();
@@ -81,8 +82,8 @@ export const HotelDetail = () => {
                         <ComponentBreadscrumb id={detailHotel?._id} title={detailHotel?.title} />
                         <PopupLightBox />
                         <ComponentTourDetailContent
-                            dataHotel={detailHotel}
-                            hotelComment={handlePagination(comments, params.page, params.limit)}
+                            dataHotel={hotelDetail.hotel}
+                            // hotelComment={handlePagination(hotelDetail?.hotel?.reviews, params.page, params.limit)}
                             currentPage={params.page}
                             handleChangeReviewPage={handleChangeReviewPage}
                             handleSubmitReviewHotel={handleSubmitReviewHotel}

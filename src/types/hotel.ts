@@ -56,7 +56,7 @@ export interface IRelatedHotel {
 export interface IHotel {
     image?: string;
     createdAt?: string;
-    _id: string;
+    _id?: string;
     title?: string;
     location?: string;
     rating?: number;
