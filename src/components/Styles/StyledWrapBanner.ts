@@ -56,8 +56,9 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         );
         backdrop-filter: blur(42px);
     }
+
     @media (min-width: 2000px) {
-        height: 60vh;
+        height: 50vh;
         padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
             /* left: 0; */
@@ -91,6 +92,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         }
     }
     @media (min-width: 3500px) {
+        height: 60vh;
         .featured {
             width: 80%;
         }

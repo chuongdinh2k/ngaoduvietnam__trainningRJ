@@ -2,14 +2,14 @@ import { Avatar, TextField } from "@material-ui/core";
 import styled from "styled-components";
 
 import { Formik } from "formik";
-import { formSchemaComment } from "@utils";
+import { formSchemaComment, getFirstLetter } from "@utils";
 import { useAppSelector, selectAuth } from "@redux";
 
 interface IProps {
-    handleSubmitReviewTour?: (value: any) => Promise<void>;
+    handleSubmit?: (value: any) => Promise<void>;
 }
 export const ComponentCommentBox = (props: IProps) => {
-    const { handleSubmitReviewTour } = props;
+    const { handleSubmit } = props;
     // redux state
     const auth = useAppSelector(selectAuth);
     // Component variable
@@ -22,7 +22,7 @@ export const ComponentCommentBox = (props: IProps) => {
                 <div className="comment">
                     <div className="comment__profile">
                         <Avatar src={auth.userInfo?.picture}>
-                            {!auth.userInfo?.picture ? auth.userInfo?.name : ""}
+                            {getFirstLetter(auth.userInfo?.lastName)}
                         </Avatar>
                     </div>
                     <Formik
@@ -30,7 +30,7 @@ export const ComponentCommentBox = (props: IProps) => {
                         validationSchema={formSchemaComment}
                         onSubmit={(values, { resetForm }) => {
                             {
-                                handleSubmitReviewTour && handleSubmitReviewTour(values);
+                                handleSubmit && handleSubmit(values);
                                 resetForm();
                             }
                         }}
@@ -82,9 +82,9 @@ const StyledComponentCommentBox = styled.div`
         display: flex;
         justify-content: space-between;
         &__profile {
-            .MuiAvatar-colorDefault {
+            /* .MuiAvatar-colorDefault {
                 background-color: ${(p) => p.theme.colors.pureWhite};
-            }
+            } */
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 padding-right: 1rem;
             }

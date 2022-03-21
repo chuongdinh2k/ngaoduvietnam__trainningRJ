@@ -8,7 +8,7 @@ import {
     ComponentTabReview,
 } from ".";
 // import { dataTourDetail } from "@demos";
-import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO } from "@configs";
+import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO, PAGINATION_REVIEWS } from "@configs";
 import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
 import { ComponentHotelDetailDescription, ComponentListRooms, AppPagination } from "..";
 import { dataTourDetail, hotelDetail } from "@demos";
@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface ITab {
     name?: string;
     index?: number;
+    type?: string;
 }
 interface IProps {
     tabs?: Array<ITab>;
@@ -98,6 +99,7 @@ interface IProps {
     currentPage?: number;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
     handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
+    handleSubmitReviewHotel?: (value: any) => Promise<void>;
 }
 export const ComponentDetailTab = (props: IProps) => {
     // component variable
@@ -109,11 +111,14 @@ export const ComponentDetailTab = (props: IProps) => {
         tourComment,
         handleSubmitReviewTour,
         handleChangeReviewPage,
+        handleSubmitReviewHotel,
         currentPage,
     } = props;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
-
+    const totalPageReviewHotel = (Number(dataHotel?.reviews?.length) / PAGINATION_REVIEWS).toFixed(
+        0
+    );
     const handleChange = (event: React.ChangeEvent<Record<string, unknown>>, newValue: number) => {
         setValue(newValue);
     };
@@ -133,7 +138,9 @@ export const ComponentDetailTab = (props: IProps) => {
                                 <Tab
                                     disableRipple
                                     key={tab.index}
-                                    label={`reviews(${46})`}
+                                    label={`reviews${
+                                        tab.type === "hotel" ? `(${dataHotel?.numberReviews})` : ""
+                                    }`}
                                     className={clsx(value === tab.index ? classes.activeTab : "")}
                                     {...a11yProps(tab.index)}
                                 />
@@ -184,11 +191,12 @@ export const ComponentDetailTab = (props: IProps) => {
                 {dataHotel && (
                     <>
                         <ComponentTabReview
-                            hotelReviews={dataHotel.reviews}
+                            dataHotel={dataHotel}
                             hotelComment={hotelComment}
+                            handleSubmitReviewHotel={handleSubmitReviewHotel}
                         />
                         <AppPagination
-                            totalPage={5}
+                            totalPage={Number(totalPageReviewHotel)}
                             showPerpage={false}
                             currentPage={currentPage}
                             handleChange={handleChangeReviewPage}

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
-import { InputWrapper, LabelWrapper } from "./style";
+import { InputWrapper } from "./style";
 import { Grid } from "@material-ui/core";
 
 interface IAppDatePicker {
@@ -24,7 +24,7 @@ interface IAppDatePicker {
     format?: string;
     styleDateInput?: any;
     hideIcon?: boolean;
-    size?:string;
+    size?: string;
 }
 export const AppDatePicker = (props: IAppDatePicker) => {
     // component state

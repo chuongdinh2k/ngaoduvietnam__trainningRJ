@@ -10,7 +10,7 @@ import {
     ComponentRelated,
 } from ".";
 import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
-import { TourTabs, HotelTabs, hotelDetail, dataTourDetail } from "@demos";
+import { TourTabs, HotelTabs, dataTourDetail } from "@demos";
 
 interface IProps {
     dataTour?: IDataTour;
@@ -20,6 +20,7 @@ interface IProps {
     currentPage?: number;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
     handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
+    handleSubmitReviewHotel?: (value: any) => Promise<void>;
 }
 export const ComponentTourDetailContent = (props: IProps) => {
     // props
@@ -31,8 +32,8 @@ export const ComponentTourDetailContent = (props: IProps) => {
         currentPage,
         handleSubmitReviewTour,
         handleChangeReviewPage,
+        handleSubmitReviewHotel,
     } = props;
-
     // componet variable
     const tabs = dataTour ? TourTabs : HotelTabs;
     const inforTour = {
@@ -44,11 +45,11 @@ export const ComponentTourDetailContent = (props: IProps) => {
         typeOfTour: dataTour?.typeOfTour,
     };
     const inforHotel = {
-        id: dataHotel?.id,
+        _id: dataHotel?._id,
         title: dataHotel?.title,
         location: dataHotel?.location,
         rating: dataHotel?.rating,
-        reviewNumber: dataHotel?.reviewNumber,
+        reviewNumber: dataHotel?.numberReviews,
         star: dataHotel?.star,
     };
     return (
@@ -79,14 +80,13 @@ export const ComponentTourDetailContent = (props: IProps) => {
                         )}
                         {dataHotel && (
                             <>
-                                <ComponentCustomViewImage
-                                    listHotelImages={hotelDetail?.listImage}
-                                />
+                                <ComponentCustomViewImage listHotelImages={dataHotel?.listImages} />
                                 <ComponentDetailTab
                                     tabs={tabs}
                                     dataHotel={dataHotel}
                                     hotelComment={hotelComment}
                                     handleChangeReviewPage={handleChangeReviewPage}
+                                    handleSubmitReviewHotel={handleSubmitReviewHotel}
                                     currentPage={currentPage}
                                 />
                             </>
@@ -98,7 +98,7 @@ export const ComponentTourDetailContent = (props: IProps) => {
                 </Grid>
             </Grid>
             {dataTour && <ComponentRelated relatedTour={dataTour?.related} />}
-            {dataHotel && <ComponentRelated relatedHotel={dataHotel?.relatedHotels} />}
+            {/* {dataHotel && <ComponentRelated relatedHotel={dataHotel?.relatedHotels} />} */}
         </StyledComponentTourDetailContent>
     );
 };

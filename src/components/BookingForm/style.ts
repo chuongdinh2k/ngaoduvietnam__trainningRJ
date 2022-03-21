@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const StyledBookingForm = styled.div`
     .wrapper {
         background-color: ${(p) => p.theme.colors.backgroundGray};
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
     }
     .showMoney {
         padding: 3rem;
@@ -65,7 +69,7 @@ export const StyledBookingForm = styled.div`
             color: ${(p) => p.theme.colors.darkBlack};
             .MuiIconButton-root {
                 padding: 0 1rem;
-                color: #FF7B42 !important;
+                color: #ff7b42 !important;
             }
             .MuiIconButton-label {
                 color: ${(p) => p.theme.colors.darkBlack};
@@ -84,7 +88,7 @@ export const StyledBookingForm = styled.div`
                 /* font-size: 1.6rem; */
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
         }
     }

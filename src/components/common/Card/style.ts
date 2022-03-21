@@ -43,7 +43,9 @@ export const StyledCardWithIcon = styled.div`
             cursor: pointer;
             transform: translateY(-10px);
         }
-        @media (min-width: 2000px) {padding: 0 4rem}
+        @media (min-width: 2000px) {
+            padding: 0 1rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding: 0;
             margin-right: 0;
@@ -53,14 +55,22 @@ export const StyledCardWithIcon = styled.div`
             margin-right: 0;
         }
     }
-    .cardWrapper:nth-child(1){
-        @media (min-width: 2000px) {padding-left: 0}
+    .cardWrapper:nth-child(1) {
+        @media (min-width: 2000px) {
+            padding-left: 0;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-left: 0;
+        }
     }
     .imageWrapper {
         width: 100%;
         height: 24.9rem;
         overflow: hidden;
         position: relative;
+        @media (min-width: 2000px) {
+            height: 31rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             height: 21rem;
         }
@@ -142,8 +152,17 @@ export const StyledCardWithIcon = styled.div`
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         margin-block-start: 0.9rem;
         margin-block-end: 1rem;
+        height: 5rem;
+        max-height: 5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* white-space: nowrap; */
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.4rem;
+            height: 4rem;
         }
     }
     .bottom {

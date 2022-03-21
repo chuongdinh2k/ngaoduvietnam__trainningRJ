@@ -82,6 +82,9 @@ const StyledFeaturedContent = styled.div`
         color: ${(p) => p.theme.colors.darkBlack};
         font-weight: bold;
         line-height: 100%;
+        @media (min-width: 2000px) {
+            padding-right: 2rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             font-size: 1.4rem;
         }

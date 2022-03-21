@@ -17,7 +17,7 @@ export const HomeAttractiveTourComponent = (props: IProps) => {
                 <div className="top">
                     <h3>
                         Attractive tour and
-                        <br /> interesting experiences
+                        <br className="xl-hidden" /> interesting experiences
                     </h3>
                     <div className="btn" onClick={() => history.push(appRoutesEnum.TOURS)}>
                         View All

@@ -17,7 +17,8 @@ export const ComponentHomeContact = () => {
                     <Grid item xs={12} md={6}>
                         <h3>
                             Leave us an email,
-                            <br /> to get <span className="title__active">the lastest deals</span>
+                            <br className="xl-hidden" /> to get{" "}
+                            <span className="title__active">the lastest deals</span>
                         </h3>
                     </Grid>
                     <Grid item xs={12} md={6}>
@@ -97,7 +98,7 @@ const StyledComponentHomeContact = styled.div`
             .MuiInputBase-input {
                 padding: 2px 0 7px;
             }
-        })
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             margin-top: 0;
             padding-left: 0;

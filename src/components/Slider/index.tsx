@@ -80,7 +80,11 @@ function CustomNextArrow(props: any) {
 export const StyledSlider = styled.div`
     .wrapperCard {
         @media (min-width: 2000px) {
-            /* padding-right: 3rem; */
+        }
+    }
+    .slick-slider {
+        @media (min-width: 2000px) {
+            overflow: hidden;
         }
     }
     .slick-slide {

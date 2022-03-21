@@ -3,7 +3,7 @@ import styled from "styled-components";
 interface ISWrapper {
     width?: any;
     marginTop?: any;
-    size?:string;
+    size?: string;
 }
 
 interface ISLabel {
@@ -22,20 +22,21 @@ export const InputWrapper = styled.div<ISWrapper>`
     display: flex;
     /* margin-bottom: 1.8rem; */
     @media (min-width: 2000px) {
-        height: ${p=>p.size==="large"?`7rem`:`5rem`};
+        height: ${(p) => (p.size === "large" ? `7rem` : `5rem`)};
         padding: 1.2rem 2rem 1.2rem 2rem;
         .MuiInputBase-input {
-            font-size: ${p=>p.size==="large"?`2.6rem`:`1.4rem`};
+            font-size: ${(p) => (p.size === "large" ? `2.6rem` : `1.4rem`)};
         }
     }
     @media (min-width: 3000px) {
-        height: ${p=>p.size==="large"?`10rem`:`5rem`};
-        padding: ${p=>p.size==="large"?`3.2rem 2rem 1.6rem 2rem`:`1.2rem 2rem 1.6rem 2rem`};
+        height: ${(p) => (p.size === "large" ? `10rem` : `5rem`)};
+        padding: ${(p) =>
+            p.size === "large" ? `3.2rem 2rem 1.6rem 2rem` : `1.2rem 2rem 1.6rem 2rem`};
         .MuiInputBase-input {
-            font-size: ${p=>p.size==="large"?`2.6rem`:`1.4rem`};
+            font-size: ${(p) => (p.size === "large" ? `2.6rem` : `1.4rem`)};
         }
     }
-    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+    @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         padding: 0.5rem 1.2rem;
         height: 4rem;
     }

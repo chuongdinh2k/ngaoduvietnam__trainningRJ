@@ -16,7 +16,7 @@ export const ComponentAboutIntro = () => {
     return (
         <StyledComponentAboutIntroduce>
             <div className="intro">
-                <Grid container>
+                <Grid container spacing={4}>
                     <Grid item xs={12} md={6}>
                         <div className="content__wrapper">
                             <h4 className="content__title">
@@ -60,7 +60,7 @@ export const ComponentAboutIntro = () => {
                     </Grid>
                 </div>
                 <div className="experience__text-bottom">
-                    <Grid container>
+                    <Grid container spacing={4}>
                         <Grid item xs={12} md={6}>
                             <img
                                 className="experience__image-left"
@@ -142,10 +142,6 @@ const StyledComponentAboutIntroduce = styled.div`
             padding-left: 0;
             padding-top: 30rem;
         }
-        /* @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding-left: 0;
-            padding-top: 30rem;
-        } */
     }
     .intro__image {
         width: 100%;
@@ -175,6 +171,10 @@ const StyledComponentAboutIntroduce = styled.div`
         }
         &__text {
             font-size: ${(p) => p.theme.typography.fontSize}px;
+            &-bottomRight {
+                height: 100%;
+                overflow: hidden;
+            }
             @media (min-width: 2000px) {
                 font-size: 2.4rem;
             }
@@ -184,12 +184,20 @@ const StyledComponentAboutIntroduce = styled.div`
         }
         &__image-left {
             width: 44.5rem;
+            @media (min-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                width: 100%;
+            }
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 width: 100%;
             }
         }
         &__image-right {
             padding-top: 4.8rem;
+            height: 100%;
+            @media (min-width: 2000px) {
+                width: 100%;
+                height: 100%;
+            }
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 width: 100%;
             }

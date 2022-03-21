@@ -11,7 +11,7 @@ interface IProps {
 }
 export const ComponentsRenderStars = (props: IProps) => {
     // props
-    const { number, small, large, medium } = props;
+    const { number } = props;
     // component state
     return (
         <StyledComponentsRenderStars small>

@@ -14,7 +14,7 @@ interface IStyledBanner {
 export const StyledBanner = styled.div<IStyledBanner>`
     padding-top: ${(p) => {
         if (p.typeComponent === PAGE_HOME || p.typeComponent === PAGE_HOTELS) {
-            return "20rem";
+            return "27rem";
         } else if (
             p.typeComponent === PAGE_ABOUT ||
             p.typeComponent === PAGE_LISTTOUR ||
@@ -49,8 +49,8 @@ export const StyledBanner = styled.div<IStyledBanner>`
             @media (min-width: 2000px) {
                 font-size: 5rem;
             }
-            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px){
-                width: 50%;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                width: 100%;
             }
         }
         &__title {
@@ -61,42 +61,63 @@ export const StyledBanner = styled.div<IStyledBanner>`
             font-family: ${(p) => p.theme.typography.fontFamily};
             font-weight: ${(p) => p.theme.typography.fontWeightMedium};
             @media (min-width: 2000px) {
+                font-size: 8rem;
+            }
+            @media (min-width: 3500px) {
                 font-size: 10rem;
-                text-align: ${p=>p.typeComponent=== PAGE_ABOUT || p.typeComponent=== PAGE_CONTACT ? `right` : `left` };
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.md}px) {
                 font-size: 4rem;
                 width: 50%;
             }
-            
+
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 font-size: 3rem;
-                width: 50%;
-                text-align: ${p=>p.typeComponent=== PAGE_ABOUT || p.typeComponent=== PAGE_CONTACT ? `right` : `left` };
+                width: ${(p) =>
+                    p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT
+                        ? `100%`
+                        : `50%`};
+                text-align: ${(p) =>
+                    p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT
+                        ? `center`
+                        : `left`};
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 font-size: 3rem;
                 width: 100%;
-                text-align: ${p=>p.typeComponent=== PAGE_ABOUT || p.typeComponent=== PAGE_CONTACT ? `center` : `left` };
+                text-align: ${(p) =>
+                    p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT
+                        ? `center`
+                        : `left`};
             }
         }
     }
     @media (min-width: 2000px) {
-        padding-top: 50rem;
-        width: 50%;
-        /* text-align: left; */
+        padding-top: ${(p) =>
+            p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT ? `50rem` : `35rem`};
+        width: ${(p) =>
+            p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT ? `100%` : `50%`};
+        text-align: ${(p) =>
+            p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT ? `center` : `left`};
+    }
+    @media (min-width: 3500px) {
+        padding-top: ${(p) =>
+            p.typeComponent === PAGE_ABOUT ||
+            p.typeComponent === PAGE_CONTACT ||
+            p.typeComponent === PAGE_HOTELS
+                ? `50rem`
+                : `35rem`};
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
         width: 100%;
         padding-top: ${(p) => {
             if (p.typeComponent === PAGE_HOTELS) {
                 return "20rem";
-            } else if (
-                p.typeComponent === PAGE_HOME ||
-                p.typeComponent === PAGE_ABOUT ||
-                p.typeComponent === PAGE_LISTTOUR ||
-                p.typeComponent === PAGE_CONTACT
-            ) {
+            } else if (p.typeComponent === PAGE_HOME) {
+                return "13rem";
+            } else if (p.typeComponent === PAGE_LISTTOUR) {
+                return "18rem";
+            } else if (p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT) {
                 return "11rem";
             }
         }};

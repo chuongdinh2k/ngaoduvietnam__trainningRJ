@@ -1,25 +1,36 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 
-import { IComment, IHotelReviews, IReviews, IHotelComment } from "@types";
+import { IComment, IReviews, IHotelComment, IHotel } from "@types";
 import { ComponentShowRating, ComponentCommentBox, ComponentUserComment } from ".";
 import { selectAuth, useAppSelector } from "@redux";
 import { useHistory } from "react-router-dom";
 import { authRoutesEnum } from "@enums";
+import { convertRating } from "@utils";
 
 interface IProps {
     tourReviews?: IReviews;
     tourComment?: IComment[];
     hotelComment?: IHotelComment[];
-    hotelReviews?: IHotelReviews;
+    dataHotel?: IHotel;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
+    handleSubmitReviewHotel?: (value: any) => Promise<void>;
 }
 export const ComponentTabReview = (props: IProps) => {
-    const { tourReviews, tourComment, hotelComment, handleSubmitReviewTour } = props;
+    const {
+        tourReviews,
+        handleSubmitReviewHotel,
+        tourComment,
+        dataHotel,
+        hotelComment,
+        handleSubmitReviewTour,
+    } = props;
     // redux
     const auth = useAppSelector(selectAuth);
     // hook
     const history = useHistory();
+    // component state
+    const [showComment, setShowComment] = useState<boolean>(false);
     return (
         <StyledComponentTabReview>
             {/* tour review element */}
@@ -32,9 +43,8 @@ export const ComponentTabReview = (props: IProps) => {
             )}
             {tourReviews && (
                 <>
-                    {/* <ComponentCommentBox handleSubmitReviewTour={handleSubmitReviewTour} /> */}
                     {auth?.tokenInfoAuth ? (
-                        <ComponentCommentBox handleSubmitReviewTour={handleSubmitReviewTour} />
+                        <ComponentCommentBox handleSubmit={handleSubmitReviewTour} />
                     ) : (
                         <span
                             className="btnLogin"
@@ -53,18 +63,31 @@ export const ComponentTabReview = (props: IProps) => {
 
             {/* hotel review element */}
             {hotelComment && (
-                <div className="rating">
-                    <div className="rating__point">
-                        <span className="rating__point-text">9.5</span>
+                <>
+                    <div className="rating">
+                        <div className="rating__point">
+                            <span className="rating__point-text">
+                                {convertRating(dataHotel?.rating)}
+                            </span>
+                        </div>
+                        <div className="rating__info">
+                            <h5 className="rating__info-title">Wonderful</h5>
+                            <p className="rating__info-text">
+                                Based on{" "}
+                                <span className="highlight-black">
+                                    {dataHotel?.numberReviews} reviews
+                                </span>
+                            </p>
+                            <div
+                                className="rating__info-btn"
+                                onClick={() => setShowComment(!showComment)}
+                            >
+                                Write a review
+                            </div>
+                        </div>
                     </div>
-                    <div className="rating__info">
-                        <h5 className="rating__info-title">Wonderful</h5>
-                        <p className="rating__info-text">
-                            Based on <span className="highlight-black">150 reviews</span>
-                        </p>
-                        <div className="rating__info-btn">Write a review</div>
-                    </div>
-                </div>
+                    {showComment && <ComponentCommentBox handleSubmit={handleSubmitReviewHotel} />}
+                </>
             )}
             {hotelComment &&
                 hotelComment?.map((comment, index) => (
@@ -94,7 +117,7 @@ const StyledComponentTabReview = styled.div`
         padding-bottom: 4rem;
         display: flex;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding-bottom: 0;
+            padding-bottom: 2rem;
         }
         &__point {
             padding: 3.3rem;

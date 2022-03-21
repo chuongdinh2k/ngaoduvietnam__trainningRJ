@@ -15,7 +15,8 @@ export const ComponentHomeExperience = (props: IProps) => {
         <StyledWrapperTitleComponent>
             <div className="top">
                 <h3>
-                    Experience the traditional <br /> cultural beauties of Vietnam
+                    Experience the traditional <br className="xl-hidden" /> cultural beauties of
+                    Vietnam
                 </h3>
                 <div className="btn btn-exper" onClick={() => history.push(appRoutesEnum.TOURS)}>
                     View All

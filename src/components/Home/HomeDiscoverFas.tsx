@@ -15,7 +15,7 @@ export const HomeDiscoverFas = (props: IProps) => {
         <StyledHomeDiscoverFas>
             <div className="top">
                 <h3>
-                    Discover fascinating <br /> destinations
+                    Discover fascinating <br className="xl-hidden" /> destinations
                 </h3>
                 <div className="btn" onClick={() => history.push(appRoutesEnum.TOURS)}>
                     View All
@@ -30,12 +30,14 @@ export const HomeDiscoverFas = (props: IProps) => {
 const StyledHomeDiscoverFas = styled.div`
     width: 100%;
     padding-bottom: 2rem;
+
     .top {
         display: flex;
         justify-content: space-between;
         padding: 6rem 0;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding-top: 15rem;
+            padding-bottom: 2rem;
         }
     }
     h3 {

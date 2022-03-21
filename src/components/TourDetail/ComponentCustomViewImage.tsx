@@ -221,6 +221,7 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     opacity: 0.5;
                 } */
                 &__layer {
+                    height: 100%;
                     background-color: ${(p) => p.theme.colors.pureWhite};
                     opacity: 0.5;
                 }
@@ -238,7 +239,9 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         }
         .slick-active {
             .wrapDot {
+                height: 100%;
                 &__layer {
+                    height: 100%;
                     background-color: transparent !important;
                     opacity: 1;
                     /* opacity: 0 !important; */

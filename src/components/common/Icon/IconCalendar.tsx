@@ -2,7 +2,7 @@ import { IIcon } from "@types";
 import { StyledIcon } from ".";
 
 export const IconCalendar = (props: IIcon) => {
-    const { width = "18", height = "20", color = "#FF7B42", size } = props;
+    const { width = "18", height = "20", size } = props;
     return (
         <StyledIcon size={size}>
             <svg

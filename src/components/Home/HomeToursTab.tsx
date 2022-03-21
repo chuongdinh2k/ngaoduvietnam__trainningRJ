@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
-import { AppSelect,IconCalendar, GroupPeople, Flag } from "@components";
+import { AppSelect, IconCalendar, GroupPeople, Flag } from "@components";
 import { IconSearch, AppInput, AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
 // import { formSchemaHomeFilter } from "@utils";
@@ -73,7 +73,7 @@ export const HomeToursTab = (props: IProps) => {
                                     placeholder="Departure time"
                                     minDate={new Date()}
                                     size="large"
-                                    icon={<IconCalendar size="large" color="#FF7B42"/>}
+                                    icon={<IconCalendar size="large" color="#FF7B42" />}
                                 />
                             </div>
                             {!props.inputTypeOfTour ? (
@@ -113,7 +113,7 @@ export const HomeToursTab = (props: IProps) => {
                                 variant="contained"
                                 color="primary"
                                 className="btn"
-                                startIcon={<IconSearch />}
+                                startIcon={<IconSearch size="large" />}
                                 type="submit"
                                 onClick={() => handleSubmit()}
                             >
@@ -144,11 +144,11 @@ const StyledHomeToursTab = styled.div`
             margin-top: 3.5rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-            margin-top: 0.5rem;
-        }
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-top: 0.8rem;
         }
+        /* @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            margin-top: 0.8rem;
+        } */
     }
     .btn {
         /* margin: 8px; */
@@ -165,7 +165,7 @@ const StyledHomeToursTab = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             height: 5rem;
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
             font-size: 1.4rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {

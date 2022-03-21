@@ -13,7 +13,7 @@ export const StyledWrapperTitleComponent = styled.div`
             padding: 2rem 0;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding: 1rem 0;
+            padding: 2rem 0;
         }
         &__filter {
             display: flex;

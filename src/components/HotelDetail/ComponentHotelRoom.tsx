@@ -158,6 +158,8 @@ const StyledComponentHotelRoom = styled.div`
         &__dimension,
         &__equipment,
         &__group {
+            display: flex;
+            flex-direction: row;
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 display: flex;
                 flex-direction: column;
@@ -182,9 +184,12 @@ const StyledComponentHotelRoom = styled.div`
         &__icon {
             padding-top: 0.5rem;
             padding-right: 0.5rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                text-align: center;
+            }
         }
         &__text {
-            padding-bottom: 0.5rem;
+            padding-top: 0.5rem;
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 font-size: 1.2rem;
             }

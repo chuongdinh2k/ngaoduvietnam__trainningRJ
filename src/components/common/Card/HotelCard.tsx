@@ -15,7 +15,7 @@ export const HotelCard = (props: IProps) => {
     return (
         <>
             <StyledCardWithIcon>
-                <div className="cardWrapper" onClick={() => onClick && onClick(data?.id)}>
+                <div className="cardWrapper" onClick={() => onClick && onClick(data?._id)}>
                     <div className="imageWrapper">
                         {/* <img className="image" src={data?.listImage && data?.listImage[0]} /> */}
                         <img className="image" src={data?.image && data?.image} />
@@ -39,7 +39,7 @@ export const HotelCard = (props: IProps) => {
                     <div className="bottom">
                         <div className="rating">
                             <span className="rating__point">Rating: {data?.rating}</span>
-                            <span className="rating__text">{`(${data?.reviewNumber} reviews)`}</span>
+                            <span className="rating__text">{`(${data?.numberReviews} reviews)`}</span>
                         </div>
                         <div className="money">
                             from

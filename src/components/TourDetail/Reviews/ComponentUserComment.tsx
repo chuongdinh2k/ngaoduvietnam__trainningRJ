@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ComponentsRenderStars } from ".";
 import { IComment, IHotelComment } from "@types";
 import { IconDot } from "@components";
-import { fomatToShowDate } from "@utils";
+import { fomatToShowDate, getFirstLetter } from "@utils";
 
 interface IProps {
     commentTour?: IComment;
@@ -18,7 +18,11 @@ export const ComponentUserComment = (props: IProps) => {
             <div className="wrapperUserComment">
                 <div className="user__info">
                     {commentTour && <Avatar src={commentTour?.avatar} />}
-                    {commentHotel && <Avatar src={commentHotel?.avatar} />}
+                    {commentHotel && (
+                        <Avatar src={commentHotel?.user?.picture}>
+                            {getFirstLetter(commentHotel?.user?.lastName)}
+                        </Avatar>
+                    )}
                     <div className="user__info-content">
                         {commentTour && <ComponentsRenderStars small number={5} />}
                         {commentHotel && (
@@ -28,7 +32,7 @@ export const ComponentUserComment = (props: IProps) => {
                                 <span className="user__info-dot">
                                     <IconDot color="#C4C4C4" />
                                 </span>
-                                {commentHotel.status}
+                                {commentHotel.status || `Wonderful`}
                             </p>
                         )}
                         <p className="user__info-title">
@@ -37,12 +41,12 @@ export const ComponentUserComment = (props: IProps) => {
                         <p className="user__info-time">
                             <span>
                                 {commentTour?.username}
-                                {commentHotel?.username}
+                                {commentHotel?.user?.lastName}
                             </span>
                             <span className="user__info-spacing">-</span>
                             <span className="user__info-date">
+                                {/* {fomatToShowDate(commentHotel?.time as string)} */}
                                 {fomatToShowDate(commentHotel?.time as string)}
-                                {commentHotel?.time}
                             </span>
                         </p>
                     </div>
@@ -62,6 +66,7 @@ const StyledComponentUserComment = styled.div`
     }
     .user__info {
         .MuiAvatar-root {
+            font-size: 3.5rem;
             width: 8.3rem;
             height: 8.3rem;
         }

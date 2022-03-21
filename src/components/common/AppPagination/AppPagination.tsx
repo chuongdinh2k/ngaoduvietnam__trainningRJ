@@ -37,32 +37,36 @@ export const AppPagination = (props: IProps) => {
     const classes = useStyles();
     return (
         <StyledAppPagination>
-            <Grid container>
-                {showPerpage && <Grid item xs={12} md={4}></Grid>}
-                <Grid item xs={12} md={8}>
-                    <div className="wrapper">
-                        {showPerpage && (
-                            <p className="wrapper__text">
-                                Showing{" "}
-                                <span className="wrapper__number">
-                                    {currentPage}/{totalPage}
-                                </span>
-                            </p>
-                        )}
-                        <div className="paginationWrapper">
-                            <div className={classes.root}>
-                                <Pagination
-                                    classes={{ ul: classes.ul }}
-                                    count={totalPage}
-                                    page={currentPage}
-                                    onChange={handleChange}
-                                    variant="outlined"
-                                />
+            {Number(totalPage) > 0 ? (
+                <Grid container>
+                    {showPerpage && <Grid item xs={12} md={4}></Grid>}
+                    <Grid item xs={12} md={8}>
+                        <div className="wrapper">
+                            {showPerpage && (
+                                <p className="wrapper__text">
+                                    Showing{" "}
+                                    <span className="wrapper__number">
+                                        {currentPage}/{totalPage}
+                                    </span>
+                                </p>
+                            )}
+                            <div className="paginationWrapper">
+                                <div className={classes.root}>
+                                    <Pagination
+                                        classes={{ ul: classes.ul }}
+                                        count={totalPage}
+                                        page={currentPage}
+                                        onChange={handleChange}
+                                        variant="outlined"
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Grid>
                 </Grid>
-            </Grid>
+            ) : (
+                ""
+            )}
         </StyledAppPagination>
     );
 };
@@ -70,6 +74,7 @@ const StyledAppPagination = styled.div`
     .wrapper {
         display: flex;
         justify-content: space-between;
+        padding-bottom: 3rem;
         &__text {
             font-size: ${(p) => p.theme.typography.fontSize}px;
             line-height: 5;
@@ -84,6 +89,10 @@ const StyledAppPagination = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             flex-direction: column;
             padding-bottom: 1rem;
+        }
+        .MuiPaginationItem-root {
+            font-weight: 500;
+            font-size: 1.4rem;
         }
     }
     /* display: flex;
