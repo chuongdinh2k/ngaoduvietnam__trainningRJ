@@ -12,11 +12,13 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListHotels } from "@redux";
+import { getListHotels, selectHotel, useAppSelector } from "@redux";
 import { useHistory } from "react-router-dom";
 import { LIMIT_RECORD_6 } from "@configs";
 
 export const Hotels = () => {
+    // redux states
+    const hotels = useAppSelector(selectHotel);
     // get params of url
     const parsed = qs.parse(location.search);
     // hooks
@@ -45,7 +47,7 @@ export const Hotels = () => {
                     <ComponentBreadscrumb />
                     <ComponentHotelsContent />
                     <AppPagination
-                        totalPage={5}
+                        totalPage={hotels?.totalPage}
                         showPerpage
                         currentPage={page}
                         handleChange={handleChange}

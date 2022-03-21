@@ -1,3 +1,5 @@
+import { IUser } from "./user";
+
 export interface IDescription {
     name?: string;
     overview?: {
@@ -17,14 +19,14 @@ export interface IDescription {
 }
 // comment interface
 export interface IHotelComment {
-    userId?: string;
-    avatar?: string;
-    username?: string;
+    user?: IUser;
     title?: string;
     time?: string;
     comment?: string;
     rating?: number;
     status?: string;
+    updatedAt?: string;
+    createdAt?: string;
 }
 // list reviews interface
 export interface IHotelReviews {
@@ -54,17 +56,17 @@ export interface IRelatedHotel {
 export interface IHotel {
     image?: string;
     createdAt?: string;
-    id: string;
+    _id: string;
     title?: string;
     location?: string;
     rating?: number;
     marked?: boolean;
-    reviewNumber?: number;
+    numberReviews?: number;
     price?: number;
-    listImage?: Array<string>;
+    listImages?: Array<string>;
     star?: number;
     description?: IDescription;
     selectRooms?: Array<ISelectRoom>;
-    reviews?: IHotelReviews;
+    reviews?: Array<IHotelComment>;
     relatedHotels?: IRelatedHotel;
 }

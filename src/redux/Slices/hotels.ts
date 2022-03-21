@@ -27,14 +27,16 @@ interface IBookingHotelForm {
 }
 interface IState {
     dataHotelsList: Array<IHotel>;
-    loading?:boolean;
+    loading?: boolean;
     bookingHotel: IBookingHotelForm;
+    currentPage?: number;
+    totalPage?: number;
 }
 
 const initialState: IState = {
     dataHotelsList: [],
     bookingHotel: {},
-    loading:false
+    loading: false,
 };
 
 const hotelsSlice = createSlice({
@@ -46,19 +48,20 @@ const hotelsSlice = createSlice({
         },
         resetForm: (state) => {
             state.bookingHotel = {};
-        }
+        },
     },
     extraReducers: (builder) => {
         //get list
-        builder.addCase(getListHotels.pending,(state) => {
-            state.loading=true;
+        builder.addCase(getListHotels.pending, (state) => {
+            state.loading = true;
         });
-        builder.addCase(getListHotels.fulfilled, (state, action: { payload: Array<IHotel> }) => {
-            state.dataHotelsList = action.payload;
-            state.loading=false;
+        builder.addCase(getListHotels.fulfilled, (state, action: { payload: any }) => {
+            state.dataHotelsList = action.payload.hotels;
+            state.totalPage = action.payload.pages;
+            state.loading = false;
         });
-        builder.addCase(getListHotels.rejected,(state) => {
-            state.loading=false;
+        builder.addCase(getListHotels.rejected, (state) => {
+            state.loading = false;
         });
     },
 });

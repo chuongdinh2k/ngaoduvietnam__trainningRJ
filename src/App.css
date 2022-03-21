@@ -37,7 +37,11 @@ html {
 .App-link {
   color: #61dafb;
 }
-
+@media (min-width: 2000px) {
+  .xl-hidden {
+    display: none;
+  }
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

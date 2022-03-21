@@ -37,9 +37,9 @@ export const Login = () => {
                     </p>
                     <Formik
                         initialValues={initialValuesPackage}
-                        onSubmit={(values, { setSubmitting }) => {
+                        onSubmit={(values) => {
                             dispatch(login(values));
-                            setSubmitting(true);
+                            // setSubmitting(true);
                         }}
                         validationSchema={formSchemaLogin}
                     >

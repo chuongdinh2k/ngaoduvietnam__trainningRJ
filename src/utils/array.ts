@@ -20,12 +20,16 @@ export const getRelatedArray = (array?: Array<any>, id?: number) => {
     return newArray;
 };
 
+// WHAT: conver rating
+export const convertRating = (value: number | undefined) => {
+    return value && value.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+};
 // WHAT: convert number to string currency
 export const convertCurrency = (value: number | undefined) => {
     return value && value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 };
 // WHAT: get letter in string
-const getCharAt = (str: string,index: number)=>{
+const getCharAt = (str: string, index: number) => {
     return str.charAt(index);
 };
 // WHAT: filter form
@@ -37,22 +41,27 @@ export const filterArry = (array: Array<any>, filters: any) => {
         return filterKeys.every((key) => {
             // ignore empty value
             if (!filters[key].length) return true;
-            if (key==="price") return filters[key][0] <= item[key] && filters[key][1] >= item[key];
-            if (key==="star" || key === "typeOfTour") return filters[key].includes(item[key].toString()) ? true : false;
-            if(key==="duration") {
+            if (key === "price")
+                return filters[key][0] <= item[key] && filters[key][1] >= item[key];
+            if (key === "star" || key === "typeOfTour")
+                return filters[key].includes(item[key].toString()) ? true : false;
+            if (key === "duration") {
                 let flag = false;
-                for(let i=0; i<filters[key].length; i++) {                    
-                      if(Number(filters[key][i]) >= Number(getCharAt(item[key],0)) 
-                     && Number(filters[key][i])-2 <= Number(getCharAt(item[key],0))) flag = true;
+                for (let i = 0; i < filters[key].length; i++) {
+                    if (
+                        Number(filters[key][i]) >= Number(getCharAt(item[key], 0)) &&
+                        Number(filters[key][i]) - 2 <= Number(getCharAt(item[key], 0))
+                    )
+                        flag = true;
                     else flag = false;
                 }
-                
+
                 return flag;
             }
-            if(key==="rating") {
+            if (key === "rating") {
                 let flag = false;
-                for(let i=0; i<filters[key].length; i++) {
-                    if(Number(filters[key][i])<=item[key]) flag = true;
+                for (let i = 0; i < filters[key].length; i++) {
+                    if (Number(filters[key][i]) <= item[key]) flag = true;
                     else flag = false;
                 }
                 return flag;
@@ -69,4 +78,10 @@ export const relatedList = (array: Array<any>, id: string) => {
 // WHAT: sort by condition
 export const sortItem = (array: Array<any>, condition: any) => {
     return array.slice().sort((a, b) => a[condition] - b[condition]);
+};
+// WHAT : handle pagiantion
+export const handlePagination = (arr: Array<any>, index: number, numberPerPage: number) => {
+    const trimStart = (index - 1) * numberPerPage;
+    const trimEnd = trimStart + numberPerPage;
+    return arr.slice(trimStart, trimEnd);
 };

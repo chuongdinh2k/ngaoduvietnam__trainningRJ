@@ -10,6 +10,7 @@ export const HotelTabs = [
     {
         name: "Reviews",
         index: 2,
+        type: "hotel",
     },
 ];
 export const TourTabs = [
