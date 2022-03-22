@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import {
-    ComponentTourDetailContent,
+    ComponentDetailContent,
     StyledWrapContent,
     Header,
     ComponentBreadscrumb,
@@ -37,17 +37,6 @@ export const TourDetail = () => {
         dispatch(setLoading(false));
     };
 
-    // WHAT: call api review
-    useEffect(() => {
-        fetchDataReviews();
-    }, [params]);
-
-    const fetchDataReviews = async () => {
-        const response = await toursApi.reviewTours(id, { ...params });
-        setComments(response.data);
-    };
-
-    // WHAT: handle submit reiview
     const handleSubmitReview = async (value: any) => {
         try {
             const res = await toursApi.commentTour(id, {
@@ -82,7 +71,7 @@ export const TourDetail = () => {
                     <div className="wrapperContent">
                         <ComponentBreadscrumb id={detailTour?.id} title={detailTour?.title} />
                         <PopupLightBox />
-                        <ComponentTourDetailContent
+                        <ComponentDetailContent
                             dataTour={detailTour}
                             tourComment={comments}
                             handleSubmitReviewTour={handleSubmitReview}

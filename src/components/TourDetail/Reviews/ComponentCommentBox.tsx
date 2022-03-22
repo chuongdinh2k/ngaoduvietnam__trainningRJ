@@ -6,7 +6,7 @@ import { formSchemaComment, getFirstLetter } from "@utils";
 import { useAppSelector, selectAuth } from "@redux";
 
 interface IProps {
-    handleSubmit?: (value: any) => Promise<void>;
+    handleSubmit?: (values: any) => void;
 }
 export const ComponentCommentBox = (props: IProps) => {
     const { handleSubmit } = props;

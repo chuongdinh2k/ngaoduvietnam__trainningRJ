@@ -12,7 +12,11 @@ const useStyles = makeStyles((theme: any) => ({
             color: theme.colors.gray1,
         },
         "& .MuiInputBase-input": {
+            fontSize: "1.4rem",
             padding: "1px 0 7px",
+            [theme.breakpoints.down("xs")]: {
+                fontSize: "1.4rem",
+            },
         },
         paddingLeft: "1.8rem",
     },
@@ -22,7 +26,7 @@ interface IAppInput {
     icon?: JSX.Element[] | JSX.Element;
     placeholder?: string;
     value?: string;
-    handleChange: (value: any) => void;
+    handleChange?: (value: any) => void;
     handleBlur?: (value: any) => void;
     defaultValue?: string;
     multiple?: boolean;
@@ -35,18 +39,23 @@ interface IAppInput {
     style?: any;
     ref?: any;
     backgroundColor?: string;
-    size?:string;
+    size?: string;
+    debounce?: boolean;
 }
 
 export const AppInput = (props: IAppInput) => {
     const classes = useStyles();
     // component state
     const handleOnChange = (event: any) => {
-        props.handleChange(event);
+        props.handleChange && props.handleChange(event);
     };
     return (
         <CustomInputWrapper {...props.style}>
-            <InputWrapper hasBorder={props.hasBorder} backgroundColor={props.backgroundColor} size={props.size}>
+            <InputWrapper
+                hasBorder={props.hasBorder}
+                backgroundColor={props.backgroundColor}
+                size={props.size}
+            >
                 {props.icon ? <LabelWrapper>{props.icon}</LabelWrapper> : ""}
                 <TextField
                     className={clsx(classes.input, props.className)}
@@ -64,6 +73,7 @@ export const AppInput = (props: IAppInput) => {
                         classes: {},
                     }}
                 />
+                {/* {props.debounce && <ComponentPopOver open={props.debounce} />} */}
             </InputWrapper>
             {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
         </CustomInputWrapper>

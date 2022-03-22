@@ -13,11 +13,6 @@ interface TabPanelProps {
     index: number;
     value: number;
 }
-interface IProps {
-    show?: boolean;
-    formTitle?: string;
-    inputTypeOfTour?: boolean;
-}
 function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
 
@@ -80,7 +75,18 @@ const CustomTab = withStyles({
         color: theme.colors.pureWhite,
     },
 })(Tab);
+
+interface IProps {
+    show?: boolean;
+    formTitle?: string;
+    inputTypeOfTour?: boolean;
+    onChangeDebounce?: (e: any) => void;
+    dataInputBounce?: any;
+    loadingDebounce?: boolean;
+}
 export const HomeTabsButtonComponent = (props: IProps) => {
+    const { show, formTitle, inputTypeOfTour, onChangeDebounce, dataInputBounce, loadingDebounce } =
+        props;
     // material ui hooks
     const classes = useStyles();
 
@@ -91,7 +97,7 @@ export const HomeTabsButtonComponent = (props: IProps) => {
         setValue(newValue);
     };
     return (
-        <StyledHomeTabsButtonComponent show={props.show}>
+        <StyledHomeTabsButtonComponent show={show}>
             <div className="tab">
                 <Tabs
                     TabIndicatorProps={{ style: { background: theme.colors.orange } }}
@@ -106,8 +112,11 @@ export const HomeTabsButtonComponent = (props: IProps) => {
             <TabPanel value={value} index={NUMBER_ZERO}>
                 <div className={classes.tabContent}>
                     <HomeToursTab
-                        formTitle={props.formTitle}
-                        inputTypeOfTour={props.inputTypeOfTour}
+                        dataInputBounce={dataInputBounce}
+                        onChangeDebounce={onChangeDebounce}
+                        formTitle={formTitle}
+                        inputTypeOfTour={inputTypeOfTour}
+                        loadingDebounce={loadingDebounce}
                     />
                 </div>
             </TabPanel>

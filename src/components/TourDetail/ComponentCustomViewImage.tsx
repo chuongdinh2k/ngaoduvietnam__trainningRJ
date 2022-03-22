@@ -207,23 +207,22 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     transform: translate(-50%, -50%);
                 }
                 &__number {
+                    padding-left: 0.5rem;
                     font-size: 1.4rem;
                     font-weight: 700;
                 }
-                /* &:before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: ${(p) => p.theme.colors.pureWhite};
-                    opacity: 0.5;
-                } */
                 &__layer {
                     height: 100%;
-                    background-color: ${(p) => p.theme.colors.pureWhite};
-                    opacity: 0.5;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: ${(p) => p.theme.colors.pureWhite};
+                        opacity: 0.5;
+                    }
                 }
             }
 
@@ -242,40 +241,23 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                 height: 100%;
                 &__layer {
                     height: 100%;
-                    background-color: transparent !important;
-                    opacity: 1;
-                    /* opacity: 0 !important; */
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: ${(p) => p.theme.colors.darkBlack};
+                        opacity: 0 !important;
+                    }
                 }
-                /* &:before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: ${(p) => p.theme.colors.darkBlack};
-                    opacity: 0 !important;
-                } */
+                &__icon,
+                &__number {
+                    display: none;
+                }
             }
         }
-        /* li:nth-child(4) {
-            position: relative;
-            &:after {
-                content: "${(p) => (p.numberTour as number) || (p.numberHotel as number)}+";
-                width: 100%;
-                position: absolute;
-                z-index: 999;
-                top: 40%;
-                left: 50%;
-                font-size: 16px;
-                font-weight: ${(p) => p.theme.typography.fontWeightBold};
-                color: ${(p) => p.theme.colors.darkBlack};
-                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                    left: 40%;
-                    top: 20%;
-                }
-            }
-        } */
         .image__dot {
             width: 100%;
             height: 100%;

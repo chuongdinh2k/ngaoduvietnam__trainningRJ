@@ -21,16 +21,15 @@ interface IProps {
     currentPage?: number;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
     handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
-    handleSubmitReviewHotel?: (value: any) => Promise<void>;
+    handleSubmitReviewHotel?: (values: any) => void;
 }
-export const ComponentTourDetailContent = (props: IProps) => {
+export const ComponentDetailContent = (props: IProps) => {
     const hotelDetail = useAppSelector(selectDetailHotel);
     // props
     const {
         dataTour,
         dataHotel,
         tourComment,
-        hotelComment,
         currentPage,
         handleSubmitReviewTour,
         handleChangeReviewPage,
@@ -46,19 +45,19 @@ export const ComponentTourDetailContent = (props: IProps) => {
         duration: dataTour?.duration,
         typeOfTour: dataTour?.typeOfTour,
     };
-    const inforHotel = {
-        _id: dataHotel?._id,
-        title: dataHotel?.title,
-        location: dataHotel?.location,
-        rating: dataHotel?.rating,
-        reviewNumber: dataHotel?.numberReviews,
-        star: dataHotel?.star,
-    };
+    // const inforHotel = {
+    //     _id: dataHotel?._id,
+    //     title: dataHotel?.title,
+    //     location: dataHotel?.location,
+    //     rating: dataHotel?.rating,
+    //     reviewNumber: dataHotel?.numberReviews,
+    //     star: dataHotel?.star,
+    // };
     return (
         <StyledComponentTourDetailContent>
             <Grid container>
                 <Grid item xs={12} md={8}>
-                    <ComponentDetailInfor inforTour={inforTour} inforHotel={inforHotel} />
+                    <ComponentDetailInfor inforTour={inforTour} inforHotel={dataHotel} />
                 </Grid>
                 <Grid item xs={12} md={4}></Grid>
             </Grid>

@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
+import clsx from "clsx";
 // import { Alert } from "@material-ui/lab";
 
 import { login, selectAuth, useAppSelector } from "@redux";
@@ -11,7 +12,6 @@ import { authRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
 import { AppInputOutLined, IconFacebook } from "@components";
 import { formSchemaLogin } from "@utils";
-import clsx from "clsx";
 // import { EMAIL, PASSWORD } from "@configs";
 
 export const Login = () => {

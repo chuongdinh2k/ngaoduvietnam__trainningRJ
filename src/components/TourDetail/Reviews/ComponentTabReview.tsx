@@ -14,7 +14,7 @@ interface IProps {
     hotelComment?: IHotelComment[];
     dataHotel?: IHotel;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
-    handleSubmitReviewHotel?: (value: any) => Promise<void>;
+    handleSubmitReviewHotel?: (values: any) => void;
 }
 export const ComponentTabReview = (props: IProps) => {
     const {

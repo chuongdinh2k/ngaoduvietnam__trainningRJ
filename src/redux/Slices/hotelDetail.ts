@@ -2,37 +2,90 @@ import { hotelsApi } from "@api";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 import { IHotel } from "@types";
+import { toast } from "react-toastify";
 import { RootState } from ".";
+import { REVIEW_SUCCESS, FAIL } from "@configs";
 
+interface IReviewParams {
+    id: string;
+    values?: any;
+}
 interface IState {
     loading?: boolean;
-    hotel?: IHotel;
+    hotel: IHotel;
     relatedHotel?: Array<IHotel>;
+    pageReview?: number;
+    loadingReview?: boolean;
 }
 
 const initialState: IState = {
     hotel: {},
     relatedHotel: [],
     loading: false,
+    pageReview: 1,
+    loadingReview: false,
 };
 export const viewDetailHotel = createAsyncThunk("hotelDetail/view", async (id: string) => {
     const res = await hotelsApi.viewListDetail(id);
     return res.data;
 });
+export const submitReviewHotel = createAsyncThunk(
+    "hotelDetail/postCommend",
+    async (params: IReviewParams) => {
+        try {
+            const res = await hotelsApi.commentHotel(params.id, {
+                rating: 8,
+                title: "good",
+                ...params.values,
+            });
+            toast.success(`${REVIEW_SUCCESS}`);
+            return res.data.hotel as IHotel;
+        } catch (err) {
+            toast.error(`${FAIL}`);
+        }
+    }
+);
+
 const hotelDetail = createSlice({
     name: "hotelDetail",
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        changeReviewPagiantion: (state, action: PayloadAction<number>) => {
+            state.pageReview = action.payload;
+        },
+        resetHotel: (state) => {
+            state.hotel = {};
+            state.relatedHotel = [];
+            state.pageReview = 1;
+        },
+    },
     extraReducers: (builder) => {
+        // WHAT: view detail
         builder.addCase(viewDetailHotel.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(viewDetailHotel.fulfilled, (state, action: { payload: any }) => {
-            state.loading = true;
-            state.hotel = action.payload.hotel;
-            state.relatedHotel = action.payload.relatedHotel;
+        builder.addCase(viewDetailHotel.fulfilled, (state, action: PayloadAction<any>) => {
+            state.loading = false;
+            state.hotel = action.payload?.hotel;
+            state.relatedHotel = action.payload?.relatedHotel;
+            state.pageReview = action.payload?.hotel?.reviews.length === 0 ? 0 : 1;
+        });
+        builder.addCase(viewDetailHotel.rejected, (state) => {
+            state.loading = false;
+        });
+        // WHAT: submit a review
+        builder.addCase(submitReviewHotel.pending, (state) => {
+            state.loadingReview = true;
+        });
+        builder.addCase(submitReviewHotel.fulfilled, (state, action: PayloadAction<any>) => {
+            state.loadingReview = false;
+            state.hotel = action.payload;
+        });
+        builder.addCase(submitReviewHotel.rejected, (state) => {
+            state.loadingReview = false;
         });
     },
 });
+export const { resetHotel, changeReviewPagiantion } = hotelDetail.actions;
 export const selectDetailHotel = (state: RootState) => state.detailHotel;
 export default hotelDetail.reducer;

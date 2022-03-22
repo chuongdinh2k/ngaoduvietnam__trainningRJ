@@ -80,8 +80,12 @@ export const sortItem = (array: Array<any>, condition: any) => {
     return array.slice().sort((a, b) => a[condition] - b[condition]);
 };
 // WHAT : handle pagiantion
-export const handlePagination = (arr: Array<any>, index: number, numberPerPage: number) => {
+export const handlePagination = (
+    arr: Array<any> | undefined,
+    index: number,
+    numberPerPage: number
+) => {
     const trimStart = (index - 1) * numberPerPage;
     const trimEnd = trimStart + numberPerPage;
-    return arr.slice(trimStart, trimEnd);
+    return arr && arr.slice(trimStart, trimEnd);
 };

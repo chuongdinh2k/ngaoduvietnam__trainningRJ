@@ -3,8 +3,10 @@ const queryString = require("query-string");
 
 // WHAT: get token in localStorage
 const localStorageGetItem = localStorage.getItem("persist:root") as any;
-const token = JSON.parse(JSON.parse(localStorageGetItem).auth).tokenInfoAuth;
-// console.log(auth);
+
+const token = localStorageGetItem
+    ? JSON.parse(JSON.parse(localStorageGetItem).auth).tokenInfoAuth
+    : "";
 export const axiosClient = axios.create({
     // baseURL: "https://ducky-ecommerce-server.herokuapp.com",
     headers: {

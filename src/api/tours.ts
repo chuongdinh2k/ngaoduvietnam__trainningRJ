@@ -31,4 +31,7 @@ export const toursApi = {
         const url = `${process.env.REACT_APP_API_TOUR}/${id}/reviews?sortBy=time`;
         return axiosClient.post(url, value);
     },
+    // filterTourLocation: (pagination?: IPagination, filter?:string)=>{
+
+    // }
 };

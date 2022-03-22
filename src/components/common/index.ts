@@ -17,3 +17,4 @@ export * from "./Collapse";
 export * from "./Loader";
 export * from "./DatePicker";
 export * from "./SnackBar/SnackBar";
+export * from "./Popover/PopOver";

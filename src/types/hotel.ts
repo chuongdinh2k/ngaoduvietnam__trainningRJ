@@ -66,7 +66,7 @@ export interface IHotel {
     listImages?: Array<string>;
     star?: number;
     description?: IDescription;
-    selectRooms?: Array<ISelectRoom>;
-    reviews?: Array<IHotelComment>;
+    selectRoom?: Array<ISelectRoom>;
+    reviews?: IHotelComment[];
     relatedHotels?: IRelatedHotel;
 }

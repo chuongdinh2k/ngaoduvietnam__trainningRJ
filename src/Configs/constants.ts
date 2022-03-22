@@ -31,6 +31,7 @@ export const validate_phone =
 // limit record perpage = 6
 export const LIMIT_RECORD_6 = 6;
 export const PAGINATION_REVIEWS = 2;
+export const INFINITY_MAX = 100;
 
 // Login account
 export const EMAIL = "jame95@gmail.com";
@@ -39,3 +40,4 @@ export const PASSWORD = "123456789";
 // alert success review
 export const REVIEW_SUCCESS = "You've added a review successfully!";
 export const FAIL = "something went wrong! please try again!";
+export const ERROR_404_DATA = "Can not find matching data!";

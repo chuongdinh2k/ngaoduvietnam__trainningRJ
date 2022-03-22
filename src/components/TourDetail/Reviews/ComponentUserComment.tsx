@@ -46,7 +46,7 @@ export const ComponentUserComment = (props: IProps) => {
                             <span className="user__info-spacing">-</span>
                             <span className="user__info-date">
                                 {/* {fomatToShowDate(commentHotel?.time as string)} */}
-                                {fomatToShowDate(commentHotel?.time as string)}
+                                {fomatToShowDate(commentHotel?.updatedAt as string)}
                             </span>
                         </p>
                     </div>

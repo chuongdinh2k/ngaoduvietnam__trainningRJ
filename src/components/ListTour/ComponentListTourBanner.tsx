@@ -9,9 +9,12 @@ interface banner {
 
 interface IProps {
     banner: banner;
+    onChangeDebounce?: (e: any) => void;
+    dataInputBounce?: any;
+    loadingDebounce?: boolean;
 }
 export const ComponentListTourBanner = (props: IProps) => {
-    const { banner } = props;
+    const { banner, loadingDebounce, dataInputBounce, onChangeDebounce } = props;
     return (
         <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent={PAGE_LISTTOUR}>
             <div className="wrapContainer">
@@ -24,6 +27,9 @@ export const ComponentListTourBanner = (props: IProps) => {
                 <div className="featured"></div>
                 <div className="filter">
                     <HomeTabsButtonComponent
+                        dataInputBounce={dataInputBounce}
+                        onChangeDebounce={onChangeDebounce}
+                        loadingDebounce={loadingDebounce}
                         show={false}
                         formTitle={banner.formTitle}
                         inputTypeOfTour

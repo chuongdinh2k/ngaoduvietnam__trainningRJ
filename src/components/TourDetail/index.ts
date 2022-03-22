@@ -1,4 +1,4 @@
-export * from "./ComponentTourDetailContent";
+export * from "./ComponentDetailContent";
 export * from "./ComponentDetailInfor";
 export * from "./ComponentCustomViewImage";
 export * from "./ComponentDetailTab";

@@ -7,11 +7,12 @@ import {
     ComponentTabDetailAdditionalInfo,
     ComponentTabReview,
 } from ".";
-// import { dataTourDetail } from "@demos";
 import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO, PAGINATION_REVIEWS } from "@configs";
 import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
 import { ComponentHotelDetailDescription, ComponentListRooms, AppPagination } from "..";
-import { dataTourDetail, hotelDetail } from "@demos";
+import { dataTourDetail } from "@demos";
+import { useAppSelector, selectDetailHotel } from "@redux";
+import { handlePagination } from "@utils";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -39,7 +40,7 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-function a11yProps(index: any) {
+function a11yProps(index: number | undefined) {
     return {
         id: `simple-tab-${index}`,
         "aria-controls": `simple-tabpanel-${index}`,
@@ -99,7 +100,7 @@ interface IProps {
     currentPage?: number;
     handleSubmitReviewTour?: (value: any) => Promise<void>;
     handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
-    handleSubmitReviewHotel?: (value: any) => Promise<void>;
+    handleSubmitReviewHotel?: (values: any) => void;
 }
 export const ComponentDetailTab = (props: IProps) => {
     // component variable
@@ -107,7 +108,6 @@ export const ComponentDetailTab = (props: IProps) => {
         tabs,
         dataTour,
         dataHotel,
-        hotelComment,
         tourComment,
         handleSubmitReviewTour,
         handleChangeReviewPage,
@@ -122,7 +122,7 @@ export const ComponentDetailTab = (props: IProps) => {
     const handleChange = (event: React.ChangeEvent<Record<string, unknown>>, newValue: number) => {
         setValue(newValue);
     };
-
+    const hotelDetail = useAppSelector(selectDetailHotel);
     return (
         <div className={classes.root}>
             <AppBar className={classes.appBar} position="static">
@@ -160,11 +160,13 @@ export const ComponentDetailTab = (props: IProps) => {
                 {dataTour && (
                     <ComponentTabDetailDescription description={dataTourDetail.discription} />
                 )}
-                {dataHotel && <ComponentListRooms selectRooms={hotelDetail.selectRooms} />}
+                {dataHotel && <ComponentListRooms selectRooms={hotelDetail?.hotel?.selectRoom} />}
             </TabPanel>
             <TabPanel value={value} index={NUMBER_ONE}>
                 {dataHotel && (
-                    <ComponentHotelDetailDescription description={hotelDetail.description} />
+                    <ComponentHotelDetailDescription
+                        description={hotelDetail?.hotel?.description}
+                    />
                 )}
                 {dataTour && (
                     <ComponentTabDetailAdditionalInfo
@@ -192,13 +194,17 @@ export const ComponentDetailTab = (props: IProps) => {
                     <>
                         <ComponentTabReview
                             dataHotel={dataHotel}
-                            hotelComment={hotelComment}
+                            hotelComment={handlePagination(
+                                hotelDetail?.hotel?.reviews,
+                                Number(hotelDetail?.pageReview),
+                                Number(PAGINATION_REVIEWS)
+                            )}
                             handleSubmitReviewHotel={handleSubmitReviewHotel}
                         />
                         <AppPagination
                             totalPage={Number(totalPageReviewHotel)}
                             showPerpage={false}
-                            currentPage={currentPage}
+                            currentPage={hotelDetail?.pageReview}
                             handleChange={handleChangeReviewPage}
                         />
                     </>

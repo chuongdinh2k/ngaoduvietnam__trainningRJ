@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
@@ -10,13 +10,42 @@ import { groupOfPeople, TypeOfTour } from "@demos";
 import { getListFilterTours } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
 import { useDispatch } from "react-redux";
+import { ComponentPopOver } from "..";
 
+interface IOutSide {
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    ref: any;
+}
+function useOutsideClick(props: IOutSide) {
+    const { ref, setOpen } = props;
+    React.useEffect(() => {
+        function handleClickOutside(event: any) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setOpen(false);
+            }
+        }
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
+}
 interface IProps {
     formTitle?: string;
     inputTypeOfTour?: boolean;
+    onChangeDebounce?: (e: any) => void;
+    dataInputBounce?: any;
+    loadingDebounce?: boolean;
 }
-
 export const HomeToursTab = (props: IProps) => {
+    const { formTitle, inputTypeOfTour, onChangeDebounce, dataInputBounce, loadingDebounce } =
+        props;
+    const ref = useRef<HTMLInputElement>(null);
+    const [open, setOpen] = React.useState<boolean>(false);
+    // const [valueDebounce, setValueDebounce] = React.useState<string>("");
+    useOutsideClick({ ref, setOpen });
     // hooks
     const dispatch = useDispatch();
     // component variable
@@ -32,7 +61,7 @@ export const HomeToursTab = (props: IProps) => {
     };
     return (
         <StyledHomeToursTab>
-            <p className="title">{props.formTitle}</p>
+            <p className="title">{formTitle}</p>
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
@@ -55,14 +84,27 @@ export const HomeToursTab = (props: IProps) => {
                 {({ handleSubmit, values, handleChange }) => {
                     return (
                         <div className="tour__form">
-                            <div className="input-group">
+                            <div
+                                className="input-group appInput"
+                                onClick={() => setOpen(!open)}
+                                // ref={ref}
+                            >
                                 <AppInput
-                                    handleChange={handleChange("location")}
+                                    handleChange={(e) => onChangeDebounce?.(e.target.value)}
+                                    // handleChange={handleChange("location")}
                                     icon={<IconLocation size="large" />}
-                                    value={values.location}
                                     name="location"
                                     placeholder="Enter Location"
                                     size="large"
+                                    ref={ref}
+
+                                    // ref={inputRef}
+                                />
+                                <ComponentPopOver
+                                    loadingDebounce={loadingDebounce}
+                                    dataInputBounce={dataInputBounce}
+                                    open={open}
+                                    setOpen={setOpen}
                                 />
                             </div>
                             <div className="input-group">
@@ -76,7 +118,7 @@ export const HomeToursTab = (props: IProps) => {
                                     icon={<IconCalendar size="large" color="#FF7B42" />}
                                 />
                             </div>
-                            {!props.inputTypeOfTour ? (
+                            {!inputTypeOfTour ? (
                                 ""
                             ) : (
                                 <div className="input-group">
@@ -149,6 +191,9 @@ const StyledHomeToursTab = styled.div`
         /* @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-top: 0.8rem;
         } */
+    }
+    .appInput {
+        position: relative;
     }
     .btn {
         /* margin: 8px; */

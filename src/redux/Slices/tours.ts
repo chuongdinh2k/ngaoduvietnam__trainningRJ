@@ -19,6 +19,7 @@ export const getListTours = createAsyncThunk("tours/getList", async (pagination:
     const res = await toursApi.getListTours(pagination);
     return res.data;
 });
+
 export const getListFilterTours = createAsyncThunk(
     "tours/getListFilter",
     async (values: IValues) => {

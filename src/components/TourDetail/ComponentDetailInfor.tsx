@@ -1,3 +1,4 @@
+import { IHotel } from "@types";
 import styled from "styled-components";
 
 import { IconLocation, IconStar } from "..";
@@ -14,7 +15,7 @@ interface IInfor {
 }
 interface IProps {
     inforTour?: IInfor;
-    inforHotel?: IInfor;
+    inforHotel?: IHotel;
 }
 export const ComponentDetailInfor = (props: IProps) => {
     const { inforTour, inforHotel } = props;
@@ -48,7 +49,9 @@ export const ComponentDetailInfor = (props: IProps) => {
                             <span className="star__text">Rating: {inforHotel?.rating}</span>
                         )}
                     </div>
-                    <span className="reviews__text">{`(${inforHotel?.reviewNumber})`} reviews</span>
+                    <span className="reviews__text">
+                        {`(${inforHotel?.numberReviews})`} reviews
+                    </span>
                 </div>
             </div>
         </StyledComponentDetailInfor>
