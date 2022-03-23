@@ -52,7 +52,7 @@ html {
 }
 /* Material ui */
 .slick-next {
-  right: 0;
+  right: -45px important;
 }
 .MuiMenuItem-root {
   font-size: 2rem !important;
@@ -81,4 +81,13 @@ html {
 /* backdrop */
 .MuiBackdrop-root {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* input autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: transparent 600000s 0s, color 600000s 0s;
+}
+input[data-autocompleted] {
+  background-color: transparent !important;
 }

@@ -69,6 +69,11 @@ const useStyles = makeStyles((theme: Theme) => ({
         "& .MuiTab-wrapper": {
             alignItems: "flex-start",
         },
+        "& .MuiButtonBase-root:nth-child(2)": {
+            "& .MuiTab-wrapper": {
+                alignItems: "center !important",
+            },
+        },
     },
     appBar: {
         marginTop: "16rem",
@@ -83,6 +88,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     activeTab: {
         color: theme.colors.orange,
+    },
+    reviewsTab: {
+        "& .MuiTab-wrapper": {
+            alignItems: "flex-end",
+        },
     },
 }));
 
@@ -141,7 +151,10 @@ export const ComponentDetailTab = (props: IProps) => {
                                     label={`reviews${
                                         tab.type === "hotel" ? `(${dataHotel?.numberReviews})` : ""
                                     }`}
-                                    className={clsx(value === tab.index ? classes.activeTab : "")}
+                                    className={clsx(
+                                        value === tab.index ? classes.activeTab : "",
+                                        classes.reviewsTab
+                                    )}
                                     {...a11yProps(tab.index)}
                                 />
                             ) : (

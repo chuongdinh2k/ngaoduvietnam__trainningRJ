@@ -35,7 +35,7 @@ export const StyledBanner = styled.div<IStyledBanner>`
     text-align: ${(p) => {
         if (p.typeComponent === PAGE_HOME) {
             return "left";
-        } else if (p.typeComponent === PAGE_ABOUT) {
+        } else if (p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT) {
             return "center";
         }
     }};

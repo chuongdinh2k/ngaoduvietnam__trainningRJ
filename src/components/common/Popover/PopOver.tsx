@@ -10,12 +10,12 @@ interface IStyled {
 interface IProps {
     open: boolean;
     dataInputBounce?: any;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     loadingDebounce?: boolean;
+    onChangeDebounce?: (e: any) => void;
 }
 
 export const ComponentPopOver = (props: IProps) => {
-    const { open, dataInputBounce, loadingDebounce, setOpen } = props;
+    const { open, dataInputBounce, loadingDebounce, onChangeDebounce } = props;
 
     return (
         <StyledComponentPopover open={open}>
@@ -27,7 +27,12 @@ export const ComponentPopOver = (props: IProps) => {
                         dataInputBounce?.map((item: any, index: number) => (
                             <div key={index}>
                                 {/* <Divider /> */}
-                                <ListItem button onClick={() => setOpen(false)}>
+                                <ListItem
+                                    button
+                                    onClick={() => {
+                                        onChangeDebounce?.(item.location);
+                                    }}
+                                >
                                     {item.location}
                                 </ListItem>
                                 <Divider />

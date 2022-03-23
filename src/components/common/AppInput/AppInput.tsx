@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { ErrorMessage } from "formik";
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: any) => ({
         },
         "& .MuiInputBase-input": {
             fontSize: "1.4rem",
-            padding: "1px 0 7px",
+            padding: "3px 0 1px",
             [theme.breakpoints.down("xs")]: {
                 fontSize: "1.4rem",
             },
@@ -43,7 +43,7 @@ interface IAppInput {
     debounce?: boolean;
 }
 
-export const AppInput = (props: IAppInput) => {
+export const AppInput = forwardRef((props: IAppInput, ref: any) => {
     const classes = useStyles();
     // component state
     const handleOnChange = (event: any) => {
@@ -72,10 +72,11 @@ export const AppInput = (props: IAppInput) => {
                         },
                         classes: {},
                     }}
+                    ref={ref}
                 />
                 {/* {props.debounce && <ComponentPopOver open={props.debounce} />} */}
             </InputWrapper>
             {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
         </CustomInputWrapper>
     );
-};
+});

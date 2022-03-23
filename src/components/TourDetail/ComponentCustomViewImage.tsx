@@ -168,16 +168,19 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         }
     }
     .slick-prev {
+        z-index: 99;
+        left: 0;
+        /* @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+        } */
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            left: 0;
-            background: ${(p) => p.theme.colors.pureWhite} !important;
+            /* background: ${(p) => p.theme.colors.pureWhite} !important; */
             color: ${(p) => p.theme.colors.pureWhite} !important;
         }
     }
     .slick-next {
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            right: 0;
-        }
+        right: 0;
+        /* @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+        } */
     }
     .slick-dots {
         text-align: left;
@@ -210,6 +213,9 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     padding-left: 0.5rem;
                     font-size: 1.4rem;
                     font-weight: 700;
+                    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                        padding-left: 0;
+                    }
                 }
                 &__layer {
                     height: 100%;

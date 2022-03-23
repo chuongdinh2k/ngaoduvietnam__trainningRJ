@@ -78,6 +78,7 @@ export const ListTour = () => {
                 onChangeDebounce={onChangeDebounce}
                 loadingDebounce={loadingDebounce}
                 banner={banner.listTour}
+                userQuery={userQuery}
             />
             <StyledWrapContent>
                 <div className="wrapperContent">

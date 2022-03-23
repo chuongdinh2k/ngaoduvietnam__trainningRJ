@@ -38,19 +38,26 @@ interface IProps {
     onChangeDebounce?: (e: any) => void;
     dataInputBounce?: any;
     loadingDebounce?: boolean;
+    userQuery?: string;
 }
 export const HomeToursTab = (props: IProps) => {
-    const { formTitle, inputTypeOfTour, onChangeDebounce, dataInputBounce, loadingDebounce } =
-        props;
-    const ref = useRef<HTMLInputElement>(null);
+    const {
+        formTitle,
+        inputTypeOfTour,
+        onChangeDebounce,
+        userQuery,
+        dataInputBounce,
+        loadingDebounce,
+    } = props;
+    const ref = useRef(null);
     const [open, setOpen] = React.useState<boolean>(false);
-    // const [valueDebounce, setValueDebounce] = React.useState<string>("");
+    // console.log("value: " + valueDebounce);
     useOutsideClick({ ref, setOpen });
     // hooks
     const dispatch = useDispatch();
     // component variable
     const initialValuesPackage = {
-        location: "",
+        // location: valueDebounce,
         departure: "",
         group: "",
         typeOfTour: "",
@@ -69,6 +76,7 @@ export const HomeToursTab = (props: IProps) => {
                         getListFilterTours({
                             filter: {
                                 ...values,
+                                location: userQuery,
                             },
                             pagination: {
                                 page: 1,
@@ -87,7 +95,7 @@ export const HomeToursTab = (props: IProps) => {
                             <div
                                 className="input-group appInput"
                                 onClick={() => setOpen(!open)}
-                                // ref={ref}
+                                ref={ref}
                             >
                                 <AppInput
                                     handleChange={(e) => onChangeDebounce?.(e.target.value)}
@@ -96,15 +104,13 @@ export const HomeToursTab = (props: IProps) => {
                                     name="location"
                                     placeholder="Enter Location"
                                     size="large"
-                                    ref={ref}
-
-                                    // ref={inputRef}
+                                    value={userQuery}
                                 />
                                 <ComponentPopOver
                                     loadingDebounce={loadingDebounce}
                                     dataInputBounce={dataInputBounce}
                                     open={open}
-                                    setOpen={setOpen}
+                                    onChangeDebounce={onChangeDebounce}
                                 />
                             </div>
                             <div className="input-group">
@@ -121,7 +127,7 @@ export const HomeToursTab = (props: IProps) => {
                             {!inputTypeOfTour ? (
                                 ""
                             ) : (
-                                <div className="input-group">
+                                <div className="input-group input-select">
                                     <AppSelect
                                         name="typeOfTour"
                                         icon={<Flag size="large" width="16" height="18" />}
@@ -133,7 +139,7 @@ export const HomeToursTab = (props: IProps) => {
                                     />
                                 </div>
                             )}
-                            <div className="input-group">
+                            <div className="input-group input-select">
                                 <AppSelect
                                     name="group"
                                     icon={
@@ -178,6 +184,11 @@ const StyledHomeToursTab = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.5rem;
+        }
+    }
+    .input-select {
+        .MuiInputBase-input {
+            padding: 9px 0 7px;
         }
     }
     .input-group {

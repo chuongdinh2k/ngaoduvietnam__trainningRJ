@@ -83,10 +83,18 @@ interface IProps {
     onChangeDebounce?: (e: any) => void;
     dataInputBounce?: any;
     loadingDebounce?: boolean;
+    userQuery?: string;
 }
 export const HomeTabsButtonComponent = (props: IProps) => {
-    const { show, formTitle, inputTypeOfTour, onChangeDebounce, dataInputBounce, loadingDebounce } =
-        props;
+    const {
+        show,
+        formTitle,
+        inputTypeOfTour,
+        userQuery,
+        onChangeDebounce,
+        dataInputBounce,
+        loadingDebounce,
+    } = props;
     // material ui hooks
     const classes = useStyles();
 
@@ -117,6 +125,7 @@ export const HomeTabsButtonComponent = (props: IProps) => {
                         formTitle={formTitle}
                         inputTypeOfTour={inputTypeOfTour}
                         loadingDebounce={loadingDebounce}
+                        userQuery={userQuery}
                     />
                 </div>
             </TabPanel>

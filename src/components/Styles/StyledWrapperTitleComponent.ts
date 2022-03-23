@@ -42,6 +42,14 @@ export const StyledWrapperTitleComponent = styled.div`
             }
         }
     }
+    /*-- css for home discovery component */
+    .home__discover {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-top: 35rem;
+            padding-bottom: 2rem;
+        }
+    }
+    /* -- */
     h3 {
         line-height: 1;
         font-size: 4rem;
@@ -51,7 +59,7 @@ export const StyledWrapperTitleComponent = styled.div`
             font-size: 3rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
     }
     .activeBtn {
@@ -78,14 +86,16 @@ export const StyledWrapperTitleComponent = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 10px;
             /* margin-top: 2rem; */
-            padding: 1.3rem 2rem;
+
+            text-align: center;
+            padding: 1.1rem 0.4rem;
+            height: 3.5rem;
             width: 8rem;
         }
     }
     .btn-exper {
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding: 1.3rem 0.4rem;
-            text-align: center;
         }
     }
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {

@@ -7,6 +7,7 @@ import {
     OutlinedInput,
     InputAdornment,
     IconButton,
+    Input,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import clsx from "clsx";
@@ -32,10 +33,10 @@ const useStyles = makeStyles(() =>
 
         textField: {
             width: "100%",
-            "& .MuiOutlinedInput-input": {
+            "& .MuiInputBase-input": {
                 fontSize: "1.6rem",
             },
-            "& .MuiInputLabel-outlined": {
+            "& .MuiInputLabel-formControl": {
                 fontSize: "1.6rem",
             },
         },
@@ -69,7 +70,7 @@ export const AppInputOutLined = (props: IProps) => {
     );
     return (
         <StyledAppInputOutLined>
-            <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+            {/* <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-password">{props.label}</InputLabel>
                 <WithOutBorderTextField
                     name={props.name}
@@ -94,6 +95,31 @@ export const AppInputOutLined = (props: IProps) => {
                     labelWidth={70}
                 />
             </FormControl>
+            {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)} */}
+            <FormControl className={clsx(classes.margin, classes.textField)}>
+                <InputLabel htmlFor="input-with-icon-adornment">{props.label}</InputLabel>
+                <Input
+                    name={props.name}
+                    id={`inpit-adornment-password-${props.name}`}
+                    type={showPassword ? "password" : "text"}
+                    value={props.value}
+                    onChange={handleOnChange}
+                    fullWidth
+                    endAdornment={
+                        <InputAdornment position="end">
+                            {props.typePassword && (
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            )}
+                        </InputAdornment>
+                    }
+                />
+            </FormControl>
             {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
         </StyledAppInputOutLined>
     );
@@ -103,14 +129,7 @@ const StyledAppInputOutLined = styled.div`
     label {
         background-color: white;
     }
-`;
-const WithOutBorderTextField = styled(OutlinedInput)`
-    & label.Mui-focused {
-        color: white;
-    }
-    & .MuiOutlinedInput-root {
-        &.Mui-focused fieldset {
-            border-color: white;
-        }
+    input:-internal-autofill-selected {
+        background-color: transparent;
     }
 `;

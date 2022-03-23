@@ -20,6 +20,9 @@ export const InputWrapper = styled.div<ISWrapper>`
     background-color: white;
     padding: 1.2rem 2rem 1.6rem 2rem;
     display: flex;
+    .MuiInputBase-input {
+        padding: -2px 0 7px;
+    }
     /* margin-bottom: 1.8rem; */
     @media (min-width: 2000px) {
         height: ${(p) => (p.size === "large" ? `7rem` : `5rem`)};

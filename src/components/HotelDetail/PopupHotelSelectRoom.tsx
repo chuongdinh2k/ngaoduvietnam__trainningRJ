@@ -244,6 +244,7 @@ const StyledComponentPopup = styled.div`
             padding: 2.2rem 0;
             border-bottom: 1px solid #e5e5e5;
             &-text {
+                display: flex;
                 font-size: 1.6rem;
                 font-weight: ${(p) => p.theme.typography.fontWeightMedium};
                 color: #0069e4;
@@ -254,6 +255,9 @@ const StyledComponentPopup = styled.div`
             }
             &-icon {
                 padding-right: 1rem;
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    text-align: center;
+                }
             }
         }
         &__text {

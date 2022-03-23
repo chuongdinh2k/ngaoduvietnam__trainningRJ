@@ -26,6 +26,9 @@ export const StyledCard = styled.div`
         font-size: 2rem;
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-end: 0;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            font-size: 1.4rem;
+        }
     }
     .subTitle {
         font-size: ${(p) => p.theme.typography.fontSize}px;
@@ -51,7 +54,7 @@ export const StyledCardWithIcon = styled.div`
             margin-right: 0;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding: 0 1rem;
+            padding: 0 2rem;
             margin-right: 0;
         }
     }
@@ -162,7 +165,11 @@ export const StyledCardWithIcon = styled.div`
         /* white-space: nowrap; */
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.4rem;
-            height: 4rem;
+            height: 2rem;
+            width: 100%;
+            /* overflow: hidden;
+        text-overflow: ellipsis; */
+            white-space: nowrap;
         }
     }
     .bottom {

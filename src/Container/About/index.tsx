@@ -2,7 +2,7 @@ import React from "react";
 
 // WHAT: fake data
 const fakeData = {
-    title: "About",
+    title: "About Us",
 };
 
 import {

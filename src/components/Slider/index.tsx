@@ -95,7 +95,7 @@ export const StyledSlider = styled.div`
         }
         .slick-next {
             top: 11rem;
-            right: -25px;
+            right: -45px !important;
 
             @media (max-width: 768px) {
                 right: 0;

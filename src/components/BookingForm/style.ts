@@ -97,7 +97,7 @@ export const StyledBookingForm = styled.div`
         display: flex;
         justify-content: space-between;
         font-size: 2rem;
-        font-weight: 400;
+        font-weight: 700;
     }
     .wrapperBtn {
         padding: 2rem 3rem 3rem 3rem;
@@ -114,7 +114,15 @@ export const StyledBookingForm = styled.div`
         }
     }
     .form__group {
-        padding: 1.7rem 3rem 0 3rem;
+        padding: 1.2rem 2rem 1.6rem 2rem;
+        /* .MuiInputBase-input {
+            padding: 9px 0 7px;
+        } */
+        &-select {
+            .MuiInputBase-input {
+                padding: 11px 0 7px;
+            }
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding: 0 3rem;
         }

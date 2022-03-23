@@ -44,7 +44,7 @@ export const ComponentHotelRoom = (props: IProps) => {
                     <img className="wrapper__image-img" src={room1} alt="hotel room" />
                 </div>
                 <div className="content">
-                    <Typography component="h4" className="content__title">
+                    <Typography component="h4" className="content__title" onClick={handleOpen}>
                         {" "}
                         {selectRoom?.title}
                     </Typography>
@@ -114,6 +114,7 @@ const StyledComponentHotelRoom = styled.div`
         display: flex;
         margin-top: 1.8rem;
         background-color: #f8f8f8;
+        cursor: pointer;
     }
     .wrapper__image {
         position: relative;
