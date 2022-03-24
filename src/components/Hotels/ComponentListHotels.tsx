@@ -44,7 +44,7 @@ const StyledComponentListHotels = styled.div`
         }
         .cardWrapper {
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                padding-top: 0;
+                padding: 0;
             }
         }
     }

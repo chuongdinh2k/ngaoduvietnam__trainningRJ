@@ -155,20 +155,18 @@ export const StyledCardWithIcon = styled.div`
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         margin-block-start: 0.9rem;
         margin-block-end: 1rem;
-        height: 5rem;
+        height: 3rem;
         max-height: 5rem;
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
-        /* white-space: nowrap; */
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.4rem;
             height: 2rem;
             width: 100%;
-            /* overflow: hidden;
-        text-overflow: ellipsis; */
+
             white-space: nowrap;
         }
     }
@@ -177,13 +175,13 @@ export const StyledCardWithIcon = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             flex-direction: column;
         }
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            flex-direction: row;
-        }
     }
     .money {
         font-size: ${(p) => p.theme.typography.fontSize}px;
         line-height: 2;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding-top: 1rem;
+        }
     }
     .money__value {
         font-size: 2rem;

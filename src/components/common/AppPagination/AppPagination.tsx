@@ -1,7 +1,10 @@
 import React, { ChangeEvent } from "react";
-import { makeStyles, createStyles, Grid } from "@material-ui/core";
+import { makeStyles, createStyles, Grid, Button } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination";
 import styled from "styled-components";
+import { PaginationItem } from "@material-ui/lab";
+
+import { IconPrevPagination, IconNextPagination } from "..";
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -16,11 +19,40 @@ const useStyles = makeStyles((theme) =>
                 backgroundColor: `${theme.colors.gray4}`,
                 borderRadius: 0,
                 border: "none",
+                padding: "0 17px",
+                "&:hover": {
+                    color: `${theme.colors.darkBlack}`,
+                    backgroundColor: `${theme.colors.gray4}`,
+                },
             },
             "& .Mui-selected": {
                 backgroundColor: `${theme.colors.darkBlack}`,
                 color: `${theme.colors.pureWhite}`,
             },
+        },
+        btnPrev: {
+            color: `${theme.colors.darkBlack}`,
+            backgroundColor: `${theme.colors.gray4}`,
+            borderRadius: 0,
+            border: "none",
+            boxShadow: "none",
+            height: "32px",
+            margin: "0 3px",
+            padding: "0 6px",
+            fontSize: "0.875rem",
+            minWidth: "32px",
+            paddingLeft: "1.5rem",
+            "&:hover": {
+                cursor: "pointer",
+            },
+            "& .MuiButtonBase-root.Mui-disabled": {
+                cursor: "no-drop !important",
+            },
+            // padding: 0,
+        },
+        selected: {
+            backgroundColor: `${theme.colors.darkBlack}`,
+            color: `${theme.colors.pureWhite}`,
         },
     })
 );
@@ -31,10 +63,41 @@ interface IProps {
     currentPage?: number;
     handleChange?: (event: ChangeEvent<any>, value: any) => void;
 }
-
 export const AppPagination = (props: IProps) => {
     const { totalPage, showPerpage, currentPage, handleChange } = props;
     const classes = useStyles();
+    const itemRender = ({ ...props }) => {
+        // console.log(props);
+        if (props.type === "previous") {
+            return (
+                <Button
+                    variant="contained"
+                    size="medium"
+                    onClick={props.onClick}
+                    className={classes.btnPrev}
+                    // disableRipple
+                    disableElevation
+                    disabled={props.disabled}
+                    // className={classes.button}
+                    startIcon={<IconPrevPagination />}
+                />
+            );
+        }
+        if (props.type === "next") {
+            return (
+                <Button
+                    variant="contained"
+                    size="medium"
+                    onClick={props.onClick}
+                    disableElevation
+                    disabled={props.disabled}
+                    className={classes.btnPrev}
+                    startIcon={<IconNextPagination />}
+                />
+            );
+        }
+        return <PaginationItem {...props} />;
+    };
     return (
         <StyledAppPagination>
             {Number(totalPage) > 0 ? (
@@ -52,12 +115,18 @@ export const AppPagination = (props: IProps) => {
                             )}
                             <div className="paginationWrapper">
                                 <div className={classes.root}>
+                                    {/* <PaginationItem /> */}
                                     <Pagination
                                         classes={{ ul: classes.ul }}
                                         count={totalPage}
                                         page={currentPage}
                                         onChange={handleChange}
                                         variant="outlined"
+                                        renderItem={itemRender}
+                                        siblingCount={2}
+                                        // boundaryCount={4}
+                                        boundaryCount={4}
+                                        // renderItem={(item) => <HanldePaginationItem {...item} />}
                                     />
                                 </div>
                             </div>

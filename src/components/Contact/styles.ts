@@ -28,6 +28,12 @@ export const StyledComponentContactForm = styled.div`
             font-size: 1.4rem;
             padding-left: 0.5rem;
         }
+        .MuiOutlinedInput-root {
+            border-color: transparent;
+        }
+        .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+            border: none;
+        }
         &__input {
             padding-top: 2.6rem;
         }

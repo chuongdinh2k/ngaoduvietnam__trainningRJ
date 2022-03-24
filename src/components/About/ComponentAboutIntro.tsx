@@ -152,7 +152,7 @@ const StyledComponentAboutIntroduce = styled.div`
         width: 100%;
         height: 46.3rem;
         @media (min-width: 2000px) {
-            height: 63rem;
+            height: 70rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding-top: 5rem;

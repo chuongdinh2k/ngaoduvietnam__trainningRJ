@@ -5,6 +5,7 @@ import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 import { ISideBarRoute, navRoutes } from "..";
 import { authRoutesEnum } from "@enums";
@@ -50,7 +51,18 @@ export const ComponentDrawserNav = (props: IProps) => {
             role="presentation"
         >
             <StyledListMenu>
+                <span className="icon__cancel">
+                    <CancelIcon
+                        fontSize="large"
+                        onClick={() => handleToggleDrawswer(anchor, false)}
+                    />
+                </span>
                 <List className={classes.wrapList}>
+                    <ListItem className="list__item">
+                        <a className="logo">
+                            <span className="hightLight">Ngao</span>duvietnam
+                        </a>
+                    </ListItem>
                     {navRoutes.map((route: ISideBarRoute, index: number) => (
                         <ListItem button key={index} className="list">
                             <ListItemText className="list__item">
@@ -64,7 +76,8 @@ export const ComponentDrawserNav = (props: IProps) => {
                         <ListItemText className="list__item">
                             {!auth?.tokenInfoAuth ? (
                                 <NavLink className="list__item-text" to={`${authRoutesEnum.LOGIN}`}>
-                                    {PAGE_LOGIN}
+                                    <span> {PAGE_LOGIN}</span>
+                                    <span></span>
                                 </NavLink>
                             ) : (
                                 <a
@@ -102,6 +115,16 @@ const StyledComponentDrawserNav = styled.div`
     }
 `;
 const StyledListMenu = styled.div`
+    position: relative;
+    .icon__cancel {
+        position: absolute;
+        left: 0;
+        z-index: 99;
+        .MuiSvgIcon-root {
+            width: 2em;
+            height: 1.5em;
+        }
+    }
     .list {
         padding: 0;
         &__item {
@@ -113,9 +136,9 @@ const StyledListMenu = styled.div`
                 display: block;
                 width: 25rem;
                 padding: 0.5rem 0;
-                padding-left: 1rem;
-                font-size: 2.6rem;
-                text-align: center;
+                padding-left: 2rem;
+                font-size: 2rem;
+                text-align: left;
                 text-decoration: none;
                 color: ${(p) => p.theme.colors.darkBlack};
             }
@@ -125,6 +148,15 @@ const StyledListMenu = styled.div`
             .active {
                 color: ${(p) => p.theme.colors.pureWhite}!important;
                 background-color: ${(p) => p.theme.colors.orange};
+            }
+            .logo {
+                text-align: center;
+                font-style: italic;
+                font-size: 2rem;
+            }
+            .hightLight {
+                color: ${(p) => p.theme.colors.orange};
+                font-weight: 700;
             }
         }
     }

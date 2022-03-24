@@ -2,6 +2,7 @@ import background_header_hotels from "@assets/background__header_hotel.png";
 import background_header from "@assets/banner.png";
 // WHAT: component's dimension
 export const HEADER_HEIGHT = "13.2rem";
+export const WEB_TILE = "Ngaoduvietnam";
 // WHAT: define background
 export const BACKGROUND_WRAPHEADER = background_header;
 export const BACKGROUND_WRAPHEADER_HOTELS = background_header_hotels;

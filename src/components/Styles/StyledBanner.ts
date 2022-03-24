@@ -46,6 +46,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
             font-size: 16px;
             font-family: ${(p) => p.theme.typography.fontFamily};
+            /*  Animation decalaration   */
+            animation-name: moveInleft;
+            animation-duration: 3s;
             @media (min-width: 2000px) {
                 font-size: 5rem;
             }
@@ -60,6 +63,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
             color: ${(p) => p.theme.colors.pureWhite};
             font-family: ${(p) => p.theme.typography.fontFamily};
             font-weight: ${(p) => p.theme.typography.fontWeightMedium};
+            /*  Animation decalaration   */
+            animation-name: moveInRight;
+            animation-duration: 3s;
             @media (min-width: 2000px) {
                 font-size: 8rem;
             }
@@ -89,6 +95,38 @@ export const StyledBanner = styled.div<IStyledBanner>`
                     p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT
                         ? `center`
                         : `left`};
+            }
+        }
+        @keyframes moveInleft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+                @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                    transform: translateX(-50px);
+                }
+            }
+
+            80% {
+                transform: translateX(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0);
+            }
+        }
+        @keyframes moveInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+
+            80% {
+                transform: translateX(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0);
             }
         }
     }

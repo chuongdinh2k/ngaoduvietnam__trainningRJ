@@ -5,3 +5,4 @@ export * from "./StyledBanner";
 export * from "./StyledWrapContent";
 export * from "./StyledBanner";
 export * from "./StyledWrapperTitleComponent";
+export * from "./StyledCustomViewImage";

@@ -81,7 +81,7 @@ const StyledComponentHomeContact = styled.div`
         font-family: ${(p) => p.theme.typography.fontFamily};
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            font-size: 2.5rem;
+            font-size: 2rem;
             width: 100%;
         }
     }

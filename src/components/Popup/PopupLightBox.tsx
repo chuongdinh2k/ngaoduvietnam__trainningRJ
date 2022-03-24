@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
 import { useAppSelector, selectApp, resetPopUpLightBox } from "@redux";
+import { IconArrowRight, IconArrowLeft } from "..";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -38,6 +39,8 @@ export const PopupLightBox = () => {
     const settings = {
         dots: true,
         // infinite: true,
+        nextArrow: <CustomNextArrow />,
+        prevArrow: <CustomPrevArrow />,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -74,6 +77,24 @@ export const PopupLightBox = () => {
         </div>
     );
 };
+// WHAT: custome icon arrow function next
+function CustomNextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+            <IconArrowRight />
+        </div>
+    );
+}
+// WHAT: custome icon arrow function next
+function CustomPrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+            <IconArrowLeft />
+        </div>
+    );
+}
 const StyledSliderPopup = styled.div`
     /* width: 90vh; */
     /* height: 80vh; */
@@ -125,14 +146,22 @@ const StyledSliderPopup = styled.div`
             font-size: 2.4rem;
         }
     }
+    .slick-prev,
+    .slick-next {
+        top: 40%;
+    }
     .slick-prev {
-        left: 0;
+        left: 2rem;
     }
     .slick-next {
-        right: 3rem;
+        right: 2rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             right: 0;
         }
+    }
+    .slick-prev:before,
+    .slick-next:before {
+        color: transparent;
     }
     /* .slick-dots {
         display: none !important;

@@ -24,3 +24,8 @@ export * from "./IconDownload";
 export * from "./IconHome";
 export * from "./IconCamera";
 export * from "./styles";
+export * from "./IconArrowRight";
+export * from "./IconArrowLeft";
+export * from "./IconLeftArrow";
+export * from "./IconPrevPagination";
+export * from "./IconNextPagination";

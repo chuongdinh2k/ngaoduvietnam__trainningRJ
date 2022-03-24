@@ -45,9 +45,9 @@ const StyledComponentListTourLists = styled.div`
             padding-top: 2rem;
         }
         .cardWrapper {
-            padding: 0;
-            /* @media (min-width: 2000px) {
-            } */
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                padding: 0;
+            }
         }
     }
     .notFound {
