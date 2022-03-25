@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const StyledContentAuth = styled.div`
+    /* @media (min-width: 2000px) {
+        * {
+            font-size: 100% !important;
+        }
+    } */
     .withOutBG {
         color: ${(p) => p.theme.colors.orange} !important;
         background-color: ${(p) => p.theme.colors.pureWhite};

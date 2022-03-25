@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { Formik } from "formik";
 import { Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
@@ -18,7 +18,7 @@ export const Login = () => {
     const auth = useAppSelector(selectAuth);
     const dispatch = useDispatch();
     const history = useHistory();
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (auth.tokenInfoAuth) {
             history.goBack();
         }

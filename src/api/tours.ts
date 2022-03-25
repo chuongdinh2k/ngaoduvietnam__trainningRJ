@@ -11,7 +11,7 @@ interface IPagination {
 
 export const toursApi = {
     getListTours: (pagination?: IPagination) => {
-        const url = `https://ngaoduvietnam2.herokuapp.com/api/tours/list?page=${pagination?.page}&limit=${pagination?.limit}`;
+        const url = `${process.env.REACT_API_HEROKU}/tours/list?page=${pagination?.page}&limit=${pagination?.limit}`;
         return axiosClient.get(url);
     },
     getListFilterTours: (pagination?: IPagination, filter?: IFilterCondition) => {

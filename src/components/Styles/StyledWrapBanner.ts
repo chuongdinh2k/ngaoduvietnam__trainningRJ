@@ -62,8 +62,8 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         padding: 2.6rem 16.5rem 0 16.5rem;
         .featured {
             /* left: 0; */
-            width: 71%;
-            max-width: 75%;
+            width: 81%;
+            /* max-width: 75%; */
             padding: 2.6rem 2rem 0 16rem;
             font-size: 2.2rem;
             &__title {
@@ -79,7 +79,7 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
         }
         .filter {
             right: 0;
-            width: 40%;
+            width: 30%;
             bottom: -0.5rem;
             .MuiTabs-flexContainer {
                 justify-content: space-between;
@@ -94,11 +94,11 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     @media (min-width: 3500px) {
         height: 60vh;
         .featured {
-            width: 80%;
+            width: 85%;
         }
         .filter {
             bottom: -0.5rem;
-            width: 30%;
+            width: 20%;
         }
     }
     @media (max-width: 992px) {

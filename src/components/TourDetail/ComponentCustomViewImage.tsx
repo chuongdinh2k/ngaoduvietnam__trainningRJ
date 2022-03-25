@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import Slider from "react-slick";
 
 import { IconFlagMark } from "..";
@@ -16,8 +17,9 @@ export const ComponentCustomViewImage = (props: IProps) => {
     // hooks
     const dispatch = useDispatch();
     const { listTourImages, listHotelImages, viewRoomImages } = props;
+    const sliderRef = useRef<any>();
     const settings = {
-        customPaging: function (i: number) {
+        customPaging: function (i: any) {
             return (
                 <div className="wrapDot">
                     {/* WHAT: render list tour images */}
@@ -45,6 +47,7 @@ export const ComponentCustomViewImage = (props: IProps) => {
                     {/* WHAT: render list hotel images */}
                     {listHotelImages && (
                         <div
+                            onMouseOver={() => handleGotoSlider(sliderRef, i)}
                             className="wrapDot__layer"
                             onClick={() => dispatch(setPopUpLightBox(listHotelImages))}
                         >
@@ -91,7 +94,7 @@ export const ComponentCustomViewImage = (props: IProps) => {
             numberHotel={listHotelImages && listHotelImages.length - 4}
         >
             <div className="wrapper">
-                <Slider {...settings}>
+                <Slider {...settings} ref={sliderRef}>
                     {listTourImages &&
                         sliceArray(listTourImages, 0, 4)?.map((img, index) => (
                             <div key={index} className="wrapper__image">
@@ -134,6 +137,10 @@ function CustomNextArrow(props: any) {
             <IconArrowRight />
         </div>
     );
+}
+// WHAT: hover to move Slide
+function handleGotoSlider(sliderRef: any, i: number) {
+    sliderRef.current.slickGoTo(i);
 }
 // WHAT: custome icon arrow function next
 function CustomPrevArrow(props: any) {

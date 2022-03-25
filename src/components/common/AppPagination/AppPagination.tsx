@@ -67,7 +67,6 @@ export const AppPagination = (props: IProps) => {
     const { totalPage, showPerpage, currentPage, handleChange } = props;
     const classes = useStyles();
     const itemRender = ({ ...props }) => {
-        // console.log(props);
         if (props.type === "previous") {
             return (
                 <Button
