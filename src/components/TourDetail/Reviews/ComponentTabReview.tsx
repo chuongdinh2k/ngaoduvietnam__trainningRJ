@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-import { IComment, IReviews, IHotelComment, IHotel } from "@types";
+import { IComment, IHotelComment, IHotel, IDataTour } from "@types";
 import { ComponentShowRating, ComponentCommentBox, ComponentUserComment } from ".";
 import { selectAuth, useAppSelector } from "@redux";
 import { useHistory } from "react-router-dom";
@@ -9,22 +9,23 @@ import { authRoutesEnum } from "@enums";
 import { convertRating } from "@utils";
 
 interface IProps {
-    tourReviews?: IReviews;
+    dataTour?: IDataTour;
     tourComment?: IComment[];
     hotelComment?: IHotelComment[];
     dataHotel?: IHotel;
-    handleSubmitReviewTour?: (value: any) => Promise<void>;
+    handleSubmitReviewTour?: (values: any) => void;
     handleSubmitReviewHotel?: (values: any) => void;
 }
 export const ComponentTabReview = (props: IProps) => {
     const {
-        tourReviews,
+        dataTour,
         handleSubmitReviewHotel,
         tourComment,
         dataHotel,
         hotelComment,
         handleSubmitReviewTour,
     } = props;
+
     // redux
     const auth = useAppSelector(selectAuth);
     // hook
@@ -34,14 +35,14 @@ export const ComponentTabReview = (props: IProps) => {
     return (
         <StyledComponentTabReview>
             {/* tour review element */}
-            {tourReviews && (
+            {dataTour && (
                 <ComponentShowRating
-                    number={tourReviews?.number}
-                    average={tourReviews?.average}
-                    listStars={tourReviews?.listStars}
+                    number={dataTour?.numberReviews}
+                    average={dataTour?.average}
+                    listStars={dataTour?.listStars}
                 />
             )}
-            {tourReviews && (
+            {dataTour && (
                 <>
                     {auth?.tokenInfoAuth ? (
                         <ComponentCommentBox handleSubmit={handleSubmitReviewTour} />

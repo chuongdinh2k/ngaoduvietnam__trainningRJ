@@ -1,4 +1,4 @@
-import { ICard } from ".";
+import { ICard, IUser } from ".";
 
 export interface ILocation {
     duration?: string;
@@ -59,14 +59,14 @@ export interface IListStar {
 }
 
 export interface IComment {
-    userId?: string;
-    avatar?: string;
-    rating?: number;
-    username?: string;
+    user?: IUser;
     title?: string;
     time?: string;
     comment?: string;
+    rating?: number;
     status?: string;
+    updatedAt?: string;
+    createdAt?: string;
 }
 export interface IReviews {
     number?: number;
@@ -83,18 +83,21 @@ export interface IRelated {
 
 export interface IDataTour {
     createdAt?: string;
-    id?: string;
+    _id?: string;
     title?: string;
     location?: string;
     rating?: number;
     duration?: string;
     typeOfTour?: string;
     price?: number;
-    listImage?: Array<string>;
+    listImages?: Array<string>;
     discription?: IDiscription;
     additionalInfo?: IAdditionalInfo;
-    reviews?: IReviews;
-    related?: IRelated;
-    comments?: Array<IComment>;
+    // reviews?: IReviews;
+    reviews?: Array<IComment>;
+    relateTours?: IRelated;
     image?: string;
+    numberReviews?: number;
+    average?: number;
+    listStars?: IListStar[];
 }

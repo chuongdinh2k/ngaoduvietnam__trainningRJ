@@ -6,12 +6,14 @@ import tourReducer from "./tours";
 import authReducer from "./auth";
 import hotelReducer from "./hotels";
 import hotelDetail from "./hotelDetail";
+import tourDetail from "./tourDetail";
 
 export * from "./hotels";
 export * from "./app";
 export * from "./tours";
 export * from "./auth";
 export * from "./hotelDetail";
+export * from "./tourDetail";
 
 const productReducer = combineReducers({
     app: appReducer,
@@ -19,6 +21,7 @@ const productReducer = combineReducers({
     tours: tourReducer,
     hotels: hotelReducer,
     detailHotel: hotelDetail,
+    detailTour: tourDetail,
 });
 
 export type RootState = ReturnType<typeof productReducer>;

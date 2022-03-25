@@ -17,7 +17,11 @@ export const ComponentUserComment = (props: IProps) => {
         <StyledComponentUserComment>
             <div className="wrapperUserComment">
                 <div className="user__info">
-                    {commentTour && <Avatar src={commentTour?.avatar} />}
+                    {commentTour && (
+                        <Avatar src={commentTour?.user?.picture}>
+                            {getFirstLetter(commentTour?.user?.lastName)}
+                        </Avatar>
+                    )}
                     {commentHotel && (
                         <Avatar src={commentHotel?.user?.picture}>
                             {getFirstLetter(commentHotel?.user?.lastName)}
@@ -39,14 +43,17 @@ export const ComponentUserComment = (props: IProps) => {
                             {commentTour?.title} {commentHotel?.title}
                         </p>
                         <p className="user__info-time">
-                            <span>
-                                {commentTour?.username}
-                                {commentHotel?.user?.lastName}
-                            </span>
+                            {commentTour?.user?.lastName && (
+                                <span>{commentTour?.user?.lastName}</span>
+                            )}
+                            {commentHotel?.user?.lastName && (
+                                <span>{commentHotel?.user?.lastName}</span>
+                            )}
+
                             <span className="user__info-spacing">-</span>
                             <span className="user__info-date">
-                                {/* {fomatToShowDate(commentHotel?.time as string)} */}
-                                {fomatToShowDate(commentHotel?.updatedAt as string)}
+                                {commentTour && fomatToShowDate(commentTour?.updatedAt as string)}
+                                {commentHotel && fomatToShowDate(commentHotel?.updatedAt as string)}
                             </span>
                         </p>
                     </div>

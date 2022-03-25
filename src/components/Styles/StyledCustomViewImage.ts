@@ -98,7 +98,7 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     font-size: 1.4rem;
                     font-weight: 700;
                     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                        padding-left: 0;
+                        padding-left: 0.2rem;
                     }
                 }
                 &__layer {

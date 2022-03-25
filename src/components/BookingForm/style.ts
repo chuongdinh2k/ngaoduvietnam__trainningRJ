@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const StyledBookingForm = styled.div`
     .wrapper {
         background-color: ${(p) => p.theme.colors.backgroundGray};
+        padding: 2rem 2.5rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-            margin-top: 3rem;
-            margin-bottom: 3rem;
+            padding: 0 3rem;
         }
     }
     .showMoney {
-        padding: 3rem;
+        padding: 2rem 0;
         border-bottom: 1px solid ${(p) => p.theme.colors.gray2};
         font-size: ${(p) => p.theme.typography.fontSize}px;
         &__title {
@@ -19,17 +19,18 @@ export const StyledBookingForm = styled.div`
             padding-left: 0.8rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding: 1rem 3rem;
+            padding: 1rem 0;
         }
     }
     .content {
-        padding: 2.3rem 3rem 0 3rem;
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+        padding-top: 2.3rem;
+        padding-bottom: 2.3rem;
+        /* @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             &__left,
             &__right {
                 display: flex;
             }
-        }
+        } */
         &__title {
             display: flex;
             flex-direction: row;
@@ -54,8 +55,8 @@ export const StyledBookingForm = styled.div`
             font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         }
         &__addOn {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
             font-weight: 700;
             font-size: 1.6rem;
             color: ${(p) => p.theme.colors.darkBlack};
@@ -93,17 +94,21 @@ export const StyledBookingForm = styled.div`
         }
     }
     .total {
-        padding: 0 3rem;
+        padding: 0 0 1.6rem 0;
         display: flex;
         justify-content: space-between;
         font-size: 2rem;
         font-weight: 700;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-bottom: 0;
+        }
     }
     .wrapperBtn {
-        padding: 2rem 3rem 3rem 3rem;
+        padding: 1.2rem 0 1.6rem 0;
         .btn {
             width: 100%;
             padding: 2.1rem;
+            font-weight: 700;
             background-color: ${(p) => p.theme.colors.orange};
             color: ${(p) => p.theme.colors.pureWhite};
             border-color: transparent;
@@ -114,17 +119,20 @@ export const StyledBookingForm = styled.div`
         }
     }
     .form__group {
-        padding: 1.2rem 2rem 1.6rem 2rem;
+        padding: 1.2rem 0 1.6rem 0;
         /* .MuiInputBase-input {
             padding: 9px 0 7px;
         } */
         &-select {
             .MuiInputBase-input {
                 padding: 11px 0 7px;
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    padding: 8px 0 7px;
+                }
             }
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding: 0 3rem;
+            padding: 0;
         }
         &-input {
             margin-bottom: 2rem;

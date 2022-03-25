@@ -3,33 +3,26 @@ import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
 import { BookingForm } from "..";
-import {
-    ComponentDetailInfor,
-    ComponentCustomViewImage,
-    ComponentDetailTab,
-    ComponentRelated,
-} from ".";
-import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
-import { TourTabs, HotelTabs, dataTourDetail } from "@demos";
-import { selectDetailHotel, useAppSelector } from "@redux";
+import { ComponentDetailInfor, ComponentCustomViewImage, ComponentDetailTab } from ".";
+import { IDataTour, IHotel } from "@types";
+import { TourTabs, HotelTabs } from "@demos";
+import { selectDetailHotel, useAppSelector, selectDetailTour } from "@redux";
 
 interface IProps {
     dataTour?: IDataTour;
     dataHotel?: IHotel;
-    tourComment?: IComment[];
-    hotelComment?: IHotelComment[];
     currentPage?: number;
-    handleSubmitReviewTour?: (value: any) => Promise<void>;
+    handleSubmitReviewTour?: (values: any) => void;
     handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
     handleSubmitReviewHotel?: (values: any) => void;
 }
 export const ComponentDetailContent = (props: IProps) => {
     const hotelDetail = useAppSelector(selectDetailHotel);
+    const tourDetail = useAppSelector(selectDetailTour);
     // props
     const {
         dataTour,
         dataHotel,
-        tourComment,
         currentPage,
         handleSubmitReviewTour,
         handleChangeReviewPage,
@@ -37,14 +30,14 @@ export const ComponentDetailContent = (props: IProps) => {
     } = props;
     // componet variable
     const tabs = dataTour ? TourTabs : HotelTabs;
-    const inforTour = {
-        id: dataTour?.id,
-        title: dataTour?.title,
-        location: dataTour?.location,
-        rating: dataTour?.rating,
-        duration: dataTour?.duration,
-        typeOfTour: dataTour?.typeOfTour,
-    };
+    // const inforTour = {
+    //     id: dataTour?._id,
+    //     title: dataTour?.title,
+    //     location: dataTour?.location,
+    //     rating: dataTour?.rating,
+    //     duration: dataTour?.duration,
+    //     typeOfTour: dataTour?.typeOfTour,
+    // };
     // const inforHotel = {
     //     _id: dataHotel?._id,
     //     title: dataHotel?.title,
@@ -57,7 +50,7 @@ export const ComponentDetailContent = (props: IProps) => {
         <StyledComponentTourDetailContent>
             <Grid container>
                 <Grid item xs={12} md={8}>
-                    <ComponentDetailInfor inforTour={inforTour} inforHotel={dataHotel} />
+                    <ComponentDetailInfor inforTour={dataTour} inforHotel={dataHotel} />
                 </Grid>
                 <Grid item xs={12} md={4}></Grid>
             </Grid>
@@ -66,13 +59,11 @@ export const ComponentDetailContent = (props: IProps) => {
                     <div className="wrapper__left">
                         {dataTour && (
                             <>
-                                <ComponentCustomViewImage
-                                    listTourImages={dataTourDetail?.listImage}
-                                />
+                                <ComponentCustomViewImage listTourImages={dataTour?.listImages} />
                                 <ComponentDetailTab
                                     tabs={tabs}
-                                    tourComment={tourComment}
-                                    dataTour={dataTour}
+                                    tourComment={tourDetail?.tour?.reviews}
+                                    dataTour={tourDetail?.tour}
                                     handleSubmitReviewTour={handleSubmitReviewTour}
                                     handleChangeReviewPage={handleChangeReviewPage}
                                     currentPage={currentPage}
@@ -98,7 +89,6 @@ export const ComponentDetailContent = (props: IProps) => {
                     <BookingForm dataHotel={dataHotel} dataTour={dataTour} />
                 </Grid>
             </Grid>
-            {dataTour && <ComponentRelated relatedTour={dataTour?.related} />}
             {/* {dataHotel && <ComponentRelated relatedHotel={dataHotel?.relatedHotels} />} */}
         </StyledComponentTourDetailContent>
     );

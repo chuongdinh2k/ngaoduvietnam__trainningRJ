@@ -13,12 +13,14 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListTours, setLoading } from "@redux";
+import { getListTours, setLoading, useAppSelector, selectTour } from "@redux";
 import { INFINITY_MAX, LIMIT_RECORD_6 } from "@configs";
 import { debounce } from "lodash";
 import { toursApi } from "@api";
 
 export const ListTour = () => {
+    // redux store
+    const tours = useAppSelector(selectTour);
     // get params of url
     const parsed = qs.parse(location.search);
     // hooks
@@ -40,7 +42,7 @@ export const ListTour = () => {
             },
             { location: userQuery }
         );
-        setData(res.data);
+        setData(res.data.tours);
         setLoadingDebounce(false);
     };
     const delayedQuery = useCallback(debounce(updateQuery, 500), [userQuery]);
@@ -85,7 +87,7 @@ export const ListTour = () => {
                     <ComponentBreadscrumb />
                     <ComponentListTourContent />
                     <AppPagination
-                        totalPage={5}
+                        totalPage={tours?.totalPage}
                         showPerpage
                         currentPage={page}
                         handleChange={handleChange}

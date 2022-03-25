@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 import { IDataTour } from "@types";
 import { toursApi } from "@api";
@@ -15,9 +17,23 @@ interface IValues {
     pagination?: IPagination;
     filter?: IFilter;
 }
+
+export interface MyError {
+    message: unknown;
+}
+
 export const getListTours = createAsyncThunk("tours/getList", async (pagination: IPagination) => {
-    const res = await toursApi.getListTours(pagination);
-    return res.data;
+    try {
+        const res = await toursApi.getListTours(pagination);
+        return res.data;
+    } catch (error) {
+        if (axios.isAxiosError(error) && error.response) {
+            const errorMessage =
+                (error?.response?.data as MyError).message || error.message || "There was an error";
+            toast.error(errorMessage as string);
+            throw new Error(errorMessage as string);
+        }
+    }
 });
 
 export const getListFilterTours = createAsyncThunk(
@@ -30,6 +46,8 @@ export const getListFilterTours = createAsyncThunk(
 interface IState {
     dataToursList: Array<IDataTour>;
     loading?: boolean;
+    currentPage?: number;
+    totalPage?: number;
 }
 
 const initialState: IState = {
@@ -47,7 +65,8 @@ const tourSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(getListTours.fulfilled, (state, action: { payload: any }) => {
-            state.dataToursList = action.payload;
+            state.dataToursList = action.payload.tours;
+            state.totalPage = action.payload.pages;
             state.loading = false;
         });
         builder.addCase(getListTours.rejected, (state) => {

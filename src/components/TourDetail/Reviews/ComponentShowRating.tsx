@@ -11,7 +11,7 @@ interface IProps {
     listStars?: Array<IListStar>;
 }
 export const ComponentShowRating = (props: IProps) => {
-    const { number, average, listStars } = props;
+    const { number, average = 0, listStars } = props;
     return (
         <StyledComponentTabReview>
             <div className="wrapperRating">

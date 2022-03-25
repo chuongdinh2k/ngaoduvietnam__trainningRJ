@@ -29,6 +29,7 @@ export const BookingForm = (props: IProps) => {
     const [standardRoom, setStandardRoom] = React.useState<number>(0);
     const [familySuite, setFamilySuite] = React.useState<number>(0);
     const [breakFast, setBreakFast] = React.useState<number>(0);
+    const [extraBed, setExtraBed] = React.useState<number>(0);
     const [duration, setDuration] = React.useState<string>("");
     const handleOnChange = (e: any) => {
         setDuration(e);
@@ -121,17 +122,6 @@ export const BookingForm = (props: IProps) => {
                                                         disableRipple
                                                         color="primary"
                                                         component="span"
-                                                        onClick={() =>
-                                                            setStandardRoom(standardRoom + 1)
-                                                        }
-                                                    >
-                                                        <AddIcon />
-                                                    </IconButton>
-                                                    <span>{standardRoom}</span>
-                                                    <IconButton
-                                                        disableRipple
-                                                        color="primary"
-                                                        component="span"
                                                         onClick={() => {
                                                             standardRoom > 0
                                                                 ? setStandardRoom(standardRoom - 1)
@@ -139,6 +129,17 @@ export const BookingForm = (props: IProps) => {
                                                         }}
                                                     >
                                                         <RemoveIcon />
+                                                    </IconButton>
+                                                    <span>{standardRoom}</span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() =>
+                                                            setStandardRoom(standardRoom + 1)
+                                                        }
+                                                    >
+                                                        <AddIcon />
                                                     </IconButton>
                                                 </span>
                                                 <span className="content__option-price">
@@ -154,17 +155,6 @@ export const BookingForm = (props: IProps) => {
                                                         disableRipple
                                                         color="primary"
                                                         component="span"
-                                                        onClick={() =>
-                                                            setFamilySuite(familySuite + 1)
-                                                        }
-                                                    >
-                                                        <AddIcon />
-                                                    </IconButton>
-                                                    <span>{familySuite}</span>
-                                                    <IconButton
-                                                        disableRipple
-                                                        color="primary"
-                                                        component="span"
                                                         onClick={() => {
                                                             familySuite > 0
                                                                 ? setFamilySuite(familySuite - 1)
@@ -172,6 +162,18 @@ export const BookingForm = (props: IProps) => {
                                                         }}
                                                     >
                                                         <RemoveIcon />
+                                                    </IconButton>
+
+                                                    <span>{familySuite}</span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() =>
+                                                            setFamilySuite(familySuite + 1)
+                                                        }
+                                                    >
+                                                        <AddIcon />
                                                     </IconButton>
                                                 </span>
                                                 <span className="content__option-price">
@@ -190,15 +192,6 @@ export const BookingForm = (props: IProps) => {
                                                         disableRipple
                                                         color="primary"
                                                         component="span"
-                                                        onClick={() => setBreakFast(breakFast + 1)}
-                                                    >
-                                                        <AddIcon />
-                                                    </IconButton>
-                                                    <span>{breakFast}</span>
-                                                    <IconButton
-                                                        disableRipple
-                                                        color="primary"
-                                                        component="span"
                                                         onClick={() => {
                                                             breakFast > 0
                                                                 ? setBreakFast(breakFast - 1)
@@ -207,12 +200,54 @@ export const BookingForm = (props: IProps) => {
                                                     >
                                                         <RemoveIcon />
                                                     </IconButton>
+                                                    <span>{breakFast}</span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() => setBreakFast(breakFast + 1)}
+                                                    >
+                                                        <AddIcon />
+                                                    </IconButton>
                                                 </span>
                                                 <span className="content__option-price">
                                                     {" "}
                                                     ${convertCurrency(breakFast * 24)}
                                                 </span>
                                             </div>
+                                            <div className="content__option">
+                                                <span className="content__option-title">
+                                                    Extra Bed
+                                                </span>
+                                                <span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() => {
+                                                            extraBed > 0
+                                                                ? setExtraBed(extraBed - 1)
+                                                                : extraBed;
+                                                        }}
+                                                    >
+                                                        <RemoveIcon />
+                                                    </IconButton>
+                                                    <span>{extraBed}</span>
+                                                    <IconButton
+                                                        disableRipple
+                                                        color="primary"
+                                                        component="span"
+                                                        onClick={() => setExtraBed(extraBed + 1)}
+                                                    >
+                                                        <AddIcon />
+                                                    </IconButton>
+                                                </span>
+                                                <span className="content__option-price">
+                                                    {" "}
+                                                    ${convertCurrency(extraBed * 24)}
+                                                </span>
+                                            </div>
+                                            <Divider />
                                         </>
                                     )}
                                 </div>

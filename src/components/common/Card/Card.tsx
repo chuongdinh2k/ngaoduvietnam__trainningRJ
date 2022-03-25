@@ -16,7 +16,7 @@ export const Card = (props: IProps) => {
             {/* WHAT: render card with specific type */}
             {typeCardIcon === true ? (
                 <StyledCardWithIcon>
-                    <div className="cardWrapper" onClick={() => onClick && onClick(data?.id)}>
+                    <div className="cardWrapper" onClick={() => onClick && onClick(data?._id)}>
                         <div className="imageWrapper">
                             {/* {data?.listImage && (
                                 <img className="image" src={data && data?.listImage[0]} />

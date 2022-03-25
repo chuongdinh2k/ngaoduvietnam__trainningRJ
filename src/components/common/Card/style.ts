@@ -175,12 +175,18 @@ export const StyledCardWithIcon = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             flex-direction: column;
         }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            flex-direction: row;
+        }
     }
     .money {
         font-size: ${(p) => p.theme.typography.fontSize}px;
         line-height: 2;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding-top: 1rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-top: 0;
         }
     }
     .money__value {

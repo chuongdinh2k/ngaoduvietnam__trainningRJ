@@ -1,9 +1,10 @@
 import { Avatar, TextField } from "@material-ui/core";
 import styled from "styled-components";
+import { ErrorMessage, Formik } from "formik";
 
-import { Formik } from "formik";
 import { formSchemaComment, getFirstLetter } from "@utils";
 import { useAppSelector, selectAuth } from "@redux";
+import { Error } from "@components";
 
 interface IProps {
     handleSubmit?: (values: any) => void;
@@ -49,7 +50,9 @@ export const ComponentCommentBox = (props: IProps) => {
                                         value={values.comment}
                                         onChange={handleChange("comment")}
                                     />
-                                    {errors.comment && <p className="error">{errors.comment}</p>}
+                                    {errors.comment && (
+                                        <ErrorMessage name="comment" component={Error} />
+                                    )}
                                     <div className="comment__wrapBtn">
                                         <button
                                             className="comment__btn"

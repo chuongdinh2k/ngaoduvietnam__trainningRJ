@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import { getRelatedArray } from "@utils";
-import { IHotel, IRelated } from "@types";
+import { IHotel, IDataTour } from "@types";
 import { Card, HotelCard } from "..";
 
 interface IProps {
-    relatedTour?: IRelated;
+    relatedTour?: Array<IDataTour>;
     relatedHotel?: Array<IHotel>;
 }
 export const ComponentRelated = (props: IProps) => {
@@ -23,37 +23,46 @@ export const ComponentRelated = (props: IProps) => {
     };
     return (
         <StyledComponentRelated>
-            <h3 className="title">
-                {relatedTour?.title} {relatedHotel && `Recommend For You`}
-            </h3>
-            <Grid container spacing={4}>
-                {/*WHAT: show related tour */}
-                {getRelatedArray(relatedTour?.list, 3)?.map((item) => (
-                    <Grid key={item.id} item xs={12} sm={6} md={4}>
-                        <Card typeCardIcon data={item} onClick={handleViewTourDetail} />
-                    </Grid>
-                ))}
-                {/* WHAT: show related hotel */}
-                {getRelatedArray(relatedHotel, 3)?.map((item) => (
-                    <Grid key={item._id} item xs={12} sm={6} md={4}>
-                        <HotelCard data={item} onClick={handleViewHotelDetail} />
-                    </Grid>
-                ))}
-            </Grid>
+            <div className="wrapperRelated">
+                <h3 className="title">
+                    {relatedTour && `Recommend For You`} {relatedHotel && `Recommend For You`}
+                </h3>
+                <Grid container spacing={4}>
+                    {/*WHAT: show related tour */}
+                    {getRelatedArray(relatedTour, 3)?.map((item) => (
+                        <Grid key={item.id} item xs={12} sm={6} md={4}>
+                            <Card typeCardIcon data={item} onClick={handleViewTourDetail} />
+                        </Grid>
+                    ))}
+                    {/* WHAT: show related hotel */}
+                    {getRelatedArray(relatedHotel, 3)?.map((item) => (
+                        <Grid key={item._id} item xs={12} sm={6} md={4}>
+                            <HotelCard data={item} onClick={handleViewHotelDetail} />
+                        </Grid>
+                    ))}
+                </Grid>
+            </div>
         </StyledComponentRelated>
     );
 };
 const StyledComponentRelated = styled.div`
-    padding-bottom: 2rem;
-    .title {
-        font-size: 2.8rem;
-        font-weight: 600;
-        padding-bottom: 6rem;
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding-bottom: 2rem;
+    .wrapperRelated {
+        padding-top: 4rem;
+        padding-bottom: 8rem;
+        .cardWrapper {
+            padding: 0;
         }
-    }
-    @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-        padding-top: 2rem;
+        .title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            padding-bottom: 6rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                padding-bottom: 2rem;
+            }
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-top: 2rem;
+            padding-bottom: 4rem;
+        }
     }
 `;

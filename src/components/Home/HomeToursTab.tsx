@@ -51,7 +51,6 @@ export const HomeToursTab = (props: IProps) => {
     } = props;
     const ref = useRef(null);
     const [open, setOpen] = React.useState<boolean>(false);
-    // console.log("value: " + valueDebounce);
     useOutsideClick({ ref, setOpen });
     // hooks
     const dispatch = useDispatch();

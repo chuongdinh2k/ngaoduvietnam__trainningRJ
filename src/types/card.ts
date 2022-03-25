@@ -1,4 +1,5 @@
 export type ICard = {
+    _id?: any;
     id?: any;
     typeCardIcon?: boolean;
     subTitle?: string;

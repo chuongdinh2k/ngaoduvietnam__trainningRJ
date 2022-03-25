@@ -11,7 +11,7 @@ interface IInfor {
     duration?: string;
     typeOfTour?: string;
     star?: number;
-    reviewNumber?: number;
+    numberReviews?: number;
 }
 interface IProps {
     inforTour?: IInfor;
@@ -50,7 +50,8 @@ export const ComponentDetailInfor = (props: IProps) => {
                         )}
                     </div>
                     <span className="reviews__text">
-                        {`(${inforHotel?.numberReviews})`} reviews
+                        {inforHotel && `(${inforHotel?.numberReviews}) reviews`}
+                        {inforTour && `(${inforTour?.numberReviews}) reviews`}
                     </span>
                 </div>
             </div>

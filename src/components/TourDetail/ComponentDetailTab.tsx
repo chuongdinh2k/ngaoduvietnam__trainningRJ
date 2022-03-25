@@ -11,7 +11,7 @@ import { NUMBER_ZERO, NUMBER_ONE, NUMBER_TWO, PAGINATION_REVIEWS } from "@config
 import { IComment, IDataTour, IHotel, IHotelComment } from "@types";
 import { ComponentHotelDetailDescription, ComponentListRooms, AppPagination } from "..";
 import { dataTourDetail } from "@demos";
-import { useAppSelector, selectDetailHotel } from "@redux";
+import { useAppSelector, selectDetailHotel, selectDetailTour } from "@redux";
 import { handlePagination } from "@utils";
 
 interface TabPanelProps {
@@ -79,11 +79,11 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginTop: "16rem",
         backgroundColor: theme.colors.pureWhite,
         boxShadow: "none",
-        [theme.breakpoints.down("xs")]: {
-            marginTop: "10rem",
-        },
         [theme.breakpoints.down("sm")]: {
             marginTop: "12rem",
+        },
+        [theme.breakpoints.down("xs")]: {
+            marginTop: "8rem",
         },
     },
     activeTab: {
@@ -108,7 +108,7 @@ interface IProps {
     tourComment?: IComment[];
     hotelComment?: IHotelComment[];
     currentPage?: number;
-    handleSubmitReviewTour?: (value: any) => Promise<void>;
+    handleSubmitReviewTour?: (values: any) => void;
     handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
     handleSubmitReviewHotel?: (values: any) => void;
 }
@@ -118,21 +118,21 @@ export const ComponentDetailTab = (props: IProps) => {
         tabs,
         dataTour,
         dataHotel,
-        tourComment,
         handleSubmitReviewTour,
         handleChangeReviewPage,
         handleSubmitReviewHotel,
-        currentPage,
     } = props;
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const totalPageReviewHotel = (Number(dataHotel?.reviews?.length) / PAGINATION_REVIEWS).toFixed(
         0
     );
+    const totalPageReviewTour = (Number(dataTour?.reviews?.length) / PAGINATION_REVIEWS).toFixed(0);
     const handleChange = (event: React.ChangeEvent<Record<string, unknown>>, newValue: number) => {
         setValue(newValue);
     };
     const hotelDetail = useAppSelector(selectDetailHotel);
+    const tourDetail = useAppSelector(selectDetailTour);
     return (
         <div className={classes.root}>
             <AppBar className={classes.appBar} position="static">
@@ -191,14 +191,19 @@ export const ComponentDetailTab = (props: IProps) => {
                 {dataTour && (
                     <>
                         <ComponentTabReview
-                            tourReviews={dataTourDetail.reviews}
-                            tourComment={tourComment}
+                            dataTour={dataTour}
+                            // tourReviews={dataTour.reviews}
+                            tourComment={handlePagination(
+                                tourDetail?.tour?.reviews,
+                                Number(tourDetail?.pageReview),
+                                Number(PAGINATION_REVIEWS)
+                            )}
                             handleSubmitReviewTour={handleSubmitReviewTour}
                         />
                         <AppPagination
-                            totalPage={5}
+                            totalPage={Number(totalPageReviewTour)}
                             showPerpage={false}
-                            currentPage={currentPage}
+                            currentPage={tourDetail?.pageReview}
                             handleChange={handleChangeReviewPage}
                         />
                     </>

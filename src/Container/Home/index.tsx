@@ -21,6 +21,7 @@ import {
 // WHAT: fake data
 
 export const Home = () => {
+    console.log(process.env.REACT_APP_API_HEROKU);
     return (
         <>
             <Header hasColor={false} />
