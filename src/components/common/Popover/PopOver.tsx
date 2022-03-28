@@ -3,15 +3,16 @@ import { List, ListItem, Divider } from "@material-ui/core";
 import styled from "styled-components";
 import { ComponentLoader } from "..";
 import { ERROR_404_DATA } from "@configs";
+import { IDataTour } from "@types";
 
 interface IStyled {
     open: boolean;
 }
 interface IProps {
     open: boolean;
-    dataInputBounce?: any;
+    dataInputBounce?: Array<IDataTour>;
     loadingDebounce?: boolean;
-    onChangeDebounce?: (e: any) => void;
+    onChangeDebounce?: (e: string | undefined) => void;
 }
 
 export const ComponentPopOver = (props: IProps) => {
@@ -23,14 +24,14 @@ export const ComponentPopOver = (props: IProps) => {
                 <ComponentLoader />
             ) : (
                 <List component="nav">
-                    {dataInputBounce?.length > 0 ? (
-                        dataInputBounce?.map((item: any, index: number) => (
+                    {dataInputBounce && dataInputBounce?.length > 0 ? (
+                        dataInputBounce?.map((item: IDataTour, index: number) => (
                             <div key={index}>
                                 {/* <Divider /> */}
                                 <ListItem
                                     button
                                     onClick={() => {
-                                        onChangeDebounce?.(item.location);
+                                        onChangeDebounce?.(item?.location);
                                     }}
                                 >
                                     {item.location}

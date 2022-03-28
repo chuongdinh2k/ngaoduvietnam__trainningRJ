@@ -7,7 +7,7 @@ import { convertCurrency } from "@utils";
 interface IProps {
     data?: ICard;
     typeCardIcon?: boolean;
-    onClick?: (id: number | undefined) => void;
+    onClick?: (id: string | undefined) => void;
 }
 export const Card = (props: IProps) => {
     const { data, typeCardIcon, onClick } = props;

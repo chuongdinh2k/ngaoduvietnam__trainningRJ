@@ -5,7 +5,6 @@ import { Button } from "@material-ui/core";
 import { AppSelect, IconCalendar, GroupPeople, Flag } from "@components";
 import { IconSearch, AppInput, AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
-// import { formSchemaHomeFilter } from "@utils";
 import { groupOfPeople, TypeOfTour } from "@demos";
 import { getListSearchTours } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
@@ -86,7 +85,6 @@ export const HomeToursTab = (props: IProps) => {
                     resetForm({ values: initialValuesPackage });
                     setTime(null);
                 }}
-                // validationSchema={formSchemaHomeFilter}
             >
                 {({ handleSubmit, values, handleChange }) => {
                     return (
@@ -98,7 +96,6 @@ export const HomeToursTab = (props: IProps) => {
                             >
                                 <AppInput
                                     handleChange={(e) => onChangeDebounce?.(e.target.value)}
-                                    // handleChange={handleChange("location")}
                                     icon={<IconLocation size="large" />}
                                     name="location"
                                     placeholder="Enter Location"
@@ -196,15 +193,11 @@ const StyledHomeToursTab = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             margin-top: 0.8rem;
         }
-        /* @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            margin-top: 0.8rem;
-        } */
     }
     .appInput {
         position: relative;
     }
     .btn {
-        /* margin: 8px; */
         margin-top: 1.8rem;
         width: 100%;
         height: 5rem;

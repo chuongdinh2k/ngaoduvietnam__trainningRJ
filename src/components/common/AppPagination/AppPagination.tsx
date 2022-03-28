@@ -75,10 +75,8 @@ export const AppPagination = (props: IProps) => {
                     size="medium"
                     onClick={onClick}
                     className={classes.btnPrev}
-                    // disableRipple
                     disableElevation
                     disabled={disabled}
-                    // className={classes.button}
                     startIcon={<IconPrevPagination />}
                 />
             );
@@ -159,6 +157,4 @@ const StyledAppPagination = styled.div`
             font-size: 1.4rem;
         }
     }
-    /* display: flex;
-        justify-content: flex-end; */
 `;

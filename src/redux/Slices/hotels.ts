@@ -49,6 +49,9 @@ const hotelsSlice = createSlice({
         resetForm: (state) => {
             state.bookingHotel = {};
         },
+        setTotal: (state) => {
+            state.totalPage = 0;
+        },
     },
     extraReducers: (builder) => {
         //get list
@@ -66,6 +69,6 @@ const hotelsSlice = createSlice({
     },
 });
 
-export const { setBookingForm, resetForm } = hotelsSlice.actions;
+export const { setBookingForm, resetForm, setTotal } = hotelsSlice.actions;
 export const selectHotel = (state: RootState) => state.hotels;
 export default hotelsSlice.reducer;

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Popover } from "@material-ui/core";
-
-import { StyledWrapperTitleComponent,ComponentLoader } from "..";
-import { ComponentListTourLists, ComponentListTourFilter } from ".";
-import { Duration, TypeOfTour, moneyRange } from "@demos";
 import { useAppSelector, selectTour } from "@redux";
 
-export const ComponentListTourContent = () => {
+import { StyledWrapperTitleComponent, ComponentLoader, AppPagination } from "..";
+import { ComponentListTourLists, ComponentListTourFilter } from ".";
+import { Duration, TypeOfTour, moneyRange } from "@demos";
+
+interface IProps {
+    currentPage?: number;
+    handlePaginationChange?: (event: ChangeEvent<any>, value: number) => void;
+}
+export const ComponentListTourContent = (props: IProps) => {
+    const { currentPage, handlePaginationChange } = props;
     // redux state
     const tours = useAppSelector(selectTour);
     // component prop
@@ -59,7 +64,15 @@ export const ComponentListTourContent = () => {
                         />
                     </Popover>
                 </div>
-                {tours.loading? <ComponentLoader/> : <ComponentListTourLists data={listFilter} />}
+                {tours.loading ? <ComponentLoader /> : <ComponentListTourLists data={listFilter} />}
+                {listFilter?.length > 0 && (
+                    <AppPagination
+                        totalPage={tours?.totalPage}
+                        showPerpage
+                        currentPage={currentPage}
+                        handleChange={handlePaginationChange}
+                    />
+                )}
             </div>
         </StyledWrapperTitleComponent>
     );

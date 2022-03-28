@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 export const StyledContentAuth = styled.div`
-    /* @media (min-width: 2000px) {
-        * {
-            font-size: 100% !important;
-        }
-    } */
     .withOutBG {
         color: ${(p) => p.theme.colors.orange} !important;
         background-color: ${(p) => p.theme.colors.pureWhite};
@@ -46,6 +41,9 @@ export const StyledContentAuth = styled.div`
         &__title {
             font-size: 4.8rem;
             font-weight: 500;
+            @media (min-width: 2000px) {
+                font-size: 6.8rem;
+            }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 font-size: 3.6rem;
             }
@@ -53,6 +51,9 @@ export const StyledContentAuth = styled.div`
         &__subTitle {
             font-size: 1.8rem;
             color: ${(p) => p.theme.colors.gray};
+            @media (min-width: 2000px) {
+                font-size: 5rem;
+            }
         }
         &__form {
             padding-top: 6.5rem;
@@ -60,6 +61,17 @@ export const StyledContentAuth = styled.div`
             width: 100%;
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 padding-top: 2rem;
+            }
+            .MuiInputBase-input,
+            .MuiInputLabel-formControl {
+                @media (min-width: 2000px) {
+                    font-size: 3.5rem;
+                }
+            }
+            .MuiSvgIcon-root {
+                @media (min-width: 2000px) {
+                    font-size: 4rem;
+                }
             }
             &-alert {
                 font-size: 1.2rem;
@@ -82,6 +94,10 @@ export const StyledContentAuth = styled.div`
                 border-radius: 0;
                 box-shadow: none;
                 margin-top: 3.2rem;
+                @media (min-width: 2000px) {
+                    padding: 2.7rem 0;
+                    font-size: 2.5rem;
+                }
             }
             .pl-1 {
                 padding-left: 1rem;
@@ -91,6 +107,9 @@ export const StyledContentAuth = styled.div`
                 font-size: 1.4rem;
                 justify-content: flex-end;
                 margin-bottom: 3rem;
+                @media (min-width: 2000px) {
+                    font-size: 4rem;
+                }
                 @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                     margin-bottom: 1.5rem;
                 }
@@ -105,6 +124,9 @@ export const StyledContentAuth = styled.div`
         }
         &__bottom {
             font-size: 1.6rem;
+            @media (min-width: 2000px) {
+                font-size: 4rem;
+            }
             a {
                 color: ${(p) => p.theme.colors.orange};
                 font-weight: ${(p) => p.theme.typography.fontWeightBold};

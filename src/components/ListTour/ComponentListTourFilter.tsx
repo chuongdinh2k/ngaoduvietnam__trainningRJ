@@ -30,6 +30,7 @@ interface IProps {
 }
 
 export const ComponentListTourFilter = (props: IProps) => {
+    // props
     const { duration, typeOfTour, moneyRange, setListFilter, handleClose } = props;
     // redux store
     const tours = useAppSelector(selectTour);

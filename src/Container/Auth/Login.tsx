@@ -5,14 +5,12 @@ import { useDispatch } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import clsx from "clsx";
-// import { Alert } from "@material-ui/lab";
 
 import { login, selectAuth, useAppSelector } from "@redux";
 import { authRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
 import { AppInputOutLined, IconFacebook } from "@components";
 import { formSchemaLogin } from "@utils";
-// import { EMAIL, PASSWORD } from "@configs";
 
 export const Login = () => {
     const auth = useAppSelector(selectAuth);
@@ -20,7 +18,7 @@ export const Login = () => {
     const history = useHistory();
     useLayoutEffect(() => {
         if (auth.tokenInfoAuth) {
-            history.goBack();
+            history.push("/");
         }
     }, [auth]);
     const initialValuesPackage = {
@@ -39,7 +37,6 @@ export const Login = () => {
                         initialValues={initialValuesPackage}
                         onSubmit={(values) => {
                             dispatch(login(values));
-                            // setSubmitting(true);
                         }}
                         validationSchema={formSchemaLogin}
                     >
@@ -87,7 +84,7 @@ export const Login = () => {
                                         color="primary"
                                         size="small"
                                         className="content__form-btn facebook"
-                                        startIcon={<IconFacebook />}
+                                        startIcon={<IconFacebook size="large" />}
                                         onClick={() => history.push("/undefined")}
                                     >
                                         Sign in with Facebook

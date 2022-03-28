@@ -30,8 +30,8 @@ export const BookingForm = (props: IProps) => {
     const [familySuite, setFamilySuite] = React.useState<number>(0);
     const [breakFast, setBreakFast] = React.useState<number>(0);
     const [extraBed, setExtraBed] = React.useState<number>(0);
-    const [duration, setDuration] = React.useState<string>("");
-    const handleOnChange = (e: any) => {
+    const [duration, setDuration] = React.useState<Date>();
+    const handleOnChange = (e: Date) => {
         setDuration(e);
     };
     // variable component
@@ -95,7 +95,7 @@ export const BookingForm = (props: IProps) => {
                                         <AppDatePicker
                                             name="date"
                                             value={duration}
-                                            handleChange={(date: any) => handleOnChange(date)}
+                                            handleChange={(date: Date) => handleOnChange(date)}
                                             placeholder="Enter Departure"
                                             minDate={new Date()}
                                             icon={<IconCalendar />}

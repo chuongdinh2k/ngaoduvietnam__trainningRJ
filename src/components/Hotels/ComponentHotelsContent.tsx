@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { makeStyles, MenuItem, Popover, Select } from "@material-ui/core";
 
-import { StyledWrapperTitleComponent,ComponentLoader } from "..";
+import { StyledWrapperTitleComponent, ComponentLoader, AppPagination } from "..";
 import { stars, moneyRange, reviewScore } from "@demos";
 import { ComponentHotelsFilter, ComponentListHotels } from ".";
 import clsx from "clsx";
@@ -35,12 +35,21 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#ffffff",
     },
 }));
-export const ComponentHotelsContent = () => {
+
+interface IProps {
+    currentPage?: number;
+    handlePaginationChange?: (event: ChangeEvent<any>, value: number) => void;
+}
+export const ComponentHotelsContent = (props: IProps) => {
+    //props
+    const { currentPage, handlePaginationChange } = props;
     const classes = useStyles();
+    //redux store
     const hotels = useAppSelector(selectHotel);
     //component state
     const [selected, setSelected] = React.useState("price");
     const [listFilter, setListFilter] = React.useState(hotels.dataHotelsList);
+
     React.useEffect(() => {
         setListFilter(hotels.dataHotelsList);
     }, [hotels.dataHotelsList]);
@@ -91,9 +100,6 @@ export const ComponentHotelsContent = () => {
                                 </MenuItem>
                             </Select>
                         </div>
-                        {/* <span className="top__filter-icon">
-                            <IconDownArrow color="#4F4F4F" />
-                        </span> */}
                         <button
                             className={clsx("btn", anchorEl ? "activeBtn" : "")}
                             aria-describedby={id}
@@ -125,7 +131,15 @@ export const ComponentHotelsContent = () => {
                         </Popover>
                     </div>
                 </div>
-                {hotels.loading ? <ComponentLoader/> : <ComponentListHotels data={listFilter} />}
+                {hotels.loading ? <ComponentLoader /> : <ComponentListHotels data={listFilter} />}
+                {listFilter?.length > 0 && (
+                    <AppPagination
+                        totalPage={hotels?.totalPage}
+                        showPerpage
+                        currentPage={currentPage}
+                        handleChange={handlePaginationChange}
+                    />
+                )}
             </div>
         </StyledWrapperTitleComponent>
     );

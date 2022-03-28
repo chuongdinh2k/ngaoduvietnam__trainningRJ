@@ -20,8 +20,7 @@ import {
     selectDetailTour,
     submitReviewTour,
 } from "@redux";
-// import { toursApi } from "@api";
-import { PAGINATION_REVIEWS } from "@configs";
+import { ICommentValue } from "@api";
 
 export const TourDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -29,14 +28,13 @@ export const TourDetail = () => {
     const tourDetail = useAppSelector(selectDetailTour);
     const dispatch = useDispatch();
     // component state
-    const [params, setParams] = React.useState({ page: 1, limit: PAGINATION_REVIEWS });
     React.useEffect(() => {
         dispatch(viewDetailTour(id));
         return () => {
             dispatch(resetHotel());
         };
     }, [id]);
-    const handleSubmitReviewTour = (values: any) => {
+    const handleSubmitReviewTour = (values: ICommentValue) => {
         dispatch(
             submitReviewTour({
                 id,
@@ -45,7 +43,7 @@ export const TourDetail = () => {
         );
     };
 
-    const handleChangeReviewPage = (event: ChangeEvent<any>, value: any) => {
+    const handleChangeReviewPage = (event: ChangeEvent<any>, value: number) => {
         dispatch(changeReviewPagiantionTour(value));
     };
     return (
@@ -65,7 +63,7 @@ export const TourDetail = () => {
                             dataTour={tourDetail.tour}
                             handleSubmitReviewTour={handleSubmitReviewTour}
                             handleChangeReviewPage={handleChangeReviewPage}
-                            currentPage={params.page}
+                            currentPage={tourDetail.pageReview}
                         />
                         <ComponentRelated relatedTour={tourDetail.relatedTour} />
                     </div>

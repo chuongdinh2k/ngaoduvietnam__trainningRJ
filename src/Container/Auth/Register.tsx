@@ -85,10 +85,6 @@ export const Register = () => {
                                             handleChange={handleChange("password")}
                                         />
                                     </div>
-                                    {/* {auth?.message?.length && (
-                                        <p className="success">{auth.message}</p>
-                                    )} */}
-                                    {/* {auth?.error?.length && <Error>{auth.error}</Error>} */}
                                     <Button
                                         variant="contained"
                                         color="primary"
@@ -108,7 +104,7 @@ export const Register = () => {
                                         color="primary"
                                         size="small"
                                         className="content__form-btn facebook"
-                                        startIcon={<IconFacebook />}
+                                        startIcon={<IconFacebook size="large" />}
                                         onClick={() => history.push("/undefined")}
                                     >
                                         Sign in with Facebook

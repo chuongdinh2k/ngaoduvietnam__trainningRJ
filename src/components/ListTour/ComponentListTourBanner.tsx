@@ -1,5 +1,6 @@
 import { BACKGROUND_WRAPHEADER, PAGE_LISTTOUR } from "@configs";
 import { StyledWrapBanner, StyledBanner, HomeTabsButtonComponent } from "@components";
+import { IDataTour } from "@types";
 
 interface banner {
     title?: string;
@@ -9,8 +10,8 @@ interface banner {
 
 interface IProps {
     banner: banner;
-    onChangeDebounce?: (e: any) => void;
-    dataInputBounce?: any;
+    onChangeDebounce?: (e: string | undefined) => void;
+    dataInputBounce?: Array<IDataTour>;
     loadingDebounce?: boolean;
     userQuery?: string;
 }

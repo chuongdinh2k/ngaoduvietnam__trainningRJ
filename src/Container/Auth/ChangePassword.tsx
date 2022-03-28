@@ -73,7 +73,7 @@ export const ChangePassword = () => {
                                         color="primary"
                                         size="small"
                                         className="content__form-btn facebook"
-                                        startIcon={<IconFacebook />}
+                                        startIcon={<IconFacebook size="large" />}
                                         onClick={() => history.push("/undefined")}
                                     >
                                         Sign in with Facebook

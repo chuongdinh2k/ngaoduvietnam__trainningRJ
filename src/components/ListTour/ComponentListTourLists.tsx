@@ -13,7 +13,7 @@ export const ComponentListTourLists = (props: IProps) => {
     const { data } = props;
     // component variable
     const history = useHistory();
-    const handleViewDetail = (id: number | undefined) => {
+    const handleViewDetail = (id: string | undefined) => {
         history.push(`/tours/${id}`);
     };
     return (

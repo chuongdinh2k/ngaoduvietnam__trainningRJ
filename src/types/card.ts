@@ -1,13 +1,13 @@
 export type ICard = {
-    _id?: any;
-    id?: any;
+    _id?: string;
+    id?: string;
     typeCardIcon?: boolean;
     subTitle?: string;
     title?: string;
     location?: string;
     price?: number;
     duration?: string;
-    rating?: number;
+    rating?: number | string;
     image?: string;
     typeOfTour?: string;
     listImage?: Array<string>;
