@@ -7,14 +7,15 @@ import { ComponentDetailInfor, ComponentCustomViewImage, ComponentDetailTab } fr
 import { IDataTour, IHotel } from "@types";
 import { TourTabs, HotelTabs } from "@demos";
 import { selectDetailHotel, useAppSelector, selectDetailTour } from "@redux";
+import { ICommentValue } from "@api";
 
 interface IProps {
     dataTour?: IDataTour;
     dataHotel?: IHotel;
     currentPage?: number;
-    handleSubmitReviewTour?: (values: any) => void;
-    handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
-    handleSubmitReviewHotel?: (values: any) => void;
+    handleSubmitReviewTour?: (values: ICommentValue) => void;
+    handleChangeReviewPage?: (event: ChangeEvent<any>, value: number) => void;
+    handleSubmitReviewHotel?: (values: ICommentValue) => void;
 }
 export const ComponentDetailContent = (props: IProps) => {
     const hotelDetail = useAppSelector(selectDetailHotel);
@@ -30,22 +31,6 @@ export const ComponentDetailContent = (props: IProps) => {
     } = props;
     // componet variable
     const tabs = dataTour ? TourTabs : HotelTabs;
-    // const inforTour = {
-    //     id: dataTour?._id,
-    //     title: dataTour?.title,
-    //     location: dataTour?.location,
-    //     rating: dataTour?.rating,
-    //     duration: dataTour?.duration,
-    //     typeOfTour: dataTour?.typeOfTour,
-    // };
-    // const inforHotel = {
-    //     _id: dataHotel?._id,
-    //     title: dataHotel?.title,
-    //     location: dataHotel?.location,
-    //     rating: dataHotel?.rating,
-    //     reviewNumber: dataHotel?.numberReviews,
-    //     star: dataHotel?.star,
-    // };
     return (
         <StyledComponentTourDetailContent>
             <Grid container>
@@ -89,7 +74,6 @@ export const ComponentDetailContent = (props: IProps) => {
                     <BookingForm dataHotel={dataHotel} dataTour={dataTour} />
                 </Grid>
             </Grid>
-            {/* {dataHotel && <ComponentRelated relatedHotel={dataHotel?.relatedHotels} />} */}
         </StyledComponentTourDetailContent>
     );
 };

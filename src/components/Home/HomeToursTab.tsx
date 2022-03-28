@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, RefObject } from "react";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
@@ -7,14 +7,15 @@ import { IconSearch, AppInput, AppDatePicker, IconLocation } from "@components";
 import { Formik } from "formik";
 // import { formSchemaHomeFilter } from "@utils";
 import { groupOfPeople, TypeOfTour } from "@demos";
-import { getListFilterTours } from "@redux";
+import { getListSearchTours } from "@redux";
 import { LIMIT_RECORD_6 } from "@configs";
 import { useDispatch } from "react-redux";
 import { ComponentPopOver } from "..";
+import { IDataTour } from "@types";
 
 interface IOutSide {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    ref: any;
+    ref: RefObject<HTMLButtonElement>;
 }
 function useOutsideClick(props: IOutSide) {
     const { ref, setOpen } = props;
@@ -35,8 +36,8 @@ function useOutsideClick(props: IOutSide) {
 interface IProps {
     formTitle?: string;
     inputTypeOfTour?: boolean;
-    onChangeDebounce?: (e: any) => void;
-    dataInputBounce?: any;
+    onChangeDebounce?: (e: string | undefined) => void;
+    dataInputBounce?: Array<IDataTour>;
     loadingDebounce?: boolean;
     userQuery?: string;
 }
@@ -56,13 +57,12 @@ export const HomeToursTab = (props: IProps) => {
     const dispatch = useDispatch();
     // component variable
     const initialValuesPackage = {
-        // location: valueDebounce,
         departure: "",
         group: "",
         typeOfTour: "",
     };
-    const [time, setTime] = React.useState("");
-    const handleOnChange = (e: any) => {
+    const [time, setTime] = React.useState<Date | null>();
+    const handleOnChange = (e: Date) => {
         setTime(e);
     };
     return (
@@ -72,7 +72,7 @@ export const HomeToursTab = (props: IProps) => {
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
                     dispatch(
-                        getListFilterTours({
+                        getListSearchTours({
                             filter: {
                                 ...values,
                                 location: userQuery,
@@ -84,7 +84,7 @@ export const HomeToursTab = (props: IProps) => {
                         })
                     );
                     resetForm({ values: initialValuesPackage });
-                    setTime("");
+                    setTime(null);
                 }}
                 // validationSchema={formSchemaHomeFilter}
             >
@@ -116,16 +116,14 @@ export const HomeToursTab = (props: IProps) => {
                                 <AppDatePicker
                                     name="departure"
                                     value={time}
-                                    handleChange={(date: any) => handleOnChange(date)}
+                                    handleChange={(date: Date) => handleOnChange(date)}
                                     placeholder="Departure time"
                                     minDate={new Date()}
                                     size="large"
                                     icon={<IconCalendar size="large" color="#FF7B42" />}
                                 />
                             </div>
-                            {!inputTypeOfTour ? (
-                                ""
-                            ) : (
+                            {inputTypeOfTour && (
                                 <div className="input-group input-select">
                                     <AppSelect
                                         name="typeOfTour"

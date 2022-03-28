@@ -13,6 +13,7 @@ import { ComponentHotelDetailDescription, ComponentListRooms, AppPagination } fr
 import { dataTourDetail } from "@demos";
 import { useAppSelector, selectDetailHotel, selectDetailTour } from "@redux";
 import { handlePagination } from "@utils";
+import { ICommentValue } from "@api";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -108,9 +109,9 @@ interface IProps {
     tourComment?: IComment[];
     hotelComment?: IHotelComment[];
     currentPage?: number;
-    handleSubmitReviewTour?: (values: any) => void;
-    handleChangeReviewPage?: (event: ChangeEvent<any>, value: string) => void;
-    handleSubmitReviewHotel?: (values: any) => void;
+    handleSubmitReviewTour?: (values: ICommentValue) => void;
+    handleChangeReviewPage?: (event: ChangeEvent<any>, value: number) => void;
+    handleSubmitReviewHotel?: (values: ICommentValue) => void;
 }
 export const ComponentDetailTab = (props: IProps) => {
     // component variable

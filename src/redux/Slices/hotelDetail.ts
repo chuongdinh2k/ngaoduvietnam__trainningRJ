@@ -12,7 +12,7 @@ interface IReviewParams {
 }
 interface IState {
     loading?: boolean;
-    hotel: IHotel;
+    hotel: IHotel | undefined;
     relatedHotel?: Array<IHotel>;
     pageReview?: number;
     loadingReview?: boolean;
@@ -64,11 +64,12 @@ const hotelDetail = createSlice({
         builder.addCase(viewDetailHotel.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(viewDetailHotel.fulfilled, (state, action: PayloadAction<any>) => {
+        builder.addCase(viewDetailHotel.fulfilled, (state, action: PayloadAction<IState>) => {
             state.loading = false;
             state.hotel = action.payload?.hotel;
             state.relatedHotel = action.payload?.relatedHotel;
-            state.pageReview = action.payload?.hotel?.reviews.length === 0 ? 0 : 1;
+            state.pageReview =
+                action.payload?.hotel?.reviews && action.payload?.hotel?.reviews.length && 1;
         });
         builder.addCase(viewDetailHotel.rejected, (state) => {
             state.loading = false;
@@ -77,10 +78,13 @@ const hotelDetail = createSlice({
         builder.addCase(submitReviewHotel.pending, (state) => {
             state.loadingReview = true;
         });
-        builder.addCase(submitReviewHotel.fulfilled, (state, action: PayloadAction<any>) => {
-            state.loadingReview = false;
-            state.hotel = action.payload;
-        });
+        builder.addCase(
+            submitReviewHotel.fulfilled,
+            (state, action: PayloadAction<IHotel | undefined>) => {
+                state.loadingReview = false;
+                state.hotel = action.payload;
+            }
+        );
         builder.addCase(submitReviewHotel.rejected, (state) => {
             state.loadingReview = false;
         });

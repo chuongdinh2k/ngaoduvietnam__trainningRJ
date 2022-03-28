@@ -7,14 +7,15 @@ import { selectAuth, useAppSelector } from "@redux";
 import { useHistory } from "react-router-dom";
 import { authRoutesEnum } from "@enums";
 import { convertRating } from "@utils";
+import { ICommentValue } from "@api";
 
 interface IProps {
     dataTour?: IDataTour;
     tourComment?: IComment[];
     hotelComment?: IHotelComment[];
     dataHotel?: IHotel;
-    handleSubmitReviewTour?: (values: any) => void;
-    handleSubmitReviewHotel?: (values: any) => void;
+    handleSubmitReviewTour?: (values: ICommentValue) => void;
+    handleSubmitReviewHotel?: (values: ICommentValue) => void;
 }
 export const ComponentTabReview = (props: IProps) => {
     const {

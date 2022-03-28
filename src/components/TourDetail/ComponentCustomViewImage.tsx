@@ -1,12 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, RefObject } from "react";
 import Slider from "react-slick";
 
-import { IconFlagMark } from "..";
 import { sliceArray } from "@utils";
-import { IconCamera } from "..";
 import { setPopUpLightBox } from "@redux";
 import { useDispatch } from "react-redux";
-import { IconArrowRight, IconArrowLeft, StyledCustomViewImage } from "..";
+import { IconArrowRight, IconFlagMark, IconArrowLeft, StyledCustomViewImage, IconCamera } from "..";
+import { ICustomButton } from "@components";
 
 interface IProps {
     listTourImages?: Array<string>;
@@ -17,9 +16,9 @@ export const ComponentCustomViewImage = (props: IProps) => {
     // hooks
     const dispatch = useDispatch();
     const { listTourImages, listHotelImages, viewRoomImages } = props;
-    const sliderRef = useRef<any>();
+    const sliderRef = useRef<Slider | null>(null);
     const settings = {
-        customPaging: function (i: any) {
+        customPaging: function (i: number) {
             return (
                 <div className="wrapDot">
                     {/* WHAT: render list tour images */}
@@ -130,23 +129,23 @@ export const ComponentCustomViewImage = (props: IProps) => {
     );
 };
 // WHAT: custome icon arrow function next
-function CustomNextArrow(props: any) {
-    const { className, style, onClick } = props;
+function CustomNextArrow(props: ICustomButton) {
+    const { className, onClick } = props;
     return (
-        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+        <div className={className} style={{ display: "block" }} onClick={onClick}>
             <IconArrowRight />
         </div>
     );
 }
 // WHAT: hover to move Slide
-function handleGotoSlider(sliderRef: any, i: number) {
-    sliderRef.current.slickGoTo(i);
+function handleGotoSlider(sliderRef: RefObject<Slider>, i: number) {
+    sliderRef && sliderRef.current && sliderRef.current.slickGoTo(i);
 }
 // WHAT: custome icon arrow function next
-function CustomPrevArrow(props: any) {
-    const { className, style, onClick } = props;
+function CustomPrevArrow(props: ICustomButton) {
+    const { className, onClick } = props;
     return (
-        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+        <div className={className} style={{ display: "block" }} onClick={onClick}>
             <IconArrowLeft />
         </div>
     );

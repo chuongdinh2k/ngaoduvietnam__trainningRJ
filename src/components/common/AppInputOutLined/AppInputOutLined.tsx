@@ -4,7 +4,6 @@ import {
     createStyles,
     FormControl,
     InputLabel,
-    OutlinedInput,
     InputAdornment,
     IconButton,
     Input,
@@ -55,59 +54,33 @@ interface IProps {
     noError?: boolean;
 }
 export const AppInputOutLined = (props: IProps) => {
+    const { handleChange, typePassword, label, noError, value, name } = props;
     const classes = useStyles();
-
     // component variable
-    const [showPassword, setShowPassword] = React.useState(props.typePassword);
+    const [showPassword, setShowPassword] = React.useState(typePassword);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
     const handleOnChange = React.useCallback(
         (event) => {
-            props.handleChange(event);
+            handleChange(event);
         },
-        [props]
+        [handleChange]
     );
     return (
         <StyledAppInputOutLined>
-            {/* <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">{props.label}</InputLabel>
-                <WithOutBorderTextField
-                    name={props.name}
-                    id={`outlined-adornment-password-${props.name}`}
-                    type={showPassword ? "password" : "text"}
-                    value={props.value}
-                    onChange={handleOnChange}
-                    fullWidth
-                    endAdornment={
-                        <InputAdornment position="end">
-                            {props.typePassword && (
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    edge="end"
-                                >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
-                            )}
-                        </InputAdornment>
-                    }
-                    labelWidth={70}
-                />
-            </FormControl>
-            {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)} */}
             <FormControl className={clsx(classes.margin, classes.textField)}>
-                <InputLabel htmlFor="input-with-icon-adornment">{props.label}</InputLabel>
+                <InputLabel htmlFor="input-with-icon-adornment">{label}</InputLabel>
                 <Input
-                    name={props.name}
-                    id={`inpit-adornment-password-${props.name}`}
+                    name={name}
+                    id={`inpit-adornment-password-${name}`}
                     type={showPassword ? "password" : "text"}
-                    value={props.value}
+                    value={value}
                     onChange={handleOnChange}
                     fullWidth
                     endAdornment={
                         <InputAdornment position="end">
-                            {props.typePassword && (
+                            {typePassword && (
                                 <IconButton
                                     aria-label="toggle password visibility"
                                     onClick={handleClickShowPassword}
@@ -120,7 +93,7 @@ export const AppInputOutLined = (props: IProps) => {
                     }
                 />
             </FormControl>
-            {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
+            {noError || (name && <ErrorMessage name={name} component={Error} />)}
         </StyledAppInputOutLined>
     );
 };

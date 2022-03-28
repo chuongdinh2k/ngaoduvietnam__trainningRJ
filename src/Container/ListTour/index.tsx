@@ -1,10 +1,7 @@
 import React, { ChangeEvent, useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import * as qs from "query-string";
-import { useHistory } from "react-router-dom";
 
 import {
-    AppPagination,
     ComponentBreadscrumb,
     ComponentListTourBanner,
     ComponentListTourContent,
@@ -13,26 +10,24 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListTours, setLoading, useAppSelector, selectTour } from "@redux";
+import { getListTours, setLoading } from "@redux";
 import { INFINITY_MAX, LIMIT_RECORD_6 } from "@configs";
 import { debounce } from "lodash";
 import { toursApi } from "@api";
+import { IDataTour } from "@types";
 
 export const ListTour = () => {
-    // redux store
-    const tours = useAppSelector(selectTour);
     // get params of url
-    const parsed = qs.parse(location.search);
+    // const parsed = qs.parse(location.search);
     // hooks
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     // component state
-    const [page, setPage] = useState<any>(parsed?.page || 1);
+    const [page, setPage] = useState<number>(1);
     // search debounc query input
     const [userQuery, setUserQuery] = useState<string>("");
     const [loadingDebounce, setLoadingDebounce] = useState<boolean>(false);
-    const [data, setData] = React.useState<any>();
-
+    const [data, setData] = React.useState<Array<IDataTour>>();
     const updateQuery = async () => {
         // A search query api call.
         const res = await toursApi.getListFilterTours(
@@ -52,12 +47,12 @@ export const ListTour = () => {
         // Cancel the debounce on useEffect cleanup.
         return delayedQuery.cancel;
     }, [userQuery, delayedQuery]);
-    const onChangeDebounce = (e: any) => {
+    const onChangeDebounce = (e: string) => {
         setUserQuery(e);
     };
-    const handleChange = (event: ChangeEvent<any>, value: string) => {
+    const handleChange = (event: ChangeEvent<any>, value: number) => {
         setPage(value);
-        history.push(`tours?page=${value}&limit=${LIMIT_RECORD_6}`);
+        // history.push(`tours?page=${value}&limit=${LIMIT_RECORD_6}`);
     };
     React.useEffect(() => {
         dispatch(
@@ -73,7 +68,6 @@ export const ListTour = () => {
     }, [page]);
     return (
         <>
-            {/* <input name="input" value={userQuery} onChange={onChangeDebounce} /> */}
             <Header hasColor={false} />
             <ComponentListTourBanner
                 dataInputBounce={data}
@@ -85,12 +79,9 @@ export const ListTour = () => {
             <StyledWrapContent>
                 <div className="wrapperContent">
                     <ComponentBreadscrumb />
-                    <ComponentListTourContent />
-                    <AppPagination
-                        totalPage={tours?.totalPage}
-                        showPerpage
+                    <ComponentListTourContent
                         currentPage={page}
-                        handleChange={handleChange}
+                        handlePaginationChange={handleChange}
                     />
                 </div>
             </StyledWrapContent>

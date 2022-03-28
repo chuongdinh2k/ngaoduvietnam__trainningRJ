@@ -15,7 +15,7 @@ export const ComponentRelated = (props: IProps) => {
     const { relatedTour, relatedHotel } = props;
     //component variable
     const history = useHistory();
-    const handleViewTourDetail = (id: number | undefined) => {
+    const handleViewTourDetail = (id: string | undefined) => {
         history.push(`/tours/${id}`);
     };
     const handleViewHotelDetail = (id: string | undefined) => {

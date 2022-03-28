@@ -44,26 +44,37 @@ interface IAppInput {
 }
 
 export const AppInput = forwardRef((props: IAppInput, ref: any) => {
+    const {
+        handleChange,
+        hasBorder,
+        defaultValue,
+        backgroundColor,
+        icon,
+        size,
+        placeholder,
+        className,
+        multiple,
+        noError,
+        name,
+        style,
+        value,
+    } = props;
     const classes = useStyles();
     // component state
     const handleOnChange = (event: any) => {
-        props.handleChange && props.handleChange(event);
+        handleChange && handleChange(event);
     };
     return (
-        <CustomInputWrapper {...props.style}>
-            <InputWrapper
-                hasBorder={props.hasBorder}
-                backgroundColor={props.backgroundColor}
-                size={props.size}
-            >
-                {props.icon ? <LabelWrapper>{props.icon}</LabelWrapper> : ""}
+        <CustomInputWrapper {...style}>
+            <InputWrapper hasBorder={hasBorder} backgroundColor={backgroundColor} size={size}>
+                {icon ? <LabelWrapper>{icon}</LabelWrapper> : ""}
                 <TextField
-                    className={clsx(classes.input, props.className)}
-                    placeholder={props.placeholder}
+                    className={clsx(classes.input, className)}
+                    placeholder={placeholder}
                     fullWidth
-                    multiline={props.multiple ? true : false}
-                    value={props.value?.toString()}
-                    defaultValue={props.defaultValue}
+                    multiline={multiple ? true : false}
+                    value={value?.toString()}
+                    defaultValue={defaultValue}
                     onChange={handleOnChange}
                     InputProps={{
                         disableUnderline: true,
@@ -74,9 +85,8 @@ export const AppInput = forwardRef((props: IAppInput, ref: any) => {
                     }}
                     ref={ref}
                 />
-                {/* {props.debounce && <ComponentPopOver open={props.debounce} />} */}
             </InputWrapper>
-            {props.noError || (props.name && <ErrorMessage name={props.name} component={Error} />)}
+            {noError || (name && <ErrorMessage name={name} component={Error} />)}
         </CustomInputWrapper>
     );
 });

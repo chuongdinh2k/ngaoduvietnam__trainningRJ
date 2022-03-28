@@ -3,18 +3,18 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 import { IDataTour } from "@types";
 import { toast } from "react-toastify";
-import { RootState } from ".";
+import { RootState, MyError } from ".";
 import { REVIEW_SUCCESS, FAIL } from "@configs";
 import axios from "axios";
-import { MyError } from ".";
+import { ICommentValue } from "@api";
 
 interface IReviewParams {
     id: string;
-    values?: any;
+    values?: ICommentValue;
 }
 interface IState {
     loading?: boolean;
-    tour: IDataTour;
+    tour: IDataTour | undefined;
     relatedTour?: Array<IDataTour>;
     pageReview?: number;
     loadingReview?: boolean;
@@ -73,11 +73,15 @@ const tourDetail = createSlice({
         builder.addCase(viewDetailTour.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(viewDetailTour.fulfilled, (state, action: PayloadAction<any>) => {
+        builder.addCase(viewDetailTour.fulfilled, (state, action: PayloadAction<IState>) => {
             state.loading = false;
             state.tour = action.payload?.tour;
             state.relatedTour = action.payload?.relatedTour;
-            state.pageReview = action.payload?.tour?.reviews.length === 0 ? 0 : 1;
+            state.pageReview =
+                action.payload?.tour &&
+                action.payload?.tour?.reviews &&
+                action.payload?.tour?.reviews.length &&
+                1;
         });
         builder.addCase(viewDetailTour.rejected, (state) => {
             state.loading = false;

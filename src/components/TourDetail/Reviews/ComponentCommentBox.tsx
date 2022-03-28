@@ -5,9 +5,10 @@ import { ErrorMessage, Formik } from "formik";
 import { formSchemaComment, getFirstLetter } from "@utils";
 import { useAppSelector, selectAuth } from "@redux";
 import { Error } from "@components";
+import { ICommentValue } from "@api";
 
 interface IProps {
-    handleSubmit?: (values: any) => void;
+    handleSubmit?: (values: ICommentValue) => void;
 }
 export const ComponentCommentBox = (props: IProps) => {
     const { handleSubmit } = props;

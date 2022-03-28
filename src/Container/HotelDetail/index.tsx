@@ -20,7 +20,7 @@ import {
     changeReviewPagiantion,
     resetHotel,
 } from "@redux";
-// import { handlePagination } from "@utils";
+import { ICommentValue } from "@api";
 
 export const HotelDetail = () => {
     const hotelDetail = useAppSelector(selectDetailHotel);
@@ -32,7 +32,7 @@ export const HotelDetail = () => {
             dispatch(resetHotel());
         };
     }, [id]);
-    const handleSubmitReviewHotel = (values: any) => {
+    const handleSubmitReviewHotel = (values: ICommentValue) => {
         dispatch(
             submitReviewHotel({
                 id,
@@ -40,7 +40,7 @@ export const HotelDetail = () => {
             })
         );
     };
-    const handleChangeReviewPage = (event: ChangeEvent<any>, value: any) => {
+    const handleChangeReviewPage = (event: ChangeEvent<any>, value: number) => {
         dispatch(changeReviewPagiantion(value));
     };
     return (

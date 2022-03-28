@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
+export interface ICustomButton {
+    onClick?: () => void;
+    className?: string;
+}
 export const PopupLightBox = () => {
     // hooks
     const dispatch = useDispatch();
@@ -78,19 +82,19 @@ export const PopupLightBox = () => {
     );
 };
 // WHAT: custome icon arrow function next
-function CustomNextArrow(props: any) {
-    const { className, style, onClick } = props;
+function CustomNextArrow(props: ICustomButton) {
+    const { className, onClick } = props;
     return (
-        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+        <div className={className} style={{ display: "block" }} onClick={onClick}>
             <IconArrowRight />
         </div>
     );
 }
 // WHAT: custome icon arrow function next
-function CustomPrevArrow(props: any) {
-    const { className, style, onClick } = props;
+function CustomPrevArrow(props: ICustomButton) {
+    const { className, onClick } = props;
     return (
-        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+        <div className={className} style={{ display: "block" }} onClick={onClick}>
             <IconArrowLeft />
         </div>
     );

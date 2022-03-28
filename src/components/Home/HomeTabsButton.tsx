@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { theme } from "@styles";
 import { HomeToursTab } from ".";
 import { NUMBER_ONE, NUMBER_ZERO } from "@configs";
+import { IDataTour } from "@types";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -80,8 +81,8 @@ interface IProps {
     show?: boolean;
     formTitle?: string;
     inputTypeOfTour?: boolean;
-    onChangeDebounce?: (e: any) => void;
-    dataInputBounce?: any;
+    onChangeDebounce?: (e: string | undefined) => void;
+    dataInputBounce?: Array<IDataTour>;
     loadingDebounce?: boolean;
     userQuery?: string;
 }

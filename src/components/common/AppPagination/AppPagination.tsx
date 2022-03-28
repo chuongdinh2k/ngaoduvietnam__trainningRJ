@@ -61,35 +61,36 @@ interface IProps {
     totalPage?: number;
     showPerpage?: boolean;
     currentPage?: number;
-    handleChange?: (event: ChangeEvent<any>, value: any) => void;
+    handleChange?: (event: ChangeEvent<any>, value: number) => void;
 }
 export const AppPagination = (props: IProps) => {
     const { totalPage, showPerpage, currentPage, handleChange } = props;
     const classes = useStyles();
     const itemRender = ({ ...props }) => {
-        if (props.type === "previous") {
+        const { onClick, type, disabled } = props;
+        if (type === "previous") {
             return (
                 <Button
                     variant="contained"
                     size="medium"
-                    onClick={props.onClick}
+                    onClick={onClick}
                     className={classes.btnPrev}
                     // disableRipple
                     disableElevation
-                    disabled={props.disabled}
+                    disabled={disabled}
                     // className={classes.button}
                     startIcon={<IconPrevPagination />}
                 />
             );
         }
-        if (props.type === "next") {
+        if (type === "next") {
             return (
                 <Button
                     variant="contained"
                     size="medium"
-                    onClick={props.onClick}
+                    onClick={onClick}
                     disableElevation
-                    disabled={props.disabled}
+                    disabled={disabled}
                     className={classes.btnPrev}
                     startIcon={<IconNextPagination />}
                 />
@@ -99,7 +100,7 @@ export const AppPagination = (props: IProps) => {
     };
     return (
         <StyledAppPagination>
-            {Number(totalPage) > 0 ? (
+            {Number(totalPage) > 0 && (
                 <Grid container>
                     {showPerpage && <Grid item xs={12} md={4}></Grid>}
                     <Grid item xs={12} md={8}>
@@ -114,7 +115,6 @@ export const AppPagination = (props: IProps) => {
                             )}
                             <div className="paginationWrapper">
                                 <div className={classes.root}>
-                                    {/* <PaginationItem /> */}
                                     <Pagination
                                         classes={{ ul: classes.ul }}
                                         count={totalPage}
@@ -123,17 +123,13 @@ export const AppPagination = (props: IProps) => {
                                         variant="outlined"
                                         renderItem={itemRender}
                                         siblingCount={2}
-                                        // boundaryCount={4}
                                         boundaryCount={4}
-                                        // renderItem={(item) => <HanldePaginationItem {...item} />}
                                     />
                                 </div>
                             </div>
                         </div>
                     </Grid>
                 </Grid>
-            ) : (
-                ""
             )}
         </StyledAppPagination>
     );
