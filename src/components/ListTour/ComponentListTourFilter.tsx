@@ -127,6 +127,14 @@ export const StyleComponentFilter = styled.div`
     .top {
         display: flex;
         justify-content: space-between;
+        .MuiSelect-selectMenu {
+            background-color: transparent !important;
+        }
+        &__title {
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                padding-top: 0.5rem;
+            }
+        }
         &__title,
         &__btn {
             cursor: pointer;

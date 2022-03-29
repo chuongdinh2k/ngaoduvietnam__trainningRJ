@@ -25,7 +25,7 @@ interface IProps {
     handleChange: (value: any) => void;
 }
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
     createStyles({
         root: {
             display: "flex",
@@ -46,7 +46,7 @@ const useStyles = makeStyles(() =>
             padding: "2rem 0",
         },
         wrapLabel: {
-            display: "flex",
+            display: "flex !important",
         },
         label: {
             flex: "50%",
@@ -54,9 +54,18 @@ const useStyles = makeStyles(() =>
             fontSize: "16px",
             textTransform: "capitalize",
         },
+        labelWithImage: {
+            width: "10rem",
+            [theme.breakpoints.down("xs")]: {
+                width: "5rem",
+            },
+        },
         icon: {
             height: "100%",
             paddingLeft: "3.3rem",
+            [theme.breakpoints.down("xs")]: {
+                paddingLeft: 0,
+            },
         },
         tickSize: {
             transform: "scale(1.5)",
@@ -89,7 +98,6 @@ export const AppCheckBox = (props: IProps) => {
                                         <Checkbox
                                             onChange={handleOnChange}
                                             color="primary"
-                                            // checked={values && values.includes(opt.value)}
                                             name={name}
                                             value={opt.value}
                                             checked={
@@ -102,24 +110,21 @@ export const AppCheckBox = (props: IProps) => {
                                     label={
                                         <div className={classes.wrapLabel}>
                                             {/* WHAT: render with star select */}
-                                            {opt.star ? (
+                                            {opt.star && (
                                                 <ComponentsRenderStars number={opt.star} />
-                                            ) : (
-                                                ""
                                             )}
                                             {/* WHAT: render with image  */}
                                             <span
                                                 className={clsx(
                                                     classes.label,
-                                                    opt.star ? classes.hidden : ""
+                                                    opt.star && classes.hidden,
+                                                    opt.icon && classes.labelWithImage
                                                 )}
                                             >
                                                 {opt.label}
                                             </span>
-                                            {opt.icon ? (
+                                            {opt.icon && (
                                                 <img className={classes.icon} src={opt.icon} />
-                                            ) : (
-                                                ""
                                             )}
                                         </div>
                                     }

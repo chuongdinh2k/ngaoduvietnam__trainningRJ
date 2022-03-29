@@ -2,7 +2,6 @@ import { validate_phone } from "@configs";
 import * as Yup from "yup";
 
 export const formSchemaHomeFilter = Yup.object().shape({
-    // departure: Yup.string().required("This field is required!"),
     location: Yup.string().required("This field is required!"),
 });
 
@@ -78,6 +77,6 @@ export const formSchemaChangePassword = Yup.object().shape({
     confirmPassword: Yup.string().oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
 });
 
-// export const formSchemaBookingForm = Yup.object().shape({
-//         group:
-// })
+export const formSchemaBookingForm = Yup.object().shape({
+    group: Yup.string().trim().required("This field is required!"),
+});

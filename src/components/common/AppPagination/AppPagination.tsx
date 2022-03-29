@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) =>
             "& .MuiButtonBase-root.Mui-disabled": {
                 cursor: "no-drop !important",
             },
-            // padding: 0,
         },
         selected: {
             backgroundColor: `${theme.colors.darkBlack}`,
@@ -105,7 +104,7 @@ export const AppPagination = (props: IProps) => {
                         <div className="wrapper">
                             {showPerpage && (
                                 <p className="wrapper__text">
-                                    Showing{" "}
+                                    Showing
                                     <span className="wrapper__number">
                                         {currentPage}/{totalPage}
                                     </span>
@@ -115,13 +114,11 @@ export const AppPagination = (props: IProps) => {
                                 <div className={classes.root}>
                                     <Pagination
                                         classes={{ ul: classes.ul }}
-                                        count={totalPage}
+                                        count={8}
                                         page={currentPage}
                                         onChange={handleChange}
                                         variant="outlined"
                                         renderItem={itemRender}
-                                        siblingCount={2}
-                                        boundaryCount={4}
                                     />
                                 </div>
                             </div>

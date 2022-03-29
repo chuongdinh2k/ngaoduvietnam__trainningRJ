@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Modal, Backdrop, Fade, Grid } from "@material-ui/core";
 import styled from "styled-components";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 import { ComponentCustomViewImage, GroupPeople, IconBed, IconChecked, IconSquare } from "..";
 import { ISelectRoom } from "@types";
@@ -52,6 +53,9 @@ export const PopupHotelSelectRoom = (props: IProps) => {
                 <Fade in={isOpen}>
                     <StyledComponentPopup>
                         <div className="wrapperPopup">
+                            <div className="btn__hidePopUp" onClick={handleClose}>
+                                <CancelIcon fontSize="large" />
+                            </div>
                             <h3 className="title">Standard Room</h3>
                             <Grid container>
                                 <Grid item xs={12} md={7}>
@@ -140,6 +144,7 @@ export const PopupHotelSelectRoom = (props: IProps) => {
 };
 const StyledComponentPopup = styled.div`
     .wrapperPopup {
+        position: relative;
         max-width: 1170px;
         height: 60rem;
         overflow-y: auto;
@@ -155,6 +160,16 @@ const StyledComponentPopup = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             width: 37rem;
             height: 60rem;
+        }
+    }
+    .btn__hidePopUp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        display: none;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            display: block;
         }
     }
     .title {

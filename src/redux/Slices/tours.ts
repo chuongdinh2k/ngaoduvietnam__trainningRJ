@@ -53,7 +53,6 @@ export const getListFilterTours = createAsyncThunk(
         return res.data.tours;
     }
 );
-
 interface IState {
     dataToursList: Array<IDataTour>;
     loading?: boolean;
@@ -79,17 +78,18 @@ const tourSlice = createSlice({
         builder.addCase(getListTours.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(getListTours.fulfilled, (state, action: { payload: any }) => {
-            state.dataToursList = action.payload.tours;
-            state.totalPage = action.payload.pages;
+        builder.addCase(getListTours.fulfilled, (state, action: { payload: IState }) => {
+            state.dataToursList = action.payload.dataToursList;
+            state.totalPage = action.payload.totalPage;
             state.loading = false;
         });
         builder.addCase(getListTours.rejected, (state) => {
             state.loading = false;
         });
         // get list search
-        builder.addCase(getListSearchTours.fulfilled, (state, action: { payload: any }) => {
-            state.dataToursList = action.payload;
+        builder.addCase(getListSearchTours.fulfilled, (state, action: { payload: IState }) => {
+            state.dataToursList = action.payload.dataToursList;
+            state.totalPage = action.payload.totalPage;
         });
         // get list filter
         builder.addCase(getListFilterTours.pending, (state) => {

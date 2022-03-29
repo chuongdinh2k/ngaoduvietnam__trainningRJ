@@ -6,6 +6,10 @@ export const StyledBookingForm = styled.div`
         padding: 2rem 2.5rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding: 0 3rem;
+            margin: 0 12rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            margin: 0;
         }
     }
     .showMoney {
@@ -24,16 +28,14 @@ export const StyledBookingForm = styled.div`
     }
     .content {
         padding-top: 2.3rem;
-        padding-bottom: 2.3rem;
-        /* @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            &__left,
-            &__right {
-                display: flex;
-            }
-        } */
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
         &__title {
             display: flex;
             flex-direction: row;
+            padding-bottom: 0.5rem;
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 justify-content: space-between;
                 padding-bottom: 1rem;
@@ -78,15 +80,31 @@ export const StyledBookingForm = styled.div`
                 padding: 0.5rem;
                 border-radius: 100%;
             }
+            .MuiCheckbox-colorSecondary.Mui-checked {
+                color: red !important;
+            }
+            .MuiCheckbox-root {
+                padding-left: 0;
+                .MuiSvgIcon-root {
+                    font-size: 2rem;
+                }
+                .MuiIconButton-label {
+                    background: transparent !important;
+                    padding: 0;
+                }
+            }
             &-title {
                 flex: 5%;
                 font-weight: 700;
+                width: 45%;
+                padding-top: 0.5rem;
             }
             &-price {
                 color: #04316a;
                 font-weight: 700;
                 text-align: right;
-                /* font-size: 1.6rem; */
+                width: 25%;
+                padding-top: 0.5rem;
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 font-size: 1.4rem;
@@ -120,9 +138,6 @@ export const StyledBookingForm = styled.div`
     }
     .form__group {
         padding: 1.2rem 0 1.6rem 0;
-        /* .MuiInputBase-input {
-            padding: 9px 0 7px;
-        } */
         &-select {
             .MuiInputBase-input {
                 padding: 11px 0 7px;

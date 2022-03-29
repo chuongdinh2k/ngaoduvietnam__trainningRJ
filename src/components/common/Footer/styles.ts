@@ -21,12 +21,19 @@ export const StyledFooter = styled.div`
     }
     .socialMedia {
         padding-top: 5.3rem;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            display: flex;
+        }
     }
     .socialMedia__item {
         padding-right: 3.5rem;
         &:hover {
             cursor: pointer;
             margin-bottom: 5rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding-left: 3.5rem;
+            padding-right: 0;
         }
     }
     .text {
@@ -41,6 +48,7 @@ export const StyledFooter = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
         }
     }
     .text__nav-item {

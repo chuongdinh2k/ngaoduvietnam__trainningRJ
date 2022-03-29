@@ -141,6 +141,7 @@ const StyledComponentAboutIntroduce = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             padding-left: 0;
             padding-top: 30rem;
+            margin-top: 12rem;
         }
     }
     .intro__image {

@@ -36,7 +36,7 @@ export const ComponentUserComment = (props: IProps) => {
                                 <span className="user__info-dot">
                                     <IconDot color="#C4C4C4" />
                                 </span>
-                                {commentHotel.status}
+                                Wonderful
                             </p>
                         )}
                         <p className="user__info-title">

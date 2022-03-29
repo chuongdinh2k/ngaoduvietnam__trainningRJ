@@ -24,9 +24,12 @@ export const StyledComponentContactForm = styled.div`
             }
             padding-left: 0;
         }
-        .MuiOutlinedInput-inputMultiline {
+        .MuiInputBase-multiline {
+            padding-top: 1.2rem;
+            padding-left: 2rem;
+        }
+        .MuiInputBase-root {
             font-size: 1.4rem;
-            padding-left: 0.5rem;
         }
         .MuiOutlinedInput-root {
             border-color: transparent;
@@ -36,6 +39,21 @@ export const StyledComponentContactForm = styled.div`
         }
         &__input {
             padding-top: 2.6rem;
+        }
+        &__capcha {
+            margin-top: 1.5rem;
+            width: 30rem;
+            padding: 0 2rem;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            .MuiTypography-body1 {
+                font-weight: 700 !important;
+                font-size: 1.4rem;
+            }
+            .MuiSvgIcon-root {
+                font-size: 3rem;
+            }
         }
         &__wrappButton {
             display: flex;

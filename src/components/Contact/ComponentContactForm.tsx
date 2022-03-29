@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid, TextField, Checkbox, FormControlLabel } from "@material-ui/core";
 import { ErrorMessage, Formik } from "formik";
 
 import { AppInput, Error } from "..";
@@ -8,7 +8,13 @@ import { formSchemaContact } from "@utils";
 import { StyledComponentContactForm } from ".";
 import background__contact from "@assets/bannerIntro.png";
 import { IconHome } from "..";
+import { listAddressContact } from "@demos";
+import capCha_icon from "@assets/icon_capcha.png";
 
+interface IListAddress {
+    title?: string;
+    subText?: string;
+}
 export const ComponentContactForm = () => {
     // component variable
     const initialValuesPackage = {
@@ -16,6 +22,11 @@ export const ComponentContactForm = () => {
         email: "",
         phone: "",
         message: "",
+    };
+    // component statecheckCapcha
+    const [checkCapcha, setCheckCapCha] = React.useState<boolean>(false);
+    const handleChangeCapcha = () => {
+        setCheckCapCha(!checkCapcha);
     };
     return (
         <StyledComponentContactForm>
@@ -71,13 +82,32 @@ export const ComponentContactForm = () => {
                                                     id="outlined-multiline-static"
                                                     multiline
                                                     rows={6}
-                                                    variant="outlined"
+                                                    variant="standard"
+                                                    InputProps={{
+                                                        disableUnderline: true,
+                                                    }}
                                                     placeholder="Message"
                                                     name="message"
                                                     value={values.message}
                                                     onChange={handleChange("message")}
                                                 />
                                                 <ErrorMessage name="message" component={Error} />
+                                            </div>
+                                            <div className="form__capcha">
+                                                <FormControlLabel
+                                                    control={
+                                                        <Checkbox
+                                                            checked={checkCapcha}
+                                                            onChange={handleChangeCapcha}
+                                                            name="checkedCapcha"
+                                                            color="primary"
+                                                        />
+                                                    }
+                                                    label="I'm not a robot!"
+                                                />
+                                                <div className="capcha__logo">
+                                                    <img src={capCha_icon} />
+                                                </div>
                                             </div>
                                             <div className="form__wrappButton">
                                                 <Button
@@ -105,39 +135,19 @@ export const ComponentContactForm = () => {
                             />
                             <div className="contact__right-content">
                                 <h4 className="right__content-title">Our Office</h4>
-                                <div className="right__list">
-                                    <span className="right__list-icon">
-                                        <IconHome />
-                                    </span>
-                                    <p className="right__list-text">
-                                        <span className="right__list-title">Address</span>
-                                        <span className="right__list-subtext">
-                                            27 Old Gloucester Street, London, WC1N 3AX
+                                {listAddressContact.map((item: IListAddress, index: number) => {
+                                    <div className="right__list" key={index}>
+                                        <span className="right__list-icon">
+                                            <IconHome />
                                         </span>
-                                    </p>
-                                </div>
-                                <div className="right__list">
-                                    <span className="right__list-icon">
-                                        <IconHome />
-                                    </span>
-                                    <p className="right__list-text">
-                                        <span className="right__list-title">Address</span>
-                                        <span className="right__list-subtext">
-                                            27 Old Gloucester Street, London, WC1N 3AX
-                                        </span>
-                                    </p>
-                                </div>
-                                <div className="right__list">
-                                    <span className="right__list-icon">
-                                        <IconHome />
-                                    </span>
-                                    <p className="right__list-text">
-                                        <span className="right__list-title">Address</span>
-                                        <span className="right__list-subtext">
-                                            27 Old Gloucester Street, London, WC1N 3AX
-                                        </span>
-                                    </p>
-                                </div>
+                                        <p className="right__list-text">
+                                            <span className="right__list-title">{item?.title}</span>
+                                            <span className="right__list-subtext">
+                                                {item?.subText}
+                                            </span>
+                                        </p>
+                                    </div>;
+                                })}
                             </div>
                         </div>
                     </Grid>

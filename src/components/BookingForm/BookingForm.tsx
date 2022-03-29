@@ -1,14 +1,14 @@
 import React from "react";
-import { Formik } from "formik";
+import { ErrorMessage, Formik } from "formik";
 import { useHistory, useParams } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
-import { Divider, IconButton } from "@material-ui/core";
+import { Divider, IconButton, Checkbox } from "@material-ui/core";
 
 import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
-import { GroupPeople, AppDatePicker, IconCalendar, AppSelect } from "..";
-import { convertCurrency, fomatObjDate } from "@utils";
+import { GroupPeople, AppDatePicker, IconCalendar, AppSelect, Error } from "..";
+import { convertCurrency, fomatObjDate, formSchemaBookingForm } from "@utils";
 import { useDispatch } from "react-redux";
 import { setBookingForm } from "@redux";
 import { groupOfPeople } from "@demos";
@@ -31,14 +31,26 @@ export const BookingForm = (props: IProps) => {
     const [breakFast, setBreakFast] = React.useState<number>(0);
     const [extraBed, setExtraBed] = React.useState<number>(0);
     const [duration, setDuration] = React.useState<Date>();
+    const [checkBreakFast, setCheckBreakFast] = React.useState<boolean>(false);
+    const [checkExtraBed, setCheckExtraBed] = React.useState<boolean>(false);
+    const handleChangeBreakFast = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCheckBreakFast(event.target.checked);
+    };
+    const handleChangeExtraBed = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCheckExtraBed(event.target.checked);
+    };
     const handleOnChange = (e: Date) => {
         setDuration(e);
     };
     // variable component
     const totalTour = dataTour?.price;
     const totalHotel =
-        Number(dataHotel?.price) + standardRoom * 25 + familySuite * 24 + breakFast * 20;
-
+        Number(dataHotel?.price) +
+        standardRoom * 25 +
+        familySuite * 24 +
+        breakFast * 20 +
+        (checkBreakFast ? breakFast * 20 : 0) +
+        (checkExtraBed ? extraBed * 20 : 0);
     return (
         <StyledBookingForm>
             <div className="wrapper">
@@ -69,6 +81,7 @@ export const BookingForm = (props: IProps) => {
                     initialValues={{
                         group: "",
                     }}
+                    validationSchema={formSchemaBookingForm}
                     onSubmit={(values) => {
                         dispatch(
                             setBookingForm({
@@ -110,6 +123,7 @@ export const BookingForm = (props: IProps) => {
                                             options={groupOfPeople.data}
                                             handleChange={handleChange("group")}
                                         />
+                                        <ErrorMessage name="group" component={Error} />
                                     </div>
                                     {dataHotel && (
                                         <>
@@ -123,9 +137,8 @@ export const BookingForm = (props: IProps) => {
                                                         color="primary"
                                                         component="span"
                                                         onClick={() => {
-                                                            standardRoom > 0
-                                                                ? setStandardRoom(standardRoom - 1)
-                                                                : standardRoom;
+                                                            standardRoom > 0 &&
+                                                                setStandardRoom(standardRoom - 1);
                                                         }}
                                                     >
                                                         <RemoveIcon />
@@ -156,9 +169,8 @@ export const BookingForm = (props: IProps) => {
                                                         color="primary"
                                                         component="span"
                                                         onClick={() => {
-                                                            familySuite > 0
-                                                                ? setFamilySuite(familySuite - 1)
-                                                                : familySuite;
+                                                            familySuite > 0 &&
+                                                                setFamilySuite(familySuite - 1);
                                                         }}
                                                     >
                                                         <RemoveIcon />
@@ -177,13 +189,18 @@ export const BookingForm = (props: IProps) => {
                                                     </IconButton>
                                                 </span>
                                                 <span className="content__option-price">
-                                                    {" "}
                                                     ${convertCurrency(familySuite * 24)}
                                                 </span>
                                             </div>
                                             <Divider />
                                             <p className="content__addOn">Add-on:</p>
                                             <div className="content__option">
+                                                <Checkbox
+                                                    checked={checkBreakFast}
+                                                    disableRipple
+                                                    color="secondary"
+                                                    onChange={handleChangeBreakFast}
+                                                />
                                                 <span className="content__option-title">
                                                     Breakfast
                                                 </span>
@@ -193,9 +210,8 @@ export const BookingForm = (props: IProps) => {
                                                         color="primary"
                                                         component="span"
                                                         onClick={() => {
-                                                            breakFast > 0
-                                                                ? setBreakFast(breakFast - 1)
-                                                                : breakFast;
+                                                            breakFast > 0 &&
+                                                                setBreakFast(breakFast - 1);
                                                         }}
                                                     >
                                                         <RemoveIcon />
@@ -216,6 +232,11 @@ export const BookingForm = (props: IProps) => {
                                                 </span>
                                             </div>
                                             <div className="content__option">
+                                                <Checkbox
+                                                    checked={checkExtraBed}
+                                                    disableRipple
+                                                    onChange={handleChangeExtraBed}
+                                                />
                                                 <span className="content__option-title">
                                                     Extra Bed
                                                 </span>
@@ -225,9 +246,8 @@ export const BookingForm = (props: IProps) => {
                                                         color="primary"
                                                         component="span"
                                                         onClick={() => {
-                                                            extraBed > 0
-                                                                ? setExtraBed(extraBed - 1)
-                                                                : extraBed;
+                                                            extraBed > 0 &&
+                                                                setExtraBed(extraBed - 1);
                                                         }}
                                                     >
                                                         <RemoveIcon />

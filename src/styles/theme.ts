@@ -54,6 +54,9 @@ export const MyConFigTheme: ThemeOptions = {
         primary: {
             main: colors.orange,
         },
+        secondary: {
+            main: colors.darkBlue2,
+        },
         text: {
             disabled: colors.gray2,
             primary: colors.darkBlack,
