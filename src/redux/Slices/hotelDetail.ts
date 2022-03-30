@@ -1,10 +1,11 @@
 import { hotelsApi } from "@api";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
 
 import { IHotel } from "@types";
 import { toast } from "react-toastify";
-import { RootState } from ".";
-import { REVIEW_SUCCESS, FAIL } from "@configs";
+import { RootState, MyError } from ".";
+import { REVIEW_SUCCESS } from "@configs";
 
 interface IReviewParams {
     id: string;
@@ -40,8 +41,15 @@ export const submitReviewHotel = createAsyncThunk(
             });
             toast.success(`${REVIEW_SUCCESS}`);
             return res.data.hotel as IHotel;
-        } catch (err) {
-            toast.error(`${FAIL}`);
+        } catch (error) {
+            if (axios.isAxiosError(error) && error.response) {
+                const errorMessage =
+                    (error?.response?.data as MyError).message ||
+                    error.message ||
+                    "There was an error";
+                toast.error(errorMessage as string);
+                throw new Error(errorMessage as string);
+            }
         }
     }
 );

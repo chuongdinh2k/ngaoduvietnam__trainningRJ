@@ -8,7 +8,7 @@ import { AppInput, GroupPeople, IconCalendar, IconLocation } from "..";
 import { convertCurrency } from "@utils";
 
 interface IValues {
-    date?: string;
+    startDate?: string;
     group?: string;
     promoCode?: string;
 }
@@ -27,6 +27,11 @@ interface IProps {
 }
 export const ComponentCheckOutTotal = (props: IProps) => {
     const { handleChange, handleBlur } = props;
+    React.useEffect(() => {
+        return () => {
+            dispatch(resetForm());
+        };
+    }, []);
     // hooks
     const dispatch = useDispatch();
     const history = useHistory();
@@ -36,12 +41,6 @@ export const ComponentCheckOutTotal = (props: IProps) => {
     if (Object.keys(hotel.bookingHotel).length === 0) {
         history.goBack();
     }
-    React.useEffect(() => {
-        return () => {
-            dispatch(resetForm());
-        };
-    }, []);
-
     return (
         <StyledComponentCheckOutContent>
             <div className="wrapperTotal">
@@ -78,8 +77,19 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                 placeholder="Enter duration"
                                 // defaultValue={hotel.bookingHotel?.date}
                                 icon={<IconCalendar />}
-                                value={props.values.date}
+                                value={props.values.startDate}
                             />
+                            {/* <AppDatePicker
+                                            name="date"
+                                            value={startDate}
+                                            handleChange={(date: Date) => handleOnChange(date)}
+                                            placeholder="Enter Departure"
+                                            minDate={new Date()}
+                                            icon={<IconCalendar />}
+                                        />
+                                        {endDate && (
+                                            <p className="dateInput__showDate">- {endDate}</p>
+                                        )} */}
                         </div>
                         <div className="form__group-input">
                             <AppInput

@@ -25,30 +25,34 @@ export const ListTour = () => {
     const [userQuery, setUserQuery] = useState<string | undefined>("");
     const [loadingDebounce, setLoadingDebounce] = useState<boolean>(false);
     const [data, setData] = React.useState<Array<IDataTour>>();
-    const updateQuery = async (value: string) => {
+    const updateQuery = async () => {
         // A search query api call.
         const res = await toursApi.getListFilterTours(
             {
                 page: 1,
                 limit: INFINITY_MAX,
             },
-            { location: value }
+            { location: userQuery }
         );
         setData(res.data.dataToursList);
         setLoadingDebounce(false);
     };
-    const delayedQuery = useCallback(
-        debounce((nextValue) => updateQuery(nextValue), 500),
-        []
-    );
+    const delayedQuery = useCallback(debounce(updateQuery, 500), [userQuery]);
     const onChangeDebounce = (e: string | undefined) => {
-        setLoadingDebounce(true);
         setUserQuery(e);
-        delayedQuery(e);
+        // delayedQuery(e);
     };
     const handleChange = (event: ChangeEvent<any>, value: number) => {
         setPage(value);
     };
+    // WHAT: search debounce
+    React.useEffect(() => {
+        setLoadingDebounce(true);
+        delayedQuery();
+
+        // Cancel the debounce on useEffect cleanup.
+        return delayedQuery.cancel;
+    }, [userQuery, delayedQuery]);
     React.useEffect(() => {
         dispatch(
             getListTours({

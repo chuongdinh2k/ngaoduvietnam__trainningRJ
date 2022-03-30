@@ -6,10 +6,10 @@ export const StyledBookingForm = styled.div`
         padding: 2rem 2.5rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding: 0 3rem;
-            margin: 0 12rem;
+            margin: 3rem 12rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            margin: 0;
+            margin: 3rem 0;
         }
     }
     .showMoney {
@@ -138,6 +138,9 @@ export const StyledBookingForm = styled.div`
     }
     .form__group {
         padding: 1.2rem 0 1.6rem 0;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            padding: 0;
+        }
         &-select {
             .MuiInputBase-input {
                 padding: 11px 0 7px;
@@ -146,11 +149,29 @@ export const StyledBookingForm = styled.div`
                 }
             }
         }
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            padding: 0;
-        }
         &-input {
             margin-bottom: 2rem;
+            .MuiInputBase-input {
+                font-family: ${(p) => p.theme.typography.fontFamily};
+            }
+        }
+        .dateInput {
+            position: relative;
+            &__showDate {
+                font: inherit;
+                position: absolute;
+                font-size: 1.4rem;
+                font-weight: 500;
+                top: 25%;
+                right: 27%;
+                @media (min-width: 2000px) {
+                    right: 45%;
+                }
+                @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    right: 18%;
+                    top: 25%;
+                }
+            }
         }
     }
 `;

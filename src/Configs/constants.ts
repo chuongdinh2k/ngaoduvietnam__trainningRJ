@@ -42,3 +42,6 @@ export const PASSWORD = "123456789";
 export const REVIEW_SUCCESS = "You've added a review successfully!";
 export const FAIL = "something went wrong! please try again!";
 export const ERROR_404_DATA = "Can not find matching data!";
+
+// default end day
+export const DEFAULT_ENDATE = "3";

@@ -3,14 +3,12 @@ import { Formik } from "formik";
 
 import { StyledComponentCheckOutContent, ComponentPaymentMethod, ComponentCheckOutTotal } from ".";
 import { formSchemaCheckOut } from "@utils";
-// import { appRoutesEnum } from "@enums";
 import { AppInput } from "..";
 import { useAppSelector, selectHotel } from "@redux";
 
 export const ComponentCheckOutContent = () => {
     // redux store
     const hotel = useAppSelector(selectHotel);
-    // const history = useHistory();
     // component variable
     const initialValuesPackage = {
         firstName: "",
@@ -24,7 +22,7 @@ export const ComponentCheckOutContent = () => {
         country: "",
         specialRequirement: "",
         payment: [],
-        date: hotel.bookingHotel?.date || "",
+        startDate: hotel.bookingHotel?.startDate || "",
         group: hotel.bookingHotel?.group || "",
         promoCode: "",
     };

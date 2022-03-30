@@ -18,7 +18,8 @@ interface IBookingHotelForm {
     typeOfTour?: string;
     title?: string;
     location?: string;
-    date?: string;
+    startDate?: string;
+    endDate?: string;
     group?: string;
     standardRoom?: number;
     familySuite?: number;

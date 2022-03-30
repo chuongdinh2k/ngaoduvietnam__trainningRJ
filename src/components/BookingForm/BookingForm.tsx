@@ -8,10 +8,11 @@ import { Divider, IconButton, Checkbox } from "@material-ui/core";
 import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
 import { GroupPeople, AppDatePicker, IconCalendar, AppSelect, Error } from "..";
-import { convertCurrency, fomatObjDate, formSchemaBookingForm } from "@utils";
+import { convertCurrency, fomatObjDate, formSchemaBookingForm, getEndDate } from "@utils";
 import { useDispatch } from "react-redux";
 import { setBookingForm } from "@redux";
 import { groupOfPeople } from "@demos";
+import { DEFAULT_ENDATE } from "@configs";
 
 interface IProps {
     data?: ICard;
@@ -30,7 +31,7 @@ export const BookingForm = (props: IProps) => {
     const [familySuite, setFamilySuite] = React.useState<number>(0);
     const [breakFast, setBreakFast] = React.useState<number>(0);
     const [extraBed, setExtraBed] = React.useState<number>(0);
-    const [duration, setDuration] = React.useState<Date>();
+    const [startDate, setStartDate] = React.useState<Date>(new Date());
     const [checkBreakFast, setCheckBreakFast] = React.useState<boolean>(false);
     const [checkExtraBed, setCheckExtraBed] = React.useState<boolean>(false);
     const handleChangeBreakFast = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +41,7 @@ export const BookingForm = (props: IProps) => {
         setCheckExtraBed(event.target.checked);
     };
     const handleOnChange = (e: Date) => {
-        setDuration(e);
+        setStartDate(e);
     };
     // variable component
     const totalTour = dataTour?.price;
@@ -51,6 +52,9 @@ export const BookingForm = (props: IProps) => {
         breakFast * 20 +
         (checkBreakFast ? breakFast * 20 : 0) +
         (checkExtraBed ? extraBed * 20 : 0);
+
+    // WHAT: get picked plus duration days
+    const endDate = getEndDate(startDate, dataTour?.duration || DEFAULT_ENDATE);
     return (
         <StyledBookingForm>
             <div className="wrapper">
@@ -86,7 +90,8 @@ export const BookingForm = (props: IProps) => {
                         dispatch(
                             setBookingForm({
                                 ...values,
-                                date: fomatObjDate(duration),
+                                startDate: fomatObjDate(startDate),
+                                endDate: endDate?.toString(),
                                 standardRoom: standardRoom,
                                 familySuite: familySuite,
                                 breakFast: breakFast,
@@ -104,15 +109,18 @@ export const BookingForm = (props: IProps) => {
                         return (
                             <>
                                 <div className="form__group">
-                                    <div className="form__group-input">
+                                    <div className="form__group-input dateInput">
                                         <AppDatePicker
                                             name="date"
-                                            value={duration}
+                                            value={startDate}
                                             handleChange={(date: Date) => handleOnChange(date)}
                                             placeholder="Enter Departure"
                                             minDate={new Date()}
                                             icon={<IconCalendar />}
                                         />
+                                        {endDate && (
+                                            <p className="dateInput__showDate">- {endDate}</p>
+                                        )}
                                     </div>
                                     <div className="form__group-input form__group-select">
                                         <AppSelect

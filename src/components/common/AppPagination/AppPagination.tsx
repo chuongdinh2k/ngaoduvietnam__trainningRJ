@@ -19,7 +19,10 @@ const useStyles = makeStyles((theme) =>
                 backgroundColor: `${theme.colors.gray4}`,
                 borderRadius: 0,
                 border: "none",
-                padding: "0 17px",
+                padding: "0 15px",
+                [theme.breakpoints.down("xs")]: {
+                    padding: "0px",
+                },
                 "&:hover": {
                     color: `${theme.colors.darkBlack}`,
                     backgroundColor: `${theme.colors.gray4}`,
@@ -42,6 +45,14 @@ const useStyles = makeStyles((theme) =>
             fontSize: "0.875rem",
             minWidth: "32px",
             paddingLeft: "1.5rem",
+            [theme.breakpoints.down("xs")]: {
+                paddingLeft: "0",
+                margin: "0",
+                "& .MuiButton-startIcon": {
+                    marginLeft: 0,
+                    marginRight: 0,
+                },
+            },
             "&:hover": {
                 cursor: "pointer",
             },
@@ -114,7 +125,7 @@ export const AppPagination = (props: IProps) => {
                                 <div className={classes.root}>
                                     <Pagination
                                         classes={{ ul: classes.ul }}
-                                        count={8}
+                                        count={totalPage}
                                         page={currentPage}
                                         onChange={handleChange}
                                         variant="outlined"

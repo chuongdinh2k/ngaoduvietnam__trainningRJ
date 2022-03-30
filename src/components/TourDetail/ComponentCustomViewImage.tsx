@@ -24,6 +24,7 @@ export const ComponentCustomViewImage = (props: IProps) => {
                     {/* WHAT: render list tour images */}
                     {listTourImages && (
                         <div
+                            onMouseOver={() => handleGotoSlider(sliderRef, i)}
                             className="wrapDot__layer"
                             onClick={() => dispatch(setPopUpLightBox(listTourImages))}
                         >
@@ -80,7 +81,6 @@ export const ComponentCustomViewImage = (props: IProps) => {
         },
         dots: true,
         dotsClass: "slick-dots slick-thumb",
-        // infinite: true,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
         speed: 500,
