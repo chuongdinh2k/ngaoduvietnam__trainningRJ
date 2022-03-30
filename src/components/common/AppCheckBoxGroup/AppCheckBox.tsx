@@ -53,11 +53,17 @@ const useStyles = makeStyles((theme) =>
             fontWeight: 500,
             fontSize: "16px",
             textTransform: "capitalize",
+            [theme.breakpoints.down("xs")]: {
+                fontSize: "13px",
+            },
         },
         labelWithImage: {
             width: "10rem",
+            [theme.breakpoints.down("md")]: {
+                paddingTop: "0.5rem",
+            },
             [theme.breakpoints.down("xs")]: {
-                width: "5rem",
+                width: "7rem",
             },
         },
         icon: {

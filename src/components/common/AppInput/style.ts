@@ -71,5 +71,4 @@ export const Error = styled.span`
 `;
 export const LabelWrapper = styled.div`
     display: flex;
-    /* padding-top: 0.4rem; */
 `;

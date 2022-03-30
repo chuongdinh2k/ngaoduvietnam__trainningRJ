@@ -32,7 +32,7 @@ interface IAppSelect {
     disabled?: boolean;
     styleSelect?: any;
     multiple?: boolean;
-    size?:string;
+    size?: string;
 }
 export const AppSelect = (props: IAppSelect) => {
     const classes = useStyles();

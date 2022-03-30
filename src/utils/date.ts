@@ -11,8 +11,8 @@ export const fomatObjDate = (date: Date | undefined) => {
 export const fomatTimestampToDate = (date: number | undefined) => {
     return date && moment(date).format("DD/MM/YYYY");
 };
-// WHAT PLUS DATE
-export const getEndDate = (startDate: Date | undefined, duration: string) => {
+// WHAT GET END DATE WHEN KNOW STARTDATE
+export const getEndDate = (startDate: Date | undefined, duration: string | undefined) => {
     const dateTemp: Date = new Date();
     const endDate =
         startDate &&

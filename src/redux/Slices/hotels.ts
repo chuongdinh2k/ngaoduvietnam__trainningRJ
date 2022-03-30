@@ -1,3 +1,5 @@
+import { DateRange } from "@mui/lab/DateRangePicker";
+
 import { hotelsApi } from "@api";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IHotel } from "@types";
@@ -18,8 +20,9 @@ interface IBookingHotelForm {
     typeOfTour?: string;
     title?: string;
     location?: string;
-    startDate?: string;
-    endDate?: string;
+    startDate?: Date;
+    dateRange?: DateRange<unknown>;
+    endDate?: string | number;
     group?: string;
     standardRoom?: number;
     familySuite?: number;

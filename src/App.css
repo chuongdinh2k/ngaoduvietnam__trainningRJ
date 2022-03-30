@@ -1,7 +1,6 @@
 .App {
   font-family: DM Sans, sans-serif;
   box-sizing: border-box;
-  /* text-align: center; */
 }
 * {
   box-sizing: border-box;
@@ -71,10 +70,6 @@ html {
   font-size: 1.4rem !important;
 }
 
-/* .MuiPickersCalendarHeader-dayLabel .MuiTypography-caption {
-  font-size: 1.4rem !important;
-} */
-
 .MuiInputBase-input {
   padding: 11px 0 7px;
 }
@@ -90,4 +85,9 @@ input:-webkit-autofill:focus {
 }
 input[data-autocompleted] {
   background-color: transparent !important;
+}
+/* mui selected date picker change background color */
+.css-pgdzhj-MuiButtonBase-root-MuiPickersDay-root-MuiDateRangePickerDay-day.Mui-selected,
+.css-jwafdq-MuiButtonBase-root-MuiPickersDay-root-MuiDateRangePickerDay-day.Mui-selected {
+  background-color: #ff7b42 !important;
 }

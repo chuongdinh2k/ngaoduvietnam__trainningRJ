@@ -12,8 +12,8 @@ export const ComponentListRooms = (props: IProps) => {
         <StyledComponentSelectedRoom>
             <div className="wrapperSelectedRoom">
                 <h3 className="title">Rooms</h3>
-                {selectRooms?.map((room) => (
-                    <div key={room.id}>
+                {selectRooms?.map((room, index) => (
+                    <div key={index}>
                         {" "}
                         <ComponentHotelRoom selectRoom={room} />
                     </div>

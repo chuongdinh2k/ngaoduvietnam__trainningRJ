@@ -1,20 +1,13 @@
 import styled from "styled-components";
 
-export interface ISWrapper {
+interface ISWrapper {
     width?: string;
     marginTop?: string;
     hasBorder?: boolean;
     backgroundColor?: string;
     size?: string;
 }
-interface ISLabel {
-    color?: string;
-    fontSize?: string;
-    marginBottom?: string;
-    fontWeight?: string;
-}
-
-export const InputWrapper = styled.div<ISWrapper>`
+export const InputWrapperRangeDate = styled.div<ISWrapper>`
     background-color: ${(props) => props.backgroundColor || "white"};
     height: 5rem;
     border: ${(p) => {
@@ -33,10 +26,17 @@ export const InputWrapper = styled.div<ISWrapper>`
     .MuiOutlinedInput-adornedStart {
         padding-left: 0;
     }
-    .MuiInputBase-input {
-        font-size: 1.4rem;
-        padding-left: 1rem;
-        font-weight: 500;
+    .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+        display: none;
+    }
+    .wrapperRangeContent {
+        margin-left: 1.25rem;
+        .MuiInputBase-input {
+            font-size: 1.4rem;
+            padding-left: 0;
+            font-weight: 500;
+            max-width: 8rem;
+        }
     }
     @media (min-width: 2000px) {
         height: ${(p) => (p.size === "large" ? `7rem` : `5rem`)};
@@ -57,25 +57,4 @@ export const InputWrapper = styled.div<ISWrapper>`
         height: 4rem;
         padding: 1rem 1.2rem;
     }
-`;
-export const Placeholder = styled.div`
-    color: #808285;
-`;
-
-export const Label = styled.p<ISLabel>`
-    font-size: ${(props) => props.fontSize || "20px"};
-    margin-bottom: ${(props) => props.marginBottom || "10px"};
-    color: ${(props) => props.color || "#000"};
-    font-weight: ${(props) => props.fontWeight || 500};
-    @media (max-width: 425px) {
-        font-size: 16px;
-    }
-`;
-export const Error = styled.span`
-    font-size: 14px;
-    color: ${(p) => p.theme.colors.red};
-`;
-export const LabelWrapper = styled.div`
-    display: flex;
-    padding-top: 0.4rem;
 `;

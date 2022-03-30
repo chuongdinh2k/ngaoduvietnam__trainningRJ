@@ -1,14 +1,32 @@
+import React, { useLayoutEffect } from "react";
 import { Divider, Grid, TextField } from "@material-ui/core";
 import { Formik } from "formik";
+import { DateRange } from "@mui/lab/DateRangePicker/RangeTypes";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { StyledComponentCheckOutContent, ComponentPaymentMethod, ComponentCheckOutTotal } from ".";
-import { formSchemaCheckOut } from "@utils";
+import { formSchemaCheckOut, getEndDate } from "@utils";
 import { AppInput } from "..";
-import { useAppSelector, selectHotel } from "@redux";
+import { useAppSelector, selectHotel, setBookingForm } from "@redux";
 
 export const ComponentCheckOutContent = () => {
+    // hooks
+    const dispatch = useDispatch();
+    const history = useHistory();
     // redux store
     const hotel = useAppSelector(selectHotel);
+    useLayoutEffect(() => {
+        if (Object.keys(hotel.bookingHotel).length === 0) {
+            history.goBack();
+        }
+    }, []);
+    const [inputDateRange, setInputDateRange] = React.useState<DateRange<unknown> | undefined>(
+        hotel.bookingHotel?.dateRange
+    );
+    const [inputStartDate, setInputStartDate] = React.useState<Date | undefined>(
+        hotel.bookingHotel?.startDate
+    );
     // component variable
     const initialValuesPackage = {
         firstName: "",
@@ -22,17 +40,36 @@ export const ComponentCheckOutContent = () => {
         country: "",
         specialRequirement: "",
         payment: [],
-        startDate: hotel.bookingHotel?.startDate || "",
-        group: hotel.bookingHotel?.group || "",
+        startDate: hotel.bookingHotel?.startDate,
+        group: hotel.bookingHotel?.group,
         promoCode: "",
+        dateRange: hotel.bookingHotel?.dateRange,
     };
-
+    const handleChangeStartDate = (date: Date) => {
+        setInputStartDate(date);
+        dispatch(
+            setBookingForm({
+                ...hotel.bookingHotel,
+                startDate: date,
+                endDate: getEndDate(date, hotel?.bookingHotel?.duration),
+            })
+        );
+    };
+    const handleOnChangeDate = (date: DateRange<unknown>) => {
+        setInputDateRange(date);
+        dispatch(
+            setBookingForm({
+                ...hotel.bookingHotel,
+                dateRange: date,
+            })
+        );
+    };
     return (
         <StyledComponentCheckOutContent>
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
-                    resetForm();
+                    resetForm({ values: initialValuesPackage });
                 }}
                 validationSchema={formSchemaCheckOut}
             >
@@ -211,6 +248,10 @@ export const ComponentCheckOutContent = () => {
                                         handleChange={handleChange}
                                         handleBlur={handleBlur}
                                         values={values}
+                                        handleOnChangeDate={handleOnChangeDate}
+                                        inputDateRange={inputDateRange}
+                                        handleChangeStartDate={handleChangeStartDate}
+                                        inputStartDate={inputStartDate}
                                     />
                                 </Grid>
                             </Grid>
@@ -225,7 +266,6 @@ export const ComponentCheckOutContent = () => {
                                         type="submit"
                                         onClick={() => {
                                             handleSubmit();
-                                            // history.push(appRoutesEnum.SUCCESS);
                                         }}
                                     >
                                         Complete Booking

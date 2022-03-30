@@ -4,11 +4,12 @@ import { useHistory, useParams } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { Divider, IconButton, Checkbox } from "@material-ui/core";
+import { DateRange } from "@mui/lab/DateRangePicker";
 
 import { StyledBookingForm } from ".";
 import { ICard, IDataTour, IHotel } from "@types";
-import { GroupPeople, AppDatePicker, IconCalendar, AppSelect, Error } from "..";
-import { convertCurrency, fomatObjDate, formSchemaBookingForm, getEndDate } from "@utils";
+import { GroupPeople, AppDatePicker, IconCalendar, AppRangeDatePicker, AppSelect, Error } from "..";
+import { convertCurrency, formSchemaBookingForm, getEndDate } from "@utils";
 import { useDispatch } from "react-redux";
 import { setBookingForm } from "@redux";
 import { groupOfPeople } from "@demos";
@@ -34,8 +35,10 @@ export const BookingForm = (props: IProps) => {
     const [startDate, setStartDate] = React.useState<Date>(new Date());
     const [checkBreakFast, setCheckBreakFast] = React.useState<boolean>(false);
     const [checkExtraBed, setCheckExtraBed] = React.useState<boolean>(false);
-    const handleChangeBreakFast = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCheckBreakFast(event.target.checked);
+    const [dateRange, setDateRange] = React.useState<DateRange<unknown>>([null, null]);
+
+    const handleChangeBreakFast = () => {
+        setCheckBreakFast(!checkBreakFast);
     };
     const handleChangeExtraBed = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCheckExtraBed(event.target.checked);
@@ -43,16 +46,17 @@ export const BookingForm = (props: IProps) => {
     const handleOnChange = (e: Date) => {
         setStartDate(e);
     };
+    const handleOnChangeDate = (e: DateRange<unknown>) => {
+        setDateRange(e);
+    };
     // variable component
     const totalTour = dataTour?.price;
     const totalHotel =
         Number(dataHotel?.price) +
         standardRoom * 25 +
         familySuite * 24 +
-        breakFast * 20 +
-        (checkBreakFast ? breakFast * 20 : 0) +
-        (checkExtraBed ? extraBed * 20 : 0);
-
+        (checkBreakFast ? breakFast * 24 : 0) +
+        (checkExtraBed ? extraBed * 24 : 0);
     // WHAT: get picked plus duration days
     const endDate = getEndDate(startDate, dataTour?.duration || DEFAULT_ENDATE);
     return (
@@ -90,16 +94,17 @@ export const BookingForm = (props: IProps) => {
                         dispatch(
                             setBookingForm({
                                 ...values,
-                                startDate: fomatObjDate(startDate),
-                                endDate: endDate?.toString(),
+                                startDate: dataTour && startDate,
+
                                 standardRoom: standardRoom,
                                 familySuite: familySuite,
                                 breakFast: breakFast,
                                 title: dataTour?.title || dataHotel?.title,
                                 location: dataTour?.location || dataHotel?.location,
-                                duration: dataTour?.duration || "",
-                                typeOfTour: dataTour?.typeOfTour || "",
+                                duration: dataTour?.duration,
+                                typeOfTour: dataTour?.typeOfTour,
                                 total: totalHotel || totalTour,
+                                dateRange: dateRange,
                             })
                         );
                         history.push(`/tours/${id}/checkout`);
@@ -109,19 +114,30 @@ export const BookingForm = (props: IProps) => {
                         return (
                             <>
                                 <div className="form__group">
-                                    <div className="form__group-input dateInput">
-                                        <AppDatePicker
-                                            name="date"
-                                            value={startDate}
-                                            handleChange={(date: Date) => handleOnChange(date)}
-                                            placeholder="Enter Departure"
-                                            minDate={new Date()}
-                                            icon={<IconCalendar />}
-                                        />
-                                        {endDate && (
-                                            <p className="dateInput__showDate">- {endDate}</p>
-                                        )}
-                                    </div>
+                                    {dataTour && (
+                                        <div className="form__group-input dateInput">
+                                            <AppDatePicker
+                                                name="date"
+                                                value={startDate}
+                                                handleChange={(date: Date) => handleOnChange(date)}
+                                                placeholder="Enter Departure"
+                                                minDate={new Date()}
+                                                icon={<IconCalendar />}
+                                            />
+                                            {endDate && (
+                                                <p className="dateInput__showDate">- {endDate}</p>
+                                            )}
+                                        </div>
+                                    )}
+                                    {dataHotel && (
+                                        <div className="form__group-input">
+                                            <AppRangeDatePicker
+                                                icon={<IconCalendar />}
+                                                handleChange={handleOnChangeDate}
+                                                value={dateRange}
+                                            />
+                                        </div>
+                                    )}
                                     <div className="form__group-input form__group-select">
                                         <AppSelect
                                             name="group"

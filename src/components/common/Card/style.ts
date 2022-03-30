@@ -162,6 +162,9 @@ export const StyledCardWithIcon = styled.div`
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+        @media (min-width: 2000px) {
+            height: 5rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.4rem;
             height: 2rem;

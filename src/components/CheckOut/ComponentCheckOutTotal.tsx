@@ -2,19 +2,29 @@ import React, { ChangeEvent, FocusEvent } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { DateRange } from "@mui/lab/DateRangePicker/RangeTypes";
 
 import { resetForm, selectHotel, useAppSelector } from "@redux";
-import { AppInput, GroupPeople, IconCalendar, IconLocation } from "..";
+import {
+    AppInput,
+    AppDatePicker,
+    AppRangeDatePicker,
+    GroupPeople,
+    IconCalendar,
+    IconLocation,
+} from "..";
 import { convertCurrency } from "@utils";
 
 interface IValues {
-    startDate?: string;
+    startDate?: Date;
+    endDate?: string;
     group?: string;
     promoCode?: string;
+    dateRange?: DateRange<unknown>;
 }
 interface IProps {
     handleChange: {
-        (e: ChangeEvent<any>): void;
+        (date: ChangeEvent<any>): void;
         <T = string | ChangeEvent<any>>(field: T): T extends ChangeEvent<any>
             ? void
             : (e: string | ChangeEvent<any>) => void;
@@ -23,10 +33,22 @@ interface IProps {
         (e: FocusEvent<any, Element>): void;
         <T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void;
     };
+    handleOnChangeDate: (date: DateRange<unknown>) => void;
+    handleChangeStartDate: (date: Date) => void;
     values: IValues;
+    inputDateRange?: DateRange<unknown> | undefined;
+    inputStartDate?: Date | undefined;
 }
 export const ComponentCheckOutTotal = (props: IProps) => {
-    const { handleChange, handleBlur } = props;
+    const {
+        handleChange,
+        handleBlur,
+        values,
+        inputDateRange,
+        handleChangeStartDate,
+        handleOnChangeDate,
+        inputStartDate,
+    } = props;
     React.useEffect(() => {
         return () => {
             dispatch(resetForm());
@@ -69,27 +91,31 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                         )}
                     </div>
                     <div className="form__group">
-                        <div className="form__group-input">
-                            <AppInput
-                                name="date"
-                                handleChange={handleChange("date")}
-                                handleBlur={handleBlur("date")}
-                                placeholder="Enter duration"
-                                // defaultValue={hotel.bookingHotel?.date}
-                                icon={<IconCalendar />}
-                                value={props.values.startDate}
-                            />
-                            {/* <AppDatePicker
-                                            name="date"
-                                            value={startDate}
-                                            handleChange={(date: Date) => handleOnChange(date)}
-                                            placeholder="Enter Departure"
-                                            minDate={new Date()}
-                                            icon={<IconCalendar />}
-                                        />
-                                        {endDate && (
-                                            <p className="dateInput__showDate">- {endDate}</p>
-                                        )} */}
+                        <div className="form__group-input dateInput">
+                            {values.startDate && (
+                                <AppDatePicker
+                                    name="date"
+                                    value={inputStartDate}
+                                    handleChange={(date: Date) => handleChangeStartDate(date)}
+                                    placeholder="Enter Departure"
+                                    minDate={new Date()}
+                                    icon={<IconCalendar />}
+                                />
+                            )}
+                            {values.endDate && (
+                                <p className="dateInput__showDate">- {values.endDate}</p>
+                            )}
+                            {/* WHAT: if startDate is undefined then show date range */}
+                            {!values.startDate && inputDateRange && (
+                                <div className="form__group-input dateRange">
+                                    <AppRangeDatePicker
+                                        icon={<IconCalendar />}
+                                        handleChange={handleOnChangeDate}
+                                        value={inputDateRange}
+                                        name="dateRange"
+                                    />
+                                </div>
+                            )}
                         </div>
                         <div className="form__group-input">
                             <AppInput
@@ -201,6 +227,12 @@ const StyledComponentCheckOutContent = styled.div`
         }
     }
     .form__group {
+        .dateRange,
+        .dateInput {
+            .MuiInputBase-root {
+                padding-left: 0;
+            }
+        }
         &-input {
             margin-top: 2rem;
         }
