@@ -2,7 +2,6 @@ import React from "react";
 
 import { StyledContainer } from "@components";
 import { ILayout } from "@types";
-import { ToastContainer } from "react-toastify";
 
 export const LayoutApp = (props: ILayout) => {
     React.useEffect(() => {
@@ -12,7 +11,6 @@ export const LayoutApp = (props: ILayout) => {
         <>
             <StyledContainer>
                 <div className="workspace">
-                    <ToastContainer />
                     <div>{props.children}</div>
                 </div>
             </StyledContainer>

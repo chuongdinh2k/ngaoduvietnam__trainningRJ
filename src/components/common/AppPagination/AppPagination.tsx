@@ -32,6 +32,12 @@ const useStyles = makeStyles((theme) =>
                 backgroundColor: `${theme.colors.darkBlack}`,
                 color: `${theme.colors.pureWhite}`,
             },
+            "& .MuiPaginationItem-ellipsis": {
+                padding: "0.5rem 1.5rem !important",
+                [theme.breakpoints.down("xs")]: {
+                    padding: "0.5rem 0 !important",
+                },
+            },
         },
         btnPrev: {
             color: `${theme.colors.darkBlack}`,

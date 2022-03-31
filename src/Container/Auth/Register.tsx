@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Formik } from "formik";
 import { Button, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
@@ -16,6 +16,13 @@ export const Register = () => {
     // hook
     const history = useHistory();
     const auth = useAppSelector(selectAuth);
+
+    useLayoutEffect(() => {
+        if (auth.tokenInfoAuth) {
+            history.goBack();
+        }
+    }, [auth]);
+
     const dispatch = useDispatch();
     const initialValuesPackage = {
         password: "",
@@ -96,7 +103,7 @@ export const Register = () => {
                                         {auth.isLoading && <CircularProgress size={24} />}
 
                                         <span className={clsx(auth.isLoading ? "pl-1" : "")}>
-                                            Sign In
+                                            Sign Up
                                         </span>
                                     </Button>
                                     <Button

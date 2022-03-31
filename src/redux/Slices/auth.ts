@@ -28,6 +28,7 @@ export const login = createAsyncThunk("auth/login", async (values: ILogin) => {
 export const register = createAsyncThunk("auth/register", async (values: IRegister) => {
     try {
         const res = await authApi.register(values);
+        toast.success(res.data.message);
         return res.data as IAuth;
     } catch (error) {
         if (axios.isAxiosError(error) && error.response) {

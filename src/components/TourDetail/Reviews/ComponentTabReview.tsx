@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import { IComment, IHotelComment, IHotel, IDataTour } from "@types";
 import { ComponentShowRating, ComponentCommentBox, ComponentUserComment } from ".";
-import { selectAuth, useAppSelector } from "@redux";
+import { selectAuth, useAppSelector, selectDetailTour } from "@redux";
 import { useHistory } from "react-router-dom";
 import { authRoutesEnum } from "@enums";
 import { convertRating } from "@utils";
@@ -29,6 +29,7 @@ export const ComponentTabReview = (props: IProps) => {
 
     // redux
     const auth = useAppSelector(selectAuth);
+    const tourDetail = useAppSelector(selectDetailTour);
     // hook
     const history = useHistory();
     // component state
@@ -46,7 +47,10 @@ export const ComponentTabReview = (props: IProps) => {
             {dataTour && (
                 <>
                     {auth?.tokenInfoAuth ? (
-                        <ComponentCommentBox handleSubmit={handleSubmitReviewTour} />
+                        <ComponentCommentBox
+                            loadingButton={tourDetail.loadingReview}
+                            handleSubmit={handleSubmitReviewTour}
+                        />
                     ) : (
                         <span
                             className="btnLogin"
@@ -80,12 +84,21 @@ export const ComponentTabReview = (props: IProps) => {
                                     {dataHotel?.numberReviews} reviews
                                 </span>
                             </p>
-                            <div
-                                className="rating__info-btn"
-                                onClick={() => setShowComment(!showComment)}
-                            >
-                                Write a review
-                            </div>
+                            {auth?.tokenInfoAuth ? (
+                                <div
+                                    className="rating__info-btn"
+                                    onClick={() => setShowComment(!showComment)}
+                                >
+                                    Write a review
+                                </div>
+                            ) : (
+                                <div
+                                    className="rating__info-btn"
+                                    onClick={() => history.push(authRoutesEnum.LOGIN)}
+                                >
+                                    Login to comment
+                                </div>
+                            )}
                         </div>
                     </div>
                     {showComment && <ComponentCommentBox handleSubmit={handleSubmitReviewHotel} />}

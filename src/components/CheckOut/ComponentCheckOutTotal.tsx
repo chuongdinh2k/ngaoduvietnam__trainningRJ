@@ -6,14 +6,18 @@ import { DateRange } from "@mui/lab/DateRangePicker/RangeTypes";
 import { resetForm, selectHotel, useAppSelector } from "@redux";
 import {
     AppInput,
+    AppSelect,
     AppDatePicker,
     AppRangeDatePicker,
     GroupPeople,
     IconCalendar,
     IconLocation,
+    Error,
 } from "..";
 import { convertCurrency } from "@utils";
 import { StyledComponentCheckOutTotal } from ".";
+import { ErrorMessage } from "formik";
+import { groupOfPeople } from "@demos";
 
 interface IValues {
     startDate?: Date;
@@ -118,15 +122,15 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                             )}
                         </div>
                         <div className="form__group-input">
-                            <AppInput
+                            <AppSelect
                                 name="group"
-                                handleChange={handleChange("group")}
-                                handleBlur={handleBlur("group")}
-                                placeholder="Enter group of people"
                                 icon={<GroupPeople color="#FF7B42" />}
-                                // error={errors.group}
-                                value={props.values.group}
+                                value={values.group}
+                                placeholder="Enter group of people"
+                                options={groupOfPeople.data}
+                                handleChange={handleChange("group")}
                             />
+                            <ErrorMessage name="group" component={Error} />
                         </div>
                         {hotel.bookingHotel?.standardRoom ? (
                             <div className="form__group-option">
@@ -136,7 +140,7 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                     </span>
                                     Standard room
                                 </p>
-                                <span>$25.00</span>
+                                <span>{hotel.bookingHotel?.standardRoom * 25}</span>
                             </div>
                         ) : (
                             ""
@@ -149,7 +153,7 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                     </span>
                                     Family suite
                                 </p>
-                                <span>$24.00</span>
+                                <span>{hotel.bookingHotel?.familySuite * 24}</span>
                             </div>
                         ) : (
                             ""
@@ -162,7 +166,7 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                     </span>
                                     Break Fast
                                 </p>
-                                <span>$24.00</span>
+                                <span>{hotel.bookingHotel?.breakFast * 24}</span>
                             </div>
                         ) : (
                             ""

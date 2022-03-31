@@ -7,7 +7,7 @@ export const authApi = {
         return axiosClient.post(url, params);
     },
     register: (params: IRegister) => {
-        const url = `${process.env.REACT_APP_API_LOGIN}/auth/register`;
+        const url = `${process.env.REACT_APP_BACKEND}/auth/register`;
         return axiosClient.post(url, params);
     },
 };

@@ -23,7 +23,12 @@ export const InputWrapper = styled.div<ISWrapper>`
     .MuiInputBase-input {
         padding: -2px 0 7px;
     }
-    /* margin-bottom: 1.8rem; */
+    .MuiSelect-select {
+        .MuiSvgIcon-root {
+            width: 2em;
+            height: 2rem;
+        }
+    }
     @media (min-width: 2000px) {
         height: ${(p) => (p.size === "large" ? `7rem` : `5rem`)};
         padding: 1.2rem 2rem 1.2rem 2rem;

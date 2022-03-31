@@ -26,7 +26,6 @@ interface IAppSelect {
     value?: string | Array<string> | number;
     defaultValue?: string;
     handleChange: (value: any) => void;
-    // handleBlur?: (value: any) => void;
     name?: string;
     options?: any;
     disabled?: boolean;
@@ -35,35 +34,37 @@ interface IAppSelect {
     size?: string;
 }
 export const AppSelect = (props: IAppSelect) => {
+    // props
+    const { name, size, icon, value, multiple, placeholder, options, handleChange } = props;
     const classes = useStyles();
 
     const RendePlaceholder = ({ children }: any) => {
         return <Placeholder>{children}</Placeholder>;
     };
     return (
-        <InputWrapper size={props.size}>
-            <LabelWrapper>{props.icon}</LabelWrapper>
+        <InputWrapper size={size}>
+            <LabelWrapper>{icon}</LabelWrapper>
             <Select
-                name={props.name}
+                name={name}
                 className={classes.select}
-                value={props.value}
+                value={value}
                 displayEmpty
                 disableUnderline
-                multiple={props.multiple}
-                onChange={props.handleChange}
-                placeholder={props.placeholder}
+                multiple={multiple}
+                onChange={handleChange}
+                placeholder={placeholder}
                 renderValue={
-                    props.value === ""
-                        ? () => <RendePlaceholder>{props.placeholder}</RendePlaceholder>
+                    value === ""
+                        ? () => <RendePlaceholder>{placeholder}</RendePlaceholder>
                         : undefined
                 }
             >
                 <MenuItem value="" disabled>
-                    {props.placeholder}
+                    {placeholder}
                 </MenuItem>
-                {props.options &&
-                    props.options.length > 0 &&
-                    props.options.map((item: any) => (
+                {options &&
+                    options.length > 0 &&
+                    options.map((item: any) => (
                         <MenuItem key={item.value} value={item.value}>
                             {item.label}
                         </MenuItem>

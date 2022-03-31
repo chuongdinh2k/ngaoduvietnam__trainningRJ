@@ -18,7 +18,7 @@ export const Login = () => {
     const history = useHistory();
     useLayoutEffect(() => {
         if (auth.tokenInfoAuth) {
-            history.push("/");
+            history.goBack();
         }
     }, [auth]);
     const initialValuesPackage = {

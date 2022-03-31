@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme: any) => ({
             },
         },
         paddingLeft: "1.8rem",
+        [theme.breakpoints.down("xs")]: {
+            paddingLeft: "1.5rem",
+        },
     },
 }));
 

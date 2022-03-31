@@ -119,6 +119,16 @@ export const StyledComponentCheckOutTotal = styled.div`
                 padding-left: 0;
             }
         }
+        .dateRange {
+            .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+                @media (min-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                    padding-left: 0.75rem;
+                }
+            }
+        }
+        .MuiInputBase-root {
+            padding-left: 0;
+        }
         &-input {
             margin-top: 2rem;
         }
@@ -128,9 +138,6 @@ export const StyledComponentCheckOutTotal = styled.div`
             padding-top: 2rem;
             font-size: 1.6rem;
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
-        }
-        .MuiInputBase-root {
-            padding-left: 1.8rem;
         }
         &-promo {
             margin-top: 2rem;

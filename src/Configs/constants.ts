@@ -39,10 +39,11 @@ export const EMAIL = "jame95@gmail.com";
 export const PASSWORD = "123456789";
 
 // alert success review
+export const REGISTER_SUCCESS = "Bạn đã đăng ký thành công, vui lòng đăng nhập!";
 export const REVIEW_SUCCESS = "You've added a review successfully!";
-export const FAIL = "something went wrong! please try again!";
+export const FAIL = "Đã có lỗi xảy ra, vui lòng thử lại!";
 export const ERROR_404_DATA = "Can not find matching data!";
-
+export const ERROR_SERVER = "Đã có lỗi xảy ra phía server, vui lòng thử lại!";
 // default end day
 export const DEFAULT_ENDATE = "3";
 

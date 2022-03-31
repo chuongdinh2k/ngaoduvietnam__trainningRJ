@@ -29,9 +29,6 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             width: 100%;
             margin-bottom: 10rem;
-            // &__image {
-            //     height:
-            // }
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             width: 100%;
@@ -60,11 +57,12 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     .slick-prev,
     .slick-next {
         top: 50%;
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            top: 40%;
+        }
     }
     .slick-next {
         right: 2rem;
-        /* @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-        } */
     }
     .slick-dots {
         text-align: left;

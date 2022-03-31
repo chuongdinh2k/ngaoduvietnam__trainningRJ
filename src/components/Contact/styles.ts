@@ -58,7 +58,10 @@ export const StyledComponentContactForm = styled.div`
         &__wrappButton {
             display: flex;
             justify-content: flex-end;
-            margin-top: 2.4rem;
+            margin-top: 4.4rem;
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                margin-top: 4rem;
+            }
             &-btn {
                 padding: 1.3rem 4.3rem;
                 font-size: ${(p) => p.theme.typography.fontSize}px;
