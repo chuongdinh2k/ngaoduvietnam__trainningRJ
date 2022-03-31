@@ -20,6 +20,7 @@ export const StyledFooter = styled.div`
         }
     }
     .socialMedia {
+        display: flex;
         padding-top: 5.3rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             display: flex;

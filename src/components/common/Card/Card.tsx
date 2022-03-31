@@ -2,7 +2,8 @@ import { ICard } from "@types";
 import { theme } from "@styles";
 import { IconStar, IconFlagMark, IconLocation, IconCalendar } from "..";
 import { StyledCard, StyledCardWithIcon } from ".";
-import { convertCurrency } from "@utils";
+import { addThreeDots, convertCurrency } from "@utils";
+import { MAX_LENGTH_TEXT } from "@configs";
 
 interface IProps {
     data?: ICard;
@@ -37,7 +38,7 @@ export const Card = (props: IProps) => {
                             </span>
                             <p className="location__text">{data?.location}</p>
                         </div>
-                        <h4>{data?.title}</h4>
+                        <h4>{addThreeDots(data?.title, MAX_LENGTH_TEXT)}</h4>
                         <div className="bottom">
                             <div className="time">
                                 <span>

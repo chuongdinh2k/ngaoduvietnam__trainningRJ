@@ -135,7 +135,7 @@ export const ComponentContactForm = () => {
                             />
                             <div className="contact__right-content">
                                 <h4 className="right__content-title">Our Office</h4>
-                                {listAddressContact.map((item: IListAddress, index: number) => {
+                                {listAddressContact.map((item: IListAddress, index: number) => (
                                     <div className="right__list" key={index}>
                                         <span className="right__list-icon">
                                             <IconHome />
@@ -146,8 +146,8 @@ export const ComponentContactForm = () => {
                                                 {item?.subText}
                                             </span>
                                         </p>
-                                    </div>;
-                                })}
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </Grid>

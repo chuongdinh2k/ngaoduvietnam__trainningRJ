@@ -45,3 +45,6 @@ export const ERROR_404_DATA = "Can not find matching data!";
 
 // default end day
 export const DEFAULT_ENDATE = "3";
+
+// text length default card
+export const MAX_LENGTH_TEXT = 45;

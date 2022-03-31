@@ -69,6 +69,7 @@ export const ComponentCheckOutContent = () => {
             <Formik
                 initialValues={initialValuesPackage}
                 onSubmit={(values, { resetForm }) => {
+                    alert({ ...values });
                     resetForm({ values: initialValuesPackage });
                 }}
                 validationSchema={formSchemaCheckOut}
@@ -258,7 +259,10 @@ export const ComponentCheckOutContent = () => {
                             <Grid container spacing={4}>
                                 <Grid item xs={12} md={8}>
                                     <div className="divider" />
-                                    <ComponentPaymentMethod handleChange={handleChange} />
+                                    <ComponentPaymentMethod
+                                        handleChange={handleChange}
+                                        payment={values.payment}
+                                    />
                                 </Grid>
                                 <Grid item xs={12} md={8}>
                                     <button

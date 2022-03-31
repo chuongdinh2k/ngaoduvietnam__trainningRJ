@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FocusEvent } from "react";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { DateRange } from "@mui/lab/DateRangePicker/RangeTypes";
@@ -14,6 +13,7 @@ import {
     IconLocation,
 } from "..";
 import { convertCurrency } from "@utils";
+import { StyledComponentCheckOutTotal } from ".";
 
 interface IValues {
     startDate?: Date;
@@ -64,7 +64,7 @@ export const ComponentCheckOutTotal = (props: IProps) => {
         history.goBack();
     }
     return (
-        <StyledComponentCheckOutContent>
+        <StyledComponentCheckOutTotal>
             <div className="wrapperTotal">
                 <div className="content">
                     <h3 className="content__title">{hotel.bookingHotel?.title}</h3>
@@ -154,6 +154,19 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                         ) : (
                             ""
                         )}
+                        {hotel.bookingHotel?.breakFast ? (
+                            <div className="form__group-option">
+                                <p>
+                                    <span className="highlight">
+                                        {hotel.bookingHotel?.breakFast}x
+                                    </span>
+                                    Break Fast
+                                </p>
+                                <span>$24.00</span>
+                            </div>
+                        ) : (
+                            ""
+                        )}
                         <div className="form__group-promo">
                             <div className="form__group-inputPromo ">
                                 <AppInput
@@ -175,115 +188,6 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                     </span>
                 </div>
             </div>
-        </StyledComponentCheckOutContent>
+        </StyledComponentCheckOutTotal>
     );
 };
-
-const StyledComponentCheckOutContent = styled.div`
-    .highlight {
-        color: ${(p) => p.theme.colors.orange};
-    }
-    .wrapperTotal {
-        width: 100%;
-        background-color: ${(p) => p.theme.colors.backgroundGray};
-    }
-    .content,
-    .bottom {
-        padding-left: 3rem;
-        padding-right: 3.7rem;
-    }
-    .content {
-        padding-top: 4rem;
-        padding-bottom: 1rem;
-        &__title {
-            font-size: 1.8rem;
-            color: ${(p) => p.theme.colors.darkBlack};
-        }
-        &__location {
-            display: flex;
-            font-size: 1.4rem;
-            &-title {
-                padding-left: 1.4rem;
-                color: ${(p) => p.theme.colors.gray1};
-            }
-        }
-        &__type {
-            display: flex;
-            &-left {
-                margin-right: 3rem;
-            }
-            &-left,
-            &-right {
-                flex: 50%;
-            }
-            &-text {
-                font-size: 1.4rem;
-                font-weight: ${(p) => p.theme.typography.fontWeightMedium};
-            }
-            &-subText {
-                font-size: 1.4rem;
-                color: ${(p) => p.theme.colors.gray1};
-            }
-        }
-    }
-    .form__group {
-        .dateRange,
-        .dateInput {
-            .MuiInputBase-root {
-                padding-left: 0;
-            }
-        }
-        &-input {
-            margin-top: 2rem;
-        }
-        &-option {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 2rem;
-            font-size: 1.6rem;
-            font-weight: ${(p) => p.theme.typography.fontWeightBold};
-        }
-        .MuiInputBase-root {
-            padding-left: 1.8rem;
-        }
-        &-promo {
-            margin-top: 2rem;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            .muiInputbase-root {
-                padding-left: 0;
-            }
-        }
-        &-inputPromo {
-            width: 80%;
-        }
-        &-btn {
-            font-size: 1.4rem;
-            margin-left: 1rem;
-            padding: 1.2rem 3.2rem 1.6rem 3.2rem;
-            color: ${(p) => p.theme.colors.orange};
-            font-weight: ${(p) => p.theme.typography.fontWeightMedium};
-            border: 1px solid ${(p) => p.theme.colors.orange};
-            cursor: pointer;
-            &:hover {
-                background-color: ${(p) => p.theme.colors.orange};
-                color: ${(p) => p.theme.colors.pureWhite};
-                transition: all 0.5s ease-in-out;
-            }
-        }
-    }
-    .bottom {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 1rem;
-        color: ${(p) => p.theme.colors.pureWhite};
-        background-color: ${(p) => p.theme.colors.darkBlack};
-        padding-top: 3.4rem;
-        padding-bottom: 3.4rem;
-        font-size: 2rem;
-        &__money {
-            font-weight: ${(p) => p.theme.typography.fontWeightBold};
-        }
-    }
-`;

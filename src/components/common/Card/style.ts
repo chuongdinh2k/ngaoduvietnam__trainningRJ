@@ -38,7 +38,6 @@ export const StyledCard = styled.div`
 `;
 export const StyledCardWithIcon = styled.div`
     .cardWrapper {
-        /* padding: 1.5rem; */
         width: 100%;
         margin-right: 3rem;
         transition: 250ms;
@@ -155,7 +154,7 @@ export const StyledCardWithIcon = styled.div`
         font-weight: ${(p) => p.theme.typography.fontWeightMedium};
         margin-block-start: 0.9rem;
         margin-block-end: 1rem;
-        height: 3rem;
+        height: 5rem;
         max-height: 5rem;
         display: -webkit-box;
         -webkit-line-clamp: 4;
@@ -166,11 +165,13 @@ export const StyledCardWithIcon = styled.div`
             height: 5rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            font-size: 1.4rem;
-            height: 2rem;
+            font-size: 1.6rem;
+            height: 4rem;
             width: 100%;
-
-            white-space: nowrap;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            font-size: 1.4rem;
+            width: 100%;
         }
     }
     .bottom {

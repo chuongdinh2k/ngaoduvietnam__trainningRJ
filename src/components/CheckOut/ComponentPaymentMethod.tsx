@@ -11,18 +11,20 @@ interface IProps {
             ? void
             : (e: string | ChangeEvent<any>) => void;
     };
+    payment?: Array<string>;
 }
 
 export const ComponentPaymentMethod = (props: IProps) => {
+    const { handleChange, payment } = props;
     return (
         <StyledComponentPaymentMethod>
             <div className="wrapperPayment">
                 <h4 className="title">Payment Method</h4>
                 <p className="subTile">Pay securely—we use SSL encryption to keep your data safe</p>
                 <AppCheckBox
-                    handleChange={props.handleChange("payment")}
+                    handleChange={handleChange("payment")}
                     name="payment"
-                    // values={props.values}
+                    values={payment}
                     options={paymentMethod.options}
                 />
                 <ul className="list">

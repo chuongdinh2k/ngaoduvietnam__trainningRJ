@@ -37,6 +37,9 @@ export const InputWrapperRangeDate = styled.div<ISWrapper>`
             font-weight: 500;
             max-width: 8rem;
         }
+        .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+            padding-top: 0;
+        }
     }
     @media (min-width: 2000px) {
         height: ${(p) => (p.size === "large" ? `7rem` : `5rem`)};
