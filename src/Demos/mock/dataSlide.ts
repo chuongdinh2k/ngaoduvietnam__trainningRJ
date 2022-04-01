@@ -31,6 +31,22 @@ export const AttractiveTourLists = [
         price: 120,
         rating: 3,
     },
+    {
+        location: "Muine, Binhthuan",
+        title: "Experience sea tourism on Phuquoc golden pearl 2",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.1_z2op9b.png",
+        duration: "3 days - 2 night",
+        price: 120,
+        rating: 3,
+    },
+    {
+        location: "Muine, Binhthuan",
+        title: "Experience sea tourism on Phuquoc golden pearl 2",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644977800/attractive.1_z2op9b.png",
+        duration: "3 days - 2 night",
+        price: 120,
+        rating: 3,
+    },
 ];
 export const HomeDiscoverFasListsData = [
     {
@@ -60,6 +76,24 @@ export const HomeDiscoverFasListsData = [
     {
         id: "5",
         title: "Hoian, Quangnam",
+        location: "12 experiences",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
+    },
+    {
+        id: "6",
+        title: "Luc Ngan, Bac Giang",
+        location: "12 experiences",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
+    },
+    {
+        id: "7",
+        title: "Hoian, Quangnam",
+        location: "12 experiences",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
+    },
+    {
+        id: "8",
+        title: "Luc Ngan, Bac Giang",
         location: "12 experiences",
         image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
     },

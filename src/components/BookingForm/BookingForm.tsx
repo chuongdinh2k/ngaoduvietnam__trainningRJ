@@ -99,6 +99,7 @@ export const BookingForm = (props: IProps) => {
                                 standardRoom: standardRoom,
                                 familySuite: familySuite,
                                 breakFast: breakFast,
+                                extraBed: extraBed,
                                 title: dataTour?.title || dataHotel?.title,
                                 location: dataTour?.location || dataHotel?.location,
                                 duration: dataTour?.duration,

@@ -10,16 +10,14 @@ export const ComponentAppRoute = (props: IRoute) => {
     const Component = component;
     const Layout = layout || LayoutApp;
     return (
-        <>
-            <Route
-                path={path}
-                exact={exact}
-                render={() => (
-                    <Layout>
-                        <Component />
-                    </Layout>
-                )}
-            />
-        </>
+        <Route
+            path={path}
+            exact={exact}
+            render={() => (
+                <Layout>
+                    <Component />
+                </Layout>
+            )}
+        />
     );
 };

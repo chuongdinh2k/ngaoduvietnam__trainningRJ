@@ -1,26 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 
-import { Card, IconArrowNext } from "@components";
+import { Card, IconNextPagination, IconPrevPagination } from "@components";
 import { ICard } from "@types";
+import clsx from "clsx";
 
+interface IStyledSlider {
+    showPrev?: boolean;
+}
 interface ISlider {
     data?: Array<ICard>;
     numberSlides?: number;
     typeCardIcon?: boolean;
 }
 export const SliderCustom = (props: ISlider) => {
-    const { typeCardIcon, data } = props;
-
+    const { typeCardIcon, data, numberSlides } = props;
+    const [current, setCurrent] = useState<boolean>(false);
     const settings = {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: props.numberSlides ? props.numberSlides : 3,
-        slidesToScroll: props.numberSlides ? props.numberSlides : 3,
+        slidesToShow: numberSlides ? numberSlides : 3,
+        slidesToScroll: numberSlides ? numberSlides : 3,
         nextArrow: <CustomNextArrow />,
+        prevArrow: <CustomLeftArrow current={current} />,
+        afterChange: function (index: number) {
+            if (index >= 3) {
+                setCurrent(true);
+            } else {
+                setCurrent(false);
+            }
+        },
         responsive: [
+            {
+                breakpoint: 4000,
+                settings: {
+                    slidesToShow: numberSlides ? numberSlides : 3,
+                    slidesToScroll: numberSlides ? numberSlides : 3,
+                    infinite: false,
+                    dots: true,
+                    afterChange: function (index: number) {
+                        if (index >= 3) {
+                            setCurrent(true);
+                        } else {
+                            setCurrent(false);
+                        }
+                    },
+                },
+            },
             {
                 breakpoint: 1200,
                 settings: {
@@ -28,6 +56,13 @@ export const SliderCustom = (props: ISlider) => {
                     slidesToScroll: 3,
                     infinite: false,
                     dots: true,
+                    afterChange: function (index: number) {
+                        if (index >= 3) {
+                            setCurrent(true);
+                        } else {
+                            setCurrent(false);
+                        }
+                    },
                 },
             },
             {
@@ -35,6 +70,13 @@ export const SliderCustom = (props: ISlider) => {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
+                    afterChange: function (index: number) {
+                        if (index >= 2) {
+                            setCurrent(true);
+                        } else {
+                            setCurrent(false);
+                        }
+                    },
                 },
             },
             {
@@ -54,9 +96,8 @@ export const SliderCustom = (props: ISlider) => {
                 {/* WHAT: Check data's undefined or not then map data */}
                 {data
                     ? data.map((item: ICard, index: number) => (
-                          <div className="wrapperCard">
+                          <div key={index} className="wrapperCard">
                               <Card
-                                  key={index}
                                   //  WHAT: check render normal card, not card with icon
                                   typeCardIcon={typeCardIcon}
                                   data={item}
@@ -68,24 +109,49 @@ export const SliderCustom = (props: ISlider) => {
         </StyledSlider>
     );
 };
+interface ICustomeArrow {
+    className?: string;
+    current?: boolean;
+    onClick?: () => void;
+}
 // WHAT: custome icon arrow function next
-function CustomNextArrow(props: any) {
-    const { className, style, onClick } = props;
+function CustomNextArrow(props: ICustomeArrow) {
+    const { className, onClick } = props;
     return (
-        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
-            <IconArrowNext />
+        <div className={className} style={{ display: "block" }} onClick={onClick}>
+            <IconNextPagination />
         </div>
     );
 }
-export const StyledSlider = styled.div`
+// WHAT: custome icon arrow function next
+function CustomLeftArrow(props: ICustomeArrow) {
+    const { className, current, onClick } = props;
+    return (
+        <div className={clsx(current ? "show" : "hide", className)} onClick={onClick}>
+            <IconPrevPagination />
+        </div>
+    );
+}
+export const StyledSlider = styled.div<IStyledSlider>`
     .wrapperCard {
         @media (min-width: 2000px) {
         }
     }
     .slick-slider {
-        @media (min-width: 2000px) {
+        /* @media (min-width: 2000px) {
             overflow: hidden;
-        }
+        } */
+    }
+    .hide {
+        display: none !important;
+    }
+    .show {
+        display: block !important;
+        top: 11rem;
+        left: -40px;
+    }
+    .slick-disabled {
+        display: none !important;
     }
     .slick-slide {
         width: 25.5rem;
@@ -95,8 +161,10 @@ export const StyledSlider = styled.div`
         }
         .slick-next {
             top: 11rem;
-            right: -45px !important;
-
+            right: -4.5rem;
+            @media (min-width: 2000) {
+                right: -6.5rem !important;
+            }
             @media (max-width: 768px) {
                 right: 0;
             }
@@ -105,7 +173,7 @@ export const StyledSlider = styled.div`
     .slick-list {
         margin-right: -2.5rem;
         @media (min-width: 2000px) {
-            margin-right: -5.5rem;
+            margin-right: -3.5rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin-right: 0rem;

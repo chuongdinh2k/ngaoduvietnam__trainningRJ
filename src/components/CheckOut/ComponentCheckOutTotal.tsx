@@ -140,7 +140,9 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                     </span>
                                     Standard room
                                 </p>
-                                <span>{hotel.bookingHotel?.standardRoom * 25}</span>
+                                <span>
+                                    {convertCurrency(hotel.bookingHotel?.standardRoom * 24)}$
+                                </span>
                             </div>
                         ) : (
                             ""
@@ -153,7 +155,9 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                     </span>
                                     Family suite
                                 </p>
-                                <span>{hotel.bookingHotel?.familySuite * 24}</span>
+                                <span>
+                                    {convertCurrency(hotel.bookingHotel?.familySuite * 24)}$
+                                </span>
                             </div>
                         ) : (
                             ""
@@ -166,7 +170,20 @@ export const ComponentCheckOutTotal = (props: IProps) => {
                                     </span>
                                     Break Fast
                                 </p>
-                                <span>{hotel.bookingHotel?.breakFast * 24}</span>
+                                <span>{convertCurrency(hotel.bookingHotel?.breakFast * 24)}$</span>
+                            </div>
+                        ) : (
+                            ""
+                        )}
+                        {hotel.bookingHotel?.extraBed ? (
+                            <div className="form__group-option">
+                                <p>
+                                    <span className="highlight">
+                                        {hotel.bookingHotel?.extraBed}x
+                                    </span>
+                                    Extra BedextraBed
+                                </p>
+                                <span>{convertCurrency(hotel.bookingHotel?.extraBed * 24)}$</span>
                             </div>
                         ) : (
                             ""

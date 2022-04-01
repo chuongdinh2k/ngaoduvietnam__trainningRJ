@@ -28,6 +28,7 @@ interface IBookingHotelForm {
     familySuite?: number;
     breakFast?: number;
     total?: number;
+    extraBed?: number;
 }
 interface IState {
     dataHotelsList: Array<IHotel>;

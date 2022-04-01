@@ -6,7 +6,7 @@ import { CircularProgress } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 
 import { register, selectAuth, useAppSelector } from "@redux";
-import { authRoutesEnum } from "@enums";
+import { authRoutesEnum, appRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
 import { AppInputOutLined, IconFacebook } from "@components";
 import { formSchemaSignup } from "@utils";
@@ -16,10 +16,9 @@ export const Register = () => {
     // hook
     const history = useHistory();
     const auth = useAppSelector(selectAuth);
-
     useLayoutEffect(() => {
         if (auth.tokenInfoAuth) {
-            history.goBack();
+            history.push(appRoutesEnum.HOME);
         }
     }, [auth]);
 

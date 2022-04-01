@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import clsx from "clsx";
 
 import { login, selectAuth, useAppSelector } from "@redux";
-import { authRoutesEnum } from "@enums";
+import { authRoutesEnum, appRoutesEnum } from "@enums";
 import { StyledContentAuth } from ".";
 import { AppInputOutLined, IconFacebook } from "@components";
 import { formSchemaLogin } from "@utils";
@@ -18,7 +18,7 @@ export const Login = () => {
     const history = useHistory();
     useLayoutEffect(() => {
         if (auth.tokenInfoAuth) {
-            history.goBack();
+            history.push(appRoutesEnum.HOME);
         }
     }, [auth]);
     const initialValuesPackage = {
