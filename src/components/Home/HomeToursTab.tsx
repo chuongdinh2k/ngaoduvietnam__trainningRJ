@@ -210,7 +210,7 @@ const StyledHomeToursTab = styled.div`
             font-size: 2.6rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-            height: 5rem;
+            height: 4rem;
             margin-top: 0.8rem;
             font-size: 1.4rem;
         }

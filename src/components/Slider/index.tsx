@@ -69,7 +69,9 @@ export const SliderCustom = (props: ISlider) => {
                 breakpoint: 900,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    centerMode: true,
                     afterChange: function (index: number) {
                         if (index >= 2) {
                             setCurrent(true);
@@ -137,11 +139,6 @@ export const StyledSlider = styled.div<IStyledSlider>`
         @media (min-width: 2000px) {
         }
     }
-    .slick-slider {
-        /* @media (min-width: 2000px) {
-            overflow: hidden;
-        } */
-    }
     .hide {
         display: none !important;
     }
@@ -175,9 +172,11 @@ export const StyledSlider = styled.div<IStyledSlider>`
         @media (min-width: 2000px) {
             margin-right: -3.5rem;
         }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            margin-right: 0;
+            padding: 0px !important;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            margin-right: 0rem;
-            padding: 0px;
             padding-left: 0 !important;
         }
     }
@@ -192,7 +191,7 @@ export const StyledSlider = styled.div<IStyledSlider>`
         }
     }
     .slick-arrow {
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             display: none !important;
         }
     }

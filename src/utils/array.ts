@@ -74,7 +74,6 @@ export const filterArry = (array: Array<any>, filters: any) => {
 export const relatedList = (array: Array<any>, id: string) => {
     return array.filter((item) => item.id !== id);
 };
-
 // WHAT: sort by condition
 export const sortItem = (array: Array<any>, condition: any) => {
     return array.slice().sort((a, b) => a[condition] - b[condition]);

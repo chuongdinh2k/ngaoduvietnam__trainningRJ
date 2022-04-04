@@ -11,6 +11,7 @@ export interface ISnackBar {
 export interface ILightBox {
     show: boolean;
     listImages?: Array<string>;
+    activeIndex: number;
 }
 interface IState {
     loading: boolean;
@@ -28,6 +29,7 @@ const initialState: IState = {
     popUpLightBox: {
         show: false,
         listImages: [],
+        activeIndex: 0,
     },
 };
 
@@ -41,16 +43,18 @@ const appSlice = createSlice({
         resetSnackBar: (state) => {
             state.snackBar = {};
         },
-        setPopUpLightBox: (state, action: PayloadAction<Array<string>>) => {
+        setPopUpLightBox: (state, action: PayloadAction<ILightBox>) => {
             state.popUpLightBox = {
-                show: true,
-                listImages: action.payload,
+                show: action.payload.show,
+                listImages: action.payload.listImages,
+                activeIndex: action.payload.activeIndex,
             };
         },
         resetPopUpLightBox: (state) => {
             state.popUpLightBox = {
                 show: false,
                 listImages: [],
+                activeIndex: 0,
             };
         },
     },

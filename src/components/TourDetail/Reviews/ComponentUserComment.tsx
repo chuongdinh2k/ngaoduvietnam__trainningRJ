@@ -109,7 +109,8 @@ const StyledComponentUserComment = styled.div`
     }
     .comment__content {
         padding-top: 1rem;
-        width: 90%;
+        width: 100%;
+        word-break: break-all;
         line-height: 150%;
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.4rem;

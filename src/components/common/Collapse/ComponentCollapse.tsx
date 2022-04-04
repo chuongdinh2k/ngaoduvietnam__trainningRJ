@@ -18,8 +18,11 @@ export const ComponentCollapse = (props: IProps) => {
 
     return (
         <StyledComponentCollapse>
-            <div className={`wrapperCollapse ${clsx(checked ? "active" : "")}`}>
-                <div className="collapse__header " onClick={handleChange}>
+            <div
+                onClick={handleChange}
+                className={`wrapperCollapse ${clsx(checked ? "active" : "")}`}
+            >
+                <div className="collapse__header ">
                     <p className="collapse__header-title">{title}</p>
                     {!checked ? (
                         <span onClick={handleChange} className="collapse__header-icon">

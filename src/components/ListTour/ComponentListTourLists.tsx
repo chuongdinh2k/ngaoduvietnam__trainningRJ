@@ -49,6 +49,11 @@ const StyledComponentListTourLists = styled.div`
                 padding: 0;
             }
         }
+        .imageWrapper {
+            @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+                height: 26rem;
+            }
+        }
     }
     .notFound {
         text-align: center;

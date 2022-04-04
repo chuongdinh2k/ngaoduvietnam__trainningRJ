@@ -26,7 +26,15 @@ export const ComponentCustomViewImage = (props: IProps) => {
                         <div
                             onMouseOver={() => handleGotoSlider(sliderRef, i)}
                             className="wrapDot__layer"
-                            onClick={() => dispatch(setPopUpLightBox(listTourImages))}
+                            onClick={() =>
+                                dispatch(
+                                    setPopUpLightBox({
+                                        listImages: listTourImages,
+                                        activeIndex: i,
+                                        show: true,
+                                    })
+                                )
+                            }
                         >
                             {i === 3 ? (
                                 <span className="wrapDot__icon">
@@ -49,7 +57,15 @@ export const ComponentCustomViewImage = (props: IProps) => {
                         <div
                             onMouseOver={() => handleGotoSlider(sliderRef, i)}
                             className="wrapDot__layer"
-                            onClick={() => dispatch(setPopUpLightBox(listHotelImages))}
+                            onClick={() =>
+                                dispatch(
+                                    setPopUpLightBox({
+                                        listImages: listHotelImages,
+                                        activeIndex: i,
+                                        show: true,
+                                    })
+                                )
+                            }
                         >
                             {i === 3 ? (
                                 <span className="wrapDot__icon">
@@ -80,6 +96,7 @@ export const ComponentCustomViewImage = (props: IProps) => {
             );
         },
         dots: true,
+        infinite: false,
         dotsClass: "slick-dots slick-thumb",
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,

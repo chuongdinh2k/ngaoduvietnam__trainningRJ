@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
-    /* width: 25.5rem; */
     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
         width: 100%;
         padding: 0.5rem;
     }
     .imageWrapper {
         width: 100%;
-        /* overflow: hidden; */
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            height: 19rem;
+        }
     }
     .imageWrapper .image {
         &:hover {
@@ -17,7 +18,7 @@ export const StyledCard = styled.div`
     }
     .image {
         width: 100%;
-        height: 29.1em;
+        height: 100%;
         transition: 250ms;
     }
     h4 {
@@ -72,6 +73,9 @@ export const StyledCardWithIcon = styled.div`
         position: relative;
         @media (min-width: 2000px) {
             height: 31rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+            height: 19rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             height: 21rem;
@@ -171,6 +175,7 @@ export const StyledCardWithIcon = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.4rem;
+            height: 3rem;
             width: 100%;
         }
     }

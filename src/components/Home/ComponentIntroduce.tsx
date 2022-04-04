@@ -3,20 +3,18 @@ import { Grid } from "@material-ui/core";
 
 import { IconDoubleQuotationMarks } from "@components";
 
+const image1 =
+    "https://res.cloudinary.com/chuongdinh/image/upload/v1644991995/bannerIntro_q98ln6.png";
+const image2 =
+    "https://res.cloudinary.com/chuongdinh/image/upload/v1644991994/bannerIntro2_eqto6c.png";
 export const ComponentIntroduce = () => {
     return (
         <StyledComponentIntroduce>
             <Grid container>
                 <Grid item xs={12} md={6}>
                     <div className="imageWrapper">
-                        <img
-                            className="image1"
-                            src="https://res.cloudinary.com/chuongdinh/image/upload/v1644991995/bannerIntro_q98ln6.png"
-                        />
-                        <img
-                            className="image2"
-                            src="https://res.cloudinary.com/chuongdinh/image/upload/v1644991994/bannerIntro2_eqto6c.png"
-                        />
+                        <img className="image1" src={image1} />
+                        <img className="image2" src={image2} />
                     </div>
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -57,7 +55,7 @@ const StyledComponentIntroduce = styled.div`
     }
     .image1 {
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-            width: 80%;
+            width: 60%;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             width: 80%;
@@ -69,9 +67,9 @@ const StyledComponentIntroduce = styled.div`
         left: 19.3rem;
         top: 26.6rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-            width: 70%;
-            top: 20.6rem;
-            left: 18.3rem;
+            width: 54%;
+            top: 16.6rem;
+            left: 27.3rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             left: 15rem;

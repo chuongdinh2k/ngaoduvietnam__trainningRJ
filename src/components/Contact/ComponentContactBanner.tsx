@@ -6,7 +6,7 @@ export const ComponentContactBanner = () => {
     return (
         <StyledWrapBanner background_banner={backgroundContact} typeComponent={PAGE_CONTACT}>
             <div className="wrapContainer">
-                <StyledBanner typeComponent={PAGE_CONTACT}>
+                <StyledBanner typeComponent="Contact">
                     <div className="content">
                         <h3 className="content__title">Contact Us</h3>
                     </div>

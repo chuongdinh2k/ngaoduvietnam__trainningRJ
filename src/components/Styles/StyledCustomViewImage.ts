@@ -47,10 +47,7 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     .slick-prev {
         z-index: 99;
         left: 2rem;
-        /* @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-        } */
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-            /* background: ${(p) => p.theme.colors.pureWhite} !important; */
             color: ${(p) => p.theme.colors.pureWhite} !important;
         }
     }
@@ -64,16 +61,21 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
     .slick-next {
         right: 2rem;
     }
+    .slick-disabled {
+        display: none !important;
+    }
     .slick-dots {
+        display: flex;
+        bottom: -13rem;
         text-align: left;
         width: 100%;
         overflow: hidden;
-        bottom: -13rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             bottom: -11rem;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             bottom: -6rem;
+            justify-content: space-between;
         }
         li {
             width: 13.7rem;

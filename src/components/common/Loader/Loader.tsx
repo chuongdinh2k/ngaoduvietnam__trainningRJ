@@ -45,24 +45,21 @@ const StyledComponentLoader = styled.div<ILoading>`
         }
 
         .item:nth-child(1) {
-            background-color: rgba(2, 172, 201, 1);
+            background-color: #f1e1a6;
             animation-delay: 0s;
         }
         .item:nth-child(2) {
-            background-color: rgba(73, 172, 202, 1);
+            background-color: #ffd36e;
             animation-delay: 0.15s;
         }
         .item:nth-child(3) {
-            background-color: rgba(146, 171, 202, 1);
+            background-color: #fff56d;
             animation-delay: 0.3s;
         }
+
         .item:nth-child(4) {
-            background-color: rgba(206, 170, 202, 1);
+            background-color: #f6ffa4;
             animation-delay: 0.45s;
-        }
-        .item:nth-child(5) {
-            background-color: rgba(255, 172, 205, 1);
-            animation-delay: 0.6s;
         }
 
         @keyframes dotWave {
