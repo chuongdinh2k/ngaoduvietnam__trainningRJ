@@ -40,7 +40,7 @@ export const ComponentDetailContent = (props: IProps) => {
                 <Grid item xs={12} md={4}></Grid>
             </Grid>
             <Grid container>
-                <Grid item xs={12} md={8}>
+                <Grid item xs={12} md={12} lg={8}>
                     <div className="wrapper__left">
                         {dataTour && (
                             <>
@@ -70,7 +70,7 @@ export const ComponentDetailContent = (props: IProps) => {
                         )}
                     </div>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={8} lg={4}>
                     <BookingForm dataHotel={dataHotel} dataTour={dataTour} />
                 </Grid>
             </Grid>

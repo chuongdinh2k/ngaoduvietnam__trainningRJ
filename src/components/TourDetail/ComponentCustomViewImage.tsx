@@ -1,5 +1,6 @@
 import React, { useRef, RefObject } from "react";
 import Slider from "react-slick";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { sliceArray } from "@utils";
 import { setPopUpLightBox } from "@redux";
@@ -117,7 +118,13 @@ export const ComponentCustomViewImage = (props: IProps) => {
                                 <span className="icon">
                                     <IconFlagMark width="46" height="29" />
                                 </span>
-                                <img className="image" src={img} />
+
+                                <LazyLoadImage
+                                    alt="list image "
+                                    effect="blur"
+                                    className="image"
+                                    src={img}
+                                />
                             </div>
                         ))}
                     {/* WHAT: render data hotel */}
@@ -127,7 +134,13 @@ export const ComponentCustomViewImage = (props: IProps) => {
                                 <span className="icon">
                                     <IconFlagMark width="46" height="29" />
                                 </span>
-                                <img className="image" src={img} />
+
+                                <LazyLoadImage
+                                    alt="list image "
+                                    effect="blur"
+                                    className="image"
+                                    src={img}
+                                />
                             </div>
                         ))}
                     {/* WHAT: render data room */}
@@ -137,7 +150,12 @@ export const ComponentCustomViewImage = (props: IProps) => {
                                 <span className="icon">
                                     <IconFlagMark width="46" height="29" />
                                 </span>
-                                <img className="image" src={img} />
+                                <LazyLoadImage
+                                    alt="list image "
+                                    effect="blur"
+                                    className="image"
+                                    src={img}
+                                />
                             </div>
                         ))}
                 </Slider>

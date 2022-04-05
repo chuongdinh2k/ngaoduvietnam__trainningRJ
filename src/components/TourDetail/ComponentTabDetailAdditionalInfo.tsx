@@ -15,12 +15,10 @@ export const ComponentTabDetailAdditionalInfo = (props: IProps) => {
                         {additionalInfo &&
                             additionalInfo.list?.map((item, index) => (
                                 <li key={index}>
-                                    <a>
-                                        <span className="content__icon">
-                                            <IconDot color="#4F4F4F" />
-                                        </span>
-                                        <span className="content__text">{item}</span>
-                                    </a>
+                                    <span className="content__icon">
+                                        <IconDot color="#4F4F4F" />
+                                    </span>
+                                    <span className="content__text">{item}</span>
                                 </li>
                             ))}
                     </ul>

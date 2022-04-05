@@ -41,9 +41,8 @@ const useStyles = makeStyles((theme) => ({
     },
     tabContent: {
         padding: "3.4rem 3.1rem",
-        // height: "52.2rem",
         [theme.breakpoints.up("xl")]: {
-            padding: "5rem 5rem",
+            padding: "4rem 4rem",
         },
         [theme.breakpoints.down("sm")]: {
             padding: "1rem 1.5rem",
@@ -70,6 +69,10 @@ const CustomTab = withStyles({
         backgroundColor:
             "linear-gradient(0deg, rgba(255, 255, 255, 0.704) 1.52%, rgba(255, 255, 255, 0.64) 100%)",
         backdropFilter: "blur(42px)",
+        [theme.breakpoints.up("xl")]: {
+            fontSize: "2rem",
+            height: "7rem",
+        },
     },
     selected: {
         backgroundColor: theme.colors.orange,

@@ -1,3 +1,5 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import { IHotel } from "@types";
 import { theme } from "@styles";
 import { StyledCardWithIcon } from ".";
@@ -17,9 +19,12 @@ export const HotelCard = (props: IProps) => {
             <StyledCardWithIcon>
                 <div className="cardWrapper" onClick={() => onClick && onClick(data?._id)}>
                     <div className="imageWrapper">
-                        {/* <img className="image" src={data?.listImage && data?.listImage[0]} /> */}
-                        <img className="image" src={data?.image && data?.image} />
-
+                        <LazyLoadImage
+                                    className="image"
+                                    alt="list image "
+                                    effect="blur"
+                                    src={data?.image && data?.image}
+                                />
                         <span className="iconFlag">
                             <IconFlagMark
                                 color={data?.marked ? theme.colors.orange : theme.colors.pureWhite}

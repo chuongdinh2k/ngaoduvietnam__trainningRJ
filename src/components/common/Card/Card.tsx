@@ -1,3 +1,5 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import { ICard } from "@types";
 import { theme } from "@styles";
 import { IconStar, IconFlagMark, IconLocation, IconCalendar } from "..";
@@ -19,8 +21,15 @@ export const Card = (props: IProps) => {
                 <StyledCardWithIcon>
                     <div className="cardWrapper" onClick={() => onClick && onClick(data?._id)}>
                         <div className="imageWrapper">
-                            {data?.image && <img className="image" src={data?.image} />}
-
+                            {/* {data?.image && <img className="image" src={data?.image} />} */}
+                            {data?.image && (
+                                <LazyLoadImage
+                                    className="image"
+                                    alt="list image "
+                                    effect="blur"
+                                    src={data?.image}
+                                />
+                            )}
                             <span className="iconFlag">
                                 <IconFlagMark color={theme.colors.orange} />
                             </span>

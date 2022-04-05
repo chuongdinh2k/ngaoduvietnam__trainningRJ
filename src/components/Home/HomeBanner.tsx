@@ -28,7 +28,7 @@ export const HomeBanner = (props: IProps) => {
                             </div>
                             <div className="content__left-bottom">
                                 <div className="featured">
-                                    <div>
+                                    <div className="featured__top">
                                         <IconDot />
                                         <span className="featured__title">Featured</span>
                                     </div>

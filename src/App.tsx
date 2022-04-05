@@ -7,7 +7,7 @@ import { IRoute } from "@types";
 import { ComponentAppRoute } from "@components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import "react-lazy-load-image-component/src/effects/blur.css";
 function App() {
     return (
         <div className="App">

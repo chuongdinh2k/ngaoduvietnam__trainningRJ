@@ -93,6 +93,7 @@ const StyledComponentUserComment = styled.div`
             font-size: 1.8rem;
             font-weight: ${(p) => p.theme.typography.fontWeightBold};
             color: ${(p) => p.theme.colors.orange};
+            display: flex;
         }
         &-dot {
             padding: 0 0.5rem;

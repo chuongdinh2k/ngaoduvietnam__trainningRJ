@@ -94,3 +94,8 @@ input[data-autocompleted] {
 .css-jwafdq-MuiButtonBase-root-MuiPickersDay-root-MuiDateRangePickerDay-day.Mui-selected {
   background-color: #ff7b42 !important;
 }
+/*lazy load override css*/
+.lazy-load-image-background.blur.lazy-load-image-loaded{
+  height: 100% !important;
+  width:100% !important;
+}

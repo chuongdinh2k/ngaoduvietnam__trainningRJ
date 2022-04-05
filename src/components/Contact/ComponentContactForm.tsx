@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, TextField, Checkbox, FormControlLabel } from "@material-ui/core";
 import { ErrorMessage, Formik } from "formik";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { AppInput, Error } from "..";
 import { theme } from "@styles";
@@ -128,7 +129,8 @@ export const ComponentContactForm = () => {
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <div className="contact__right">
-                            <img
+                            <LazyLoadImage
+                                effect="blur"
                                 className="contact__right-img"
                                 src={background__contact}
                                 alt="background-image contact"

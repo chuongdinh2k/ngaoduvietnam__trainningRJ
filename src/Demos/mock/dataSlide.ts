@@ -77,25 +77,25 @@ export const HomeDiscoverFasListsData = [
         id: "5",
         title: "Hoian, Quangnam",
         location: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897847/discovery3_uikjvg.png",
     },
     {
         id: "6",
         title: "Luc Ngan, Bac Giang",
         location: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897847/discovery3_uikjvg.png",
     },
     {
         id: "7",
         title: "Hoian, Quangnam",
         location: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897847/discovery3_uikjvg.png",
     },
     {
         id: "8",
         title: "Luc Ngan, Bac Giang",
         location: "12 experiences",
-        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897977/discovery5_bnz2uo.png",
+        image: "https://res.cloudinary.com/chuongdinh/image/upload/v1644897847/discovery3_uikjvg.png",
     },
 ];
 export const HomeExperienceListsData = [

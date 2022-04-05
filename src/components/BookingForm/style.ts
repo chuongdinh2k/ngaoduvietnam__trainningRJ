@@ -6,7 +6,8 @@ export const StyledBookingForm = styled.div`
         padding: 2rem 2.5rem;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding: 0 3rem;
-            margin: 3rem 12rem;
+            margin: 3rem 15rem;
+            margin-left: 0;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             margin: 3rem 0;

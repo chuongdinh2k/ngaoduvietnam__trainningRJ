@@ -37,17 +37,11 @@ export const StyledBanner = styled.div<IStyledBanner>`
                 return "0";
             }
         }};
-        @media (min-width: 2000px) {
-            width: 100%;
-        }
-        @media (min-width: 3500px) {
-            width: 100%;
-        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             flex-direction: column;
             left: ${(p) => {
                 if (p.typeComponent === PAGE_CONTACT) {
-                    return "30%";
+                    return "40%";
                 } else {
                     return "0";
                 }
@@ -154,17 +148,29 @@ export const StyledBanner = styled.div<IStyledBanner>`
                     background-color: ${(p) => p.theme.colors.pureWhite};
                     padding-left: 0.2rem;
                     padding-top: 2.5rem;
+                    @media (min-width: 2000px) {
+                        svg {
+                            width: 2rem !important;
+                            height: 2rem !important;
+                        }
+                    }
                     @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                         padding-top: 1rem;
                     }
                     @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                         padding: 0.5rem 1rem;
                     }
+                    &__top {
+                        display: flex;
+                    }
                     &__title {
                         font-size: ${(p) => p.theme.typography.fontSize}px;
                         font-weight: 600;
                         color: ${(p) => p.theme.colors.darkBlack};
                         padding-left: 1rem;
+                        @media (min-width: 2000px) {
+                            font-size: 2.5rem;
+                        }
                     }
                     &__content {
                         display: flex;
@@ -175,6 +181,12 @@ export const StyledBanner = styled.div<IStyledBanner>`
                         padding-top: 1rem;
                         font-size: 1.6rem;
                         font-family: ${(p) => p.theme.typography.fontFamily};
+                        @media (min-width: 2000px) {
+                            font-size: 2rem;
+                        }
+                        @media (min-width: 3500px) {
+                            font-size: 2.5rem;
+                        }
                         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                             font-size: 1.2rem;
                         }
@@ -190,6 +202,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
                         line-height: 100%;
                         @media (min-width: 2000px) {
                             padding-right: 2rem;
+                        }
+                        @media (min-width: 3500px) {
+                            font-size: 3.2rem;
                         }
                         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                             font-size: 1.4rem;
@@ -228,12 +243,20 @@ export const StyledBanner = styled.div<IStyledBanner>`
             }
             @media (min-width: 3500px) {
                 font-size: 10rem;
+                width: 70%;
+                text-align: ${(p) => {
+                    if (p.typeComponent === PAGE_CONTACT || p.typeComponent === PAGE_ABOUT) {
+                        return "center";
+                    } else {
+                        return "left";
+                    }
+                }};
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 font-size: 3rem;
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                font-size: 3rem;
+                font-size: 1.8rem;
             }
         }
         &__right {

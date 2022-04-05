@@ -250,7 +250,7 @@ const StyledComponentPopup = styled.div`
     }
     .right {
         padding-left: 3rem;
-        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+        @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             padding-left: 0;
         }
         &__top {

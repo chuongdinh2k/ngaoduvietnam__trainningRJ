@@ -1,4 +1,5 @@
 import { Grid } from "@material-ui/core";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
 
 const array1 = [
@@ -34,7 +35,9 @@ export const ComponentAboutIntro = () => {
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <div className="intro__imageWrapper">
-                            <img
+                            <LazyLoadImage
+                                alt="about image"
+                                effect="blur"
                                 className="intro__image"
                                 src="https://res.cloudinary.com/chuongdinh/image/upload/v1645000965/about1_hjckq6.png"
                             />
@@ -42,7 +45,9 @@ export const ComponentAboutIntro = () => {
                     </Grid>
                 </Grid>
             </div>
-            <img
+            <LazyLoadImage
+                alt="about image"
+                effect="blur"
                 className="bigImage"
                 src="https://res.cloudinary.com/chuongdinh/image/upload/v1645002817/about2_ya92qu.png"
             />
@@ -62,7 +67,9 @@ export const ComponentAboutIntro = () => {
                 <div className="experience__text-bottom">
                     <Grid container spacing={4}>
                         <Grid item xs={12} md={6}>
-                            <img
+                            <LazyLoadImage
+                                alt="about image"
+                                effect="blur"
                                 className="experience__image-left"
                                 src="https://res.cloudinary.com/chuongdinh/image/upload/v1645003320/about3_xuacdd.png"
                             />
@@ -76,7 +83,10 @@ export const ComponentAboutIntro = () => {
                                     donec lectus ullamcorper faucibus. Malesuada et adipiscing
                                     molestie egestas leo ut.
                                 </p>
-                                <img
+
+                                <LazyLoadImage
+                                    alt="about image"
+                                    effect="blur"
                                     className="experience__image-right"
                                     src="https://res.cloudinary.com/chuongdinh/image/upload/v1645063929/about4_kwrzro.png"
                                 />

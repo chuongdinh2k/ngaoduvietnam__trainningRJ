@@ -65,20 +65,20 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
         display: none !important;
     }
     .slick-dots {
-        display: flex;
+        display: flex !important;
         bottom: -13rem;
         text-align: left;
         width: 100%;
         overflow: hidden;
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             bottom: -11rem;
+            justify-content: space-between;
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             bottom: -6rem;
-            justify-content: space-between;
         }
         li {
-            width: 13.7rem;
+            width: 25%;
             height: 9.7rem;
             margin: 0;
             margin-right: 2.9rem;
@@ -117,11 +117,9 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
             }
 
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-                width: 13.9rem;
                 margin-right: 1.5rem;
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
-                width: 7.7rem;
                 height: 4.7rem;
                 margin-right: 0.9rem;
             }

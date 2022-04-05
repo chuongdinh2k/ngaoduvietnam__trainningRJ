@@ -20,12 +20,10 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                     <ul className="content__wrapperlist">
                         {description?.overview?.list?.map((item, index) => (
                             <li key={index}>
-                                <a>
-                                    <span className="content__icon">
-                                        <IconDot color="#4F4F4F" />
-                                    </span>
-                                    <span className="content__text">{item}</span>
-                                </a>
+                                <span className="content__icon">
+                                    <IconDot color="#4F4F4F" />
+                                </span>
+                                <span className="content__text">{item}</span>
                             </li>
                         ))}
                     </ul>
@@ -35,12 +33,10 @@ export const ComponentTabDetailDescription = (props: IProps) => {
                     <ul className="content__wrapperlist">
                         {description?.included?.list?.map((item) => (
                             <li key={item}>
-                                <a>
-                                    <span className="content__icon">
-                                        <IconChecked />
-                                    </span>
-                                    <span className="content__text">{item}</span>
-                                </a>
+                                <span className="content__icon">
+                                    <IconChecked />
+                                </span>
+                                <span className="content__text">{item}</span>
                             </li>
                         ))}
                     </ul>
@@ -119,6 +115,7 @@ export const StyledComponentTab = styled.div`
         &__wrapperlist {
             li {
                 list-style: none;
+                display: flex;
             }
         }
         &__icon {
