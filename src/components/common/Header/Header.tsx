@@ -11,6 +11,7 @@ import { theme } from "@styles";
 import { ComponentDrawserNav } from "..";
 import { appRoutesEnum } from "@enums";
 import { useHistory } from "react-router-dom";
+import { HEADER_HEIGHT } from "@configs";
 
 interface IStyledHeader {
     backgroundColor?: string;

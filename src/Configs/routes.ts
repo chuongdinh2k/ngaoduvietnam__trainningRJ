@@ -16,6 +16,7 @@ import {
     ForgotPassword,
 } from "@containers";
 import { appRoutesEnum, authRoutesEnum } from "@enums";
+import { ScrollToTop } from "@hocs";
 import { FinalPopup, LayoutAuth, LayoutError } from "@layouts";
 import { IRoute } from "@types";
 
@@ -33,14 +34,29 @@ export const CHANGE_PASSWORD_NAME = "Change Password";
 export const FORGOT_PASSWORD_NAME = "Forgot Password";
 
 export const routes: Array<IRoute> = [
-    { name: HOME, path: appRoutesEnum.HOME, exact: true, component: Home },
-    { name: ABOUT, path: appRoutesEnum.ABOUT, exact: true, component: About },
+    { name: HOME, path: appRoutesEnum.HOME, exact: true, component: ScrollToTop(Home, "app") },
+    { name: ABOUT, path: appRoutesEnum.ABOUT, exact: true, component: ScrollToTop(About, "app") },
     { name: TOURS, path: appRoutesEnum.TOURS_CHECKOUT, exact: true, component: CheckOut },
-    { name: TOURS, path: appRoutesEnum.TOURS_DETAIL, exact: true, component: TourDetail },
+    {
+        name: TOURS,
+        path: appRoutesEnum.TOURS_DETAIL,
+        exact: true,
+        component: ScrollToTop(TourDetail, "detail"),
+    },
     { name: TOURS, path: appRoutesEnum.TOURS, exact: true, component: ListTour },
-    { name: HOTELS, path: appRoutesEnum.HOTEL_DETAIL, exact: false, component: HotelDetail },
+    {
+        name: HOTELS,
+        path: appRoutesEnum.HOTEL_DETAIL,
+        exact: false,
+        component: ScrollToTop(HotelDetail, "detail"),
+    },
     { name: HOTELS, path: appRoutesEnum.HOTELS, exact: true, component: Hotels },
-    { name: CONTACT, path: appRoutesEnum.CONTACT, exact: true, component: Contact },
+    {
+        name: CONTACT,
+        path: appRoutesEnum.CONTACT,
+        exact: true,
+        component: ScrollToTop(Contact, "app"),
+    },
     {
         name: REGISTER,
         path: authRoutesEnum.REGISTER,

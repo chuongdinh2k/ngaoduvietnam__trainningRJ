@@ -27,7 +27,6 @@ export const TourDetail = () => {
     // redux
     const tourDetail = useAppSelector(selectDetailTour);
     const dispatch = useDispatch();
-    // component state
     React.useEffect(() => {
         dispatch(viewDetailTour(id));
         return () => {

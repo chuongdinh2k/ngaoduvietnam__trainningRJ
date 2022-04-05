@@ -29,13 +29,13 @@ export const ComponentRelated = (props: IProps) => {
                 </h3>
                 <Grid container spacing={4}>
                     {/*WHAT: show related tour */}
-                    {getRelatedArray(relatedTour, 3)?.map((item) => (
-                        <Grid key={item.id} item xs={12} sm={6} md={4}>
+                    {getRelatedArray(relatedTour, 3)?.map((item: IDataTour) => (
+                        <Grid key={item._id} item xs={12} sm={6} md={4}>
                             <Card typeCardIcon data={item} onClick={handleViewTourDetail} />
                         </Grid>
                     ))}
                     {/* WHAT: show related hotel */}
-                    {getRelatedArray(relatedHotel, 3)?.map((item) => (
+                    {getRelatedArray(relatedHotel, 3)?.map((item: IHotel) => (
                         <Grid key={item._id} item xs={12} sm={6} md={4}>
                             <HotelCard data={item} onClick={handleViewHotelDetail} />
                         </Grid>

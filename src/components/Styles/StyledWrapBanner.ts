@@ -49,9 +49,9 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
             if (p.typeComponent === PAGE_ABOUT || p.typeComponent === PAGE_CONTACT) {
                 return "20rem";
             } else if (p.typeComponent === PAGE_HOME) {
-                return "64rem";
+                return "60rem";
             } else {
-                return "54rem";
+                return "50rem";
             }
         }};
     }
