@@ -48,6 +48,9 @@ export const StyledWrapperTitleComponent = styled.div`
             padding-top: 35rem;
             padding-bottom: 2rem;
         }
+        @media (max-width: 320px) {
+            padding-top: 41rem;
+        }
     }
     /* -- */
     h3 {

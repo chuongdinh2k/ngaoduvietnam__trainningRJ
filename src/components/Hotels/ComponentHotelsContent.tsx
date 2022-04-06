@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, LegacyRef } from "react";
 import { makeStyles, MenuItem, Popover, Select } from "@material-ui/core";
 
 import { StyledWrapperTitleComponent, ComponentLoader, AppPagination } from "..";
@@ -43,107 +43,118 @@ interface IProps {
     currentPage?: number;
     handlePaginationChange?: (event: ChangeEvent<any>, value: number) => void;
 }
-export const ComponentHotelsContent = (props: IProps) => {
-    //props
-    const { currentPage, handlePaginationChange } = props;
-    const classes = useStyles();
-    //redux store
-    const hotels = useAppSelector(selectHotel);
-    //component state
-    const [selected, setSelected] = React.useState("price");
-    const [listFilter, setListFilter] = React.useState(hotels.dataHotelsList);
+export const ComponentHotelsContent = React.forwardRef(
+    (props: IProps, ref: LegacyRef<HTMLHeadingElement> | undefined) => {
+        //props
+        const { currentPage, handlePaginationChange } = props;
+        const classes = useStyles();
+        //redux store
+        const hotels = useAppSelector(selectHotel);
+        //component state
+        const [selected, setSelected] = React.useState("price");
+        const [listFilter, setListFilter] = React.useState(hotels.dataHotelsList);
 
-    React.useEffect(() => {
-        setListFilter(hotels.dataHotelsList);
-    }, [hotels.dataHotelsList]);
-    // component prop
-    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+        React.useEffect(() => {
+            setListFilter(hotels.dataHotelsList);
+        }, [hotels.dataHotelsList]);
+        // component prop
+        const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
+        const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+            setAnchorEl(event.currentTarget);
+        };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+        const handleClose = () => {
+            setAnchorEl(null);
+        };
 
-    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setSelected(event.target.value as string);
-        setListFilter(sortItem(hotels.dataHotelsList, event.target.value));
-    };
-    const open = Boolean(anchorEl);
-    const id = open ? "simple-popover" : undefined;
-    return (
-        <StyledWrapperTitleComponent>
-            <div className="wrapper">
-                <div className="top">
-                    <h3 className="top__title hotel">Hotels</h3>
-                    <div className="top__filter">
-                        <div className="top__filter-text">
-                            <span className="top__filter-highlight">Sort By:</span>{" "}
-                            <Select
-                                className={classes.select}
-                                disableUnderline
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={selected}
-                                onChange={handleChange}
-                            >
-                                <MenuItem classes={{ selected: classes.selected }} value="price">
-                                    Price
-                                </MenuItem>
-                                <MenuItem classes={{ selected: classes.selected }} value="star">
-                                    Star
-                                </MenuItem>
-                                <MenuItem
-                                    classes={{ selected: classes.selected }}
-                                    value="reviewScore"
+        const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+            setSelected(event.target.value as string);
+            setListFilter(sortItem(hotels.dataHotelsList, event.target.value));
+        };
+        const open = Boolean(anchorEl);
+        const id = open ? "simple-popover" : undefined;
+        return (
+            <StyledWrapperTitleComponent>
+                <div className="wrapper">
+                    <div className="top">
+                        <h3 ref={ref} className="top__title hotel">
+                            Hotels
+                        </h3>
+                        <div className="top__filter">
+                            <div className="top__filter-text">
+                                <span className="top__filter-highlight">Sort By:</span>{" "}
+                                <Select
+                                    className={classes.select}
+                                    disableUnderline
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={selected}
+                                    onChange={handleChange}
                                 >
-                                    Review Score
-                                </MenuItem>
-                            </Select>
+                                    <MenuItem
+                                        classes={{ selected: classes.selected }}
+                                        value="price"
+                                    >
+                                        Price
+                                    </MenuItem>
+                                    <MenuItem classes={{ selected: classes.selected }} value="star">
+                                        Star
+                                    </MenuItem>
+                                    <MenuItem
+                                        classes={{ selected: classes.selected }}
+                                        value="reviewScore"
+                                    >
+                                        Review Score
+                                    </MenuItem>
+                                </Select>
+                            </div>
+                            <button
+                                className={clsx("btn", anchorEl ? "activeBtn" : "")}
+                                aria-describedby={id}
+                                onClick={handleClick}
+                            >
+                                Filter
+                            </button>
+                            <Popover
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                    vertical: "bottom",
+                                    horizontal: "right",
+                                }}
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                            >
+                                <ComponentHotelsFilter
+                                    reviewScore={reviewScore}
+                                    stars={stars}
+                                    moneyRange={moneyRange}
+                                    setListFilter={setListFilter}
+                                    handleClose={handleClose}
+                                />
+                            </Popover>
                         </div>
-                        <button
-                            className={clsx("btn", anchorEl ? "activeBtn" : "")}
-                            aria-describedby={id}
-                            onClick={handleClick}
-                        >
-                            Filter
-                        </button>
-                        <Popover
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "right",
-                            }}
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                        >
-                            <ComponentHotelsFilter
-                                reviewScore={reviewScore}
-                                stars={stars}
-                                moneyRange={moneyRange}
-                                setListFilter={setListFilter}
-                                handleClose={handleClose}
-                            />
-                        </Popover>
                     </div>
+                    {hotels.loading ? (
+                        <ComponentLoader />
+                    ) : (
+                        <ComponentListHotels data={listFilter} />
+                    )}
+                    {listFilter?.length > 0 && (
+                        <AppPagination
+                            totalPage={hotels?.totalPage}
+                            showPerpage
+                            currentPage={currentPage}
+                            handleChange={handlePaginationChange}
+                        />
+                    )}
                 </div>
-                {hotels.loading ? <ComponentLoader /> : <ComponentListHotels data={listFilter} />}
-                {listFilter?.length > 0 && (
-                    <AppPagination
-                        totalPage={hotels?.totalPage}
-                        showPerpage
-                        currentPage={currentPage}
-                        handleChange={handlePaginationChange}
-                    />
-                )}
-            </div>
-        </StyledWrapperTitleComponent>
-    );
-};
+            </StyledWrapperTitleComponent>
+        );
+    }
+);

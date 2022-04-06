@@ -15,7 +15,6 @@ interface IAppDatePicker {
     error?: string;
     value: Date | undefined | null;
     handleChange(date: Date | null | undefined, value?: string | null | undefined): void;
-    // handleBlur: (value: any) => void;
     name?: string;
     minDate?: Date;
     maxDate?: Date;
@@ -26,21 +25,23 @@ interface IAppDatePicker {
 export const AppDatePicker = (props: IAppDatePicker) => {
     // component state
     const [openCalendar, setOpenCalendar] = useState(false);
-
+    // props
+    const { size, format, value, hideIcon, handleChange, minDate, maxDate, placeholder, icon } =
+        props;
     return (
-        <InputWrapper size={props.size}>
+        <InputWrapper size={size}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid direction="column" container justifyContent="space-around">
                     <KeyboardDatePicker
                         disableToolbar
                         fullWidth
                         variant="dialog"
-                        format={props.format || "dd/MM/yyyy "}
-                        value={props.value || null}
-                        onChange={props.handleChange}
+                        format={format || "dd/MM/yyyy "}
+                        value={value || null}
+                        onChange={handleChange}
                         InputProps={{ readOnly: true, disableUnderline: true }}
                         inputVariant="standard"
-                        keyboardIcon={props.hideIcon ? "" : props.icon}
+                        keyboardIcon={hideIcon ? "" : icon}
                         InputAdornmentProps={{ position: "start" }}
                         KeyboardButtonProps={{
                             "aria-label": "change date",
@@ -49,9 +50,9 @@ export const AppDatePicker = (props: IAppDatePicker) => {
                         InputLabelProps={{
                             shrink: false,
                         }}
-                        minDate={props.minDate}
-                        maxDate={props.maxDate}
-                        placeholder={props.placeholder || "dd/mm/yyyy"}
+                        minDate={minDate}
+                        maxDate={maxDate}
+                        placeholder={placeholder || "dd/mm/yyyy"}
                         onClick={() => setOpenCalendar(true)}
                         onClose={() => setOpenCalendar(false)}
                         open={openCalendar}

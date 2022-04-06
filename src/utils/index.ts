@@ -5,3 +5,4 @@ export * from "./secureStorage";
 export * from "./date";
 export * from "./text";
 export * from "./number";
+export * from "./LoadingBgImage";

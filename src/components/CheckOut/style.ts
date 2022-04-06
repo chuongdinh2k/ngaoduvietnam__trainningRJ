@@ -117,6 +117,9 @@ export const StyledComponentCheckOutTotal = styled.div`
         .dateInput {
             .MuiInputBase-root {
                 padding-left: 0;
+                @media (max-width: 320px) {
+                    font-size: 1.2rem;
+                }
             }
         }
         .dateRange {

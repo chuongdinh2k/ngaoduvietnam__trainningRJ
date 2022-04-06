@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, createRef } from "react";
 import { useDispatch } from "react-redux";
 import * as qs from "query-string";
 
@@ -23,7 +23,12 @@ export const Hotels = () => {
     const [page, setPage] = useState<number | undefined>(Number(parsed?.page) || 1);
     const handlePaginationChange = (event: ChangeEvent<any>, value: number) => {
         setPage(value);
+        if (refScroll.current) {
+            refScroll.current.scrollIntoView({ behavior: "smooth" });
+        }
     };
+    // ref
+    const refScroll = createRef<any>();
     React.useEffect(() => {
         dispatch(
             getListHotels({
@@ -42,6 +47,7 @@ export const Hotels = () => {
                     <ComponentHotelsContent
                         currentPage={page}
                         handlePaginationChange={handlePaginationChange}
+                        ref={refScroll}
                     />
                 </div>
             </StyledWrapContent>

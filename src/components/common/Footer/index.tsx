@@ -28,11 +28,11 @@ const fakeDataNav: IData = {
     policy: [
         {
             title: "Partner with us",
-            route: "Partner with us",
+            route: "/partnerWithUs",
         },
         {
             title: "Term & Conditions",
-            route: "Term & Conditions",
+            route: "/termConditions",
         },
         {
             title: "Privacy Policy",
@@ -40,7 +40,7 @@ const fakeDataNav: IData = {
         },
         {
             title: "Guest Policy",
-            route: "Guest Policy",
+            route: "/guestPolicy",
         },
     ],
 };

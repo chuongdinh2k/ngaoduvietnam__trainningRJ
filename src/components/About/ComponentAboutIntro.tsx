@@ -114,6 +114,9 @@ const StyledComponentAboutIntroduce = styled.div`
             padding-top: 5rem;
             padding-left: 0;
         }
+        @media (max-width: 320px) {
+            padding-top: 10rem;
+        }
     }
     .content__title {
         line-height: 1;
@@ -130,6 +133,9 @@ const StyledComponentAboutIntroduce = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             font-size: 2rem;
+        }
+        @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+            font-size: 1.4rem;
         }
     }
     .content__quote-text {
@@ -152,6 +158,9 @@ const StyledComponentAboutIntroduce = styled.div`
             padding-left: 0;
             padding-top: 30rem;
             margin-top: 12rem;
+        }
+        @media (max-width: 320px) {
+            margin-top: 0;
         }
     }
     .intro__image {
@@ -191,6 +200,9 @@ const StyledComponentAboutIntroduce = styled.div`
             }
             @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
                 font-size: 2rem;
+            }
+            @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+                font-size: 1.4rem;
             }
         }
         &__image-left {

@@ -36,21 +36,36 @@ export const FORGOT_PASSWORD_NAME = "Forgot Password";
 export const routes: Array<IRoute> = [
     { name: HOME, path: appRoutesEnum.HOME, exact: true, component: ScrollToTop(Home, "app") },
     { name: ABOUT, path: appRoutesEnum.ABOUT, exact: true, component: ScrollToTop(About, "app") },
-    { name: TOURS, path: appRoutesEnum.TOURS_CHECKOUT, exact: true, component: CheckOut },
+    {
+        name: TOURS,
+        path: appRoutesEnum.TOURS_CHECKOUT,
+        exact: true,
+        component: ScrollToTop(CheckOut, "app"),
+    },
     {
         name: TOURS,
         path: appRoutesEnum.TOURS_DETAIL,
         exact: true,
         component: ScrollToTop(TourDetail, "detail"),
     },
-    { name: TOURS, path: appRoutesEnum.TOURS, exact: true, component: ListTour },
+    {
+        name: TOURS,
+        path: appRoutesEnum.TOURS,
+        exact: true,
+        component: ScrollToTop(ListTour, "app"),
+    },
     {
         name: HOTELS,
         path: appRoutesEnum.HOTEL_DETAIL,
         exact: false,
         component: ScrollToTop(HotelDetail, "detail"),
     },
-    { name: HOTELS, path: appRoutesEnum.HOTELS, exact: true, component: Hotels },
+    {
+        name: HOTELS,
+        path: appRoutesEnum.HOTELS,
+        exact: true,
+        component: ScrollToTop(Hotels, "app"),
+    },
     {
         name: CONTACT,
         path: appRoutesEnum.CONTACT,
@@ -79,7 +94,12 @@ export const routes: Array<IRoute> = [
         component: ChangePassword,
         layout: LayoutAuth,
     },
-    { name: "", path: appRoutesEnum.PRIVACY, exact: true, component: PrivacyPolicy },
+    {
+        name: "",
+        path: appRoutesEnum.PRIVACY,
+        exact: true,
+        component: ScrollToTop(PrivacyPolicy, "app"),
+    },
     { path: appRoutesEnum.SUCCESS, exact: true, component: SuccessMessage, layout: FinalPopup },
 
     { name: ERROR, exact: true, component: Page404Error, layout: LayoutError },

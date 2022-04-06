@@ -13,11 +13,11 @@ export const LayoutAuth = (props: IAppLayout) => {
         <StyledAuth>
             <div className="wrapAuth">
                 <Grid container>
-                    <Grid item xs={12} sm={7} md={5}>
+                    <Grid item xs={12} md={8} lg={7} justifyContent="center">
                         {props.children}
                     </Grid>
-                    <Grid item xs={12} sm={5} md={7}>
-                        <Hidden xsDown>
+                    <Grid item xs={12} md={8} lg={5}>
+                        <Hidden mdDown>
                             <div className="background">
                                 <img
                                     className="background__img"

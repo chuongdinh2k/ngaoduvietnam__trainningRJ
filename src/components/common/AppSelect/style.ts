@@ -22,6 +22,9 @@ export const InputWrapper = styled.div<ISWrapper>`
     display: flex;
     .MuiInputBase-input {
         padding: -2px 0 7px;
+        @media (max-width: 320px) {
+            font-size: 1.2rem;
+        }
     }
     .MuiSelect-select {
         .MuiSvgIcon-root {

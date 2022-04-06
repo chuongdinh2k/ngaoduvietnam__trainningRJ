@@ -172,6 +172,11 @@ export const StyledBookingForm = styled.div`
                     right: 18%;
                     top: 25%;
                 }
+                @media (max-width: 320px) {
+                    font-size: 1.2rem;
+                    padding-top: 0.2rem;
+                    right: 12%;
+                }
             }
         }
     }

@@ -37,6 +37,9 @@ export const InputWrapper = styled.div<ISWrapper>`
         font-size: 1.4rem;
         padding-left: 1rem;
         font-weight: 500;
+        @media (max-width: 320px) {
+            font-size: 1.2rem;
+        }
     }
     @media (min-width: 2000px) {
         height: ${(p) => (p.size === "large" ? `7rem` : `5rem`)};

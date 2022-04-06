@@ -109,6 +109,9 @@ export const StyledComponentContactForm = styled.div`
             @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                 padding: 1.7rem 2rem;
             }
+            @media (max-width: 320px) {
+                padding: 1rem 1.2rem;
+            }
         }
         &-text {
             padding-left: 1rem;
@@ -126,6 +129,9 @@ export const StyledComponentContactForm = styled.div`
             font-weight: 500;
             font-size: 1.4rem;
             color: ${(p) => p.theme.colors.pureWhite};
+            @media (min-width: 320px) {
+                font-size: 1rem;
+            }
         }
     }
 `;

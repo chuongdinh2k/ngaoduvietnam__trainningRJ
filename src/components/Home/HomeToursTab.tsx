@@ -173,6 +173,9 @@ const StyledHomeToursTab = styled.div`
         font-size: 2.4rem;
         font-family: ${(p) => p.theme.typography.fontFamily};
         margin-block-start: 0;
+        @media (min-width: 2000px) {
+            font-size: 3.6rem;
+        }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             font-size: 1.6rem;
         }

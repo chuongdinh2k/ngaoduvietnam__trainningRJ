@@ -92,6 +92,7 @@ export const StyledCustomViewImage = styled.div<IStyledCustomViewImage>`
                     left: 50%;
                     top: 50%;
                     transform: translate(-50%, -50%);
+                    display: flex;
                 }
                 &__number {
                     padding-left: 0.5rem;

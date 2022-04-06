@@ -10,6 +10,9 @@ export const StyledCard = styled.div`
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
             height: 19rem;
         }
+        @media (max-width: 320px) {
+            height: 15rem;
+        }
     }
     .imageWrapper .image {
         &:hover {
@@ -79,6 +82,9 @@ export const StyledCardWithIcon = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             height: 21rem;
+        }
+        @media (max-width: 320px) {
+            height: 15rem;
         }
     }
     .image {
@@ -175,8 +181,11 @@ export const StyledCardWithIcon = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             font-size: 1.4rem;
-            height: 3rem;
+            height: 2rem;
             width: 100%;
+        }
+        @media (max-width: 320px) {
+            height: 2rem;
         }
     }
     .bottom {
@@ -186,6 +195,9 @@ export const StyledCardWithIcon = styled.div`
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
             flex-direction: row;
+        }
+        @media (max-width: 320px) {
+            flex-direction: column;
         }
     }
     .money {

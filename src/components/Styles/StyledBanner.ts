@@ -193,6 +193,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
                         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                             font-size: 1.2rem;
                         }
+                        @media (max-width: 320px) {
+                            font-size: 1rem;
+                        }
                     }
                     &__number {
                         font-size: 2rem;
@@ -211,6 +214,9 @@ export const StyledBanner = styled.div<IStyledBanner>`
                         }
                         @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
                             font-size: 1.4rem;
+                        }
+                        @media (max-width: 320px) {
+                            font-size: 1.2rem;
                         }
                     }
                 }

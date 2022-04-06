@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useState } from "react";
+import React, { ChangeEvent, useCallback, useState, createRef } from "react";
 import { useDispatch } from "react-redux";
 
 import {
@@ -10,13 +10,15 @@ import {
     StyledWrapContent,
 } from "@components";
 import { banner } from "@demos";
-import { getListTours, setLoading } from "@redux";
+import { getListTours, setLoading, useAppSelector, selectTour } from "@redux";
 import { INFINITY_MAX, LIMIT_RECORD_6 } from "@configs";
 import { debounce } from "lodash";
 import { toursApi } from "@api";
 import { IDataTour } from "@types";
 
 export const ListTour = () => {
+    //redux store
+    const tour = useAppSelector(selectTour);
     // hooks
     const dispatch = useDispatch();
     // component state
@@ -25,6 +27,8 @@ export const ListTour = () => {
     const [userQuery, setUserQuery] = useState<string | undefined>("");
     const [loadingDebounce, setLoadingDebounce] = useState<boolean>(false);
     const [data, setData] = React.useState<Array<IDataTour>>();
+    // ref
+    const refScroll = createRef<any>();
     const updateQuery = async () => {
         // A search query api call.
         const res = await toursApi.getListFilterTours(
@@ -44,6 +48,9 @@ export const ListTour = () => {
     };
     const handleChange = (event: ChangeEvent<any>, value: number) => {
         setPage(value);
+        if (tour.dataToursList.length && refScroll.current) {
+            refScroll.current.scrollIntoView({ behavior: "smooth" });
+        }
     };
     // WHAT: search debounce
     React.useEffect(() => {
@@ -81,6 +88,7 @@ export const ListTour = () => {
                     <ComponentListTourContent
                         currentPage={page}
                         handlePaginationChange={handleChange}
+                        ref={refScroll}
                     />
                 </div>
             </StyledWrapContent>
