@@ -22,7 +22,6 @@ export const StyledWrapBanner = styled.div<IWrapHeader>`
     background-position: center;
     background-size: cover;
     font-family: ${(p) => p.theme.typography.fontFamily};
-    background-color: ${(p) => p.theme.colors.gray1};
     .wrapContainer {
         width: 100%;
         height: 100%;

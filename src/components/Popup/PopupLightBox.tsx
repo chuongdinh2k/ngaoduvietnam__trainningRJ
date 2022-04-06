@@ -157,6 +157,7 @@ const StyledPopUpLightBox = styled.div`
             cursor: pointer;
         }
         &:hover .image {
+            transition: ease-in-out 0.3s;
             transform: scale(1.1);
         }
         @media (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
@@ -167,7 +168,6 @@ const StyledPopUpLightBox = styled.div`
             height: 30rem;
         }
         .image {
-            transition: 0.3s ease-in-out;
             width: 100%;
             height: 100%;
         }

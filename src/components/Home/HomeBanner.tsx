@@ -3,7 +3,6 @@ import React from "react";
 import { BACKGROUND_WRAPHEADER, PAGE_HOME } from "@configs";
 import { StyledWrapBanner, IconDot, StyledBanner } from "..";
 import { HomeTabsButtonComponent } from ".";
-import { useProgressiveImage } from "@utils";
 
 interface banner {
     title?: string;
@@ -17,12 +16,8 @@ interface IProps {
 
 export const HomeBanner = (props: IProps) => {
     const { banner } = props;
-    const loaded = useProgressiveImage(BACKGROUND_WRAPHEADER);
     return (
-        <StyledWrapBanner
-            background_banner={loaded || BACKGROUND_WRAPHEADER}
-            typeComponent={PAGE_HOME}
-        >
+        <StyledWrapBanner background_banner={BACKGROUND_WRAPHEADER} typeComponent={PAGE_HOME}>
             <div className="wrapContainer">
                 <StyledBanner typeComponent={PAGE_HOME}>
                     <div className="content">

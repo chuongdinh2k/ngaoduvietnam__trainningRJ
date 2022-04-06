@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { axiosClient } from ".";
 
 interface IFilterCondition {
@@ -43,4 +45,25 @@ export const toursApi = {
         const url = `${process.env.REACT_APP_BACKEND}/tours/filter`;
         return axiosClient.post(url, values);
     },
+};
+let tokenSource: any;
+export const fetchTourSearchApi = async (pagination?: IPagination, filter?: IFilterCondition) => {
+    const url = `${process.env.REACT_APP_BACKEND}/tours/search?location=${filter?.location}&typeOfTour=${filter?.typeOfTour}&page=${pagination?.page}&limit=${pagination?.limit}`;
+    try {
+        if (typeof tokenSource !== typeof undefined) {
+            tokenSource.cancel("Operation canceled due to new request.");
+        }
+
+        // save the new request for cancellation
+        tokenSource = axios.CancelToken.source();
+
+        const { data } = await axios.get(url, {
+            cancelToken: tokenSource.token,
+        });
+
+        return { result: data };
+    } catch (err) {
+        if (axios.isCancel(err)) return { cancelPrevQuery: true };
+        return [err];
+    }
 };
