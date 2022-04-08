@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState, createRef } from "react";
 import { useDispatch } from "react-redux";
 import * as qs from "query-string";
+import _ from "lodash";
 
 import {
     ComponentBreadscrumb,
@@ -12,7 +13,9 @@ import {
 } from "@components";
 import { banner } from "@demos";
 import { getListHotels } from "@redux";
-import { LIMIT_RECORD_6 } from "@configs";
+import { LIMIT_RECORD_6, INFINITY_MAX } from "@configs";
+import { IDataTour } from "@types";
+import { fetchTourSearchApi } from "@api";
 
 export const Hotels = () => {
     // get params of url
@@ -37,6 +40,7 @@ export const Hotels = () => {
             })
         );
     }, [page]);
+
     return (
         <>
             <Header hasColor={false} />

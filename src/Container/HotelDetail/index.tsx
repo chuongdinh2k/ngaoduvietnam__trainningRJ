@@ -2,6 +2,8 @@ import React, { ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import { ERROR_404_DATA } from "@configs";
+
 import {
     ComponentDetailContent,
     StyledWrapContent,
@@ -49,7 +51,7 @@ export const HotelDetail = () => {
             <StyledWrapContent withOutBanner>
                 {hotelDetail.loading ? (
                     <ComponentLoader type="full" />
-                ) : (
+                ) : hotelDetail.hotel ? (
                     <div className="wrapperContent">
                         <ComponentBreadscrumb
                             id={hotelDetail?.hotel?._id}
@@ -63,6 +65,8 @@ export const HotelDetail = () => {
                         />
                         <ComponentRelated relatedHotel={hotelDetail.relatedHotel} />
                     </div>
+                ) : (
+                    <h5 className="errorText">{ERROR_404_DATA}</h5>
                 )}
             </StyledWrapContent>
             <Footer />

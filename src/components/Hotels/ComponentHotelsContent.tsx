@@ -25,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
         "& .MuiSelect-icon": {
             top: "calc(-10%)",
             fontSize: "3rem",
-            [theme.breakpoints.down("xs")]: {
-                fontSize: "1rem",
-            },
             fontWeight: 700,
         },
         "& .MuiListItem-root": {
